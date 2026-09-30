@@ -1,5 +1,6 @@
 import csv
 import datetime as dt
+import math
 import os
 from collections import OrderedDict
 from xml.sax.saxutils import escape
@@ -162,29 +163,47 @@ def write_chart(root, state, bots, config):
     titles = dict((bot.key, bot.title) for bot in bots)
     os.makedirs(os.path.join(root, "docs"), exist_ok=True)
     with open(os.path.join(root, "docs", "equity.svg"), "w", encoding="utf-8") as fh:
-        fh.write(chart_svg(state, series, titles, config["capital_inr"]))
+        fh.write(chart_svg(state, series, titles, config["capital_inr"], config["goal_inr"]))
 
 
-def chart_svg(state, series, titles, capital):
-    width, height = 900, 420
-    left, right, top, bottom = 76, 24, 20, 110
+TICK_STEPS = (1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 9)
+
+
+def chart_svg(state, series, titles, capital, goal):
+    width, height = 900, 440
+    left, right, top, bottom = 76, 20, 24, 124
+    plot_h = height - top - bottom
     x0, x1 = state["sim_start"], state["sim_end"]
-    values = [v for points in series.values() for _, v in points] + [capital]
-    lo, hi = min(values), max(values)
-    pad = (hi - lo) * 0.1 or capital * 0.05
-    lo, hi = lo - pad, hi + pad
+    floor = capital * 0.1
+    values = [v for points in series.values() for _, v in points]
+    shown = [max(v, floor) for v in values] + [capital]
+    lo, hi = min(shown) / 1.05, max(shown) * 1.05
+    if hi / lo < 1.25:
+        mid = math.sqrt(hi * lo)
+        lo, hi = mid / 1.118, mid * 1.118
+    log_lo, log_span = math.log(lo), math.log(hi / lo)
 
     def x_of(t):
         return left + (t - x0) / float(x1 - x0) * (width - left - right)
 
     def y_of(v):
-        return top + (hi - v) / float(hi - lo) * (height - top - bottom)
+        return top + (1 - (math.log(max(v, floor)) - log_lo) / log_span) * plot_h
 
+    note = "Log scale: equal percentage moves take equal space."
+    if any(v < floor for v in values):
+        note += " Values below %s are drawn at %s." % (inr(floor), inr(floor))
     out = ['<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" '
            'font-family="Arial, Helvetica, sans-serif" font-size="12">' % (width, height, width, height),
-           '<rect width="100%" height="100%" fill="#ffffff"/>']
-    for k in range(5):
-        v = lo + (hi - lo) * k / 4.0
+           '<rect width="100%" height="100%" fill="#ffffff"/>',
+           '<text x="%d" y="%d" text-anchor="end" fill="#9ca3af" font-size="11">%s</text>'
+           % (width - right, top - 10, escape(note))]
+    ticks = []
+    for k in range(int(math.floor(math.log10(lo))), int(math.ceil(math.log10(hi))) + 1):
+        for m in TICK_STEPS:
+            v = m * 10 ** k
+            if lo <= v <= hi and (not ticks or y_of(ticks[-1]) - y_of(v) >= 28):
+                ticks.append(v)
+    for v in ticks:
         y = y_of(v)
         out.append('<line x1="%d" x2="%d" y1="%.1f" y2="%.1f" stroke="#e5e7eb"/>' % (left, width - right, y, y))
         out.append('<text x="%d" y="%.1f" text-anchor="end" fill="#6b7280">%s</text>' % (left - 8, y + 4, escape(inr(v))))
@@ -193,9 +212,13 @@ def chart_svg(state, series, titles, capital):
         x = x_of(x0 + d * DAY_MS)
         out.append('<line x1="%.1f" x2="%.1f" y1="%d" y2="%d" stroke="#f3f4f6"/>' % (x, x, top, height - bottom))
         out.append('<text x="%.1f" y="%d" text-anchor="middle" fill="#6b7280">Day %d</text>' % (x, height - bottom + 18, d))
-    y = y_of(capital)
-    out.append('<line x1="%d" x2="%d" y1="%.1f" y2="%.1f" stroke="#9ca3af" stroke-dasharray="5 4"/>' % (left, width - right, y, y))
-    out.append('<text x="%d" y="%.1f" text-anchor="end" fill="#6b7280">start %s</text>' % (width - right, y - 6, escape(inr(capital))))
+    for level, label, color in ((capital, "start", "#9ca3af"), (goal, "goal", "#16a34a")):
+        if lo <= level <= hi:
+            y = y_of(level)
+            out.append('<line x1="%d" x2="%d" y1="%.1f" y2="%.1f" stroke="%s" stroke-dasharray="5 4"/>'
+                       % (left, width - right, y, y, color))
+            out.append('<text x="%d" y="%.1f" text-anchor="end" fill="%s">%s %s</text>'
+                       % (width - right - 4, y - 6, color, label, escape(inr(level))))
     for idx, (key, points) in enumerate(series.items()):
         color = COLORS[idx % len(COLORS)]
         if len(points) == 1:
@@ -203,13 +226,15 @@ def chart_svg(state, series, titles, capital):
         elif points:
             path = " ".join("%.1f,%.1f" % (x_of(t), y_of(v)) for t, v in points)
             out.append('<polyline points="%s" fill="none" stroke="%s" stroke-width="2"/>' % (path, color))
-        lx = left + (idx % 3) * 270
+        lx = left + (idx % 3) * 275
         ly = height - bottom + 48 + (idx // 3) * 22
+        latest = inr(points[-1][1]) if points else "–"
         out.append('<rect x="%d" y="%d" width="14" height="4" fill="%s"/>' % (lx, ly - 4, color))
-        out.append('<text x="%d" y="%d" fill="#111827">%s</text>' % (lx + 20, ly, escape(titles[key])))
-    if len(values) == 1:
+        out.append('<text x="%d" y="%d" fill="#111827">%s <tspan fill="#6b7280">%s</tspan></text>'
+                   % (lx + 20, ly, escape(titles[key]), escape(latest)))
+    if not values:
         out.append('<text x="%d" y="%d" text-anchor="middle" fill="#6b7280">Waiting for the first closed candles</text>'
-                   % (width // 2, (height - bottom) // 2))
+                   % (width // 2, top + plot_h // 2))
     out.append("</svg>")
     return "\n".join(out)
 
