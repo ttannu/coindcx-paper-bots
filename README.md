@@ -3,7 +3,25 @@
 Seven trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices. The goal is ₹1,00,000. One of the bots is self-learning. No real money, API keys, or exchange accounts are involved. GitHub Actions runs everything on a schedule, so nobody needs to touch it.
 
 <!-- DASHBOARD:START -->
-Waiting for the first run.
+### Live results: day 1 of 15
+
+Last updated 30 Sep 2026, 18:55 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Updates every 30 minutes.
+
+Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: +0.0% (₹85,22,786 to ₹85,22,786).
+
+| # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Win rate | Worst drop | Now |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Buy & hold BTC | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 2 | Trend follower | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 3 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 4 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 5 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 6 | Goal chaser (10x futures) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | flat |
+| 7 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | studying |
+
+![Value of each bot over time](docs/equity.svg)
+
+Costs so far across all bots: ₹0 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
 <!-- DASHBOARD:END -->
 
 ## The bots
