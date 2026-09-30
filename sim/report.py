@@ -11,8 +11,11 @@ BTC = "I-BTC_INR"
 ISSUE_TITLE = "Paper-trading bots: daily reports"
 FINAL_TITLE = "Paper-trading bots: final results"
 WELCOME_TITLE = "Paper-trading bots: email reports are on"
+UPGRADE_TITLE = "Paper-trading bots: now %s bots on %d coins"
 START_MARK = "<!-- DASHBOARD:START -->"
 END_MARK = "<!-- DASHBOARD:END -->"
+BENCHMARK = "hodl_btc"
+MEDIAN = "median"
 COLORS = ("#2563eb", "#16a34a", "#dc2626", "#9333ea", "#ea580c", "#0891b2", "#4b5563")
 
 
@@ -56,6 +59,8 @@ def leaderboard(bots, prices, t, config):
         rows.append({
             "key": bot.key,
             "title": bot.title,
+            "family": getattr(bot, "family", None),
+            "coin": getattr(bot, "coin", None),
             "value": value,
             "ret": value / config["capital_inr"] - 1,
             "goal": value / config["goal_inr"],
@@ -77,6 +82,8 @@ def _holding(bot):
         return "busted"
     if s["status"] == "error":
         return "stopped by an error"
+    if s["status"] == "no data":
+        return "frozen: CoinDCX stopped sending prices"
     described = bot.describe()
     if described:
         return described
@@ -94,6 +101,114 @@ def _btc_line(state, prices):
     return "BTC/INR since the start: %s (%s to %s)." % (pct(now / start - 1), inr(start), inr(now))
 
 
+def _median(values):
+    values = sorted(values)
+    if not values:
+        return 0.0
+    mid = len(values) // 2
+    return values[mid] if len(values) % 2 else (values[mid - 1] + values[mid]) / 2.0
+
+
+def _count(n):
+    return "{:,}".format(n)
+
+
+def summary_line(board, config):
+    capital = config["capital_inr"]
+    coins = len(set(r["coin"] for r in board if r["coin"]))
+    hold = dict((r["coin"], r["value"]) for r in board if r["family"] and r["family"].key == "hold")
+    rivals = [r for r in board if r["family"] and r["family"].key != "hold" and r["coin"] in hold]
+    return ("%s bots on %d coins. %s are up and %s are down; %s are wiped out. The median bot is at %s. "
+            "%s of %s bots are ahead of simply holding their coin." % (
+                _count(len(board)), coins, _count(sum(1 for r in board if r["value"] > capital)),
+                _count(sum(1 for r in board if r["value"] < capital)), _count(sum(1 for r in board if r["now"] == "busted")),
+                inr(_median(r["value"] for r in board)), _count(sum(1 for r in rivals if r["value"] > hold[r["coin"]])),
+                _count(len(rivals))))
+
+
+def report_card(board):
+    hold = dict((r["coin"], r["value"]) for r in board if r["family"] and r["family"].key == "hold")
+    groups = OrderedDict()
+    for r in board:
+        if r["family"]:
+            groups.setdefault(r["family"].key, []).append(r)
+    luck = [r["ret"] for r in board if r["family"] and r["family"].luck]
+    luck_median = _median(luck) if luck else None
+    cards = []
+    for rows in groups.values():
+        family = rows[0]["family"]
+        median = _median(r["ret"] for r in rows)
+        beat = sum(1 for r in rows if r["coin"] in hold and r["value"] > hold[r["coin"]])
+        if family.luck:
+            verdict = "luck control"
+        elif family.key == "hold":
+            verdict = "benchmark"
+        elif luck_median is not None and median > luck_median and 2 * beat > len(rows):
+            verdict = "yes"
+        else:
+            verdict = "not yet"
+        cards.append({
+            "label": family.label[0].upper() + family.label[1:],
+            "median": median,
+            "best": rows[0],
+            "worst": rows[-1],
+            "profit": sum(1 for r in rows if r["ret"] > 0),
+            "beat": None if family.key == "hold" else beat,
+            "wiped": sum(1 for r in rows if r["now"] == "busted"),
+            "coins": len(rows),
+            "verdict": verdict,
+        })
+    cards.sort(key=lambda c: c["median"], reverse=True)
+    return cards
+
+
+def _card_lines(cards):
+    lines = [
+        "| Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Skill shown? |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for c in cards:
+        lines.append("| %s | %s | %s %s | %s %s | %d/%d | %s | %d | %s |" % (
+            c["label"], pct(c["median"]), c["best"]["coin"], pct(c["best"]["ret"]), c["worst"]["coin"], pct(c["worst"]["ret"]),
+            c["profit"], c["coins"], "–" if c["beat"] is None else "%d/%d" % (c["beat"], c["coins"]), c["wiped"], c["verdict"]))
+    return lines
+
+
+def luck_line(board):
+    flips = [r for r in board if r["family"] and r["family"].luck]
+    if not flips:
+        return ""
+    return ("**How much of this is luck?** The %s coin-flip bots trade at random. The luckiest is %s at %s, and their "
+            "median is %s. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled "
+            "only if its median return beats the coin flips and it beats holding on most coins." % (
+                _count(len(flips)), flips[0]["title"], pct(flips[0]["ret"]), pct(_median(r["ret"] for r in flips))))
+
+
+def _top_lines(board, config, n):
+    lines = [
+        "| # | Bot | Value if sold now, after costs and tax | Return | Progress to %s | Closed trades | Worst drop | Now |"
+        % inr(config["goal_inr"]),
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for rank, r in enumerate(board[:n], 1):
+        lines.append("| %d | %s | %s | %s | %s | %d | %s | %s |" % (
+            rank, r["title"], inr(r["value"]), pct(r["ret"]), pct(r["goal"], False), r["trades"],
+            pct(r["max_dd"], False), r["now"]))
+    return lines
+
+
+def _original_lines(board):
+    lines = [
+        "| Bot | Value if sold now | Return | Rank | Closed trades | Now |",
+        "|---|---|---|---|---|---|",
+    ]
+    for rank, r in enumerate(board, 1):
+        if not r["family"]:
+            lines.append("| %s | %s | %s | %s of %s | %d | %s |" % (
+                r["title"], inr(r["value"]), pct(r["ret"]), _count(rank), _count(len(board)), r["trades"], r["now"]))
+    return lines
+
+
 def dashboard(state, board, config, prices, now_ms, bots=()):
     capital, goal = config["capital_inr"], config["goal_inr"]
     if state["finished"]:
@@ -101,7 +216,7 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
         status = "The simulation has finished and the automation has switched itself off."
     else:
         heading = "### Live results: day %d of %d" % (day_number(state, config, now_ms), config["duration_days"])
-        status = "GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed."
+        status = "Refreshed about every 30 minutes; each run catches up on everything it missed."
     lines = [
         heading,
         "",
@@ -110,27 +225,38 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
         "Each bot started with %s of simulated money. The goal is %s (%dx). %s" % (
             inr(capital), inr(goal), goal // capital, _btc_line(state, prices)),
         "",
-        "| # | Bot | Value if sold now, after costs and tax | Return | Progress to %s | Closed trades | Win rate | Worst drop | Now |" % inr(goal),
-        "|---|---|---|---|---|---|---|---|---|",
+        summary_line(board, config),
+        "",
+        "**Top 15 bots**",
+        "",
     ]
-    for rank, r in enumerate(board, 1):
-        lines.append("| %d | %s | %s | %s | %s | %d | %s | %s | %s |" % (
-            rank, r["title"], inr(r["value"]), pct(r["ret"]), pct(r["goal"], False), r["trades"],
-            "–" if r["win_rate"] is None else pct(r["win_rate"], False), pct(r["max_dd"], False), r["now"]))
+    lines += _top_lines(board, config, 15)
+    lines += ["", "**The original bots**", ""]
+    lines += _original_lines(board)
+    cards = report_card(board)
+    if cards:
+        lines += [
+            "",
+            "**Strategy report card.** Each strategy runs separately on every coin. \"Beat holding\" counts the coins where "
+            "it is ahead of buying that coin and holding it.",
+            "",
+        ]
+        lines += _card_lines(cards)
+        lines += ["", luck_line(board)]
     lines += [
         "",
-        "![Value of each bot over time](docs/equity.svg)",
+        "![Value of the top bots over time](docs/equity.svg)",
         "",
         "Costs so far across all bots: %s in fees and GST, %s of TDS held back (refundable when you file taxes), "
         "and %s of estimated tax." % (inr(sum(r["fees"] for r in board)), inr(sum(r["tds"] for r in board)),
                                        inr(sum(r["tax"] for r in board))),
     ]
     for bot in bots:
-        ranked = bot.insights() if hasattr(bot, "insights") else []
+        ranked = bot.insights() if bot.key == "self_learning" else []
         if ranked:
             lines += [
                 "",
-                "**What the self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:",
+                "**What the original self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:",
                 "",
                 "| Variant | Last 3 days | Signal now |",
                 "|---|---|---|",
@@ -153,15 +279,28 @@ def update_readme(root, block):
         fh.write(text)
 
 
-def write_chart(root, state, bots, config):
-    series = OrderedDict((bot.key, []) for bot in bots)
+def write_chart(root, state, board, config):
+    keys = [r["key"] for r in board[:5]]
+    if BENCHMARK not in keys:
+        keys.append(BENCHMARK)
+    titles = dict((r["key"], r["title"]) for r in board)
+    titles[MEDIAN] = "Median of all %s bots" % _count(len(board))
+    series = OrderedDict((key, []) for key in keys + [MEDIAN])
     path = os.path.join(root, "state", "equity.csv")
     if os.path.exists(path):
         with open(path, newline="", encoding="utf-8") as fh:
-            for row in csv.DictReader(fh):
-                if row["bot"] in series:
-                    series[row["bot"]].append((int(row["t_ms"]), float(row["value"])))
-    titles = dict((bot.key, bot.title) for bot in bots)
+            reader = csv.reader(fh)
+            columns = dict((name, n) for n, name in enumerate(next(reader, [])))
+            for row in reader:
+                t = int(row[0])
+                for key in keys:
+                    n = columns.get(key)
+                    if n is not None and n < len(row) and row[n]:
+                        series[key].append((t, float(row[n])))
+                values = [float(v) for v in row[2:] if v]
+                if values:
+                    series[MEDIAN].append((t, _median(values)))
+    series = OrderedDict((key, points) for key, points in series.items() if key in titles)
     os.makedirs(os.path.join(root, "docs"), exist_ok=True)
     with open(os.path.join(root, "docs", "equity.svg"), "w", encoding="utf-8") as fh:
         fh.write(chart_svg(state, series, titles, config["capital_inr"], config["goal_inr"]))
@@ -245,10 +384,12 @@ def start_message(state, config, bot_count):
     return "\n".join([
         "@%s your paper-trading bots are running." % config["notify_user"],
         "",
-        "- %d bots, each with %s of simulated money, trade on live CoinDCX INR prices. "
-        "No real money and no API keys are involved." % (bot_count, inr(config["capital_inr"])),
-        "- One of them is self-learning: every hour it re-scores its strategy variants on live prices and follows "
-        "whichever is working after costs, or holds cash when none is.",
+        "- %s bots, each with %s of simulated money, trade %d CoinDCX INR coins on live prices. "
+        "No real money and no API keys are involved." % (_count(bot_count), inr(config["capital_inr"]),
+                                                          len(config.get("universe", ()))),
+        "- Every strategy runs separately on every coin, next to coin-flip bots that trade at random, so skill can be "
+        "told apart from luck. The self-learning bots re-score their strategy variants every hour and follow "
+        "whichever is working after costs, or hold cash when none is.",
         "- They pay realistic costs: a %.1f%% fee plus %d%% GST on every spot trade, slippage, %d%% TDS once a bot's "
         "sales pass %s, and an estimated %.1f%% tax on each profitable sale, with no offset for losses." % (
             costs["spot_fee_rate"] * 100, round(costs["gst_rate"] * 100), round(costs["tds_rate"] * 100),
@@ -262,27 +403,62 @@ def start_message(state, config, bot_count):
     ])
 
 
+def _standings(board, config, top):
+    lines = ["| # | Bot | Value if sold now | Since start | Now |", "|---|---|---|---|---|"]
+    for rank, r in enumerate(board[:top], 1):
+        lines.append("| %d | %s | %s | %s | %s |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), r["now"]))
+    return lines
+
+
 def welcome_message(state, board, config, prices, now_ms):
     lines = [
         "Email reports for your paper-trading bots are on.",
         "",
-        "- %d bots, each with %s of simulated money, trade on live CoinDCX INR prices. "
-        "No real money and no API keys are involved." % (len(board), inr(config["capital_inr"])),
+        "- %s bots, each with %s of simulated money, trade on live CoinDCX INR prices. "
+        "No real money and no API keys are involved." % (_count(len(board)), inr(config["capital_inr"])),
         "- The simulation runs from %s to %s. Today is day %d of %d." % (
             ist(state["sim_start"]), ist(state["sim_end"]), day_number(state, config, now_ms), config["duration_days"]),
         "- You'll get one email a day, by the first run after %02d:00 IST, and a final one when the simulation ends. "
         "After that the automation switches itself off." % config["report_hour_ist"],
         "",
-        "Standings at %s:" % ist(now_ms),
+        "Top 10 at %s:" % ist(now_ms),
         "",
-        "| # | Bot | Value if sold now | Since start | Now |",
-        "|---|---|---|---|---|",
     ]
-    for rank, r in enumerate(board, 1):
-        lines.append("| %d | %s | %s | %s | %s |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), r["now"]))
+    lines += _standings(board, config, 10)
     lines += [
         "",
+        summary_line(board, config),
         _btc_line(state, prices),
+        "",
+        "Dashboard: https://github.com/%s" % config["repository"],
+    ]
+    return "\n".join(lines)
+
+
+def upgrade_subject(board, config):
+    return UPGRADE_TITLE % (_count(len(board)), len(set(r["coin"] for r in board if r["coin"])))
+
+
+def upgrade_message(state, board, config, prices, now_ms):
+    coins = len(set(r["coin"] for r in board if r["coin"]))
+    lines = [
+        "@%s the bots have been upgraded: there are now %s of them on %d volatile CoinDCX coins." % (
+            config["notify_user"], _count(len(board)), coins),
+        "",
+        "- Every coin gets the same %d strategies: trend following at three speeds and two faster ones, RSI dip buying, "
+        "breakouts, grids, a pump rider, 3x and 10x futures, long/short, a self-learning bot, buy & hold, and four "
+        "coin-flip bots that trade at random. The original bots keep running too." % len(report_card(board)),
+        "- Each coin's trading cost now includes its real bid-ask spread, so thinly traded coins cost more to trade.",
+        "- All bots were replayed from %s, so they share one timeline and the 15-day end date is unchanged." % ist(state["sim_start"]),
+        "- The coin-flip bots are there to show how much of any result is luck.",
+        "",
+        "Top 10 at %s:" % ist(now_ms),
+        "",
+    ]
+    lines += _standings(board, config, 10)
+    lines += [
+        "",
+        summary_line(board, config),
         "",
         "Dashboard: https://github.com/%s" % config["repository"],
     ]
@@ -300,13 +476,27 @@ def daily_message(state, board, config, prices, now_ms, previous):
         "@%s **Day %d of %d**, %s" % (config["notify_user"], day_number(state, config, now_ms),
                                      config["duration_days"], ist(now_ms, "%d %b %Y")),
         "",
+        summary_line(board, config),
+        "",
+        "**Top 10**",
+        "",
         "| # | Bot | Value if sold now | Since start | Last 24 hours | Closed trades |",
         "|---|---|---|---|---|---|",
     ]
-    for rank, r in enumerate(board, 1):
+
+    def change(r):
         before = previous.get(r["key"])
-        change = pct(r["value"] / before - 1) if before and before > 0 else "–"
-        lines.append("| %d | %s | %s | %s | %s | %d |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), change, r["trades"]))
+        return pct(r["value"] / before - 1) if before and before > 0 else "–"
+
+    for rank, r in enumerate(board[:10], 1):
+        lines.append("| %d | %s | %s | %s | %s | %d |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), change(r), r["trades"]))
+    lines += ["", "**The original bots**", "", "| Bot | Value if sold now | Since start | Last 24 hours | Rank |", "|---|---|---|---|---|"]
+    for rank, r in enumerate(board, 1):
+        if not r["family"]:
+            lines.append("| %s | %s | %s | %s | %s |" % (r["title"], inr(r["value"]), pct(r["ret"]), change(r), _count(rank)))
+    cards = report_card(board)
+    if cards:
+        lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
     best = board[0]
     lines += [
         "",
@@ -325,19 +515,28 @@ def final_message(state, board, config, prices):
         "@%s **Final results after %d days** (%s to %s)" % (
             config["notify_user"], config["duration_days"], ist(state["sim_start"]), ist(state["sim_end"])),
         "",
+        summary_line(board, config),
+        "",
+        "**Top 20**",
+        "",
         "| # | Bot | Final value | Return | Closed trades | Win rate | Worst drop | Fees + GST | TDS held | Est. tax |",
         "|---|---|---|---|---|---|---|---|---|---|",
     ]
-    for rank, r in enumerate(board, 1):
+    for rank, r in enumerate(board[:20], 1):
         lines.append("| %d | %s | %s | %s | %d | %s | %s | %s | %s | %s |" % (
             rank, r["title"], inr(r["value"]), pct(r["ret"]), r["trades"],
             "–" if r["win_rate"] is None else pct(r["win_rate"], False), pct(r["max_dd"], False),
             inr(r["fees"]), inr(r["tds"]), inr(r["tax"])))
+    lines += ["", "**The original bots**", ""] + _original_lines(board)
+    cards = report_card(board)
+    if cards:
+        lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
     reached = [r["title"] for r in board if r["value"] >= goal]
     best = board[0]
     lines.append("")
     if reached:
-        lines.append("Reached the %s goal: %s." % (inr(goal), ", ".join(reached)))
+        lines.append("Reached the %s goal: %s." % (inr(goal), ", ".join(reached[:20]) + (" and %s more" % _count(len(reached) - 20)
+                                                                                       if len(reached) > 20 else "")))
     else:
         lines.append("No bot reached the %s goal. The best finished at %s (%s)." % (inr(goal), inr(best["value"]), pct(best["ret"])))
     lines += [

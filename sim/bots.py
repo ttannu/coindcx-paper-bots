@@ -2,6 +2,10 @@ BTC, ETH, SOL, XRP, DOGE = "I-BTC_INR", "I-ETH_INR", "I-SOL_INR", "I-XRP_INR", "
 HOUR_MS = 3600000
 
 
+def coin(pair):
+    return pair.split("-")[1].split("_")[0]
+
+
 class Bot:
     key = ""
     title = ""

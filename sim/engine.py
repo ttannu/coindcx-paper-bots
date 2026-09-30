@@ -4,20 +4,24 @@ import json
 import os
 import smtplib
 import traceback
+from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, report
+from . import coindcx, report, swarm
 from .accounts import FuturesAccount, SpotAccount
-from .bots import FIXED_BOTS
+from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
 from .indicators import Series
 from .learner import SelfLearner
 from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
+STATE_VERSION = 2
 FIFTEEN_MIN_MS = 15 * 60 * 1000
 HOUR_MS = 3600000
 DAY_MS = 86400000
 FINISH_GRACE_MS = 2 * HOUR_MS
+STALE_AFTER_MS = 12 * HOUR_MS
+FETCH_WORKERS = 6
 WORKFLOW_FILE = "simulate.yml"
 TRADE_FIELDS = ("time_ist", "bot", "side", "pair", "qty", "price", "value", "fee", "tds", "pnl", "tax", "reason")
 
@@ -37,11 +41,13 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
     state_dir = os.path.join(root, "state")
     state_path = os.path.join(state_dir, "state.json")
     os.makedirs(state_dir, exist_ok=True)
-    first_run = not os.path.exists(state_path)
-    if first_run:
+    upgraded = False
+    if not os.path.exists(state_path):
         state = _new_state(config, start_ms if start_ms is not None else now_ms - now_ms % FIFTEEN_MIN_MS)
     else:
         state = _read_json(state_path)
+        if state.get("version", 1) < STATE_VERSION:
+            state, upgraded = _upgrade(state, config), True
     reports = state["reports"]
     if state["finished"] and all(reports.get(k) for k in ("final_posted", "issue_closed", "workflow_disabled")):
         print("The simulation already finished. Nothing to do.")
@@ -52,14 +58,18 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
     prices = state["last_prices"]
     processed = 0
     if not state["finished"]:
-        series = {}
-        for pair, interval in sorted(set(sub for bot in bots for sub in bot.subscriptions)):
-            series[(pair, interval)] = Series(pair, interval, fetch(pair, interval, now_ms))
+        series = _fetch_all(state, sorted(set(sub for bot in bots for sub in bot.subscriptions)), fetch, now_ms)
+        if upgraded:
+            # Only once prices are in: a skipped run still gets saved, and must not save half an upgrade.
+            for name in ("equity.csv", "trades.csv"):
+                if os.path.exists(os.path.join(state_dir, name)):
+                    os.remove(os.path.join(state_dir, name))
         _seed_prices(prices, series, state["sim_start"])
-        if first_run:
-            state["start_prices"] = dict(prices)
+        for pair, price in prices.items():
+            state["start_prices"].setdefault(pair, price)
+        _freeze_stale(state, bots, now_ms)
         processed, snapshots = _replay(state, bots, series, prices)
-        _append_equity(state_dir, snapshots)
+        _append_equity(state_dir, [bot.key for bot in bots], snapshots)
         _append_trades(state_dir, trades)
         state["runs"] += 1
         state["last_run"] = now_ms
@@ -69,7 +79,7 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
     board = report.leaderboard(bots, prices, state["last_event_t"] or now_ms, config)
     try:
         report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots))
-        report.write_chart(root, state, bots, config)
+        report.write_chart(root, state, board, config)
     except Exception:  # the dashboard is cosmetic; a rendering bug must not block saving or reporting
         traceback.print_exc()
     if notify:
@@ -79,21 +89,24 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
         _safely(_switch_off, state, now_ms, mailer)
         _write_json(state_path, state)
 
-    print("Processed %d candles and %d trades. Run %d, %s." % (processed, len(trades), state["runs"], report.ist(now_ms)))
-    for r in board:
-        print("  %-28s %10s  %7s  %s" % (r["title"], report.inr(r["value"]), report.pct(r["ret"]), r["now"]))
+    print("Processed %d candles and %d trades for %d bots. Run %d, %s." % (
+        processed, len(trades), len(bots), state["runs"], report.ist(now_ms)))
+    for r in board[:10]:
+        print("  %-36s %10s  %7s  %s" % (r["title"], report.inr(r["value"]), report.pct(r["ret"]), r["now"]))
     return state
 
 
 def _new_state(config, start_ms):
     return {
-        "version": 1,
+        "version": STATE_VERSION,
         "sim_start": start_ms,
         "sim_end": start_ms + config["duration_days"] * DAY_MS,
         "cursor": {},
         "last_prices": {},
         "start_prices": {},
         "last_event_t": None,
+        "last_tick_t": None,
+        "data_gaps": {},
         "bots": {},
         "reports": {"issue": None, "last_daily": None, "values": {}},
         "runs": 0,
@@ -102,17 +115,62 @@ def _new_state(config, start_ms):
     }
 
 
+def _upgrade(old, config):
+    # Every bot, old and new, is replayed from the original start so they all share one timeline and one set of costs.
+    state = _new_state(config, old["sim_start"])
+    for key in ("reports", "runs", "last_run"):
+        state[key] = old[key]
+    state["reports"]["announce"] = True
+    return state
+
+
 def _build_bots(state, config, trades):
     bots = []
-    for cls in ALL_BOTS:
-        account_cls = FuturesAccount if cls.kind == "futures" else SpotAccount
-        acct_state = state["bots"].setdefault(cls.key, account_cls.fresh(config["capital_inr"]))
+    makers = [(cls.key, cls.kind, cls) for cls in ALL_BOTS] + swarm.specs(config.get("universe", ()))
+    for key, kind, make in makers:
+        account_cls = FuturesAccount if kind == "futures" else SpotAccount
+        acct_state = state["bots"].setdefault(key, account_cls.fresh(config["capital_inr"]))
 
-        def log(row, key=cls.key):
+        def log(row, key=key):
             trades.append(dict(row, bot=key))
 
-        bots.append(cls(account_cls(acct_state, config["costs"], config["markets"], log)))
+        bots.append(make(account_cls(acct_state, config["costs"], config["markets"], log)))
     return bots
+
+
+def _fetch_all(state, subs, fetch, now_ms):
+    # BTC goes first, alone: if CoinDCX is down, the run stops here instead of spending minutes retrying every coin.
+    probe = (BTC, "15m") if (BTC, "15m") in subs else subs[0]
+    series = {probe: Series(probe[0], probe[1], fetch(probe[0], probe[1], now_ms))}
+    failed = []
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
+        jobs = [(sub, pool.submit(fetch, sub[0], sub[1], now_ms)) for sub in subs if sub != probe]
+        for sub, job in jobs:
+            try:
+                series[sub] = Series(sub[0], sub[1], job.result())
+            except coindcx.DataUnavailable as exc:
+                failed.append(sub)
+                print("Warning: skipping this coin for now: %s" % exc)
+    if 2 * len(failed) > len(subs):
+        raise coindcx.DataUnavailable("%d of %d price series could not be downloaded" % (len(failed), len(subs)))
+    gaps = state.setdefault("data_gaps", {})
+    for sub in subs:
+        name = "%s|%s" % sub
+        if sub in failed:
+            gaps.setdefault(name, now_ms)
+        else:
+            gaps.pop(name, None)
+    return series
+
+
+def _freeze_stale(state, bots, now_ms):
+    stale = set(name for name, since in state.get("data_gaps", {}).items() if now_ms - since >= STALE_AFTER_MS)
+    for bot in bots:
+        if bot.acct.active and bot.subscriptions and all("%s|%s" % sub in stale for sub in bot.subscriptions):
+            bot.acct.s["status"] = "no data"
+            bot.acct.s["error"] = "CoinDCX has sent no prices for %s since %s" % (
+                ", ".join(sorted(set(report.symbol(p) for p, _ in bot.subscriptions))),
+                report.ist(min(state["data_gaps"]["%s|%s" % sub] for sub in bot.subscriptions)))
 
 
 def _seed_prices(prices, series, sim_start):
@@ -143,40 +201,63 @@ def _replay(state, bots, series, prices):
                 events.append((close_t, span, pair, interval, i))
     events.sort()
 
+    listeners = {}
+    for bot in bots:
+        for sub in bot.subscriptions:
+            listeners.setdefault(sub, []).append(bot)
+    ticking = [bot for bot in bots if type(bot).on_tick is not Bot.on_tick]
     ctx = Context(prices, series)
     snapshots = []
+    last_tick = state.get("last_tick_t") or 0
     for n, (close_t, span, pair, interval, i) in enumerate(events):
         s = series[(pair, interval)]
         ctx.t = close_t
         prices[pair] = s.candles[i]["c"]
-        for bot in bots:
-            if bot.acct.active and (pair, interval) in bot.subscriptions:
+        for bot in listeners.get((pair, interval), ()):
+            if bot.acct.active:
                 _guard(bot, "on_candle", bot.on_candle, ctx, s, i)
         state["cursor"]["%s|%s" % (pair, interval)] = s.candles[i]["t"]
-        state["last_event_t"] = close_t
+        state["last_event_t"] = max(state["last_event_t"] or 0, close_t)
         is_last = n + 1 == len(events)
         if not is_last and events[n + 1][0] == close_t:
             continue
-        for bot in bots:
+        # A coin that was missing from earlier runs replays its backlog here; the clock itself never goes back.
+        if close_t <= last_tick:
+            continue
+        last_tick = close_t
+        for bot in ticking:
             if bot.acct.active:
                 _guard(bot, "on_tick", bot.on_tick, ctx)
+        for bot in bots:
             if bot.acct.active:
                 _guard(bot, "mark", bot.acct.mark, prices, close_t)
         if is_last or close_t % HOUR_MS == 0:
-            snapshots.append((close_t, [(bot.key, bot.value(prices, close_t)) for bot in bots]))
+            snapshots.append((close_t, [bot.value(prices, close_t) for bot in bots]))
+    state["last_tick_t"] = last_tick or None
     return len(events), snapshots
 
 
-def _append_equity(state_dir, snapshots):
+def _append_equity(state_dir, keys, snapshots):
     path = os.path.join(state_dir, "equity.csv")
+    header = ["t_ms", "time_ist"] + keys
+    if os.path.exists(path):
+        with open(path, newline="", encoding="utf-8") as fh:
+            current = next(csv.reader(fh), None)
+        if current != header:
+            with open(path, newline="", encoding="utf-8") as fh:
+                old = list(csv.DictReader(fh))
+            with open(path + ".tmp", "w", newline="", encoding="utf-8") as fh:
+                writer = csv.DictWriter(fh, fieldnames=header, restval="", extrasaction="ignore")
+                writer.writeheader()
+                writer.writerows(old)
+            os.replace(path + ".tmp", path)
     new = not os.path.exists(path)
     with open(path, "a", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh)
         if new:
-            writer.writerow(["t_ms", "time_ist", "bot", "value"])
+            writer.writerow(header)
         for t, values in snapshots:
-            for key, value in values:
-                writer.writerow([t, report.ist(t, "%Y-%m-%d %H:%M"), key, "%.2f" % value])
+            writer.writerow([t, report.ist(t, "%Y-%m-%d %H:%M")] + ["%.0f" % v for v in values])
 
 
 def _append_trades(state_dir, trades):
@@ -224,6 +305,14 @@ def _notify(state, board, config, prices, now_ms, bot_count):
                 print(body)
             reports["last_daily"] = today
             reports["values"] = dict((r["key"], r["value"]) for r in board)
+        if reports.get("announce") and not state["finished"]:
+            body = report.upgrade_message(state, board, config, prices, now_ms)
+            if github:
+                github.comment(reports["issue"], body)
+            else:
+                print(body)
+            reports["announce"] = False
+            _queue_mail(reports, "upgrade", report.upgrade_subject(board, config), body, config)
         if state["finished"]:
             if not reports.get("final_posted"):
                 body = report.final_message(state, board, config, prices)
@@ -306,6 +395,6 @@ def _read_json(path):
 def _write_json(path, data):
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as fh:
-        json.dump(data, fh, indent=1, sort_keys=True)
+        json.dump(data, fh, sort_keys=True, separators=(",", ":"))
         fh.write("\n")
     os.replace(tmp, path)

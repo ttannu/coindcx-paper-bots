@@ -26,10 +26,13 @@ def _hourly(rows):
     return out
 
 
-def build_market(scenario, seed):
+def build_market(scenario, seed, pairs=()):
     rng = random.Random(seed)
     market = {}
-    for pair, price in BASE.items():
+    prices = dict(BASE)
+    for pair in pairs:
+        prices.setdefault(pair, 100.0)
+    for pair, price in prices.items():
         rows = []
         for k in range(-HISTORY_15M, SIM_15M):
             day = k / 96.0

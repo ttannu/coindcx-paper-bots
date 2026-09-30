@@ -56,10 +56,13 @@ class SpotAccount(_Account):
     def _fee_rate(self):
         return self.costs["spot_fee_rate"] * (1 + self.costs["gst_rate"])
 
+    def _slippage(self, pair):
+        return self.markets[pair].get("slippage", self.costs["slippage"])
+
     def buy(self, pair, budget, price, t, reason):
         market = self.markets[pair]
         budget = min(budget, self.s["cash"])
-        fill = price * (1 + self.costs["slippage"])
+        fill = price * (1 + self._slippage(pair))
         qty = floor_step(budget / (fill * (1 + self._fee_rate())), market["step"])
         value = qty * fill
         if qty <= 0 or qty < market["min_qty"] or value < market["min_notional"]:
@@ -81,7 +84,7 @@ class SpotAccount(_Account):
             return 0.0
         qty = pos["qty"] if qty is None else min(qty, pos["qty"])
         share = qty / pos["qty"]
-        fill = price * (1 - self.costs["slippage"])
+        fill = price * (1 - self._slippage(pair))
         value = qty * fill
         fee = value * self._fee_rate()
         cost = pos["cost"] * share
@@ -110,7 +113,7 @@ class SpotAccount(_Account):
     def liquidation_value(self, prices, t=None):
         value = self.s["cash"] + self.s["tds_credit"] - self.s["tax_due"]
         for pair, pos in self.s["positions"].items():
-            proceeds = pos["qty"] * prices[pair] * (1 - self.costs["slippage"])
+            proceeds = pos["qty"] * prices[pair] * (1 - self._slippage(pair))
             gain = proceeds - pos["cost"]
             value += proceeds * (1 - self._fee_rate()) - (gain * self.costs["tax_rate"] if gain > 0 else 0.0)
         return value

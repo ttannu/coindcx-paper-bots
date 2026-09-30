@@ -36,7 +36,8 @@ class SpotAccountTest(unittest.TestCase):
         acct.sell(BTC, 10000000, 1, "test")
         loss = 5000 - acct.cash
         fee_rate = COSTS["spot_fee_rate"] * (1 + COSTS["gst_rate"])
-        self.assertAlmostEqual(loss / 5000, 2 * fee_rate + 2 * COSTS["slippage"], delta=0.002)
+        slippage = MARKETS[BTC].get("slippage", COSTS["slippage"])
+        self.assertAlmostEqual(loss / 5000, 2 * fee_rate + 2 * slippage, delta=0.002)
         self.assertEqual(acct.s["tax_due"], 0)
         self.assertEqual(acct.s["losses"], 1)
 

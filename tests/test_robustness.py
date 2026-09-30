@@ -25,11 +25,18 @@ for _name in ("GITHUB_TOKEN", "GITHUB_REPOSITORY", "GMAIL_ADDRESS", "GMAIL_APP_P
     os.environ.pop(_name, None)
 
 
+TEST_UNIVERSE = ("I-DOGE_INR", "I-SOL_INR")
+
+
 class Workspace:
-    def __init__(self):
+    def __init__(self, universe=TEST_UNIVERSE):
         self.root = tempfile.mkdtemp(prefix="paperbots-")
-        for name in ("config.json", "README.md"):
-            shutil.copy(os.path.join(ROOT, name), self.root)
+        shutil.copy(os.path.join(ROOT, "README.md"), self.root)
+        with open(os.path.join(ROOT, "config.json"), encoding="utf-8") as fh:
+            config = json.load(fh)
+        config["universe"] = list(universe)
+        with open(os.path.join(self.root, "config.json"), "w", encoding="utf-8") as fh:
+            json.dump(config, fh)
         self.output = io.StringIO()
 
     def run(self, now, fetch, notify=True):
@@ -100,11 +107,11 @@ def check_invariants(test, state):
         test.assertGreaterEqual(b["cash"], -1e-6, key)
         for pos in b.get("positions", {}).values():
             test.assertGreater(pos["qty"], 0, key)
-    learner = state["bots"][SelfLearner.key]
-    test.assertEqual(learner["liquidations"], 0)
-    if learner["position"]:
-        test.assertLessEqual(learner["position"]["leverage"], 1)
-    test.assertGreater(learner["last_value"], 0.8 * learner["capital"])
+        if key == SelfLearner.key or key.endswith(".learner"):
+            test.assertEqual(b["liquidations"], 0, key)
+            if b["position"]:
+                test.assertLessEqual(b["position"]["leverage"], 1, key)
+            test.assertGreater(b["last_value"], 0.8 * b["capital"], key)
 
 
 class ScenarioTest(unittest.TestCase):
@@ -132,7 +139,7 @@ class ScenarioTest(unittest.TestCase):
                     self.assertEqual(times, sorted(times))
                     self.assertTrue(os.path.exists(os.path.join(ws.root, "docs", "equity.svg")))
                     print("  %-10s %s" % (scenario, "  ".join(
-                        "%s %.0f" % (k, b["last_value"]) for k, b in sorted(state["bots"].items()))))
+                        "%s %.0f" % (k, b["last_value"]) for k, b in sorted(state["bots"].items()) if "." not in k)))
                 finally:
                     ws.close()
 
@@ -185,7 +192,7 @@ class FaultTest(unittest.TestCase):
             self.assertIn("boom", state["bots"]["exploding"]["error"])
             for key, b in state["bots"].items():
                 if key != "exploding":
-                    self.assertEqual(b["status"], "active", key)
+                    self.assertIn(b["status"], ("active", "busted") if "." in key else ("active",), key)
             with open(os.path.join(ws.root, "README.md"), encoding="utf-8") as fh:
                 self.assertIn("stopped by an error", fh.read())
         finally:
@@ -300,7 +307,7 @@ class MailTest(unittest.TestCase):
                         mailer.sent[1][0],
                     ])
                     self.assertIn("day 3 of 15", mailer.sent[1][0])
-                    self.assertIn("Standings at", mailer.sent[0][1])
+                    self.assertIn("Top 10 at", mailer.sent[0][1])
                     ws.run(morning(3) + 8 * H1, fetch)
                     ws.run(morning(4), fetch)
                     self.assertEqual(len(mailer.sent), 3)

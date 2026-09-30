@@ -2,7 +2,7 @@ import math
 from collections import OrderedDict
 
 from .accounts import FuturesAccount
-from .bots import BTC, ETH, HOUR_MS, Bot
+from .bots import BTC, ETH, HOUR_MS, Bot, coin
 
 WINDOW_HOURS = 72
 MIN_HISTORY_HOURS = 24
@@ -58,9 +58,10 @@ def _hold(direction):
     return lambda s, i, current: direction
 
 
-def _variants():
+def _variants(pairs):
     out = OrderedDict()
-    for pair, name in ((BTC, "BTC"), (ETH, "ETH")):
+    for pair in pairs:
+        name = coin(pair)
         for fast, slow in ((6, 24), (12, 48), (24, 96)):
             out["%s trend %d/%dh" % (name, fast, slow)] = (pair, _trend(fast, slow, True))
             out["%s trend %d/%dh, long only" % (name, fast, slow)] = (pair, _trend(fast, slow, False))
@@ -70,9 +71,6 @@ def _variants():
         out["%s hold long" % name] = (pair, _hold(1))
         out["%s hold short" % name] = (pair, _hold(-1))
     return out
-
-
-VARIANTS = _variants()
 
 
 def _ignore(row):
@@ -88,26 +86,30 @@ def _direction(pos):
 class SelfLearner(Bot):
     key = "self_learning"
     title = "Self-learning ensemble"
-    rules = ("Runs %d strategy variants on BTC and ETH (trend, breakout, mean reversion, hold long, hold short) "
+    rules = ("Runs 22 strategy variants on BTC and ETH (trend, breakout, mean reversion, hold long, hold short) "
              "as unfunded shadow accounts that pay the same costs, and scores each on its last 3 days after fees and tax. "
              "Every hour it follows the best one. It switches only when another is ahead by more than 2 points and at least "
-             "12 hours have passed since its last change, and it holds cash when none has made at least 2%%. "
+             "12 hours have passed since its last change, and it holds cash when none has made at least 2%. "
              "Trades futures at 1x or less (no leverage, no liquidation risk, about a tenth of spot fees) and takes smaller "
              "positions when the market is swinging hard. Studies the previous 7 days before its first trade. "
-             "Checked every 15 minutes: if it falls 8%% below its best value it holds cash for 24 hours, and if it "
-             "falls 15%% below its starting money it stops trading for good." % len(VARIANTS))
+             "Checked every 15 minutes: if it falls 8% below its best value it holds cash for 24 hours, and if it "
+             "falls 15% below its starting money it stops trading for good.")
     kind = "futures"
-    subscriptions = ((BTC, "1h"), (ETH, "1h"))
+    pairs = (BTC, ETH)
 
-    def __init__(self, account):
+    def __init__(self, account, pairs=None):
         Bot.__init__(self, account)
+        if pairs is not None:
+            self.pairs = tuple(pairs)
+        self.subscriptions = tuple((p, "1h") for p in self.pairs)
+        self.variants = _variants(self.pairs)
         memo = account.memo
         for key, default in (("shadows", {}), ("history", {}), ("signals", {}), ("leader", None), ("since", 0),
                              ("warm", False), ("cooldown_until", 0), ("brake_peak", account.s["capital"]),
                              ("stopped", False)):
             memo.setdefault(key, default)
         self.shadows = OrderedDict()
-        for key in VARIANTS:
+        for key in self.variants:
             if key not in memo["shadows"]:
                 memo["shadows"][key] = FuturesAccount.fresh(account.s["capital"])
             self.shadows[key] = FuturesAccount(memo["shadows"][key], account.costs, account.markets, _ignore)
@@ -171,7 +173,7 @@ class SelfLearner(Bot):
     def _warm_up(self, ctx):
         start = ctx.t - WARMUP_HOURS * HOUR_MS
         events = []
-        for pair in (BTC, ETH):
+        for pair in self.pairs:
             s = ctx.series.get((pair, "1h"))
             for i, c in enumerate(s.candles if s else ()):
                 if start <= c["t"] + HOUR_MS < ctx.t:
@@ -189,7 +191,7 @@ class SelfLearner(Bot):
     def _step_shadows(self, s, i, t):
         signals = self.acct.memo["signals"]
         candle = s.candles[i]
-        for key, (pair, signal) in VARIANTS.items():
+        for key, (pair, signal) in self.variants.items():
             if pair != s.pair:
                 continue
             shadow = self.shadows[key]
@@ -213,7 +215,7 @@ class SelfLearner(Bot):
     def scores(self):
         out = {}
         for key, values in self.acct.memo["history"].items():
-            if key in VARIANTS and len(values) > MIN_HISTORY_HOURS and values[0] > 0:
+            if key in self.variants and len(values) > MIN_HISTORY_HOURS and values[0] > 0:
                 out[key] = values[-1] / values[0] - 1
         return out
 
@@ -256,8 +258,7 @@ class SelfLearner(Bot):
         if memo["cooldown_until"]:
             return "cash, loss brake"
         if mine:
-            return "%s %s at %gx, following %s" % (mine["side"], mine["pair"].split("-")[1].split("_")[0],
-                                                   mine["leverage"], memo["leader"])
+            return "%s %s at %gx, following %s" % (mine["side"], coin(mine["pair"]), mine["leverage"], memo["leader"])
         if memo["leader"]:
             return "cash, following %s" % memo["leader"]
         return "cash, nothing has an edge"
