@@ -1,0 +1,31 @@
+name: probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: CoinDCX public API
+        run: |
+          curl -s -o /dev/null -w "markets_details HTTP %{http_code}\n" https://api.coindcx.com/exchange/v1/markets_details
+          curl -s -w "\ncandles HTTP %{http_code}\n" "https://public.coindcx.com/market_data/candles?pair=I-BTC_INR&interval=15m&limit=2"
+
+      - name: GitHub Models
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -w "\nmodels HTTP %{http_code}\n" -X POST https://models.github.ai/inference/chat/completions \
+            -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" \
+            -d '{"model":"openai/gpt-4.1-mini","messages":[{"role":"user","content":"Reply with the single word OK"}],"max_tokens":5}'
+          curl -s "https://models.github.ai/catalog/models" -H "Authorization: Bearer $GITHUB_TOKEN" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d), 'models'); [print(m['id'], m.get('rate_limit_tier')) for m in d]" || true
+
+      - name: Runtime
+        run: python3 --version
