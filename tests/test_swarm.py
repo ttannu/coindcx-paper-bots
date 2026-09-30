@@ -294,6 +294,37 @@ class UpgradeTest(unittest.TestCase):
             ws.close()
 
 
+class NotesTest(unittest.TestCase):
+    def test_a_note_is_posted_and_emailed_once(self):
+        fetch = make_fetch(build_market("calm", seed=29))
+        github, mailer = rb.FakeGitHub(), rb.FakeMailer()
+        ws = rb.Workspace()
+        try:
+            folder = os.path.join(ws.root, "notes")
+            os.makedirs(folder)
+            with open(os.path.join(folder, "2026-10-01-morning.md"), "w", encoding="utf-8") as fh:
+                fh.write("# Morning report\n\nWhat happened overnight.\n")
+            with open(os.path.join(folder, "draft.md"), "w", encoding="utf-8") as fh:
+                fh.write("no title line\n")
+            with mock.patch.object(engine.GitHub, "from_env", return_value=github), \
+                    mock.patch.object(engine.Mailer, "from_env", return_value=mailer):
+                ws.run(START + 7 * MINUTE, fetch)
+                ws.run(START + H1, fetch)
+                with open(os.path.join(folder, "2026-10-02-morning.md"), "w", encoding="utf-8") as fh:
+                    fh.write("# Second note\nMore.")
+                ws.run(START + 2 * H1, fetch)
+            notes = [c for c in github.calls if c[0] == "comment" and "**Morning report**" in c[2]]
+            self.assertEqual(len(notes), 1)
+            self.assertEqual(notes[0][2], "@%s **Morning report**" % read_config()["notify_user"])
+            self.assertEqual([s for s, _ in mailer.sent if s in ("Morning report", "Second note")],
+                             ["Morning report", "Second note"])
+            self.assertEqual(dict(mailer.sent)["Morning report"], "**Morning report**\n\nWhat happened overnight.")
+            self.assertFalse([c for c in github.calls if c[0] == "comment" and "no title line" in c[2]])
+            self.assertEqual(ws.state()["reports"]["notes_sent"], ["2026-10-01-morning.md", "2026-10-02-morning.md"])
+        finally:
+            ws.close()
+
+
 class ReportTest(unittest.TestCase):
     def test_the_dashboard_summarises_the_swarm(self):
         fetch = make_fetch(build_market("chop", seed=25))

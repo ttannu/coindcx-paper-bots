@@ -92,7 +92,7 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
         traceback.print_exc()
     if notify:
         mailer = Mailer.from_env()
-        _safely(_notify, state, board, config, prices, now_ms, len(bots))
+        _safely(_notify, root, state, board, config, prices, now_ms, len(bots))
         _safely(_deliver_mail, state, board, config, prices, now_ms, mailer)
         _safely(_switch_off, state, now_ms, mailer)
         _write_json(state_path, state)
@@ -326,7 +326,20 @@ def _safely(step, *args):
         traceback.print_exc()
 
 
-def _notify(state, board, config, prices, now_ms, bot_count):
+def _new_notes(root, reports):
+    """Notes are Markdown files in notes/ whose first line is "# <title>"; each one is posted and emailed once."""
+    folder = os.path.join(root, "notes")
+    sent = set(reports.get("notes_sent", ()))
+    names = sorted(n for n in os.listdir(folder) if n.endswith(".md") and n not in sent) if os.path.isdir(folder) else []
+    for name in names:
+        with open(os.path.join(folder, name), encoding="utf-8") as fh:
+            text = fh.read().strip()
+        title, _, body = text.partition("\n")
+        if title.startswith("# ") and body.strip():
+            yield name, title[2:].strip(), body.strip()
+
+
+def _notify(root, state, board, config, prices, now_ms, bot_count):
     github = GitHub.from_env()
     reports = state["reports"]
     today = report.ist(now_ms, "%Y-%m-%d")
@@ -338,6 +351,14 @@ def _notify(state, board, config, prices, now_ms, bot_count):
                 print(body)
             reports["last_daily"] = today
             reports["values"] = dict((r["key"], r["value"]) for r in board)
+        for name, title, body in _new_notes(root, reports):
+            text = "@%s **%s**\n\n%s" % (config["notify_user"], title, body)
+            if github:
+                github.comment(reports["issue"], text)
+            else:
+                print(text)
+            reports.setdefault("notes_sent", []).append(name)
+            _queue_mail(reports, "note:" + name, title, text, config)
         if reports.get("announce") and not state["finished"]:
             body = report.upgrade_message(state, board, config, prices, now_ms)
             if github:
