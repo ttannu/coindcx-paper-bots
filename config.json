@@ -1,0 +1,28 @@
+{
+  "repository": "ttannu/coindcx-paper-bots",
+  "notify_user": "ttannu",
+  "capital_inr": 5000,
+  "goal_inr": 100000,
+  "duration_days": 15,
+  "report_hour_ist": 9,
+  "costs": {
+    "spot_fee_rate": 0.005,
+    "futures_fee_rate": 0.0005,
+    "gst_rate": 0.18,
+    "slippage": 0.001,
+    "futures_slippage": 0.0005,
+    "tds_rate": 0.01,
+    "tds_threshold_inr": 50000,
+    "tax_rate": 0.312,
+    "funding_rate_per_8h": 0.0001,
+    "maintenance_margin": 0.005,
+    "min_trade_inr": 100
+  },
+  "markets": {
+    "I-BTC_INR": {"step": 0.00001, "min_qty": 0.00001, "min_notional": 100},
+    "I-ETH_INR": {"step": 0.0001, "min_qty": 0.0000001, "min_notional": 100},
+    "I-SOL_INR": {"step": 0.001, "min_qty": 0.01, "min_notional": 100},
+    "I-XRP_INR": {"step": 0.1, "min_qty": 1, "min_notional": 100},
+    "I-DOGE_INR": {"step": 1, "min_qty": 0.001, "min_notional": 100}
+  }
+}
