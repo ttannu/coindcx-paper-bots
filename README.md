@@ -5,31 +5,31 @@ Seven trading bots each get ₹5,000 of **simulated** money and trade for 15 day
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 30 Sep 2026, 22:29 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
+Last updated 30 Sep 2026, 22:37 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
 
 Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.9% (₹85,22,786 to ₹84,44,156).
 
 | # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Win rate | Worst drop | Now |
 |---|---|---|---|---|---|---|---|---|
 | 1 | Goal chaser (10x futures) | ₹5,269 | +5.4% | 5.3% | 0 | – | 3.1% | long 10x |
-| 2 | Trend follower | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 3 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 4 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 5 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 6 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash, nothing has an edge |
+| 2 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 3 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 4 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 5 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash, nothing has an edge |
+| 6 | Trend follower | ₹4,932 | -1.4% | 4.9% | 0 | – | 1.4% | holding BTC, ETH, SOL |
 | 7 | Buy & hold BTC | ₹4,901 | -2.0% | 4.9% | 0 | – | 3.0% | holding BTC |
 
 ![Value of each bot over time](docs/equity.svg)
 
-Costs so far across all bots: ₹58 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
+Costs so far across all bots: ₹87 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
 
 **What the self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
 
 | Variant | Last 3 days | Signal now |
 |---|---|---|
 | BTC RSI reversion | +1.0% | flat |
-| BTC hold short | +0.3% | short |
-| ETH hold short | +0.1% | short |
+| ETH hold long | +0.2% | long |
+| BTC hold short | +0.2% | short |
 | BTC 72h breakout | +0.0% | flat |
 | ETH RSI reversion | +0.0% | flat |
 <!-- DASHBOARD:END -->
