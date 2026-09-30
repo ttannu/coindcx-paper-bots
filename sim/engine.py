@@ -64,6 +64,7 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
     if not state["finished"]:
         series = _fetch_all(state, sorted(set(sub for bot in bots for sub in bot.subscriptions)), fetch, now_ms)
         if upgraded:
+            _check_replayable(state, series)
             # Only once prices are in: a skipped run still gets saved, and must not save half an upgrade.
             for name in ("equity.csv", "trades.csv"):
                 if os.path.exists(os.path.join(state_dir, name)):
@@ -132,6 +133,15 @@ def _upgrade(old, config):
     if any(v not in QUIET_UPGRADES for v in range(old.get("version", 1) + 1, STATE_VERSION + 1)):
         state["reports"]["announce"] = True
     return state
+
+
+def _check_replayable(state, series):
+    # CoinDCX returns only the latest 1,000 candles, about 10 days of 15-minute ones.
+    probe = series.get((BTC, "15m"))
+    if probe and probe.candles and probe.candles[0]["t"] > state["sim_start"]:
+        raise RuntimeError("Can't upgrade the state: an upgrade replays every bot from %s, but CoinDCX now returns "
+                           "15-minute prices only from %s. Keep the state version as it is." % (
+                               report.ist(state["sim_start"]), report.ist(probe.candles[0]["t"])))
 
 
 def _build_bots(state, config, trades):

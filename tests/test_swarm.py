@@ -236,6 +236,33 @@ class UpgradeTest(unittest.TestCase):
             fresh.close()
 
 
+    def test_an_upgrade_stops_when_prices_no_longer_reach_back_to_the_start(self):
+        fetch = make_fetch(build_market("calm", seed=28))
+
+        def recent(pair, interval, now_ms):
+            return [c for c in fetch(pair, interval, now_ms) if c["t"] >= START + H1]
+
+        ws = rb.Workspace()
+        try:
+            ws.run(START + 7 * MINUTE, fetch, notify=False)
+            ws.run(START + 6 * H1, fetch, notify=False)
+            state = ws.state()
+            state["version"] = 3
+            paths = [os.path.join(ws.root, "state", name) for name in ("state.json", "trades.csv", "equity.csv")]
+            with open(paths[0], "w", encoding="utf-8") as fh:
+                json.dump(state, fh)
+            saved = []
+            for path in paths:
+                with open(path, encoding="utf-8") as fh:
+                    saved.append(fh.read())
+            with self.assertRaisesRegex(RuntimeError, "Can't upgrade the state"):
+                ws.run(START + 7 * H1, recent, notify=False)
+            for path, before in zip(paths, saved):
+                with open(path, encoding="utf-8") as fh:
+                    self.assertEqual(fh.read(), before, path)
+        finally:
+            ws.close()
+
     def test_a_bookkeeping_upgrade_replays_without_telling_anyone(self):
         fetch = make_fetch(build_market("calm", seed=26))
         github, mailer = rb.FakeGitHub(), rb.FakeMailer()
