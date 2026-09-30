@@ -953,3 +953,20 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-09-30 23:45,trump.grid_3pct,BUY,TRUMP/INR,4.05200000,204.44,828.38,4.89,0.00,,0.00,"grid buy, level 1"
 2026-09-30 23:45,uni.grid_1_5pct,SELL,UNI/INR,0.94000000,884.47,831.40,4.91,0.00,-12.72,0.00,"grid sell, level 3"
 2026-09-30 23:45,zec.trend_2_8h,SELL,ZEC/INR,0.03200000,143677.30,4597.67,27.13,0.00,-122.07,0.00,closed below the slow average
+2026-10-01 00:00,bch.trend_2_8h,SELL,BCH/INR,0.15300000,30745.62,4704.08,27.75,0.00,-110.38,0.00,closed below the slow average
+2026-10-01 00:00,bnb.trend_2_8h,BUY,BNB/INR,0.05500000,77390.77,4256.49,25.11,0.00,,0.00,uptrend entry
+2026-10-01 00:00,bnb.trend_5_20h,BUY,BNB/INR,0.05900000,77390.77,4566.06,26.94,0.00,,0.00,uptrend entry
+2026-10-01 00:00,bonk.grid_1_5pct,BUY,BONK/INR,2201482.00000000,0.00,828.45,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-01 00:00,hbar.trend_5_20h,BUY,HBAR/INR,414.00000000,10.85,4490.88,26.50,0.00,,0.00,uptrend entry
+2026-10-01 00:00,hype.trend_2_8h,BUY,HYPE/INR,0.54000000,9001.17,4860.63,28.68,0.00,,0.00,uptrend entry
+2026-10-01 00:00,mubarak.grid_1_5pct,SELL,MUBARAK/INR,135.60000000,6.15,833.28,4.92,0.00,1.37,5.04,"grid sell, level 2"
+2026-10-01 00:00,mubarak.grid_1_5pct,SELL,MUBARAK/INR,139.20000000,6.15,855.41,5.05,0.00,1.40,5.17,"grid sell, level 3"
+2026-10-01 00:00,mubarak.grid_3pct,SELL,MUBARAK/INR,138.60000000,6.15,851.72,5.03,0.00,6.20,7.30,"grid sell, level 1"
+2026-10-01 00:00,pha.grid_1_5pct,BUY,PHA/INR,108.00000000,7.65,826.26,4.87,0.00,,0.00,"grid buy, level 1"
+2026-10-01 00:00,qnt.trend_2_8h,BUY,QNT/INR,0.15000000,30659.98,4599.00,27.13,0.00,,0.00,uptrend entry
+2026-10-01 00:00,qnt.grid_1_5pct,BUY,QNT/INR,0.02700000,30095.96,812.59,4.79,0.00,,0.00,"grid buy, level 2"
+2026-10-01 00:00,sui.trend_5_20h,SELL,SUI/INR,41.70000000,116.78,4869.86,28.73,0.00,-153.01,0.00,closed below the slow average
+2026-10-01 00:00,vvv.trend_5_20h,SELL,VVV/INR,1.76000000,2735.23,4814.01,28.40,0.00,-204.46,0.00,trailing stop
+2026-10-01 00:00,vvv.grid_1_5pct,BUY,VVV/INR,0.29000000,2767.15,802.47,4.73,0.00,,0.00,"grid buy, level 2"
+2026-10-01 00:00,vvv.grid_3pct,BUY,VVV/INR,0.29000000,2767.15,802.47,4.73,0.00,,0.00,"grid buy, level 1"
+2026-10-01 00:00,xlm.trend_5_20h,SELL,XLM/INR,218.00000000,22.50,4905.58,28.94,0.00,-101.07,0.00,closed below the slow average
