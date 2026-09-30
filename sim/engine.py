@@ -6,12 +6,13 @@ import smtplib
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, report, swarm
+from . import coindcx, desk, report, research, swarm
 from .accounts import FuturesAccount, SpotAccount
 from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
 from .indicators import Series
 from .learner import SelfLearner
+from .llm import Gemini
 from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
@@ -36,7 +37,7 @@ class Context:
         return acct.equity(self.prices)
 
 
-def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
+def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, desk_llm=Gemini.from_env, gather=research.gather):
     config = _read_json(os.path.join(root, "config.json"))
     state_dir = os.path.join(root, "state")
     state_path = os.path.join(state_dir, "state.json")
@@ -57,6 +58,7 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
     bots = _build_bots(state, config, trades)
     prices = state["last_prices"]
     processed = 0
+    series = None
     if not state["finished"]:
         series = _fetch_all(state, sorted(set(sub for bot in bots for sub in bot.subscriptions)), fetch, now_ms)
         if upgraded:
@@ -77,6 +79,9 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
         _write_json(state_path, state)
 
     board = report.leaderboard(bots, prices, state["last_event_t"] or now_ms, config)
+    if series is not None:
+        _safely(_desk_meeting, root, state, config, series, prices, board, bots, now_ms, desk_llm, gather)
+        _write_json(state_path, state)
     try:
         report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots))
         report.write_chart(root, state, board, config)
@@ -107,6 +112,7 @@ def _new_state(config, start_ms):
         "last_event_t": None,
         "last_tick_t": None,
         "data_gaps": {},
+        "desk": desk.fresh_book(),
         "bots": {},
         "reports": {"issue": None, "last_daily": None, "values": {}},
         "runs": 0,
@@ -118,15 +124,16 @@ def _new_state(config, start_ms):
 def _upgrade(old, config):
     # Every bot, old and new, is replayed from the original start so they all share one timeline and one set of costs.
     state = _new_state(config, old["sim_start"])
-    for key in ("reports", "runs", "last_run"):
-        state[key] = old[key]
+    for key in ("reports", "runs", "last_run", "desk"):
+        if key in old:
+            state[key] = old[key]
     state["reports"]["announce"] = True
     return state
 
 
 def _build_bots(state, config, trades):
     bots = []
-    makers = [(cls.key, cls.kind, cls) for cls in ALL_BOTS] + swarm.specs(config.get("universe", ()))
+    makers = [(cls.key, cls.kind, cls) for cls in ALL_BOTS] + swarm.specs(config.get("universe", ())) + desk.specs(state, config)
     for key, kind, make in makers:
         account_cls = FuturesAccount if kind == "futures" else SpotAccount
         acct_state = state["bots"].setdefault(key, account_cls.fresh(config["capital_inr"]))
@@ -286,6 +293,17 @@ def _append_trades(state_dir, trades):
             })
 
 
+def _desk_meeting(root, state, config, series, prices, board, bots, now_ms, make_llm, gather):
+    if "desk" not in config or not desk.due(state, now_ms):
+        return
+    book = state["desk"]
+    book["cooldowns"] = dict((model, until) for model, until in book["cooldowns"].items() if until > now_ms)
+    llm = make_llm(book["cooldowns"], now_ms)
+    book["waiting_for_key"] = llm is None
+    if llm is not None:
+        desk.hold_meeting(root, state, config, series, prices, board, bots, now_ms, llm, gather)
+
+
 def _safely(step, *args):
     try:
         step(*args)
@@ -313,6 +331,15 @@ def _notify(state, board, config, prices, now_ms, bot_count):
                 print(body)
             reports["announce"] = False
             _queue_mail(reports, "upgrade", report.upgrade_subject(board, config), body, config)
+        book = state.get("desk") or {}
+        if book.get("announce") and not state["finished"]:
+            body = report.desk_message(state, board, config, now_ms)
+            if github:
+                github.comment(reports["issue"], body)
+            else:
+                print(body)
+            book["announce"] = False
+            _queue_mail(reports, "desk", report.DESK_TITLE, body, config)
         if state["finished"]:
             if not reports.get("final_posted"):
                 body = report.final_message(state, board, config, prices)

@@ -21,7 +21,7 @@ from synthetic import DAY, H1, SCENARIOS, START, build_market, make_fetch
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MINUTE = 60000
 
-for _name in ("GITHUB_TOKEN", "GITHUB_REPOSITORY", "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD"):
+for _name in ("GITHUB_TOKEN", "GITHUB_REPOSITORY", "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD", "GEMINI_API_KEY"):
     os.environ.pop(_name, None)
 
 
@@ -39,9 +39,9 @@ class Workspace:
             json.dump(config, fh)
         self.output = io.StringIO()
 
-    def run(self, now, fetch, notify=True):
+    def run(self, now, fetch, notify=True, **kwargs):
         with contextlib.redirect_stdout(self.output), contextlib.redirect_stderr(self.output):
-            return engine.run(self.root, now, start_ms=START, notify=notify, fetch=fetch)
+            return engine.run(self.root, now, start_ms=START, notify=notify, fetch=fetch, **kwargs)
 
     def state(self):
         with open(os.path.join(self.root, "state", "state.json"), encoding="utf-8") as fh:

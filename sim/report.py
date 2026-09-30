@@ -12,11 +12,12 @@ ISSUE_TITLE = "Paper-trading bots: daily reports"
 FINAL_TITLE = "Paper-trading bots: final results"
 WELCOME_TITLE = "Paper-trading bots: email reports are on"
 UPGRADE_TITLE = "Paper-trading bots: now %s bots on %d coins"
+DESK_TITLE = "Paper-trading bots: the AI trading desk made its first decision"
 START_MARK = "<!-- DASHBOARD:START -->"
 END_MARK = "<!-- DASHBOARD:END -->"
 BENCHMARK = "hodl_btc"
 MEDIAN = "median"
-COLORS = ("#2563eb", "#16a34a", "#dc2626", "#9333ea", "#ea580c", "#0891b2", "#4b5563")
+COLORS = ("#2563eb", "#16a34a", "#dc2626", "#9333ea", "#ea580c", "#0891b2", "#db2777", "#65a30d", "#4b5563")
 
 
 def inr(amount):
@@ -56,11 +57,14 @@ def leaderboard(bots, prices, t, config):
     for bot in bots:
         s = bot.acct.s
         value = bot.value(prices, t)
+        desk = getattr(bot, "desk", False)
         rows.append({
             "key": bot.key,
             "title": bot.title,
             "family": getattr(bot, "family", None),
             "coin": getattr(bot, "coin", None),
+            "desk": desk,
+            "joined": s["memo"].get("joined") if desk else None,
             "value": value,
             "ret": value / config["capital_inr"] - 1,
             "goal": value / config["goal_inr"],
@@ -203,10 +207,93 @@ def _original_lines(board):
         "|---|---|---|---|---|---|",
     ]
     for rank, r in enumerate(board, 1):
-        if not r["family"]:
+        if not r["family"] and not r["desk"]:
             lines.append("| %s | %s | %s | %s of %s | %d | %s |" % (
                 r["title"], inr(r["value"]), pct(r["ret"]), _count(rank), _count(len(board)), r["trades"], r["now"]))
     return lines
+
+
+def _desk_plan(plan):
+    spot = ", ".join("%s %d%% (stop -%g%%%s)" % (
+        symbol(e["pair"]), round(e["weight"] * 100), round(e["stop"] * 100, 1),
+        ", target +%g%%" % round(e["take_profit"] * 100, 1) if e.get("take_profit") else "") for e in plan["spot"])
+    f = plan["futures"]
+    futures = "%s %s at %gx (stop %g%% away%s)" % (
+        f["side"], symbol(f["pair"]), f["leverage"], round(f["stop"] * 100, 1),
+        ", target %g%% away" % round(f["take_profit"] * 100, 1) if f.get("take_profit") else "") if f.get("pair") else "flat"
+    return "Spot: %s. Futures: %s." % (spot or "all cash", futures)
+
+
+def _desk_status(book, rows, config):
+    joined = [r["joined"] for _, r in rows if r["joined"]]
+    last, failure = book.get("last"), book.get("last_failure")
+    parts = []
+    if joined:
+        parts.append("Both books started with %s on %s." % (inr(config["capital_inr"]), ist(min(joined))))
+    if book.get("waiting_for_key") and not last:
+        parts.append("The desk is waiting for a `GEMINI_API_KEY` repository secret. Until then both books hold cash.")
+    if last:
+        fg = last.get("fear_greed")
+        parts.append("**Latest decision, %s** (market %s, news mood %s%s): %s %s" % (
+            ist(last["t"]), last.get("regime") or "unclear", last.get("mood") or "unclear",
+            ", Fear & Greed %d" % fg["value"] if fg else "", last.get("minutes") or "", _desk_plan(last["plan"])))
+        if last.get("notes"):
+            parts.append("Limits applied by the code: %s." % "; ".join(last["notes"]))
+    if failure and (not last or failure["t"] > last["t"]):
+        parts.append("The meeting at %s could not finish (%s). The books keep their positions and stops, and the desk "
+                     "tries again after %s." % (ist(failure["t"]), failure["reason"], ist(book["next_meeting"])))
+    if not last and not failure and not book.get("waiting_for_key"):
+        parts.append("The first meeting happens at the next run.")
+    return " ".join(parts)
+
+
+def desk_lines(state, board, config, previous=None):
+    book = state.get("desk")
+    rows = [(rank, r) for rank, r in enumerate(board, 1) if r["desk"]]
+    if not book or not rows:
+        return []
+    head = ["Book", "Value if sold now", "Return"] + (["Last 24 hours"] if previous is not None else []) + ["Rank", "Closed trades", "Now"]
+    lines = [
+        "**AI trading desk.** A team of AI agents (Google Gemini, free tier) meets every %d hours to run two books: three "
+        "analysts (market, news, quant), a bull and a bear who debate, a trader, a three-person risk team, and a portfolio "
+        "manager who makes the final call. The desk's limits are enforced in code, not left to the AI." % (
+            config.get("desk", {}).get("every_hours", 2)),
+        "",
+        "| " + " | ".join(head) + " |",
+        "|" + "---|" * len(head),
+    ]
+    for rank, r in rows:
+        cells = [r["title"], inr(r["value"]), pct(r["ret"])]
+        if previous is not None:
+            before = previous.get(r["key"])
+            cells.append(pct(r["value"] / before - 1) if before and before > 0 else "–")
+        cells += ["%s of %s" % (_count(rank), _count(len(board))), str(r["trades"]), r["now"]]
+        lines.append("| " + " | ".join(cells) + " |")
+    lines += ["", _desk_status(book, rows, config), "",
+              "Minutes of every meeting: https://github.com/%s/blob/main/docs/desk.md" % config["repository"]]
+    return lines
+
+
+def desk_message(state, board, config, now_ms):
+    rule_bots = sum(1 for r in board if not r["desk"])
+    lines = [
+        "@%s an AI trading desk has joined the bots and made its first decision." % config["notify_user"],
+        "",
+        "- It runs two new paper books with %s each: a spot portfolio of up to 5 coins (at most 30%% in one) and a futures "
+        "book with one position at a time, long or short, at up to 3x." % inr(config["capital_inr"]),
+        "- Every %d hours a team of AI agents meets. Three analysts read the prices of all %d coins, the latest crypto news "
+        "and market mood, and what the %s rule-based bots have learned; a bull and a bear debate; a trader proposes a plan; "
+        "a risk team of three reviews it; and a portfolio manager decides. The design follows the open-source TradingAgents "
+        "project." % (config.get("desk", {}).get("every_hours", 2), len(config.get("universe", ())), _count(rule_bots)),
+        "- The code, not the AI, enforces the limits: position sizes, leverage, a stop loss on every position, and a floor at "
+        "70% of the starting money. Orders fill at the next 15-minute close and pay the same fees and tax as every other bot.",
+        "- It is still simulated money, and AI traders have no proven edge. The coin-flip bots and buy & hold are there to "
+        "keep it honest.",
+        "",
+    ]
+    lines += desk_lines(state, board, config)
+    lines += ["", "Dashboard: https://github.com/%s" % config["repository"]]
+    return "\n".join(lines)
 
 
 def dashboard(state, board, config, prices, now_ms, bots=()):
@@ -227,9 +314,11 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
         "",
         summary_line(board, config),
         "",
-        "**Top 15 bots**",
-        "",
     ]
+    desk = desk_lines(state, board, config)
+    if desk:
+        lines += desk + [""]
+    lines += ["**Top 15 bots**", ""]
     lines += _top_lines(board, config, 15)
     lines += ["", "**The original bots**", ""]
     lines += _original_lines(board)
@@ -281,8 +370,9 @@ def update_readme(root, block):
 
 def write_chart(root, state, board, config):
     keys = [r["key"] for r in board[:5]]
-    if BENCHMARK not in keys:
-        keys.append(BENCHMARK)
+    for key in [BENCHMARK] + [r["key"] for r in board if r["desk"]]:
+        if key not in keys:
+            keys.append(key)
     titles = dict((r["key"], r["title"]) for r in board)
     titles[MEDIAN] = "Median of all %s bots" % _count(len(board))
     series = OrderedDict((key, []) for key in keys + [MEDIAN])
@@ -490,9 +580,12 @@ def daily_message(state, board, config, prices, now_ms, previous):
 
     for rank, r in enumerate(board[:10], 1):
         lines.append("| %d | %s | %s | %s | %s | %d |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), change(r), r["trades"]))
+    desk = desk_lines(state, board, config, previous)
+    if desk:
+        lines += [""] + desk
     lines += ["", "**The original bots**", "", "| Bot | Value if sold now | Since start | Last 24 hours | Rank |", "|---|---|---|---|---|"]
     for rank, r in enumerate(board, 1):
-        if not r["family"]:
+        if not r["family"] and not r["desk"]:
             lines.append("| %s | %s | %s | %s | %s |" % (r["title"], inr(r["value"]), pct(r["ret"]), change(r), _count(rank)))
     cards = report_card(board)
     if cards:
@@ -527,6 +620,9 @@ def final_message(state, board, config, prices):
             rank, r["title"], inr(r["value"]), pct(r["ret"]), r["trades"],
             "–" if r["win_rate"] is None else pct(r["win_rate"], False), pct(r["max_dd"], False),
             inr(r["fees"]), inr(r["tds"]), inr(r["tax"])))
+    desk = desk_lines(state, board, config)
+    if desk:
+        lines += [""] + desk
     lines += ["", "**The original bots**", ""] + _original_lines(board)
     cards = report_card(board)
     if cards:

@@ -5,8 +5,9 @@ import time
 import unittest
 from unittest import mock
 
+import test_desk
 import test_robustness as rb
-from sim import engine, report, swarm
+from sim import desk, engine, report, swarm
 from sim.coindcx import DataUnavailable
 from synthetic import DAY, H1, START, build_market, make_fetch
 
@@ -33,7 +34,7 @@ class SwarmTest(unittest.TestCase):
         bots = engine._build_bots({"bots": {}}, config, [])
         keys = [bot.key for bot in bots]
         self.assertEqual(len(keys), len(set(keys)))
-        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(universe) * len(swarm.FAMILIES))
+        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(universe) * len(swarm.FAMILIES) + len(desk.BOOKS))
         self.assertGreaterEqual(len(bots), 1000)
         for bot in bots:
             if getattr(bot, "family", None):
@@ -55,7 +56,14 @@ class ScaleTest(unittest.TestCase):
         ws = rb.Workspace(universe=universe)
         try:
             now = START + DAY + 7 * MINUTE
-            ws.run(now, fetch, notify=False)
+            fake = test_desk.FakeLLM()
+            began = time.time()
+            ws.run(now, fetch, notify=False, desk_llm=fake, gather=test_desk.news)
+            first = time.time() - began
+            self.assertEqual(len(ws.state()["desk"]["decisions"]), 1)
+            self.assertIn("\nSIREN|", fake.prompts["market"][1])
+            sizes = dict((role, len(system) + len(prompt)) for role, (system, prompt, _) in fake.prompts.items())
+            self.assertLess(max(sizes.values()), 24000, sizes)
             timings = []
             for _ in range(3):
                 now += 30 * MINUTE
@@ -63,15 +71,17 @@ class ScaleTest(unittest.TestCase):
                 ws.run(now, fetch, notify=False)
                 timings.append(time.time() - began)
             state = ws.state()
-            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 22 * len(universe))
+            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 22 * len(universe) + len(desk.BOOKS))
             rb.check_invariants(self, state)
             self.assertLess(max(timings), 20, timings)
             self.assertLess(os.path.getsize(os.path.join(ws.root, "state", "state.json")), 4000000)
             self.assertLess(os.path.getsize(os.path.join(ws.root, "README.md")), 60000)
             times = equity_times(ws)
             self.assertEqual(times, sorted(set(times)))
-            print("\n  %d bots: a 30-minute run takes %.1fs, state.json is %.1f MB" % (
-                len(state["bots"]), max(timings), os.path.getsize(os.path.join(ws.root, "state", "state.json")) / 1e6))
+            print("\n  %d bots: a 30-minute run takes %.1fs, state.json is %.1f MB; the first day with a desk meeting took "
+                  "%.1fs, and its largest prompt (%s) is %d characters" % (
+                      len(state["bots"]), max(timings), os.path.getsize(os.path.join(ws.root, "state", "state.json")) / 1e6,
+                      first, max(sizes, key=sizes.get), max(sizes.values())))
         finally:
             ws.close()
 
@@ -241,8 +251,13 @@ class ReportTest(unittest.TestCase):
             self.assertEqual(sum(1 for line in rows if "luck control" in line), 4)
             with open(os.path.join(ws.root, "docs", "equity.svg"), encoding="utf-8") as fh:
                 svg = fh.read()
-            self.assertIn(svg.count("<polyline"), (6, 7))
+            self.assertIn(svg.count("<polyline"), range(7, 10))
             self.assertIn("Median of all %d bots" % len(ws.state()["bots"]), svg)
+            self.assertIn("AI desk: spot portfolio", svg)
+            self.assertIn("AI desk: futures, up to 3x", svg)
+            self.assertLess(block.index("**AI trading desk.**"), block.index("**Top 15 bots**"))
+            originals = block.split("**The original bots**")[1].split("**Strategy report card.**")[0]
+            self.assertNotIn("AI desk", originals)
         finally:
             ws.close()
 
