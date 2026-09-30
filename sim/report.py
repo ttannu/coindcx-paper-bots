@@ -100,7 +100,7 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
         status = "The simulation has finished and the automation has switched itself off."
     else:
         heading = "### Live results: day %d of %d" % (day_number(state, config, now_ms), config["duration_days"])
-        status = "Updates every 30 minutes."
+        status = "GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed."
     lines = [
         heading,
         "",
@@ -252,7 +252,7 @@ def start_message(state, config, bot_count):
         "sales pass %s, and an estimated %.1f%% tax on each profitable sale, with no offset for losses." % (
             costs["spot_fee_rate"] * 100, round(costs["gst_rate"] * 100), round(costs["tds_rate"] * 100),
             inr(costs["tds_threshold_inr"]), costs["tax_rate"] * 100),
-        "- The simulation runs from %s to %s. A report is posted here every day at %02d:00 IST." % (
+        "- The simulation runs from %s to %s. A report is posted here every day, by the first run after %02d:00 IST." % (
             ist(state["sim_start"]), ist(state["sim_end"]), config["report_hour_ist"]),
         "- After %d days the final results are posted here, this issue closes, and the automation switches itself off."
         % config["duration_days"],

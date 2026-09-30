@@ -53,9 +53,9 @@ The costs follow what a CoinDCX INR account in India pays. They are set in [`con
 
 ## How it runs
 
-- Every 30 minutes the [`simulate`](.github/workflows/simulate.yml) workflow downloads the latest closed 15-minute and 1-hour candles from CoinDCX's public API and replays each new candle in order. A late or skipped run loses nothing; the next one catches up.
+- GitHub is asked to run the [`simulate`](.github/workflows/simulate.yml) workflow every 30 minutes. Each run downloads the latest closed 15-minute and 1-hour candles from CoinDCX's public API and replays every candle since the last run, in order. GitHub often starts scheduled runs late or skips some, sometimes for hours; that only delays the dashboard, because the next run replays everything it missed.
 - Each run saves its progress to [`state/`](state): `state.json` (balances, positions, and what the self-learning bot has learned), `equity.csv` (each bot's value every hour), and `trades.csv` (every simulated trade, with the reason for it). It also refreshes the dashboard above and the chart in [`docs/equity.svg`](docs/equity.svg).
-- A daily report is posted as a comment on the "Paper-trading bots: daily reports" issue at 09:00 IST.
+- A daily report is posted as a comment on the "Paper-trading bots: daily reports" issue by the first run after 09:00 IST.
 - After 15 days the workflow posts the final results, closes the issue, and switches itself off.
 
 ## What keeps it running unattended
