@@ -5,84 +5,84 @@
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 01 Oct 2026, 01:12 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
+Last updated 01 Oct 2026, 01:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
-Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -1.5% (₹85,22,786 to ₹83,98,378).
+Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -1.6% (₹85,22,786 to ₹83,86,006).
 
-1,041 bots on 47 coins. 96 are up and 430 are down; 0 are wiped out. The median bot is at ₹5,000. 829 of 987 bots are ahead of simply holding their coin.
+1,041 bots on 47 coins. 90 are up and 450 are down; 0 are wiped out. The median bot is at ₹5,000. 844 of 987 bots are ahead of simply holding their coin.
 
 **Top 15 bots**
 
 | # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Worst drop | Now |
 |---|---|---|---|---|---|---|---|
-| 1 | PHA: 10x futures trend | ₹7,096 | +41.9% | 7.1% | 0 | 10.1% | long 10x |
-| 2 | NEAR: 10x futures trend | ₹6,001 | +20.0% | 6.0% | 0 | 20.4% | long 10x |
-| 3 | ONDO: 10x futures trend | ₹5,980 | +19.6% | 6.0% | 0 | 31.0% | short 10x |
-| 4 | PUMP: 10x futures trend | ₹5,861 | +17.2% | 5.9% | 0 | 14.4% | long 10x |
-| 5 | FIL: 10x futures trend | ₹5,767 | +15.3% | 5.8% | 1 | 10.3% | short 10x |
-| 6 | PHA: 3x futures trend | ₹5,631 | +12.6% | 5.6% | 0 | 3.8% | long 3x |
-| 7 | POL: 10x futures trend | ₹5,541 | +10.8% | 5.5% | 0 | 6.9% | short 10x |
-| 8 | APT: 10x futures trend | ₹5,351 | +7.0% | 5.4% | 0 | 20.1% | short 10x |
-| 9 | ONE: 10x futures trend | ₹5,348 | +7.0% | 5.3% | 0 | 15.5% | short 10x |
-| 10 | NEAR: 3x futures trend | ₹5,301 | +6.0% | 5.3% | 0 | 6.2% | long 3x |
-| 11 | ONDO: 3x futures trend | ₹5,295 | +5.9% | 5.3% | 0 | 9.7% | short 3x |
-| 12 | PUMP: 3x futures trend | ₹5,259 | +5.2% | 5.3% | 0 | 4.7% | long 3x |
-| 13 | FIL: 3x futures trend | ₹5,235 | +4.7% | 5.2% | 1 | 3.1% | short 3x |
-| 14 | ONE: coin flip, 3x futures | ₹5,231 | +4.6% | 5.2% | 0 | 1.4% | short 3x |
-| 15 | ENA: 10x futures trend | ₹5,231 | +4.6% | 5.2% | 0 | 30.0% | long 10x |
+| 1 | PHA: 10x futures trend | ₹6,623 | +32.5% | 6.6% | 0 | 10.1% | long 10x |
+| 2 | POL: 10x futures trend | ₹5,871 | +17.4% | 5.9% | 0 | 6.9% | short 10x |
+| 3 | ONDO: 10x futures trend | ₹5,627 | +12.5% | 5.6% | 0 | 31.0% | short 10x |
+| 4 | FIL: 10x futures trend | ₹5,555 | +11.1% | 5.6% | 1 | 10.3% | short 10x |
+| 5 | XLM: 10x futures trend | ₹5,548 | +11.0% | 5.5% | 0 | 10.8% | long 10x |
+| 6 | PHA: 3x futures trend | ₹5,489 | +9.8% | 5.5% | 0 | 3.8% | long 3x |
+| 7 | PUMP: 10x futures trend | ₹5,471 | +9.4% | 5.5% | 0 | 16.5% | long 10x |
+| 8 | DOT: 10x futures trend | ₹5,365 | +7.3% | 5.4% | 0 | 17.2% | long 10x |
+| 9 | APT: 10x futures trend | ₹5,328 | +6.6% | 5.3% | 0 | 20.1% | short 10x |
+| 10 | ONE: 10x futures trend | ₹5,324 | +6.5% | 5.3% | 0 | 15.5% | short 10x |
+| 11 | POL: 3x futures trend | ₹5,262 | +5.2% | 5.3% | 0 | 2.2% | short 3x |
+| 12 | ONE: coin flip, 3x futures | ₹5,224 | +4.5% | 5.2% | 0 | 1.4% | short 3x |
+| 13 | NEAR: 10x futures trend | ₹5,222 | +4.4% | 5.2% | 0 | 20.4% | long 10x |
+| 14 | AAVE: 10x futures trend | ₹5,220 | +4.4% | 5.2% | 0 | 15.5% | short 10x |
+| 15 | QNT: 10x futures trend | ₹5,216 | +4.3% | 5.2% | 0 | 30.3% | long 10x |
 
 **The original bots**
 
 | Bot | Value if sold now | Return | Rank | Closed trades | Now |
 |---|---|---|---|---|---|
-| Goal chaser (10x futures) | ₹5,081 | +1.6% | 30 of 1,041 | 0 | long 10x |
-| Dip buyer (RSI) | ₹5,000 | +0.0% | 97 of 1,041 | 0 | cash |
-| Breakout hunter | ₹5,000 | +0.0% | 98 of 1,041 | 0 | cash |
-| Grid trader | ₹5,000 | +0.0% | 99 of 1,041 | 0 | cash |
-| Self-learning ensemble | ₹5,000 | +0.0% | 100 of 1,041 | 0 | cash, nothing has an edge |
-| Buy & hold BTC | ₹4,860 | -2.8% | 834 of 1,041 | 0 | holding BTC |
-| Trend follower | ₹4,853 | -2.9% | 842 of 1,041 | 3 | holding BTC |
+| Goal chaser (10x futures) | ₹5,030 | +0.6% | 55 of 1,041 | 0 | long 10x |
+| Dip buyer (RSI) | ₹5,000 | +0.0% | 91 of 1,041 | 0 | cash |
+| Breakout hunter | ₹5,000 | +0.0% | 92 of 1,041 | 0 | cash |
+| Grid trader | ₹5,000 | +0.0% | 93 of 1,041 | 0 | cash |
+| Self-learning ensemble | ₹5,000 | +0.0% | 94 of 1,041 | 0 | cash, nothing has an edge |
+| Buy & hold BTC | ₹4,853 | -2.9% | 822 of 1,041 | 0 | holding BTC |
+| Trend follower | ₹4,851 | -3.0% | 830 of 1,041 | 4 | cash |
 
 **Strategy report card.** Each strategy runs separately on every coin. "Beat holding" counts the coins where it is ahead of buying that coin and holding it.
 
 | Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Skill shown? |
 |---|---|---|---|---|---|---|---|
-| Coin flip, 3x futures | +0.0% | ONE +4.6% | PHA -19.9% | 5/47 | 39/47 | 0 | luck control |
-| Self-learning | +0.0% | ONDO +1.2% | HYPE -3.9% | 19/47 | 44/47 | 0 | not yet |
-| Trend 24/96h | +0.0% | PHA +0.6% | TRUMP -5.3% | 1/47 | 42/47 | 0 | not yet |
-| Pump rider | +0.0% | PHA +0.6% | ENA -4.1% | 1/47 | 41/47 | 0 | not yet |
-| Coin flip #2 | +0.0% | NEAR +0.5% | PENGU -4.0% | 2/47 | 43/47 | 0 | luck control |
-| Coin flip #3 | +0.0% | PHA +0.3% | SUI -4.5% | 1/47 | 43/47 | 0 | luck control |
-| Trend 12/48h | +0.0% | SAGA +0.0% | TRUMP -5.3% | 0/47 | 40/47 | 0 | not yet |
-| RSI dip <25 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 43/47 | 0 | not yet |
-| RSI dip <30 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 43/47 | 0 | not yet |
-| RSI dip <30 ±6% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 43/47 | 0 | not yet |
-| Breakout 20/10h | +0.0% | SAGA +0.0% | NEAR -2.8% | 0/47 | 42/47 | 0 | not yet |
-| Breakout 48/24h | +0.0% | SAGA +0.0% | NEAR -2.8% | 0/47 | 42/47 | 0 | not yet |
-| Coin flip #1 | +0.0% | QNT +0.0% | SAGA -6.2% | 0/47 | 39/47 | 0 | luck control |
-| Long/short 12/48h | -0.2% | PHA +4.2% | HYPE -3.7% | 20/47 | 45/47 | 0 | not yet |
-| Grid 3% | -0.3% | SIREN +0.4% | PENGU -1.7% | 5/47 | 43/47 | 0 | not yet |
-| Grid 1.5% | -1.1% | SIREN +0.3% | PENGU -4.1% | 1/47 | 43/47 | 0 | not yet |
-| 3x futures trend | -1.7% | PHA +12.6% | SAGA -13.9% | 16/47 | 39/47 | 0 | not yet |
-| Trend 6/24h | -1.7% | HYPE +0.4% | UNI -5.9% | 2/47 | 39/47 | 0 | not yet |
-| Fast trend 5/20h | -2.9% | PHA +0.4% | TRX -12.1% | 2/47 | 30/47 | 0 | not yet |
-| Fast trend 2/8h | -3.8% | ONE +0.0% | BNB -17.2% | 0/47 | 23/47 | 0 | not yet |
-| Buy & hold | -4.7% | PHA +1.6% | PENGU -9.3% | 4/47 | – | 0 | benchmark |
-| 10x futures trend | -5.7% | PHA +41.9% | SAGA -46.0% | 16/47 | 23/47 | 0 | not yet |
+| Coin flip, 3x futures | +0.0% | ONE +4.5% | PHA -15.8% | 6/47 | 40/47 | 0 | luck control |
+| Self-learning | +0.0% | POL +1.3% | HYPE -4.6% | 23/47 | 44/47 | 0 | not yet |
+| Coin flip #2 | +0.0% | PUMP +0.1% | PENGU -4.7% | 1/47 | 45/47 | 0 | luck control |
+| Trend 12/48h | +0.0% | SAGA +0.0% | TRUMP -5.3% | 0/47 | 41/47 | 0 | not yet |
+| Trend 24/96h | +0.0% | SAGA +0.0% | HBAR -6.2% | 0/47 | 43/47 | 0 | not yet |
+| RSI dip <25 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 45/47 | 0 | not yet |
+| RSI dip <30 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 45/47 | 0 | not yet |
+| RSI dip <30 ±6% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 45/47 | 0 | not yet |
+| Breakout 20/10h | +0.0% | SAGA +0.0% | NEAR -4.9% | 0/47 | 43/47 | 0 | not yet |
+| Breakout 48/24h | +0.0% | SAGA +0.0% | NEAR -4.9% | 0/47 | 44/47 | 0 | not yet |
+| Pump rider | +0.0% | SAGA +0.0% | ENA -5.6% | 0/47 | 43/47 | 0 | not yet |
+| Coin flip #3 | +0.0% | SAGA +0.0% | SUI -4.5% | 0/47 | 43/47 | 0 | luck control |
+| Coin flip #1 | -0.2% | QNT +0.0% | RENDER -7.7% | 0/47 | 41/47 | 0 | luck control |
+| Grid 3% | -0.2% | SIREN +0.4% | PENGU -1.9% | 6/47 | 45/47 | 0 | not yet |
+| Long/short 12/48h | -0.4% | PHA +3.3% | HYPE -4.4% | 18/47 | 45/47 | 0 | not yet |
+| Grid 1.5% | -1.2% | SIREN +0.3% | PENGU -4.7% | 1/47 | 43/47 | 0 | not yet |
+| Trend 6/24h | -1.7% | SIREN +0.0% | UNI -8.1% | 0/47 | 38/47 | 0 | not yet |
+| 3x futures trend | -2.4% | PHA +9.8% | HYPE -13.7% | 16/47 | 35/47 | 0 | not yet |
+| Fast trend 5/20h | -2.9% | SIREN +0.0% | TRX -14.7% | 0/47 | 31/47 | 0 | not yet |
+| Fast trend 2/8h | -3.8% | ONE +0.0% | BNB -18.8% | 0/47 | 23/47 | 0 | not yet |
+| Buy & hold | -4.9% | SIREN +1.1% | PENGU -10.0% | 2/47 | – | 0 | benchmark |
+| 10x futures trend | -7.8% | PHA +32.5% | HYPE -44.5% | 16/47 | 22/47 | 0 | not yet |
 
-**How much of this is luck?** The 188 coin-flip bots trade at random. The luckiest is ONE: coin flip, 3x futures at +4.6%, and their median is +0.0%. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled only if its median return beats the coin flips and it beats holding on most coins.
+**How much of this is luck?** The 188 coin-flip bots trade at random. The luckiest is ONE: coin flip, 3x futures at +4.5%, and their median is +0.0%. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled only if its median return beats the coin flips and it beats holding on most coins.
 
 ![Value of the top bots over time](docs/equity.svg)
 
-Costs so far across all bots: ₹18,111 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹559 of estimated tax.
+Costs so far across all bots: ₹19,659 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹614 of estimated tax.
 
 **What the original self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
 
 | Variant | Last 3 days | Signal now |
 |---|---|---|
+| BTC hold short | +1.1% | short |
 | BTC RSI reversion | +1.0% | flat |
-| BTC hold short | +0.8% | short |
-| ETH hold short | +0.5% | short |
+| ETH hold short | +0.2% | short |
 | BTC 72h breakout | +0.0% | flat |
 | ETH RSI reversion | +0.0% | flat |
 <!-- DASHBOARD:END -->
