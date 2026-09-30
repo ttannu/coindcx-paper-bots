@@ -16,7 +16,9 @@ from .llm import Gemini
 from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
-STATE_VERSION = 3
+STATE_VERSION = 4
+# Versions that only add bookkeeping: the replay changes no bot, so nobody is told about it.
+QUIET_UPGRADES = frozenset([4])
 FIFTEEN_MIN_MS = 15 * 60 * 1000
 HOUR_MS = 3600000
 DAY_MS = 86400000
@@ -127,7 +129,8 @@ def _upgrade(old, config):
     for key in ("reports", "runs", "last_run", "desk"):
         if key in old:
             state[key] = old[key]
-    state["reports"]["announce"] = True
+    if any(v not in QUIET_UPGRADES for v in range(old.get("version", 1) + 1, STATE_VERSION + 1)):
+        state["reports"]["announce"] = True
     return state
 
 

@@ -105,6 +105,7 @@ def check_invariants(test, state):
         test.assertTrue(math.isfinite(b["last_value"]), (key, b["last_value"]))
         test.assertGreaterEqual(b["last_value"] + b["tax_due"], -1e-6, key)
         test.assertGreaterEqual(b["cash"], -1e-6, key)
+        test.assertGreaterEqual(b["spread"], 0.0, key)
         for pos in b.get("positions", {}).values():
             test.assertGreater(pos["qty"], 0, key)
         if key == SelfLearner.key or key.endswith(".learner"):

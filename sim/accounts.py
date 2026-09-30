@@ -32,6 +32,14 @@ class _Account:
             self.s["max_dd"] = min(1.0, max(self.s["max_dd"], 1 - value / self.s["peak"]))
         return value
 
+    def _pay_spread(self, qty, price, fill):
+        self.s["spread"] = self.s.get("spread", 0.0) + qty * abs(fill - price)
+
+    def _split(self, prices, t, spread, fees, tax, funding):
+        net = self.liquidation_value(prices, t) - self.s["capital"]
+        return {"moves": net + spread + fees + tax + funding, "spread": spread, "fees": fees, "tax": tax,
+                "funding": funding, "net": net}
+
 
 class SpotAccount(_Account):
     """Cost basis excludes fees: Indian VDA rules only allow the purchase price as a deduction."""
@@ -42,7 +50,7 @@ class SpotAccount(_Account):
     def fresh(capital):
         return {
             "kind": "spot", "capital": float(capital), "cash": float(capital), "positions": {}, "fees": 0.0,
-            "tds_credit": 0.0, "tax_due": 0.0, "sell_volume": 0.0,
+            "spread": 0.0, "tds_credit": 0.0, "tax_due": 0.0, "sell_volume": 0.0,
             "trades": 0, "wins": 0, "losses": 0, "last_value": float(capital),
             "peak": float(capital), "max_dd": 0.0, "status": "active", "memo": {},
         }
@@ -70,6 +78,7 @@ class SpotAccount(_Account):
         fee = value * self._fee_rate()
         self.s["cash"] -= value + fee
         self.s["fees"] += fee
+        self._pay_spread(qty, price, fill)
         pos = self.s["positions"].setdefault(pair, {"qty": 0.0, "cost": 0.0, "fee": 0.0, "t": t})
         pos["qty"] += qty
         pos["cost"] += value
@@ -95,6 +104,7 @@ class SpotAccount(_Account):
         tds = value * self.costs["tds_rate"] if self.s["sell_volume"] > self.costs["tds_threshold_inr"] else 0.0
         self.s["cash"] += value - fee - tds
         self.s["fees"] += fee
+        self._pay_spread(qty, price, fill)
         self.s["tds_credit"] += tds
         self.s["tax_due"] += tax
         pnl = value - cost - buy_fee - fee - tax
@@ -118,6 +128,18 @@ class SpotAccount(_Account):
             value += proceeds * (1 - self._fee_rate()) - (gain * self.costs["tax_rate"] if gain > 0 else 0.0)
         return value
 
+    def breakdown(self, prices, t=None):
+        """Splits the result if sold now into what price moves made and what each cost took, counting the costs of
+        selling what is still held."""
+        spread, fees, tax = self.s.get("spread", 0.0), self.s["fees"], self.s["tax_due"]
+        for pair, pos in self.s["positions"].items():
+            proceeds = pos["qty"] * prices[pair] * (1 - self._slippage(pair))
+            gain = proceeds - pos["cost"]
+            spread += pos["qty"] * prices[pair] * self._slippage(pair)
+            fees += proceeds * self._fee_rate()
+            tax += gain * self.costs["tax_rate"] if gain > 0 else 0.0
+        return self._split(prices, t, spread, fees, tax, 0.0)
+
 
 class FuturesAccount(_Account):
     kind = "futures"
@@ -126,7 +148,7 @@ class FuturesAccount(_Account):
     def fresh(capital):
         return {
             "kind": "futures", "capital": float(capital), "cash": float(capital), "position": None,
-            "fees": 0.0, "funding": 0.0, "tax_due": 0.0, "trades": 0, "wins": 0, "losses": 0,
+            "fees": 0.0, "spread": 0.0, "funding": 0.0, "tax_due": 0.0, "trades": 0, "wins": 0, "losses": 0,
             "liquidations": 0, "last_value": float(capital),
             "peak": float(capital), "max_dd": 0.0, "status": "active", "memo": {},
         }
@@ -162,6 +184,7 @@ class FuturesAccount(_Account):
             liq = fill * (1 + 1.0 / leverage - mmr)
         self.s["cash"] = max(0.0, self.s["cash"] - margin - fee)
         self.s["fees"] += fee
+        self._pay_spread(notional / fill, price, fill)
         self.s["position"] = {"pair": pair, "side": side, "qty": notional / fill, "entry": fill,
                               "margin": margin, "fee": fee, "liq": liq, "t": t, "leverage": leverage}
         self.log({"t": t, "side": "OPEN " + side.upper(), "pair": pair, "qty": notional / fill, "price": fill,
@@ -195,6 +218,7 @@ class FuturesAccount(_Account):
         tax = gain * self.costs["tax_rate"] if gain > 0 else 0.0
         self.s["cash"] += max(0.0, pos["margin"] + gain - fee)
         self.s["fees"] += fee
+        self._pay_spread(pos["qty"], price, fill)
         self.s["funding"] += funding
         self.s["tax_due"] += tax
         net = gain - fee - pos["fee"] - tax
@@ -215,6 +239,22 @@ class FuturesAccount(_Account):
             fee = pos["qty"] * fill * self._fee_rate()
             value += max(0.0, pos["margin"] + gain - fee) - (gain * self.costs["tax_rate"] if gain > 0 else 0.0)
         return value
+
+    def breakdown(self, prices, t):
+        """Splits the result if closed now into what price moves made and what each cost took."""
+        spread, fees, tax, funding = self.s.get("spread", 0.0), self.s["fees"], self.s["tax_due"], self.s["funding"]
+        pos = self.s["position"]
+        if pos:
+            direction = 1 if pos["side"] == "long" else -1
+            price = prices[pos["pair"]]
+            fill = price * (1 - direction * self.costs["futures_slippage"])
+            owed = self._funding(pos, t)
+            gain = self._pnl(pos, fill) - owed
+            spread += pos["qty"] * abs(price - fill)
+            fees += pos["qty"] * fill * self._fee_rate()
+            tax += gain * self.costs["tax_rate"] if gain > 0 else 0.0
+            funding += owed
+        return self._split(prices, t, spread, fees, tax, funding)
 
     def mark(self, prices, t):
         value = _Account.mark(self, prices, t)

@@ -236,6 +236,37 @@ class UpgradeTest(unittest.TestCase):
             fresh.close()
 
 
+    def test_a_bookkeeping_upgrade_replays_without_telling_anyone(self):
+        fetch = make_fetch(build_market("calm", seed=26))
+        github, mailer = rb.FakeGitHub(), rb.FakeMailer()
+        ws = rb.Workspace()
+        try:
+            with mock.patch.object(engine.GitHub, "from_env", return_value=github), \
+                    mock.patch.object(engine.Mailer, "from_env", return_value=mailer):
+                ws.run(START + 7 * MINUTE, fetch)
+                ws.run(START + 12 * H1, fetch)
+                state = ws.state()
+                before = json.loads(json.dumps(state["bots"]))
+                state["version"] = 3
+                for acct in state["bots"].values():
+                    del acct["spread"]
+                with open(os.path.join(ws.root, "state", "state.json"), "w", encoding="utf-8") as fh:
+                    json.dump(state, fh)
+                calls, sent = len(github.calls), len(mailer.sent)
+                ws.run(START + 12 * H1, fetch)
+            after = ws.state()
+            self.assertEqual(after["version"], engine.STATE_VERSION)
+            self.assertFalse(after["reports"].get("announce"))
+            self.assertFalse([c for c in github.calls[calls:] if c[0] == "comment"])
+            self.assertEqual(mailer.sent[sent:], [])
+            self.assertEqual(sorted(after["bots"]), sorted(before))
+            for key, acct in before.items():
+                for field in ("cash", "trades", "fees", "spread", "last_value"):
+                    self.assertAlmostEqual(after["bots"][key][field], acct[field], places=6, msg="%s %s" % (key, field))
+        finally:
+            ws.close()
+
+
 class ReportTest(unittest.TestCase):
     def test_the_dashboard_summarises_the_swarm(self):
         fetch = make_fetch(build_market("chop", seed=25))

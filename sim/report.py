@@ -76,9 +76,17 @@ def leaderboard(bots, prices, t, config):
             "fees": s["fees"],
             "tds": s.get("tds_credit", 0.0),
             "tax": s["tax_due"],
+            "money": _money(bot, prices, t),
         })
     rows.sort(key=lambda r: r["value"], reverse=True)
     return rows
+
+
+def _money(bot, prices, t):
+    try:
+        return bot.acct.breakdown(prices, t)
+    except Exception:  # like Bot.value: a broken bot must not stop the report
+        return None
 
 
 def _holding(bot):
@@ -187,6 +195,62 @@ def luck_line(board):
             "median is %s. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled "
             "only if its median return beats the coin flips and it beats holding on most coins." % (
                 _count(len(flips)), flips[0]["title"], pct(flips[0]["ret"]), pct(_median(r["ret"] for r in flips))))
+
+
+MONEY_PARTS = ("moves", "spread", "fees", "tax", "funding", "net")
+
+
+def _money_row(label, splits, capital, strategy):
+    row = dict((k, sum(s[k] for s in splits) / (capital * len(splits))) for k in MONEY_PARTS)
+    row.update(label=label, bots=len(splits), strategy=strategy)
+    return row
+
+
+def money_table(board, capital):
+    """Average per bot, as a share of the starting money, of what price moves made and what each cost took."""
+    groups = OrderedDict()
+    for r in board:
+        if r["money"] is None:
+            continue
+        if r["family"]:
+            label = r["family"].label[0].upper() + r["family"].label[1:]
+        else:
+            label = "AI desk" if r["desk"] else "Added on 1 Oct" if r.get("added") else "Original bots"
+        groups.setdefault(label, (bool(r["family"]), []))[1].append(r["money"])
+    rows = sorted((_money_row(label, splits, capital, strategy) for label, (strategy, splits) in groups.items()),
+                  key=lambda row: row["net"], reverse=True)
+    splits = [r["money"] for r in board if r["money"] is not None]
+    return rows, _money_row("All bots", splits, capital, False) if splits else None
+
+
+def money_line(board, capital):
+    rows, total = money_table(board, capital)
+    if not total:
+        return ""
+    strategies = [row for row in rows if row["strategy"]]
+    return ("**Where the money went.** On average a bot's trades have made %s of its starting money from price moves, "
+            "before any costs. The spread took %s, fees and GST %s, tax %s and futures funding %s, which leaves %s. %d of "
+            "the %d strategies are ahead before costs, and %d after them. Tax is charged on every profitable sale and "
+            "losses can't be set off against it, so a strategy can pay tax while losing money." % (
+                pct(total["moves"]), pct(total["spread"], False), pct(total["fees"], False), pct(total["tax"], False),
+                pct(total["funding"], False), pct(total["net"]), sum(1 for row in strategies if row["moves"] > 0),
+                len(strategies), sum(1 for row in strategies if row["net"] > 0)))
+
+
+def _money_lines(board, capital):
+    rows, total = money_table(board, capital)
+    if not total:
+        return []
+    lines = [
+        "| Strategy | Bots | Price moves | Spread | Fees and GST | Tax | Funding | Result |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for row in rows + [total]:
+        lines.append("| %s | %s | %s | %s | %s | %s | %s | %s |" % (
+            "**All bots**" if row is total else row["label"], _count(row["bots"]), pct(row["moves"]),
+            pct(-row["spread"]), pct(-row["fees"]), pct(-row["tax"]), pct(-row["funding"]) if row["funding"] else "–",
+            pct(row["net"])))
+    return lines
 
 
 def _top_lines(board, config, n):
@@ -337,6 +401,10 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
         ]
         lines += _card_lines(cards)
         lines += ["", luck_line(board)]
+    money = _money_lines(board, capital)
+    if money:
+        lines += ["", money_line(board, capital) + " Average per bot, as a share of its starting money, counting the "
+                  "costs of selling what is still held:", ""] + money
     lines += [
         "",
         "![Value of the top bots over time](docs/equity.svg)",
@@ -591,13 +659,19 @@ def daily_message(state, board, config, prices, now_ms, previous):
     desk = desk_lines(state, board, config, previous)
     if desk:
         lines += [""] + desk
-    lines += ["", "**The original bots**", "", "| Bot | Value if sold now | Since start | Last 24 hours | Rank |", "|---|---|---|---|---|"]
-    for rank, r in enumerate(board, 1):
-        if not r["family"] and not r["desk"]:
-            lines.append("| %s | %s | %s | %s | %s |" % (r["title"], inr(r["value"]), pct(r["ret"]), change(r), _count(rank)))
+    for added, heading in ((False, "**The original bots**"), (True, "**Added on 1 Oct, after the backtests**")):
+        rows = [(rank, r) for rank, r in enumerate(board, 1)
+                if not r["family"] and not r["desk"] and r.get("added", False) == added]
+        if rows:
+            lines += ["", heading, "", "| Bot | Value if sold now | Since start | Last 24 hours | Rank |", "|---|---|---|---|---|"]
+            lines += ["| %s | %s | %s | %s | %s |" % (r["title"], inr(r["value"]), pct(r["ret"]), change(r), _count(rank))
+                      for rank, r in rows]
     cards = report_card(board)
     if cards:
         lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
+    money = _money_lines(board, config["capital_inr"])
+    if money:
+        lines += ["", money_line(board, config["capital_inr"]), ""] + money
     best = board[0]
     lines += [
         "",
@@ -632,9 +706,14 @@ def final_message(state, board, config, prices):
     if desk:
         lines += [""] + desk
     lines += ["", "**The original bots**", ""] + _original_lines(board)
+    if any(r.get("added") for r in board):
+        lines += ["", "**Added on 1 Oct, after the backtests**", ""] + _original_lines(board, added=True)
     cards = report_card(board)
     if cards:
         lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
+    money = _money_lines(board, config["capital_inr"])
+    if money:
+        lines += ["", money_line(board, config["capital_inr"]), ""] + money
     reached = [r["title"] for r in board if r["value"] >= goal]
     best = board[0]
     lines.append("")
