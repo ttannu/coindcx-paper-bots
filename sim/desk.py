@@ -334,9 +334,15 @@ def _swarm_table(rows):
     return "\n".join(lines)
 
 
-def _card_text(board):
+def _card_text(board, capital):
     cards = report.report_card(board)
-    return "\n".join("%s: median %s, %s" % (c["label"], _p(c["median"]), c["verdict"]) for c in cards)
+    money = dict((row["label"], row) for row in report.money_table(board, capital)[0])
+    lines = []
+    for c in cards:
+        m = money.get(c["label"])
+        lines.append("%s: median %s%%, %s%s" % (c["label"], _p(c["median"]), c["verdict"], "; on average price moves "
+                     "%s%% and costs %s%%" % (_p(m["moves"]), _p(m["net"] - m["moves"])) if m else ""))
+    return "\n".join(lines)
 
 
 def _derivatives_table(derivs):
@@ -387,13 +393,22 @@ def _recent_text(spot, fut):
                                                                  report.inr(r["pnl"]), r["reason"]) for r in rows)
 
 
+def _costs_text(bot, prices, t):
+    m = bot.acct.breakdown(prices, t)
+    return "price moves %s%s, spread %s, fees and GST %s, tax %s%s" % (
+        "+" if m["moves"] >= 0 else "", report.inr(m["moves"]), report.inr(-m["spread"]), report.inr(-m["fees"]),
+        report.inr(-m["tax"]), ", funding %s" % report.inr(-m["funding"]) if round(m["funding"]) else "")
+
+
 def _since_text(book, spot, fut, prices, t):
     if not book["log"]:
         return "This is the desk's first meeting."
     last = book["log"][-1]
-    return "Since the last meeting (%s): spot book %s to %s, futures book %s to %s." % (
-        report.ist(last["t"], "%d %b %H:%M"), report.inr(last["spot"]), report.inr(spot.value(prices, t)),
-        report.inr(last["futures"]), report.inr(fut.value(prices, t)))
+    return ("Since the last meeting (%s): spot book %s to %s, futures book %s to %s.\nWhere each book's result since it "
+            "started came from, counting the costs of selling what it holds now: spot %s; futures %s." % (
+                report.ist(last["t"], "%d %b %H:%M"), report.inr(last["spot"]), report.inr(spot.value(prices, t)),
+                report.inr(last["futures"]), report.inr(fut.value(prices, t)), _costs_text(spot, prices, t),
+                _costs_text(fut, prices, t)))
 
 
 def _lessons_text(book):
@@ -659,7 +674,8 @@ def hold_meeting(root, state, config, series, prices, board, bots, now_ms, llm, 
                "day": report.day_number(state, config, now_ms), "capital": report.inr(config["capital_inr"]),
                "every": settings["every_hours"], "min_volume": MIN_VOLUME_LAKH, "max_idle": int(round(MAX_IDLE * 100))}
     ctx = {"rows": rows, "research": outside, "now": report.ist(now_ms), "start": context["start"],
-           "swarm": swarm_rows(board), "card": _card_text(board), "backtests": settings.get("backtests") or []}
+           "swarm": swarm_rows(board), "card": _card_text(board, config["capital_inr"]),
+           "backtests": settings.get("backtests") or []}
     minutes = {"t": now_ms, "data_t": t, "agents": {}, "models": {}, "failed": {},
                "sources": {"coins": len(rows), "tradable": len(tradable), "headlines": len(outside.get("headlines", [])),
                            "fear_greed": outside.get("fear_greed"), "derivatives": len(outside.get("derivatives") or {}),

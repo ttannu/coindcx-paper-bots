@@ -257,6 +257,11 @@ class DeskRunTest(unittest.TestCase):
         self.run_at(FIRST + 2 * H1, fake, fetch)
         self.assertEqual(len(self.ws.state()["desk"]["decisions"]), 2)
         self.assertIn("Since the last meeting", fake.prompts["manager"][1])
+        self.assertRegex(fake.prompts["manager"][1], r"Where each book's result since it started came from, counting the "
+                                                     r"costs of selling what it holds now: spot price moves [+-]₹[\d,]+, "
+                                                     r"spread -₹[\d,]+, fees and GST -₹[\d,]+, tax -?₹[\d,]+; futures ")
+        self.assertRegex(fake.prompts["quant"][1], r"\n[^\n:]+: median [+-]\d+\.\d%, [^\n;]+; on average price moves "
+                                                   r"[+-]\d+\.\d% and costs [+-]\d+\.\d%\n")
         self.run_at(FIRST + 2 * H1 + 30 * MINUTE, fake, fetch)
         state = self.ws.state()
         self.assertEqual(state["bots"][desk.SPOT_KEY]["positions"]["I-SOL_INR"]["stop"], sol["stop"])
