@@ -26,6 +26,9 @@ MAX_WEIGHT = 0.30
 MIN_WEIGHT = 0.05
 MAX_INVESTED = 0.95
 MAX_LEVERAGE = 3.0
+# A quiet CoinDCX book shows stale last-trade prices: backtests on them find profits that no order could have taken.
+MIN_VOLUME_LAKH = 5.0
+MAX_IDLE = 0.25
 SPOT_STOP = (0.02, 0.15, 0.08)
 FUTURES_STOP = (0.01, 0.10, 0.05)
 TAKE_PROFIT = (0.02, 1.0)
@@ -126,9 +129,12 @@ class DeskSpot(DeskBook):
     def _apply(self, ctx, decision):
         acct = self.acct
         plan = dict((e["pair"], e) for e in decision["spot"] if e["pair"] in ctx.prices)
+        keep = set(decision.get("keep") or ())
         equity = ctx.equity(acct)
         band = max(acct.costs["min_trade_inr"], REBALANCE_BAND * equity)
         for pair, pos in sorted(acct.s["positions"].items()):
+            if pair in keep:
+                continue
             price = ctx.prices[pair]
             want = plan.get(pair)
             if not want:
@@ -272,17 +278,20 @@ def market_rows(universe, series, prices, t, config, gaps):
         returns = [math.log(b / a) for a, b in zip(hourly[-25:-1], hourly[-24:])]
         high = max(c["h"] for c in s1h.candles[-168:])
         market = config["markets"].get(pair, {})
+        day = s15.candles[-96:]
         row = {
             "coin": coin(pair), "pair": pair, "price": price, "ch_1h": change(4), "ch_4h": change(16),
             "ch_24h": change(96), "ch_7d": change(672), "rsi": s1h.get("rsi", 14)[-1],
             "trend": "up" if s1h.get("ema", 12)[-1] > s1h.get("ema", 48)[-1] else "down",
             "vol_24h": _stdev(returns) * math.sqrt(24), "off_high_7d": price / high - 1,
             "spread": 2 * market.get("slippage", config["costs"]["slippage"]),
-            "volume_lakh": sum(c["v"] * c["c"] for c in s15.candles[-96:]) / 1e5,
+            "volume_lakh": sum(c["v"] * c["c"] for c in day) / 1e5,
+            "idle": sum(1 for c in day if not c["v"]) / float(len(day)),
             "fresh": s15.candles[-1]["t"] + FIFTEEN_MIN_MS >= t - HOUR_MS and "%s|15m" % pair not in gaps,
         }
+        row["liquid"] = row["volume_lakh"] >= MIN_VOLUME_LAKH and row["idle"] <= MAX_IDLE
         rows.append(row)
-        if row["fresh"] and pair in config["markets"]:
+        if row["fresh"] and row["liquid"] and pair in config["markets"]:
             tradable[row["coin"]] = pair
     return rows, tradable
 
@@ -307,12 +316,13 @@ def swarm_rows(board):
 
 
 def _market_table(rows):
-    lines = ["coin|price|ch_1h|ch_4h|ch_24h|ch_7d|rsi_1h|trend|vol_24h|off_high_7d|spread|volume_lakh|tradable"]
+    lines = ["coin|price|ch_1h|ch_4h|ch_24h|ch_7d|rsi_1h|trend|vol_24h|off_high_7d|spread|volume_lakh|idle_pct|tradable"]
     for r in rows:
-        lines.append("%s|%s|%s|%s|%s|%s|%s|%s|%.1f|%s|%.2f|%.1f|%s" % (
+        lines.append("%s|%s|%s|%s|%s|%s|%s|%s|%.1f|%s|%.2f|%.1f|%.0f|%s" % (
             r["coin"], _price(r["price"]), _p(r["ch_1h"]), _p(r["ch_4h"]), _p(r["ch_24h"]), _p(r["ch_7d"]),
             "–" if r["rsi"] is None else "%.0f" % r["rsi"], r["trend"], r["vol_24h"] * 100, _p(r["off_high_7d"]),
-            r["spread"] * 100, r["volume_lakh"], "yes" if r["fresh"] else "no"))
+            r["spread"] * 100, r["volume_lakh"], r["idle"] * 100,
+            "no: stale" if not r["fresh"] else "no: thin" if not r["liquid"] else "yes"))
     return "\n".join(lines)
 
 
@@ -392,6 +402,13 @@ def _lessons_text(book):
     return "\n".join("- %s" % item["text"] for item in book["lessons"])
 
 
+def _backtests_text(findings):
+    if not findings:
+        return ""
+    return "Backtests of these strategies on earlier CoinDCX prices, with the same costs:\n%s\n\n" % "\n".join(
+        "- %s" % line for line in findings)
+
+
 def _tradable_text(rows, tradable):
     return ", ".join("%s %s (24h volatility %.1f%%)" % (r["coin"], _price(r["price"]), r["vol_24h"] * 100)
                      for r in rows if r["coin"] in tradable)
@@ -413,6 +430,9 @@ Costs matter: a spot round trip costs about 1.2% plus the coin's spread, and a f
 31.2% tax is due on every profitable sale and losses don't offset it. Churning small positions loses money, while a \
 well-chosen position held through a trend can clear the costs many times over. Cash is a position too: choose it when the \
 evidence is weak, not by default.
+Only coins with at least ₹{min_volume:g} lakh of CoinDCX INR volume in the last 24 hours, and no trades in at most \
+{max_idle}% of those 15-minute candles, can be traded: a quiet book shows stale prices, and a real order there would move them. \
+A coin the desk holds that can't be traded any more is kept as it is, with its stop, until it can.
 The desk meets every {every} hours. Orders fill at the next 15-minute close, and stops and take-profits are enforced \
 automatically between meetings.
 Use only the data you are given. Never invent prices, news, or events, and say so when the evidence is weak.
@@ -459,7 +479,9 @@ def _prompts(ctx):
         "market": "Market data at %s. Prices are CoinDCX INR. Changes are in %%. rsi_1h is RSI(14) on hourly candles; trend "
                   "compares the 12- and 48-hour averages; vol_24h is the realised volatility of the last 24 hours in %%; "
                   "off_high_7d is how far the price is below its 7-day high; spread is the cost of crossing the bid-ask "
-                  "spread once, in %%; volume_lakh is CoinDCX INR volume over 24 hours in lakh rupees.\n\n%s\n\n%s\n\n"
+                  "spread once, in %%; volume_lakh is CoinDCX INR volume over 24 hours in lakh rupees; idle_pct is the "
+                  "share of those 24 hours' 15-minute candles with no trades. tradable says 'no: stale' when prices have "
+                  "stopped updating and 'no: thin' when the market is too quiet to trade.\n\n%s\n\n%s\n\n"
                   "Reply with this JSON:\n{\"regime\": \"risk-on\" | \"neutral\" | \"risk-off\", \"summary\": \"two sentences on "
                   "the market\", \"longs\": [{\"coin\": \"SYMBOL\", \"why\": \"one sentence with numbers\"}], \"shorts\": "
                   "[{\"coin\": \"SYMBOL\", \"why\": \"...\"}], \"avoid\": [{\"coin\": \"SYMBOL\", \"why\": \"...\"}]}\nAt most 6 "
@@ -479,14 +501,14 @@ def _prompts(ctx):
                     ", ".join(r["coin"] for r in rows)),
         "quant": "What the desk's rule-based bots have found since %s. Each coin has %s strategy bots, a buy & hold bot, and "
                  "coin-flip bots that trade at random, which show how much of a result could be luck. Returns are in %%.\n\n"
-                 "%s\n\nStrategy report card across all coins:\n%s\n\nPerpetual futures on Hyperliquid (global, in dollars): "
+                 "%s\n\nStrategy report card across all coins:\n%s\n\n%sPerpetual futures on Hyperliquid (global, in dollars): "
                  "funding every 8 hours in %% (positive means longs pay shorts, so longs are crowded), open interest and "
                  "24-hour volume in $ millions.\n%s\n\nReply with this JSON:\n{\"summary\": \"two sentences\", \"edges\": "
                  "[{\"coin\": \"SYMBOL\", \"evidence\": \"which strategies work there, with numbers\"}], \"crowded\": "
                  "[{\"coin\": \"SYMBOL\", \"side\": \"long\" | \"short\", \"why\": \"...\"}]}\nAt most 6 edges and 4 crowded "
                  "trades. Treat results no better than the coin flips as luck." % (
                      ctx["start"], ctx["swarm"][0]["count"] if ctx["swarm"] else "several", _swarm_table(ctx["swarm"]),
-                     ctx["card"], _derivatives_table(research_data.get("derivatives"))),
+                     ctx["card"], _backtests_text(ctx["backtests"]), _derivatives_table(research_data.get("derivatives"))),
     }
 
 
@@ -614,7 +636,7 @@ def sanitize(plan, tradable):
 
 def _decision(t, plan):
     return {"t": t, "spot": [dict((k, e[k]) for k in ("pair", "weight", "stop", "take_profit")) for e in plan["spot"]],
-            "futures": dict((k, v) for k, v in plan["futures"].items() if k != "why")}
+            "keep": list(plan.get("keep") or ()), "futures": dict((k, v) for k, v in plan["futures"].items() if k != "why")}
 
 
 # ---- the meeting ---------------------------------------------------------------------------------------------------
@@ -635,9 +657,9 @@ def hold_meeting(root, state, config, series, prices, board, bots, now_ms, llm, 
     context = {"days": config["duration_days"], "start": report.ist(state["sim_start"], "%d %b %Y"),
                "end": report.ist(state["sim_end"], "%d %b %Y"), "now": report.ist(now_ms),
                "day": report.day_number(state, config, now_ms), "capital": report.inr(config["capital_inr"]),
-               "every": settings["every_hours"]}
+               "every": settings["every_hours"], "min_volume": MIN_VOLUME_LAKH, "max_idle": int(round(MAX_IDLE * 100))}
     ctx = {"rows": rows, "research": outside, "now": report.ist(now_ms), "start": context["start"],
-           "swarm": swarm_rows(board), "card": _card_text(board)}
+           "swarm": swarm_rows(board), "card": _card_text(board), "backtests": settings.get("backtests") or []}
     minutes = {"t": now_ms, "data_t": t, "agents": {}, "models": {}, "failed": {},
                "sources": {"coins": len(rows), "tradable": len(tradable), "headlines": len(outside.get("headlines", [])),
                            "fear_greed": outside.get("fear_greed"), "derivatives": len(outside.get("derivatives") or {}),
@@ -709,6 +731,9 @@ def hold_meeting(root, state, config, series, prices, board, bots, now_ms, llm, 
         return _failed(root, book, minutes, llm, now_ms, str(exc), retry_ms=30 * MINUTE_MS)
 
     plan, notes = sanitize(final, tradable)
+    plan["keep"] = sorted(p for p in spot.acct.s["positions"] if p not in tradable.values())
+    for pair in plan["keep"]:
+        notes.append("kept %s as it is: it can't be traded now" % coin(pair))
     if spot.acct.memo.get("stopped"):
         plan["spot"] = []
     if fut.acct.memo.get("stopped"):
@@ -768,7 +793,8 @@ def _count_calls(book, llm, now_ms):
 
 
 def plan_text(plan):
-    spot = ", ".join("%s %d%%" % (coin(e["pair"]), round(e["weight"] * 100)) for e in plan["spot"]) or "all cash"
+    spot = ", ".join(["%s %d%%" % (coin(e["pair"]), round(e["weight"] * 100)) for e in plan["spot"]] +
+                     ["%s kept as it is" % coin(p) for p in plan.get("keep") or ()]) or "all cash"
     f = plan["futures"]
     futures = "%s %s %gx" % (f["side"], coin(f["pair"]), f["leverage"]) if f.get("pair") else "flat"
     return "spot: %s; futures: %s" % (spot, futures)

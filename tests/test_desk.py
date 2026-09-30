@@ -265,6 +265,52 @@ class DeskRunTest(unittest.TestCase):
         self.assertEqual(state["bots"][desk.FUTURES_KEY]["position"]["entry"], pos["entry"])
         rb.check_invariants(self, state)
 
+    def test_thin_and_quiet_markets_are_not_tradable(self):
+        market = build_market("calm", seed=3)
+        for row in market[("I-DOGE_INR", "15m")]:
+            row["v"] = 10.0 / row["c"]
+        for n, row in enumerate(market[("I-XRP_INR", "15m")]):
+            if row["t"] >= FIRST - DAY and n % 3 == 0:
+                row["v"] = 0.0
+        fake = FakeLLM(answers={"manager": dict(MANAGER, spot=MANAGER["spot"] + [
+            {"coin": "DOGE", "weight_pct": 10, "stop_pct": 5, "why": "cheap"}])})
+        self.run_at(FIRST, fake, make_fetch(market))
+        system, prompt, _ = fake.prompts["market"]
+        self.assertIn("at least ₹5 lakh of CoinDCX INR volume", system)
+        self.assertRegex(prompt, r"\nDOGE\|[^\n]*\|0\.0\|0\|no: thin\n")
+        self.assertRegex(prompt, r"\nXRP\|[^\n]*\|3\d\|no: thin\n")
+        self.assertRegex(prompt, r"\nSOL\|[^\n]*\|0\|yes\n")
+        tradable = fake.prompts["manager"][1].split("Coins the desk can trade now: ")[1].split("\n\n")[0]
+        self.assertIn("SOL", tradable)
+        self.assertNotIn("DOGE", tradable)
+        self.assertNotIn("XRP", tradable)
+        self.assertIn("dropped DOGE: not a coin the desk can trade now", self.ws.state()["desk"]["last"]["notes"])
+        self.assertIn("Backtests of these strategies on earlier CoinDCX prices, with the same costs:\n- Over 12 past",
+                      fake.prompts["quant"][1])
+
+    def test_a_held_coin_that_turns_thin_is_kept(self):
+        market = build_market("calm", seed=3)
+        for row in market[("I-SOL_INR", "15m")]:
+            row["v"] = (1e5 if START <= row["t"] < START + 2 * H1 else 100.0) / row["c"]
+        fetch = make_fetch(market)
+        fake = FakeLLM()
+        self.run_at(FIRST, fake, fetch)
+        self.assertRegex(fake.prompts["market"][1], r"\nSOL\|[^\n]*\|yes\n")
+        self.run_at(FIRST + 30 * MINUTE, fake, fetch)
+        self.assertIn("I-SOL_INR", self.ws.state()["bots"][desk.SPOT_KEY]["positions"])
+
+        fake.answers["manager"] = dict(MANAGER, spot=[TRADER["spot"][1]])
+        self.run_at(FIRST + 2 * H1, fake, fetch)
+        self.assertRegex(fake.prompts["market"][1], r"\nSOL\|[^\n]*\|no: thin\n")
+        book = self.ws.state()["desk"]
+        self.assertEqual(book["decisions"][-1]["keep"], ["I-SOL_INR"])
+        self.assertIn("kept SOL as it is: it can't be traded now", book["last"]["notes"])
+        self.run_at(FIRST + 2 * H1 + 30 * MINUTE, fake, fetch)
+        state = self.ws.state()
+        self.assertIn("I-SOL_INR", state["bots"][desk.SPOT_KEY]["positions"])
+        self.assertEqual([r["side"] for r in trades(self.ws, desk.SPOT_KEY)], ["BUY", "BUY"])
+        rb.check_invariants(self, state)
+
     def test_stops_limit_the_damage_in_a_crash(self):
         fetch = make_fetch(build_market("crash", seed=4))
         fake = FakeLLM(answers={"manager": dict(MANAGER, futures=dict(MANAGER["futures"], leverage=2, stop_pct=4))})

@@ -58,7 +58,7 @@ def build_market(scenario, seed, pairs=()):
                 low = min(price, close) * 0.55
             if scenario == "flash" and k == 900:
                 high = max(price, close) * 1.6
-            rows.append({"t": START + k * M15, "o": price, "h": high, "l": low, "c": close, "v": 1.0})
+            rows.append({"t": START + k * M15, "o": price, "h": high, "l": low, "c": close, "v": 1e5 / close})
             price = close
         if scenario == "gaps":
             rows = [r for r in rows if rng.random() > 0.05]

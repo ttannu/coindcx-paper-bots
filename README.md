@@ -155,7 +155,7 @@ Every 2 hours the desk meets:
 4. A **risk team** of three (aggressive, neutral, conservative) reviews the plan.
 5. The **portfolio manager** makes the final decision, and notes a lesson from how the desk's trades have worked out, which later meetings see.
 
-The code, not the AI, enforces the limits. At most 30% of the spot book goes into one coin and 95% in total, and positions under 5% are dropped. Only coins with fresh prices can be traded. Futures leverage is 1x to 3x. Every position gets a stop loss (2-15% away on spot, 1-10% on futures) that can be tightened but never loosened, and a book that falls below 70% of its starting money closes out and stops for good. Decisions fill at the next 15-minute close, so the desk never trades at a price it has already seen, and they pay the same fees and tax as every other bot. Changes smaller than 5% of a book are skipped to save fees.
+The code, not the AI, enforces the limits. At most 30% of the spot book goes into one coin and 95% in total, and positions under 5% are dropped. Only coins with fresh prices and a real market can be traded: at least ₹5 lakh of CoinDCX INR volume in the last 24 hours, with no trades in at most a quarter of those 15-minute candles, because a quiet book shows stale prices (added on 1 Oct, after the backtests below showed how much stale prices distort results). A coin it holds that stops qualifying is kept as it is, with its stop, until it can be traded again. Futures leverage is 1x to 3x. Every position gets a stop loss (2-15% away on spot, 1-10% on futures) that can be tightened but never loosened, and a book that falls below 70% of its starting money closes out and stops for good. Decisions fill at the next 15-minute close, so the desk never trades at a price it has already seen, and they pay the same fees and tax as every other bot. Changes smaller than 5% of a book are skipped to save fees.
 
 The agents run on Google's free Gemini API tier. The analysts, researchers, and risk team use Gemini 3.5 Flash Lite, with 3.1 Flash Lite and Gemma 4 as fallbacks. The trader and the portfolio manager use the strongest Gemini Flash model that is available (3.8 down to 3.5), falling back to the lighter models. When a model is busy or out of quota, the desk moves on to the next one. If the meeting still can't finish, it is skipped: the books keep their positions and stops, and the desk tries again 30 minutes later. The minutes of every meeting, with what each agent said, are in [`docs/desk.md`](docs/desk.md). On the free tier Google may use the prompts to improve its products; they contain only public prices, headlines, and the bots' simulated results.
 
@@ -173,6 +173,30 @@ The costs follow what a CoinDCX INR account in India pays. They are set in [`con
 - **Minimum order:** ₹100, and quantities are rounded down to each coin's lot size.
 
 "Value if sold now" is what a bot would keep if it sold everything at that moment and paid all of the above.
+
+## What the backtests found
+
+On 1 Oct the strategies were replayed over the six months before the launch: 12 back-to-back 15-day windows from 3 Apr to 30 Sep 2026, on all 47 coins, through the same code. Each was run three times: with no costs (the strategy's skill alone), with fees and spread, and with tax as well. Mean result per bot per window:
+
+| Strategy | No costs | Fees and spread | Tax as well |
+|---|---:|---:|---:|
+| Buy & hold | +6.0% | +3.9% | +0.8% |
+| Grid, 3% steps | +7.9% | 0.0% | -2.7% |
+| Grid, 1.5% steps | +21.1% | -5.5% | -10.3% |
+| RSI dip-buying | +13.2% | -3.5% | -6.5% |
+| Self-learning | -2.6% | -4.0% | -6.2% |
+| Trend-following, 6/24h | -16.4% | -45.0% | -47.5% |
+| Coin flip | +3.0% | -23.8% | -27.2% |
+| Coin flip, 3x futures | +3.1% | -7.4% | -20.9% |
+| Trend-following, 3x futures | -32.6% | -41.1% | -55.0% |
+
+- No rule-based strategy made money on average after costs. Buying and holding, which pays the costs once, came closest, and its result is the market's direction rather than skill: it made money in 5 of the 12 windows, and without the rally in the last one (+32%) its average would be -2.0%.
+- Trend-following lost even before costs. On CoinDCX's INR prices short moves tended to reverse, partly because the last traded price bounces between the bid and the ask.
+- Dip-buying and grids had an edge before costs, but mostly on thinly traded coins, where prices go stale. On the 10 most liquid coins a 1.5% grid made +6.3% before costs, against +25.1% on the other 37, which is too little to pay for its 60-odd trades.
+- Picking the best bots of one window to run in the next lost money: -7.1% a window for the top 10 and -5.4% for the top 50.
+- Strategies added for the test also failed after costs: holding the recent top gainers, going long or short the strongest or weakest coin on futures, wider grids, slower breakouts, and following futures funding rates.
+
+A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every winning trade with no set-off for the losing ones, so a strategy has to trade rarely and win big. Nothing tested here did that reliably. The method, the full results, and the two research mistakes that were caught along the way are in [`docs/research.md`](docs/research.md).
 
 ## How it runs
 

@@ -81,6 +81,13 @@
     "every_hours": 2,
     "time_budget_seconds": 300,
     "deep_models": ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-3-flash-preview", "gemini-2.5-flash"],
-    "quick_models": ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemma-4-26b-a4b-it", "gemma-4-31b-it"]
+    "quick_models": ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemma-4-26b-a4b-it", "gemma-4-31b-it"],
+    "backtests": [
+      "Over 12 past 15-day windows (Apr-Sep 2026), no rule-based strategy made money on average after fees and tax. Buy & hold averaged +0.8% a window (median -1.7%); trend-following lost 24-79%; coin flips lost 27%, nearly all of it costs.",
+      "Fees and spread took up to 32 points a window from the busiest strategies, and the tax on each winning trade took 14-26 points from leveraged futures.",
+      "Picking the previous window's best strategies or bots did not help in the next window: past winners did not repeat.",
+      "Dip-buying and grids had an edge before costs, mostly on thinly traded coins whose prices go stale; on the 10 most liquid coins it was too small to pay for the trades.",
+      "Holding the recent top gainers, and following futures funding rates, also lost after costs."
+    ]
   }
 }
