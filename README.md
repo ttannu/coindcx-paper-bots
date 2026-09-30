@@ -5,7 +5,7 @@ Seven trading bots each get ₹5,000 of **simulated** money and trade for 15 day
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 30 Sep 2026, 22:23 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
+Last updated 30 Sep 2026, 22:29 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
 
 Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.9% (₹85,22,786 to ₹84,44,156).
 

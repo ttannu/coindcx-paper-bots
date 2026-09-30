@@ -2409,7 +2409,7 @@
   "I-SOL_INR": 11935.0,
   "I-XRP_INR": 151.186
  },
- "last_run": 1790787195300,
+ "last_run": 1790787553225,
  "reports": {
   "issue": 1,
   "last_daily": "2026-09-30",
@@ -2424,7 +2424,7 @@
    "trend_ema": 5000.0
   }
  },
- "runs": 4,
+ "runs": 5,
  "sim_end": 1792070100000,
  "sim_start": 1790774100000,
  "start_prices": {
