@@ -2,6 +2,7 @@ import csv
 import http.client
 import json
 import os
+import smtplib
 import traceback
 
 from . import coindcx, report
@@ -10,6 +11,7 @@ from .bots import FIXED_BOTS
 from .github import GitHub
 from .indicators import Series
 from .learner import SelfLearner
+from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
 FIFTEEN_MIN_MS = 15 * 60 * 1000
@@ -71,7 +73,10 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles):
     except Exception:  # the dashboard is cosmetic; a rendering bug must not block saving or reporting
         traceback.print_exc()
     if notify:
-        _notify(state, board, config, prices, now_ms, len(bots))
+        mailer = Mailer.from_env()
+        _safely(_notify, state, board, config, prices, now_ms, len(bots))
+        _safely(_deliver_mail, state, board, config, prices, now_ms, mailer)
+        _safely(_switch_off, state, now_ms, mailer)
         _write_json(state_path, state)
 
     print("Processed %d candles and %d trades. Run %d, %s." % (processed, len(trades), state["runs"], report.ist(now_ms)))
@@ -200,6 +205,13 @@ def _append_trades(state_dir, trades):
             })
 
 
+def _safely(step, *args):
+    try:
+        step(*args)
+    except Exception:  # the save step only runs if this process succeeds, so a reporting bug must not crash it
+        traceback.print_exc()
+
+
 def _notify(state, board, config, prices, now_ms, bot_count):
     github = GitHub.from_env()
     reports = state["reports"]
@@ -220,14 +232,11 @@ def _notify(state, board, config, prices, now_ms, bot_count):
                 else:
                     print(body)
                 reports["final_posted"] = True
+                _queue_mail(reports, "final", report.FINAL_TITLE, body, config)
             if not reports.get("issue_closed"):
                 if github:
                     github.close_issue(reports["issue"], report.FINAL_TITLE)
                 reports["issue_closed"] = True
-            if not reports.get("workflow_disabled"):
-                if github:
-                    github.disable_workflow(WORKFLOW_FILE)
-                reports["workflow_disabled"] = True
         elif reports["last_daily"] != today and int(report.ist(now_ms, "%H")) >= config["report_hour_ist"]:
             body = report.daily_message(state, board, config, prices, now_ms, reports["values"])
             if github:
@@ -236,8 +245,57 @@ def _notify(state, board, config, prices, now_ms, bot_count):
                 print(body)
             reports["last_daily"] = today
             reports["values"] = dict((r["key"], r["value"]) for r in board)
+            _queue_mail(reports, "daily", report.daily_subject(state, board, config, now_ms), body, config)
     except (OSError, ValueError, KeyError, http.client.HTTPException) as exc:
         print("Warning: could not update the report issue, will retry next run: %s" % exc)
+
+
+def _queue_mail(reports, kind, subject, body, config):
+    # Only the newest report of each kind is kept, so a late or broken mail setup never floods the inbox.
+    outbox = [m for m in reports.get("outbox", []) if m["kind"] != kind]
+    outbox.append({"kind": kind, "subject": subject, "body": body.replace("@%s " % config["notify_user"], "", 1)})
+    reports["outbox"] = outbox
+
+
+def _deliver_mail(state, board, config, prices, now_ms, mailer):
+    reports = state["reports"]
+    if not mailer or now_ms < reports.get("mail_retry_after", 0):
+        return
+    pending = list(reports.get("outbox", []))
+    if not reports.get("mail_welcomed"):
+        pending.insert(0, {"kind": "welcome", "subject": report.WELCOME_TITLE,
+                           "body": report.welcome_message(state, board, config, prices, now_ms)})
+    for item in pending:
+        try:
+            mailer.send(item["subject"], item["body"])
+        except smtplib.SMTPAuthenticationError as exc:
+            # Retrying a rejected password every half hour can get the Gmail account flagged.
+            reports["mail_retry_after"] = now_ms + 6 * HOUR_MS
+            print("Warning: Gmail rejected the app password, will try again in 6 hours: %s" % exc)
+            return
+        except (OSError, ValueError) as exc:
+            print("Warning: could not send the email report, will retry next run: %s" % exc)
+            return
+        if item["kind"] == "welcome":
+            reports["mail_welcomed"] = True
+        else:
+            reports["outbox"].remove(item)
+
+
+def _switch_off(state, now_ms, mailer):
+    reports = state["reports"]
+    if not state["finished"] or reports.get("workflow_disabled"):
+        return
+    delivered = reports.get("final_posted") and reports.get("issue_closed") and not (mailer and reports.get("outbox"))
+    if not delivered and now_ms < state["sim_end"] + DAY_MS:
+        return
+    github = GitHub.from_env()
+    try:
+        if github:
+            github.disable_workflow(WORKFLOW_FILE)
+        reports["workflow_disabled"] = True
+    except (OSError, ValueError, http.client.HTTPException) as exc:
+        print("Warning: could not switch off the workflow, will retry next run: %s" % exc)
 
 
 def _read_json(path):

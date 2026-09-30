@@ -6,6 +6,7 @@ import math
 import os
 import random
 import shutil
+import smtplib
 import tempfile
 import unittest
 from unittest import mock
@@ -14,10 +15,14 @@ from sim import engine
 from sim.bots import BTC, FIXED_BOTS, Bot
 from sim.coindcx import DataUnavailable, parse_candles
 from sim.learner import SelfLearner
+from sim.mailer import to_html
 from synthetic import DAY, H1, SCENARIOS, START, build_market, make_fetch
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MINUTE = 60000
+
+for _name in ("GITHUB_TOKEN", "GITHUB_REPOSITORY", "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD"):
+    os.environ.pop(_name, None)
 
 
 class Workspace:
@@ -61,6 +66,19 @@ class FakeGitHub:
 
     def disable_workflow(self, file_name):
         self._record("disable_workflow", file_name)
+
+
+class FakeMailer:
+    def __init__(self):
+        self.sent = []
+        self.attempts = 0
+        self.error = None
+
+    def send(self, subject, markdown):
+        self.attempts += 1
+        if self.error:
+            raise self.error
+        self.sent.append((subject, markdown))
 
 
 class Exploding(Bot):
@@ -252,6 +270,102 @@ class NotificationTest(unittest.TestCase):
                 self.assertIn("already finished", ws.output.getvalue())
         finally:
             ws.close()
+
+
+class MailTest(unittest.TestCase):
+    def test_emails_catch_up_without_flooding_and_back_off_on_a_bad_password(self):
+        fetch = make_fetch(build_market("calm", seed=9))
+        github, mailer = FakeGitHub(), FakeMailer()
+        morning = lambda day: (START // DAY + day) * DAY + 4 * H1
+        ws = Workspace()
+        try:
+            with mock.patch.object(engine.GitHub, "from_env", return_value=github):
+                ws.run(START + 7 * MINUTE, fetch)
+                for day in (1, 2, 3):
+                    ws.run(morning(day), fetch)
+                outbox = ws.state()["reports"]["outbox"]
+                self.assertEqual([m["kind"] for m in outbox], ["daily"])
+                self.assertTrue(outbox[0]["body"].startswith("**Day 3 of 15**"))
+
+                with mock.patch.object(engine.Mailer, "from_env", return_value=mailer):
+                    mailer.error = smtplib.SMTPAuthenticationError(535, b"Username and Password not accepted")
+                    ws.run(morning(3) + H1, fetch)
+                    ws.run(morning(3) + 2 * H1, fetch)
+                    self.assertEqual(mailer.attempts, 1)
+
+                    mailer.error = None
+                    ws.run(morning(3) + 7 * H1, fetch)
+                    self.assertEqual([s for s, _ in mailer.sent], [
+                        "Paper-trading bots: email reports are on",
+                        mailer.sent[1][0],
+                    ])
+                    self.assertIn("day 3 of 15", mailer.sent[1][0])
+                    self.assertIn("Standings at", mailer.sent[0][1])
+                    ws.run(morning(3) + 8 * H1, fetch)
+                    ws.run(morning(4), fetch)
+                    self.assertEqual(len(mailer.sent), 3)
+                    self.assertEqual(ws.state()["reports"]["outbox"], [])
+
+                    end = ws.state()["sim_end"] + 3 * H1
+                    mailer.error = OSError("network is unreachable")
+                    ws.run(end, fetch)
+                    self.assertTrue(ws.state()["reports"]["final_posted"])
+                    self.assertNotIn("disable_workflow", [c[0] for c in github.calls])
+
+                    mailer.error = None
+                    ws.run(end + 30 * MINUTE, fetch)
+                    ws.run(end + H1, fetch)
+                    self.assertEqual(mailer.sent[-1][0], "Paper-trading bots: final results")
+                    self.assertEqual(sum(1 for s, _ in mailer.sent if "final" in s), 1)
+                    self.assertEqual([c[0] for c in github.calls].count("disable_workflow"), 1)
+                    self.assertIn("already finished", ws.output.getvalue())
+        finally:
+            ws.close()
+
+    def test_a_mail_outage_cannot_keep_the_workflow_alive(self):
+        fetch = make_fetch(build_market("calm", seed=10))
+        github, mailer = FakeGitHub(), FakeMailer()
+        mailer.error = OSError("smtp.gmail.com is unreachable")
+        ws = Workspace()
+        try:
+            with mock.patch.object(engine.GitHub, "from_env", return_value=github), \
+                    mock.patch.object(engine.Mailer, "from_env", return_value=mailer):
+                ws.run(START + 7 * MINUTE, fetch)
+                end = ws.state()["sim_end"]
+                ws.run(end + 3 * H1, fetch)
+                self.assertFalse(ws.state()["reports"].get("workflow_disabled"))
+                ws.run(end + DAY + H1, fetch)
+                self.assertTrue(ws.state()["reports"]["workflow_disabled"])
+        finally:
+            ws.close()
+
+    def test_a_bug_in_reporting_still_saves_the_results(self):
+        fetch = make_fetch(build_market("calm", seed=11))
+        mailer = FakeMailer()
+        mailer.error = TypeError("unexpected bug")
+        ws = Workspace()
+        try:
+            with mock.patch.object(engine.GitHub, "from_env", return_value=FakeGitHub()), \
+                    mock.patch.object(engine.Mailer, "from_env", return_value=mailer), \
+                    mock.patch.object(engine.report, "daily_message", side_effect=RuntimeError("template bug")):
+                ws.run(START + 7 * MINUTE, fetch)
+                ws.run(START + DAY, fetch)
+            state = ws.state()
+            self.assertEqual(state["runs"], 2)
+            self.assertEqual(state["reports"]["issue"], 7)
+            self.assertIn("unexpected bug", ws.output.getvalue())
+            self.assertIn("template bug", ws.output.getvalue())
+        finally:
+            ws.close()
+
+    def test_html_rendering(self):
+        page = to_html("**Day 2 of 15**, <b>\n\n| # | Bot |\n|---|---|\n| 1 | Hold |\n\n- one\nhttps://github.com/x/y")
+        self.assertIn("<b>Day 2 of 15</b>, &lt;b&gt;", page)
+        self.assertEqual(page.count("<tr>"), 2)
+        self.assertIn("<th", page)
+        self.assertIn("&bull; one", page)
+        self.assertIn('<a href="https://github.com/x/y">', page)
+        self.assertNotIn("**", page)
 
 
 if __name__ == "__main__":

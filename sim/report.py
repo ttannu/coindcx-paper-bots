@@ -10,6 +10,7 @@ DAY_MS = 86400000
 BTC = "I-BTC_INR"
 ISSUE_TITLE = "Paper-trading bots: daily reports"
 FINAL_TITLE = "Paper-trading bots: final results"
+WELCOME_TITLE = "Paper-trading bots: email reports are on"
 START_MARK = "<!-- DASHBOARD:START -->"
 END_MARK = "<!-- DASHBOARD:END -->"
 COLORS = ("#2563eb", "#16a34a", "#dc2626", "#9333ea", "#ea580c", "#0891b2", "#4b5563")
@@ -259,6 +260,39 @@ def start_message(state, config, bot_count):
         "",
         "Live dashboard: https://github.com/%s" % config["repository"],
     ])
+
+
+def welcome_message(state, board, config, prices, now_ms):
+    lines = [
+        "Email reports for your paper-trading bots are on.",
+        "",
+        "- %d bots, each with %s of simulated money, trade on live CoinDCX INR prices. "
+        "No real money and no API keys are involved." % (len(board), inr(config["capital_inr"])),
+        "- The simulation runs from %s to %s. Today is day %d of %d." % (
+            ist(state["sim_start"]), ist(state["sim_end"]), day_number(state, config, now_ms), config["duration_days"]),
+        "- You'll get one email a day, by the first run after %02d:00 IST, and a final one when the simulation ends. "
+        "After that the automation switches itself off." % config["report_hour_ist"],
+        "",
+        "Standings at %s:" % ist(now_ms),
+        "",
+        "| # | Bot | Value if sold now | Since start | Now |",
+        "|---|---|---|---|---|",
+    ]
+    for rank, r in enumerate(board, 1):
+        lines.append("| %d | %s | %s | %s | %s |" % (rank, r["title"], inr(r["value"]), pct(r["ret"]), r["now"]))
+    lines += [
+        "",
+        _btc_line(state, prices),
+        "",
+        "Dashboard: https://github.com/%s" % config["repository"],
+    ]
+    return "\n".join(lines)
+
+
+def daily_subject(state, board, config, now_ms):
+    best = board[0]
+    return "Paper-trading bots, day %d of %d: %s leads at %s" % (
+        day_number(state, config, now_ms), config["duration_days"], best["title"], inr(best["value"]))
 
 
 def daily_message(state, board, config, prices, now_ms, previous):

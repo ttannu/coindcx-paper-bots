@@ -56,14 +56,16 @@ The costs follow what a CoinDCX INR account in India pays. They are set in [`con
 - GitHub is asked to run the [`simulate`](.github/workflows/simulate.yml) workflow every 30 minutes. Each run downloads the latest closed 15-minute and 1-hour candles from CoinDCX's public API and replays every candle since the last run, in order. GitHub often starts scheduled runs late or skips some, sometimes for hours; that only delays the dashboard, because the next run replays everything it missed.
 - Each run saves its progress to [`state/`](state): `state.json` (balances, positions, and what the self-learning bot has learned), `equity.csv` (each bot's value every hour), and `trades.csv` (every simulated trade, with the reason for it). It also refreshes the dashboard above and the chart in [`docs/equity.svg`](docs/equity.svg).
 - A daily report is posted as a comment on the "Paper-trading bots: daily reports" issue by the first run after 09:00 IST.
+- If the repository has `GMAIL_ADDRESS` and `GMAIL_APP_PASSWORD` secrets, the reports are also emailed to that address from itself through Gmail, starting with a welcome email showing the current standings. Without them, email is skipped.
 - After 15 days the workflow posts the final results, closes the issue, and switches itself off.
 
 ## What keeps it running unattended
 
 - If CoinDCX is down, the run is skipped without touching the saved state, and the next run catches up. Malformed or impossible candles (missing fields, zero or negative prices) are dropped.
 - Each bot runs in isolation. If one hits a bug, it is frozen and shown as "stopped by an error" while the others carry on.
-- Progress is saved before the dashboard is drawn, so a drawing problem can't lose data. Saving to the repo retries up to 5 times.
-- The start message, daily reports, final report, closing the issue, and switching off each retry on later runs until they succeed, and none of them is ever posted twice.
+- Progress is saved before the dashboard is drawn, so a drawing problem can't lose data, and a bug in reporting or email is logged without stopping the run from saving. Saving to the repo retries up to 5 times.
+- The start message, daily reports, emails, final report, closing the issue, and switching off each retry on later runs until they succeed, and none of them is ever posted twice.
+- Only the newest unsent email of each kind is kept, so a late or broken email setup can't flood the inbox. If Gmail rejects the password, the next attempt waits 6 hours. The workflow switches off once the final report and email are out, or a day after the end at the latest.
 - Before launch the code was stress-tested on synthetic 15-day markets: calm, bull, bear, violent chop, a 48% crash, a pump and dump, flash wicks of -45% and +60%, a coin falling 95%, and missing, duplicated, and garbage candles, all with irregular run schedules. The tests are in [`tests/`](tests).
 
 ## Controls
