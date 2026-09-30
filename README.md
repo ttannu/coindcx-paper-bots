@@ -5,25 +5,78 @@
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 30 Sep 2026, 23:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
+Last updated 30 Sep 2026, 23:45 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
-Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -1.7% (₹85,22,786 to ₹83,81,384).
+Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -1.4% (₹85,22,786 to ₹84,04,393).
 
-| # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Win rate | Worst drop | Now |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Goal chaser (10x futures) | ₹5,012 | +0.2% | 5.0% | 0 | – | 5.0% | long 10x |
-| 2 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 3 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 4 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 5 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash, nothing has an edge |
-| 6 | Trend follower | ₹4,899 | -2.0% | 4.9% | 3 | 0.0% | 2.0% | cash |
-| 7 | Buy & hold BTC | ₹4,865 | -2.7% | 4.9% | 0 | – | 3.0% | holding BTC |
+1,041 bots on 47 coins. 98 are up and 405 are down; 0 are wiped out. The median bot is at ₹5,000. 875 of 987 bots are ahead of simply holding their coin.
 
-![Value of each bot over time](docs/equity.svg)
+**Top 15 bots**
 
-Costs so far across all bots: ₹116 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
+| # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Worst drop | Now |
+|---|---|---|---|---|---|---|---|
+| 1 | PHA: 10x futures trend | ₹6,605 | +32.1% | 6.6% | 0 | 6.6% | long 10x |
+| 2 | NEAR: 10x futures trend | ₹5,828 | +16.6% | 5.8% | 0 | 20.4% | long 10x |
+| 3 | PUMP: 10x futures trend | ₹5,691 | +13.8% | 5.7% | 0 | 14.4% | long 10x |
+| 4 | FIL: 10x futures trend | ₹5,638 | +12.8% | 5.6% | 1 | 10.3% | short 10x |
+| 5 | SUI: 10x futures trend | ₹5,574 | +11.5% | 5.6% | 0 | 12.3% | long 10x |
+| 6 | KAS: 10x futures trend | ₹5,542 | +10.8% | 5.5% | 0 | 21.0% | short 10x |
+| 7 | PHA: 3x futures trend | ₹5,484 | +9.7% | 5.5% | 0 | 2.2% | long 3x |
+| 8 | DOT: 10x futures trend | ₹5,469 | +9.4% | 5.5% | 0 | 9.3% | long 10x |
+| 9 | POL: 10x futures trend | ₹5,376 | +7.5% | 5.4% | 0 | 6.9% | short 10x |
+| 10 | NEAR: 3x futures trend | ₹5,249 | +5.0% | 5.2% | 0 | 6.2% | long 3x |
+| 11 | SOL: 10x futures trend | ₹5,213 | +4.3% | 5.2% | 0 | 6.9% | long 10x |
+| 12 | XLM: 10x futures trend | ₹5,212 | +4.2% | 5.2% | 0 | 10.8% | long 10x |
+| 13 | PUMP: 3x futures trend | ₹5,208 | +4.2% | 5.2% | 0 | 4.7% | long 3x |
+| 14 | FIL: 3x futures trend | ₹5,195 | +3.9% | 5.2% | 1 | 3.1% | short 3x |
+| 15 | TAO: 10x futures trend | ₹5,186 | +3.7% | 5.2% | 0 | 15.5% | long 10x |
 
-**What the self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
+**The original bots**
+
+| Bot | Value if sold now | Return | Rank | Closed trades | Now |
+|---|---|---|---|---|---|
+| Goal chaser (10x futures) | ₹5,106 | +2.1% | 27 of 1,041 | 0 | long 10x |
+| Dip buyer (RSI) | ₹5,000 | +0.0% | 99 of 1,041 | 0 | cash |
+| Breakout hunter | ₹5,000 | +0.0% | 100 of 1,041 | 0 | cash |
+| Grid trader | ₹5,000 | +0.0% | 101 of 1,041 | 0 | cash |
+| Self-learning ensemble | ₹5,000 | +0.0% | 102 of 1,041 | 0 | cash, nothing has an edge |
+| Trend follower | ₹4,884 | -2.3% | 815 of 1,041 | 3 | cash |
+| Buy & hold BTC | ₹4,864 | -2.7% | 845 of 1,041 | 0 | holding BTC |
+
+**Strategy report card.** Each strategy runs separately on every coin. "Beat holding" counts the coins where it is ahead of buying that coin and holding it.
+
+| Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Skill shown? |
+|---|---|---|---|---|---|---|---|
+| Coin flip, 3x futures | +0.0% | SHIB +2.2% | PHA -15.6% | 5/47 | 42/47 | 0 | luck control |
+| Self-learning | +0.0% | TRUMP +1.0% | HYPE -5.0% | 15/47 | 46/47 | 0 | not yet |
+| Coin flip #3 | +0.0% | PHA +0.3% | KAS -3.9% | 1/47 | 43/47 | 0 | luck control |
+| Coin flip #2 | +0.0% | NEAR +0.2% | PENGU -4.1% | 2/47 | 46/47 | 0 | luck control |
+| Trend 12/48h | +0.0% | SAGA +0.0% | TRUMP -4.9% | 0/47 | 44/47 | 0 | not yet |
+| Trend 24/96h | +0.0% | SAGA +0.0% | TRUMP -4.9% | 0/47 | 44/47 | 0 | not yet |
+| RSI dip <25 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 46/47 | 0 | not yet |
+| RSI dip <30 ±3% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 46/47 | 0 | not yet |
+| RSI dip <30 ±6% | +0.0% | SAGA +0.0% | BTC +0.0% | 0/47 | 46/47 | 0 | not yet |
+| Breakout 20/10h | +0.0% | SAGA +0.0% | NEAR -3.2% | 0/47 | 44/47 | 0 | not yet |
+| Breakout 48/24h | +0.0% | SAGA +0.0% | NEAR -3.2% | 0/47 | 45/47 | 0 | not yet |
+| Pump rider | +0.0% | SAGA +0.0% | ENA -4.6% | 0/47 | 44/47 | 0 | not yet |
+| Coin flip #1 | +0.0% | QNT +0.0% | SAGA -5.5% | 0/47 | 42/47 | 0 | luck control |
+| Long/short 12/48h | -0.0% | PHA +3.2% | HYPE -3.7% | 23/47 | 46/47 | 0 | not yet |
+| Grid 3% | -0.2% | SUI +0.1% | PENGU -1.7% | 8/47 | 46/47 | 0 | not yet |
+| 3x futures trend | -0.8% | PHA +9.7% | HYPE -14.9% | 21/47 | 34/47 | 0 | not yet |
+| Grid 1.5% | -0.9% | ZEC +0.0% | PENGU -4.2% | 0/47 | 44/47 | 0 | not yet |
+| Trend 6/24h | -1.4% | SIREN +0.0% | UNI -5.9% | 0/47 | 42/47 | 0 | not yet |
+| Fast trend 5/20h | -2.6% | SIREN +0.0% | TRX -12.1% | 0/47 | 35/47 | 0 | not yet |
+| 10x futures trend | -2.7% | PHA +32.1% | HYPE -47.2% | 21/47 | 28/47 | 0 | not yet |
+| Fast trend 2/8h | -3.6% | ONE +0.0% | BNB -13.3% | 0/47 | 22/47 | 0 | not yet |
+| Buy & hold | -4.0% | PHA +0.7% | PENGU -9.4% | 1/47 | – | 0 | benchmark |
+
+**How much of this is luck?** The 188 coin-flip bots trade at random. The luckiest is SHIB: coin flip, 3x futures at +2.2%, and their median is +0.0%. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled only if its median return beats the coin flips and it beats holding on most coins.
+
+![Value of the top bots over time](docs/equity.svg)
+
+Costs so far across all bots: ₹15,753 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹451 of estimated tax.
+
+**What the original self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
 
 | Variant | Last 3 days | Signal now |
 |---|---|---|
