@@ -1456,3 +1456,17 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-01 04:30,zec.flip_3x,OPEN SHORT,ZEC/INR,0.10293441,143670.13,14788.60,8.73,0.00,,0.00,"coin flip: short, 3x, liquidation at 190842"
 2026-10-01 04:30,hbar.learner,CLOSE LONG,HBAR/INR,318.63106351,10.62,3382.93,2.00,0.00,-107.11,0.00,switching to HBAR trend 6/24h
 2026-10-01 04:30,hbar.learner,OPEN SHORT,HBAR/INR,298.99300106,10.62,3174.44,1.87,0.00,,0.00,"following HBAR trend 6/24h, 0.68x, liquidation at 26"
+2026-10-01 04:45,bch.trend_2_8h,BUY,BCH/INR,0.14990000,31011.68,4648.65,27.43,0.00,,0.00,uptrend entry
+2026-10-01 04:45,dot.trend_5_20h,BUY,DOT/INR,38.29240000,123.69,4736.27,27.94,0.00,,0.00,uptrend entry
+2026-10-01 04:45,kas.trend_2_8h,BUY,KAS/INR,1087.41230000,4.42,4803.44,28.34,0.00,,0.00,uptrend entry
+2026-10-01 04:45,ondo.trend_2_8h,BUY,ONDO/INR,94.50000000,50.69,4789.99,28.26,0.00,,0.00,uptrend entry
+2026-10-01 04:45,pengu.grid_1_5pct,SELL,PENGU/INR,845.00000000,0.97,822.67,4.85,0.00,-28.87,0.00,"grid sell, level 6"
+2026-10-01 04:45,pol.grid_1_5pct,SELL,POL/INR,72.80000000,11.43,831.76,4.91,0.00,-24.74,0.00,"grid sell, level 4"
+2026-10-01 04:45,pump.grid_1_5pct,SELL,PUMP/INR,1408.00000000,0.59,835.03,4.93,0.00,-0.33,4.28,"grid sell, level 1"
+2026-10-01 04:45,trump.trend_2_8h,BUY,TRUMP/INR,22.97400000,208.87,4798.56,28.31,0.00,,0.00,uptrend entry
+2026-10-01 05:00,ada.trend_2_8h,BUY,ADA/INR,188.00000000,24.95,4690.49,27.67,0.00,,0.00,uptrend entry
+2026-10-01 05:00,ada.grid_1_5pct,SELL,ADA/INR,33.80000000,24.75,836.57,4.94,0.00,-12.47,0.00,"grid sell, level 3"
+2026-10-01 05:00,bnb.trend_2_8h,BUY,BNB/INR,0.04900000,77256.66,3785.58,22.33,0.00,,0.00,uptrend entry
+2026-10-01 05:00,dot.trend_5_20h,SELL,DOT/INR,38.29240000,121.70,4660.11,27.49,0.00,-131.60,0.00,closed below the slow average
+2026-10-01 05:00,eth.trend_2_8h,SELL,ETH/INR,0.01740000,267736.44,4658.61,27.49,0.00,-116.67,0.00,closed below the slow average
+2026-10-01 05:00,qnt.grid_1_5pct,BUY,QNT/INR,0.02900000,28340.88,821.89,4.85,0.00,,0.00,"grid buy, level 6"
