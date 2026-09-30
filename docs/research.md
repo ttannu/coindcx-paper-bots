@@ -117,6 +117,34 @@ Some ideas are cheaper to test as a signal than as a bot: does a coin's past beh
 - **The INR premium.** Buying a coin when its INR price was 3% or more below the global price looked excellent: +2.6% to +3.5% over the next 12 hours. But the gain fell to +0.7% to +1.1% when entering one candle later, and to about zero when paying that candle's high. The signal candles had traded a median of only ₹849 to ₹2,024 in their hour, and requiring ₹1 lakh of volume removed the signal completely. The "discount" was a stale price.
 - **Futures funding.** Coins whose futures traders were most crowded long (the highest funding fifth on Hyperliquid) beat the average coin by only 0.1% to 0.25% a day. A strategy holding the top 5 lost 14.1% a window on INR prices after costs, against -1.9% for holding every coin, and made money in 1 of the 18 15-day windows since early January. On global prices with no costs, holding the top 8 made +5.1% a window against +2.2% for holding everything: a real but small effect that costs erase.
 
+## Trading the momentum signal
+
+Momentum over 3 to 7 days was the one effect that held everywhere, so it was traded directly. The 16 variants were fixed before running: ranking on INR or global prices, over the last 3 or 7 days, rebalancing every 3 or 7 days, and holding the top 3 or 5. Only coins that had traded a median of at least ₹10 lakh a day over the previous 30 days could be held, so the list only used what was known at the time. They ran in 17 windows from 18 Jan to 30 Sep.
+
+| | Mean per window | Windows in profit |
+|---|---:|---:|
+| The 16 variants, before costs | -1.6% to +1.7% | 5 to 8 of 17 |
+| Holding every eligible coin, before costs | +0.6% | 8 of 17 |
+| The 16 variants, after costs | -8.4% to -5.5% | 2 to 4 of 17 |
+| Holding every eligible coin, after costs | -2.8% | 4 of 17 |
+
+Before costs the rotations did no better than holding everything, and after costs every one of them did worse. Half a point every 3 days on average is small next to the swings of single coins, and each swap cost about 2%.
+
+## Timing the market
+
+The last idea was to stay out of falling markets: hold the most liquid coins (BTC alone, or the 5 with the most INR volume) only while BTC's price is above its 10-, 20-, or 30-day average, checked every day or every 3 days, and hold cash otherwise. With real costs, in the same 17 windows:
+
+| Strategy | Mean | Median | Windows in profit | Worst window |
+|---|---:|---:|---:|---:|
+| BTC, always held | -2.4% | -2.4% | 5 of 17 | -17.9% |
+| BTC, only above its 30-day average, checked every 3 days | -0.4% | -0.6% | 4 of 17 | -7.7% |
+| The 5 most liquid coins, always held | -2.2% | -2.9% | 4 of 17 | -19.6% |
+| The 5 most liquid, while BTC is above its 30-day average, checked every 3 days | +0.1% | -0.1% | 4 of 17 | -10.0% |
+| The 5 most liquid, while BTC is above its 20-day average, checked every 3 days | -0.5% | -0.1% | 3 of 17 | -10.4% |
+| The 5 most liquid, while BTC is above its 10-day average, checked daily | -3.7% | -5.3% | 4 of 17 | -15.2% |
+
+Every filter checked every 3 days did better than holding, and the slow ones halved the worst window, but none made real money: the best ended flat, with a profit in 4 of 17 windows. The gain came from sitting in cash through the fall from February to June, after one or two switches a window, so it rests on a handful of decisions in one falling market. A filter like this limits losses; it doesn't create profits.
+
 ## Two mistakes that were caught
 
 Both made a signal look far better than it was, and both are easy to make:
@@ -141,4 +169,4 @@ For a rule-based bot to make money here, at least one of these would have to be 
 - **Liquid coins only.** On the thin coins the backtests promise profits the market would not have given.
 - **An edge from outside the price chart.** Every rule here reads the same 15-minute and hourly prices that thousands of other bots read. That information is already in the price.
 
-Until then, the approach with the best expected result is the one that pays costs once: holding a few liquid coins for a long time. It makes or loses whatever the market does, which is exposure, not an edge.
+Until then, the approaches that did least badly were the ones that paid costs rarely: holding a few liquid coins, at most stepping aside while BTC is below its 30-day average. They make or lose roughly what the market does, which is exposure, not an edge.

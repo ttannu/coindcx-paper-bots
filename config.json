@@ -87,7 +87,9 @@
       "Fees and spread took up to 32 points a window from the busiest strategies, and the tax on each winning trade took 14-26 points from leveraged futures.",
       "Picking the previous window's best strategies or bots did not help in the next window: past winners did not repeat.",
       "Dip-buying and grids had an edge before costs, mostly on thinly traded coins whose prices go stale; on the 10 most liquid coins it was too small to pay for the trades.",
-      "Holding the recent top gainers, and following futures funding rates, also lost after costs."
+      "Holding the recent top gainers, and following futures funding rates, also lost after costs.",
+      "Moves over a few hours on CoinDCX INR prices tend to reverse, partly because the last price bounces between bid and ask. Among liquid coins, the biggest gainers of the last 3-7 days beat the average over the next 3 days by about half a point, too little to pay for rotating into them.",
+      "Holding the 5 most liquid coins only while BTC was above its 30-day average ended flat instead of losing 2.2% a window, and halved the worst window (-10% instead of -20%): it limited losses but made money in only 4 of 17 windows."
     ]
   }
 }
