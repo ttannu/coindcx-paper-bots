@@ -1183,3 +1183,21 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-01 01:30,uni.flip_1,BUY,UNI/INR,5.49000000,904.56,4966.02,29.30,0.00,,0.00,coin flip
 2026-10-01 01:30,uni.flip_2,BUY,UNI/INR,5.49000000,904.56,4966.02,29.30,0.00,,0.00,coin flip
 2026-10-01 01:30,xlm.trend_6_24h,BUY,XLM/INR,212.00000000,22.89,4852.89,28.63,0.00,,0.00,uptrend entry
+2026-10-01 01:45,apt.grid_1_5pct,BUY,APT/INR,10.75000000,77.03,828.10,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-01 01:45,dot.trend_2_8h,SELL,DOT/INR,38.04400000,122.94,4677.20,27.60,0.00,-107.92,0.00,closed below the slow average
+2026-10-01 01:45,gala.trend_5_20h,SELL,GALA/INR,20722.13000000,0.23,4695.83,27.71,0.00,-158.05,0.00,closed below the slow average
+2026-10-01 01:45,mubarak.grid_1_5pct,BUY,MUBARAK/INR,138.20000000,5.99,828.38,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-01 01:45,mubarak.grid_3pct,BUY,MUBARAK/INR,138.20000000,5.99,828.38,4.89,0.00,,0.00,"grid buy, level 1"
+2026-10-01 01:45,pump.grid_1_5pct,BUY,PUMP/INR,1418.00000000,0.58,824.16,4.86,0.00,,0.00,"grid buy, level 2"
+2026-10-01 02:00,bnb.trend_2_8h,SELL,BNB/INR,0.05300000,76292.46,4043.50,23.86,0.00,-104.63,0.00,closed below the slow average
+2026-10-01 02:00,bnb.trend_5_20h,SELL,BNB/INR,0.05800000,76292.46,4424.96,26.11,0.00,-110.29,0.00,closed below the slow average
+2026-10-01 02:00,dot.trend_2_8h,BUY,DOT/INR,37.17170000,124.35,4622.33,27.27,0.00,,0.00,uptrend entry
+2026-10-01 02:00,dot.trend_5_20h,BUY,DOT/INR,39.28760000,124.35,4885.44,28.82,0.00,,0.00,uptrend entry
+2026-10-01 02:00,ena.trend_2_8h,BUY,ENA/INR,170.70000000,26.87,4586.51,27.06,0.00,,0.00,uptrend entry
+2026-10-01 02:00,hbar.grid_1_5pct,SELL,HBAR/INR,76.00000000,10.91,829.15,4.89,0.00,-0.17,4.32,"grid sell, level 1"
+2026-10-01 02:00,hbar.grid_3pct,SELL,HBAR/INR,77.00000000,10.90,839.50,4.95,0.00,1.72,5.23,"grid sell, level 1"
+2026-10-01 02:00,inj.grid_1_5pct,SELL,INJ/INR,1.11000000,756.65,839.88,4.96,0.00,-3.15,3.04,"grid sell, level 3"
+2026-10-01 02:00,mubarak.grid_1_5pct,SELL,MUBARAK/INR,138.20000000,6.02,831.92,4.91,0.00,-11.70,0.00,"grid sell, level 3"
+2026-10-01 02:00,ondo.grid_1_5pct,SELL,ONDO/INR,16.80000000,49.62,833.66,4.92,0.00,-18.49,0.00,"grid sell, level 4"
+2026-10-01 02:00,qnt.trend_5_20h,SELL,QNT/INR,0.16200000,29065.09,4708.54,27.78,0.00,-299.09,0.00,closed below the slow average
+2026-10-01 02:00,uni.trend_5_20h,BUY,UNI/INR,5.32000000,904.56,4812.24,28.39,0.00,,0.00,uptrend entry
