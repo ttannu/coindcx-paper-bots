@@ -1395,3 +1395,12 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-01 03:45,sei.trend_2_8h,BUY,SEI/INR,604.20000000,7.49,4522.59,26.68,0.00,,0.00,uptrend entry
 2026-10-01 03:45,siren.grid_1_5pct,SELL,SIREN/INR,187.70000000,4.63,868.36,5.12,0.00,18.88,13.09,"grid sell, level 2"
 2026-10-01 03:45,siren.grid_1_5pct,SELL,SIREN/INR,187.70000000,4.63,868.36,5.12,0.00,18.88,13.09,"grid sell, level 3"
+2026-10-01 04:00,eth.trend_2_8h,SELL,ETH/INR,0.01780000,267436.27,4760.37,28.09,0.00,-109.07,0.00,closed below the slow average
+2026-10-01 04:00,link.trend_2_8h,BUY,LINK/INR,3.34000000,1450.78,4845.61,28.59,0.00,,0.00,uptrend entry
+2026-10-01 04:00,mubarak.grid_1_5pct,SELL,MUBARAK/INR,136.20000000,6.14,836.05,4.93,0.00,0.08,4.47,"grid sell, level 2"
+2026-10-01 04:00,mubarak.grid_3pct,SELL,MUBARAK/INR,138.20000000,6.14,848.33,5.01,0.00,3.83,6.22,"grid sell, level 1"
+2026-10-01 04:00,near.trend_2_8h,BUY,NEAR/INR,8.60000000,538.45,4630.71,27.32,0.00,,0.00,uptrend entry
+2026-10-01 04:00,near.trend_5_20h,BUY,NEAR/INR,9.00000000,538.45,4846.09,28.59,0.00,,0.00,uptrend entry
+2026-10-01 04:00,qnt.grid_1_5pct,SELL,QNT/INR,0.02800000,28994.54,811.85,4.79,0.00,-12.55,0.00,"grid sell, level 5"
+2026-10-01 04:00,qnt.grid_1_5pct,BUY,QNT/INR,0.02800000,28622.77,801.44,4.73,0.00,,0.00,"grid buy, level 5"
+2026-10-01 04:00,xlm.trend_5_20h,BUY,XLM/INR,204.00000000,22.80,4652.18,27.45,0.00,,0.00,uptrend entry
