@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="Arial, Helvetica, sans-serif" font-size="12">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="880" y="14" text-anchor="end" fill="#9ca3af" font-size="11">Log scale: equal percentage moves take equal space.</text>
-<line x1="76" x2="880" y1="219.3" y2="219.3" stroke="#e5e7eb"/>
-<text x="68" y="223.3" text-anchor="end" fill="#6b7280">₹5,000</text>
-<line x1="76" x2="880" y1="134.5" y2="134.5" stroke="#e5e7eb"/>
-<text x="68" y="138.5" text-anchor="end" fill="#6b7280">₹6,000</text>
-<line x1="76" x2="880" y1="62.8" y2="62.8" stroke="#e5e7eb"/>
-<text x="68" y="66.8" text-anchor="end" fill="#6b7280">₹7,000</text>
+<line x1="76" x2="880" y1="219.8" y2="219.8" stroke="#e5e7eb"/>
+<text x="68" y="223.8" text-anchor="end" fill="#6b7280">₹5,000</text>
+<line x1="76" x2="880" y1="135.4" y2="135.4" stroke="#e5e7eb"/>
+<text x="68" y="139.4" text-anchor="end" fill="#6b7280">₹6,000</text>
+<line x1="76" x2="880" y1="64.0" y2="64.0" stroke="#e5e7eb"/>
+<text x="68" y="68.0" text-anchor="end" fill="#6b7280">₹7,000</text>
 <line x1="76.0" x2="76.0" y1="24" y2="316" stroke="#f3f4f6"/>
 <text x="76.0" y="334" text-anchor="middle" fill="#6b7280">Day 0</text>
 <line x1="236.8" x2="236.8" y1="24" y2="316" stroke="#f3f4f6"/>
@@ -19,33 +19,33 @@
 <text x="719.2" y="334" text-anchor="middle" fill="#6b7280">Day 12</text>
 <line x1="880.0" x2="880.0" y1="24" y2="316" stroke="#f3f4f6"/>
 <text x="880.0" y="334" text-anchor="middle" fill="#6b7280">Day 15</text>
-<line x1="76" x2="880" y1="219.3" y2="219.3" stroke="#9ca3af" stroke-dasharray="5 4"/>
-<text x="876" y="213.3" text-anchor="end" fill="#9ca3af">start ₹5,000</text>
-<polyline points="77.7,219.3 79.9,229.5 82.1,148.3 84.4,65.6 86.6,62.9 87.2,89.8 87.7,112.5 88.8,46.7 90.0,56.4 91.1,88.5 92.2,88.5" fill="none" stroke="#2563eb" stroke-width="2"/>
+<line x1="76" x2="880" y1="219.8" y2="219.8" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="876" y="213.8" text-anchor="end" fill="#9ca3af">start ₹5,000</text>
+<polyline points="77.7,219.8 79.9,229.9 82.1,149.2 84.4,66.9 86.6,64.2 87.2,90.9 87.7,113.5 88.8,48.1 90.0,57.7 91.1,89.7 92.2,89.7 92.8,46.6" fill="none" stroke="#2563eb" stroke-width="2"/>
 <rect x="76" y="360" width="14" height="4" fill="#2563eb"/>
-<text x="96" y="364" fill="#111827">PHA: 10x futures trend <tspan fill="#6b7280">₹6,623</tspan></text>
-<polyline points="77.7,219.3 79.9,229.5 82.1,209.0 84.4,185.7 86.6,180.8 87.2,185.6 87.7,153.2 88.8,174.3 90.0,171.5 91.1,144.6 92.2,144.7" fill="none" stroke="#16a34a" stroke-width="2"/>
+<text x="96" y="364" fill="#111827">PHA: 10x futures trend <tspan fill="#6b7280">₹7,269</tspan></text>
+<polyline points="77.7,219.8 79.9,229.9 82.1,274.3 84.4,293.4 86.6,192.5 87.2,224.6 87.7,229.0 88.8,193.6 90.0,188.4 91.1,190.4 92.2,154.9 92.8,145.0" fill="none" stroke="#16a34a" stroke-width="2"/>
 <rect x="351" y="360" width="14" height="4" fill="#16a34a"/>
-<text x="371" y="364" fill="#111827">POL: 10x futures trend <tspan fill="#6b7280">₹5,870</tspan></text>
-<polyline points="77.7,219.3 79.9,229.5 82.1,274.1 84.4,293.3 86.6,191.9 87.2,224.1 87.7,228.5 88.8,193.0 90.0,187.8 91.1,189.8 92.2,154.1" fill="none" stroke="#dc2626" stroke-width="2"/>
+<text x="371" y="364" fill="#111827">APT: 10x futures trend <tspan fill="#6b7280">₹5,877</tspan></text>
+<polyline points="77.7,219.8 79.9,229.9 82.1,209.6 84.4,186.3 86.6,181.4 87.2,186.2 87.7,154.1 88.8,175.0 90.0,172.2 91.1,145.5 92.2,145.5 92.8,149.2" fill="none" stroke="#dc2626" stroke-width="2"/>
 <rect x="626" y="360" width="14" height="4" fill="#dc2626"/>
-<text x="646" y="364" fill="#111827">APT: 10x futures trend <tspan fill="#6b7280">₹5,753</tspan></text>
-<polyline points="77.7,219.3 79.9,229.5 82.1,239.7 84.4,141.1 86.6,135.1 87.2,159.1 87.7,112.8 88.8,138.6 90.0,145.4 91.1,177.4 92.2,166.4" fill="none" stroke="#9333ea" stroke-width="2"/>
+<text x="646" y="364" fill="#111827">POL: 10x futures trend <tspan fill="#6b7280">₹5,824</tspan></text>
+<polyline points="77.7,219.8 79.9,222.9 82.1,197.4 84.4,168.3 86.6,167.2 87.2,177.0 87.7,185.1 88.8,161.0 90.0,164.8 91.1,176.6 92.2,176.6 92.8,160.5" fill="none" stroke="#9333ea" stroke-width="2"/>
 <rect x="76" y="382" width="14" height="4" fill="#9333ea"/>
-<text x="96" y="386" fill="#111827">PUMP: 10x futures trend <tspan fill="#6b7280">₹5,602</tspan></text>
-<polyline points="77.7,219.3 79.9,229.5 82.1,210.3 84.4,109.1 86.6,151.2 87.2,148.0 87.7,119.5 88.8,144.8 90.0,134.4 91.1,199.1 92.2,170.0" fill="none" stroke="#ea580c" stroke-width="2"/>
+<text x="96" y="386" fill="#111827">PHA: 3x futures trend <tspan fill="#6b7280">₹5,683</tspan></text>
+<polyline points="77.7,219.8 79.9,229.9 82.1,210.8 84.4,110.1 86.6,152.0 87.2,148.9 87.7,120.5 88.8,145.7 90.0,135.3 91.1,199.7 92.2,170.7 92.8,169.2" fill="none" stroke="#ea580c" stroke-width="2"/>
 <rect x="351" y="382" width="14" height="4" fill="#ea580c"/>
-<text x="371" y="386" fill="#111827">NEAR: 10x futures trend <tspan fill="#6b7280">₹5,559</tspan></text>
-<polyline points="77.7,230.5 79.9,234.8 82.1,233.0 84.4,230.0 86.6,233.4 87.2,232.2 87.7,232.2 88.8,231.5 90.0,232.5 91.1,233.2 92.2,235.0" fill="none" stroke="#0891b2" stroke-width="2"/>
+<text x="371" y="386" fill="#111827">NEAR: 10x futures trend <tspan fill="#6b7280">₹5,577</tspan></text>
+<polyline points="77.7,231.0 79.9,235.2 82.1,233.4 84.4,230.4 86.6,233.8 87.2,232.6 87.7,232.7 88.8,231.9 90.0,233.0 91.1,233.6 92.2,235.4 92.8,235.1" fill="none" stroke="#0891b2" stroke-width="2"/>
 <rect x="626" y="382" width="14" height="4" fill="#0891b2"/>
-<text x="646" y="386" fill="#111827">Buy &amp; hold BTC <tspan fill="#6b7280">₹4,834</tspan></text>
-<circle cx="92.2" cy="219.3" r="3" fill="#db2777"/>
+<text x="646" y="386" fill="#111827">Buy &amp; hold BTC <tspan fill="#6b7280">₹4,838</tspan></text>
+<polyline points="92.2,219.8 92.8,221.3" fill="none" stroke="#db2777" stroke-width="2"/>
 <rect x="76" y="404" width="14" height="4" fill="#db2777"/>
-<text x="96" y="408" fill="#111827">AI desk: spot portfolio <tspan fill="#6b7280">₹5,000</tspan></text>
-<circle cx="92.2" cy="219.3" r="3" fill="#65a30d"/>
+<text x="96" y="408" fill="#111827">AI desk: futures, up to 3x <tspan fill="#6b7280">₹4,984</tspan></text>
+<polyline points="92.2,219.8 92.8,226.6" fill="none" stroke="#65a30d" stroke-width="2"/>
 <rect x="351" y="404" width="14" height="4" fill="#65a30d"/>
-<text x="371" y="408" fill="#111827">AI desk: futures, up to 3x <tspan fill="#6b7280">₹5,000</tspan></text>
-<polyline points="77.7,219.3 79.9,219.3 82.1,219.3 84.4,219.3 86.6,219.3 87.2,219.3 87.7,219.3 88.8,219.3 90.0,219.3 91.1,219.3 92.2,219.3" fill="none" stroke="#4b5563" stroke-width="2"/>
+<text x="371" y="408" fill="#111827">AI desk: spot portfolio <tspan fill="#6b7280">₹4,927</tspan></text>
+<polyline points="77.7,219.8 79.9,219.8 82.1,219.8 84.4,219.8 86.6,219.8 87.2,219.8 87.7,219.8 88.8,219.8 90.0,219.8 91.1,219.8 92.2,219.8 92.8,219.8" fill="none" stroke="#4b5563" stroke-width="2"/>
 <rect x="626" y="404" width="14" height="4" fill="#4b5563"/>
 <text x="646" y="408" fill="#111827">Median of all 1,043 bots <tspan fill="#6b7280">₹5,000</tspan></text>
 </svg>

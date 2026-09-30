@@ -1201,3 +1201,20 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-01 02:00,ondo.grid_1_5pct,SELL,ONDO/INR,16.80000000,49.62,833.66,4.92,0.00,-18.49,0.00,"grid sell, level 4"
 2026-10-01 02:00,qnt.trend_5_20h,SELL,QNT/INR,0.16200000,29065.09,4708.54,27.78,0.00,-299.09,0.00,closed below the slow average
 2026-10-01 02:00,uni.trend_5_20h,BUY,UNI/INR,5.32000000,904.56,4812.24,28.39,0.00,,0.00,uptrend entry
+2026-10-01 02:15,apt.grid_1_5pct,SELL,APT/INR,10.75000000,78.13,839.85,4.96,0.00,-19.14,0.00,"grid sell, level 5"
+2026-10-01 02:15,bnb.trend_2_8h,BUY,BNB/INR,0.05100000,77360.08,3945.36,23.28,0.00,,0.00,uptrend entry
+2026-10-01 02:15,bnb.trend_5_20h,BUY,BNB/INR,0.05600000,77360.08,4332.16,25.56,0.00,,0.00,uptrend entry
+2026-10-01 02:15,gala.trend_5_20h,BUY,GALA/INR,20036.57000000,0.23,4640.75,27.38,0.00,,0.00,uptrend entry
+2026-10-01 02:15,gala.grid_1_5pct,SELL,GALA/INR,3606.58000000,0.23,833.64,4.92,0.00,-6.23,1.62,"grid sell, level 1"
+2026-10-01 02:15,kas.trend_2_8h,BUY,KAS/INR,1127.58490000,4.41,4970.67,29.33,0.00,,0.00,uptrend entry
+2026-10-01 02:15,kas.grid_1_5pct,SELL,KAS/INR,190.77740000,4.37,833.83,4.92,0.00,-8.94,0.40,"grid sell, level 2"
+2026-10-01 02:15,pepe.grid_1_5pct,SELL,PEPE/INR,1934471.00000000,0.00,835.18,4.93,0.00,-14.19,0.00,"grid sell, level 3"
+2026-10-01 02:15,qnt.grid_1_5pct,BUY,QNT/INR,0.02800000,29210.62,817.90,4.83,0.00,,0.00,"grid buy, level 4"
+2026-10-01 02:15,qnt.grid_1_5pct,BUY,QNT/INR,0.02800000,28772.47,805.63,4.75,0.00,,0.00,"grid buy, level 5"
+2026-10-01 02:15,qnt.grid_3pct,BUY,QNT/INR,0.02800000,28668.56,802.72,4.74,0.00,,0.00,"grid buy, level 2"
+2026-10-01 02:15,uni.trend_2_8h,BUY,UNI/INR,5.32000000,904.56,4812.24,28.39,0.00,,0.00,uptrend entry
+2026-10-01 02:15,xlm.trend_2_8h,SELL,XLM/INR,204.00000000,22.60,4611.30,27.21,0.00,-113.21,0.00,closed below the slow average
+2026-10-01 02:15,ai_desk_spot,BUY,BTC/INR,0.00017000,8379737.70,1424.56,8.40,0.00,,0.00,desk: buy to 30%
+2026-10-01 02:15,ai_desk_spot,BUY,PHA/INR,158.00000000,7.83,1237.84,7.30,0.00,,0.00,desk: buy to 25%
+2026-10-01 02:15,ai_desk_spot,BUY,QNT/INR,0.04200000,28943.82,1215.64,7.17,0.00,,0.00,desk: buy to 25%
+2026-10-01 02:15,ai_desk_futures,OPEN LONG,PHA/INR,960.57760128,7.80,7493.37,4.42,0.00,,0.00,"desk, 1.5x, liquidation at 3"
