@@ -5,19 +5,19 @@ Seven trading bots each get ₹5,000 of **simulated** money and trade for 15 day
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 30 Sep 2026, 22:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
+Last updated 30 Sep 2026, 23:12 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
 
-Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.9% (₹85,22,786 to ₹84,44,156).
+Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -1.4% (₹85,22,786 to ₹84,02,594).
 
 | # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Win rate | Worst drop | Now |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Goal chaser (10x futures) | ₹5,269 | +5.4% | 5.3% | 0 | – | 3.1% | long 10x |
+| 1 | Goal chaser (10x futures) | ₹5,099 | +2.0% | 5.1% | 0 | – | 3.3% | long 10x |
 | 2 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
 | 3 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
 | 4 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
 | 5 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash, nothing has an edge |
-| 6 | Trend follower | ₹4,932 | -1.4% | 4.9% | 0 | – | 1.4% | holding BTC, ETH, SOL |
-| 7 | Buy & hold BTC | ₹4,901 | -2.0% | 4.9% | 0 | – | 3.0% | holding BTC |
+| 6 | Trend follower | ₹4,920 | -1.6% | 4.9% | 0 | – | 1.6% | holding BTC, ETH, SOL |
+| 7 | Buy & hold BTC | ₹4,877 | -2.5% | 4.9% | 0 | – | 3.0% | holding BTC |
 
 ![Value of each bot over time](docs/equity.svg)
 
