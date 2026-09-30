@@ -5,23 +5,33 @@ Seven trading bots each get ₹5,000 of **simulated** money and trade for 15 day
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
 
-Last updated 30 Sep 2026, 18:55 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Updates every 30 minutes.
+Last updated 30 Sep 2026, 20:30 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. GitHub is asked to refresh this every 30 minutes but often runs late; each run catches up on everything it missed.
 
-Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: +0.0% (₹85,22,786 to ₹85,22,786).
+Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -2.0% (₹85,22,786 to ₹83,55,313).
 
 | # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Win rate | Worst drop | Now |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Buy & hold BTC | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 2 | Trend follower | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 3 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 4 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 5 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
-| 6 | Goal chaser (10x futures) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | flat |
-| 7 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | studying |
+| 1 | Trend follower | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 2 | Dip buyer (RSI) | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 3 | Breakout hunter | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 4 | Grid trader | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash |
+| 5 | Self-learning ensemble | ₹5,000 | +0.0% | 5.0% | 0 | – | 0.0% | cash, nothing has an edge |
+| 6 | Goal chaser (10x futures) | ₹4,892 | -2.2% | 4.9% | 0 | – | 2.2% | long 10x |
+| 7 | Buy & hold BTC | ₹4,850 | -3.0% | 4.9% | 0 | – | 3.0% | holding BTC |
 
 ![Value of each bot over time](docs/equity.svg)
 
-Costs so far across all bots: ₹0 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
+Costs so far across all bots: ₹58 in fees and GST, ₹0 of TDS held back (refundable when you file taxes), and ₹0 of estimated tax.
+
+**What the self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
+
+| Variant | Last 3 days | Signal now |
+|---|---|---|
+| BTC hold short | +1.2% | short |
+| BTC RSI reversion | +1.0% | flat |
+| ETH hold short | +0.6% | short |
+| BTC 72h breakout | +0.0% | flat |
+| ETH RSI reversion | +0.0% | flat |
 <!-- DASHBOARD:END -->
 
 ## The bots

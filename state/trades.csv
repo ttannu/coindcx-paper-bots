@@ -1,0 +1,3 @@
+time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
+2026-09-30 19:00,hodl_btc,BUY,BTC/INR,0.00058000,8505759.56,4933.34,29.11,0.00,,0.00,one-time buy
+2026-09-30 20:30,goal_chaser_10x,OPEN LONG,BTC/INR,0.00594614,8359490.36,49706.73,29.33,0.00,,0.00,"go long, 10x, liquidation at 7565339"
