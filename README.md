@@ -217,7 +217,7 @@ The costs follow what a CoinDCX INR account in India pays. They are set in [`con
 - **Tax:** an estimated 31.2% (30% plus 4% cess) of the gain on every profitable sale. Losses can't be set off against gains, and fees aren't deductible. Because of this, a bot that wins early and then loses everything can end with a negative value: it still owes tax on the early wins.
 - **Minimum order:** ₹100, and quantities are rounded down to each coin's lot size.
 
-"Value if sold now" is what a bot would keep if it sold everything at that moment and paid all of the above.
+"Value if sold now" is what a bot would keep if it sold everything at that moment and paid all of the above. The dashboard's "Where the money went" table splits each strategy's result into what the price moves made and what the spread, fees, tax, and funding took, counting the costs of selling whatever is still held. The AI desk sees the same split for its own books at every meeting.
 
 ## What the backtests found
 
@@ -262,6 +262,7 @@ A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every wi
 - Progress is saved before the dashboard is drawn, so a drawing problem can't lose data, and a bug in reporting or email is logged without stopping the run from saving. Saving to the repo retries up to 5 times.
 - The AI desk can't hold up a run. A meeting has a 5-minute budget, every news and data source is optional, and a failed meeting only means no new decision. Models that are out of daily quota are skipped until it resets. Decisions are saved with the time of the candle they were based on and replayed at the next one, so catching up after missed runs gives exactly the same trades.
 - The start message, daily reports, emails, final report, closing the issue, and switching off each retry on later runs until they succeed, and none of them is ever posted twice.
+- A code change that adds bots replays every bot from the start, so they all share one timeline. CoinDCX only returns about 10 days of 15-minute prices, so after that such a change stops the run with an error instead of replaying from a later start, and the saved state is left as it was.
 - Only the newest unsent email of each kind is kept, so a late or broken email setup can't flood the inbox. If Gmail rejects the password, the next attempt waits 6 hours. The workflow switches off once the final report and email are out, or a day after the end at the latest.
 - Before launch the code was stress-tested on synthetic 15-day markets: calm, bull, bear, violent chop, a 48% crash, a pump and dump, flash wicks of -45% and +60%, a coin falling 95%, and missing, duplicated, and garbage candles, all with irregular run schedules. It was also run at full size (1,041 bots and the AI desk on 47 coins, about a second per run plus about a minute for a desk meeting), with coins dropping out and coming back. The desk's tests use stand-in agents to cover its limits, stop losses in a crash, failed and skipped meetings, a missing or rejected key, and replaying its decisions. The tests are in [`tests/`](tests).
 
@@ -270,6 +271,7 @@ A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every wi
 - **Stop early:** Actions tab, then `simulate`, then "Disable workflow".
 - **Run another 15 days:** delete the `state` folder, then re-enable the `simulate` workflow.
 - **Turn off the AI desk:** remove the `desk` section from [`config.json`](config.json), or delete the `GEMINI_API_KEY` secret. Its books then keep whatever they hold, with their stops.
+- **Send a note:** add a Markdown file to [`notes/`](notes) whose first line is `# Title`. The next run posts it on the report issue and emails it, once.
 - **Run one step locally:** `python3 -m sim --no-notify`. Tests: `python3 -m unittest discover -s tests`.
 
 ## Limits
