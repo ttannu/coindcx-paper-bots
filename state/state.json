@@ -24,12 +24,12 @@
    "fees": 29.326970871856048,
    "funding": 0.0,
    "kind": "futures",
-   "last_value": 4891.693481224396,
+   "last_value": 5057.298102068227,
    "liquidations": 0,
    "losses": 0,
    "max_dd": 0.021661303755120764,
    "memo": {},
-   "peak": 5000.0,
+   "peak": 5057.298102068227,
    "position": {
     "entry": 8359490.35635,
     "fee": 29.326970871856048,
@@ -73,7 +73,7 @@
    "cash": 37.55274464381,
    "fees": 29.1067092221906,
    "kind": "spot",
-   "last_value": 4850.224741098469,
+   "last_value": 4871.418079819395,
    "losses": 0,
    "max_dd": 0.02995505178030622,
    "memo": {
@@ -2412,27 +2412,28 @@
   }
  },
  "cursor": {
-  "I-BTC_INR|15m": 1790779500000,
+  "I-BTC_INR|15m": 1790781300000,
   "I-BTC_INR|1h": 1790776800000,
   "I-DOGE_INR|1h": 1790776800000,
-  "I-ETH_INR|15m": 1790779500000,
+  "I-ETH_INR|15m": 1790781300000,
   "I-ETH_INR|1h": 1790776800000,
   "I-SOL_INR|1h": 1790776800000,
   "I-XRP_INR|1h": 1790776800000
  },
  "finished": false,
- "last_event_t": 1790780400000,
+ "last_event_t": 1790782200000,
  "last_prices": {
-  "I-BTC_INR": 8355312.7,
+  "I-BTC_INR": 8392106.6,
   "I-DOGE_INR": 9.4282,
-  "I-ETH_INR": 267505.3,
+  "I-ETH_INR": 268372.7,
   "I-SOL_INR": 11861.4,
   "I-XRP_INR": 150.587
  },
- "last_run": 1790780427971,
+ "last_run": 1790782993919,
  "reports": {
   "issue": 1,
   "last_daily": "2026-09-30",
+  "mail_welcomed": true,
   "values": {
    "breakout": 5000.0,
    "goal_chaser_10x": 5000.0,
@@ -2443,7 +2444,7 @@
    "trend_ema": 5000.0
   }
  },
- "runs": 2,
+ "runs": 3,
  "sim_end": 1792070100000,
  "sim_start": 1790774100000,
  "start_prices": {
