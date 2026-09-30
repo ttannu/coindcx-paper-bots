@@ -52,6 +52,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-09-30 19:00,xlm.trend_2_8h,BUY,XLM/INR,215.00000000,23.09,4965.08,29.29,0.00,,0.00,uptrend entry
 2026-09-30 19:00,xrp.hold,BUY,XRP/INR,32.40000000,153.25,4965.39,29.30,0.00,,0.00,one-time buy
 2026-09-30 19:00,zec.hold,BUY,ZEC/INR,0.03300000,148612.01,4904.20,28.93,0.00,,0.00,one-time buy
+2026-09-30 19:00,liquid5_hold,BUY,BTC/INR,0.00011000,8518505.46,937.04,5.53,0.00,,0.00,among the 5 most traded
+2026-09-30 19:00,liquid5_hold,BUY,ETH/INR,0.00370000,272049.35,1006.58,5.94,0.00,,0.00,among the 5 most traded
+2026-09-30 19:00,liquid5_hold,BUY,SOL/INR,0.08200000,12293.03,1008.03,5.95,0.00,,0.00,among the 5 most traded
+2026-09-30 19:00,liquid5_hold,BUY,XRP/INR,6.50000000,153.25,996.14,5.88,0.00,,0.00,among the 5 most traded
+2026-09-30 19:00,liquid5_hold,BUY,DOGE/INR,105.00000000,9.72,1020.15,6.02,0.00,,0.00,"among the 10 most traded, standing in for one it can't buy"
+2026-09-30 19:00,liquid5_btc30,BUY,BTC/INR,0.00011000,8518505.46,937.04,5.53,0.00,,0.00,among the 5 most traded; BTC above its 30-day average
+2026-09-30 19:00,liquid5_btc30,BUY,ETH/INR,0.00370000,272049.35,1006.58,5.94,0.00,,0.00,among the 5 most traded; BTC above its 30-day average
+2026-09-30 19:00,liquid5_btc30,BUY,SOL/INR,0.08200000,12293.03,1008.03,5.95,0.00,,0.00,among the 5 most traded; BTC above its 30-day average
+2026-09-30 19:00,liquid5_btc30,BUY,XRP/INR,6.50000000,153.25,996.14,5.88,0.00,,0.00,among the 5 most traded; BTC above its 30-day average
+2026-09-30 19:00,liquid5_btc30,BUY,DOGE/INR,105.00000000,9.72,1020.15,6.02,0.00,,0.00,"among the 10 most traded, standing in for one it can't buy"
 2026-09-30 19:15,aave.trend_5_20h,SELL,AAVE/INR,0.30300000,16159.03,4896.18,28.89,0.00,-118.57,0.00,closed below the slow average
 2026-09-30 19:15,ada.grid_1_5pct,BUY,ADA/INR,32.80000000,25.21,826.79,4.88,0.00,,0.00,"grid buy, level 1"
 2026-09-30 19:15,apt.grid_1_5pct,BUY,APT/INR,10.12000000,81.83,828.15,4.89,0.00,,0.00,"grid buy, level 1"
@@ -1372,3 +1382,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-01 03:30,xlm.trend_6_24h,SELL,XLM/INR,212.00000000,22.51,4771.41,28.15,0.00,-138.26,0.00,closed below the slow average
 2026-10-01 03:30,xlm.flip_3x,OPEN LONG,XLM/INR,663.56362080,22.57,14973.50,8.83,0.00,,0.00,"coin flip: long, 3x, liquidation at 15"
 2026-10-01 03:30,zec.flip_3x,CLOSE LONG,ZEC/INR,0.10451543,142849.34,14929.96,8.81,0.00,-61.74,0.00,coin flip
+2026-10-01 03:45,bnb.trend_2_8h,SELL,BNB/INR,0.05000000,76252.18,3812.61,22.49,0.00,-102.17,0.00,closed below the slow average
+2026-10-01 03:45,bnb.trend_5_20h,SELL,BNB/INR,0.05500000,76252.18,4193.87,24.74,0.00,-112.39,0.00,closed below the slow average
+2026-10-01 03:45,hbar.grid_1_5pct,BUY,HBAR/INR,77.00000000,10.66,820.46,4.84,0.00,,0.00,"grid buy, level 2"
+2026-10-01 03:45,hbar.grid_3pct,BUY,HBAR/INR,77.00000000,10.66,820.46,4.84,0.00,,0.00,"grid buy, level 1"
+2026-10-01 03:45,link.trend_2_8h,SELL,LINK/INR,3.42000000,1436.85,4914.04,28.99,0.00,-112.32,0.00,closed below the slow average
+2026-10-01 03:45,pengu.grid_3pct,BUY,PENGU/INR,855.00000000,0.97,827.93,4.88,0.00,,0.00,"grid buy, level 3"
+2026-10-01 03:45,qnt.grid_1_5pct,SELL,QNT/INR,0.02900000,28559.62,828.23,4.89,0.00,-25.54,0.00,"grid sell, level 6"
+2026-10-01 03:45,saga.grid_1_5pct,BUY,SAGA/INR,326.00000000,2.54,828.26,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-01 03:45,saga.grid_1_5pct,BUY,SAGA/INR,328.50000000,2.50,822.09,4.85,0.00,,0.00,"grid buy, level 6"
+2026-10-01 03:45,saga.grid_3pct,BUY,SAGA/INR,331.20000000,2.50,828.27,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-01 03:45,sei.trend_2_8h,BUY,SEI/INR,604.20000000,7.49,4522.59,26.68,0.00,,0.00,uptrend entry
+2026-10-01 03:45,siren.grid_1_5pct,SELL,SIREN/INR,187.70000000,4.63,868.36,5.12,0.00,18.88,13.09,"grid sell, level 2"
+2026-10-01 03:45,siren.grid_1_5pct,SELL,SIREN/INR,187.70000000,4.63,868.36,5.12,0.00,18.88,13.09,"grid sell, level 3"
