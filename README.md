@@ -1,6 +1,6 @@
 # CoinDCX paper-trading bots
 
-1,041 rule-based trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices, across 47 of the most volatile coins. The goal is ₹1,00,000. Every strategy runs separately on every coin, next to coin-flip bots that trade at random, so the results show which strategies have an edge and which are just lucky. Alongside them, an AI trading desk of ten Gemini agents reads the prices, the news, and what the bots have learned, and runs two more books. No real money, exchange accounts, or exchange API keys are involved. GitHub Actions runs everything on a schedule, so nobody needs to touch it.
+1,043 rule-based trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices, across 47 of the most volatile coins. The goal is ₹1,00,000. Every strategy runs separately on every coin, next to coin-flip bots that trade at random, so the results show which strategies have an edge and which are just lucky. Every strategy was also replayed over the six months before the launch, and none made money on average after fees and tax ([what the backtests found](#what-the-backtests-found)). Alongside them, an AI trading desk of ten Gemini agents reads the prices, the news, and what the bots have learned, and runs two more books. No real money, exchange accounts, or exchange API keys are involved. GitHub Actions runs everything on a schedule, so nobody needs to touch it.
 
 <!-- DASHBOARD:START -->
 ### Live results: day 1 of 15
@@ -141,6 +141,13 @@ The strategy report card on the dashboard ranks the 22 strategies by their media
 | Grid trader | 15-minute candles on BTC. Splits the money into 6 lots, buys a lot each time price falls another 2%, and sells each lot 2% above where it bought. Re-centres when price runs up. |
 | Goal chaser (10x futures) | What chasing 20x in 15 days looks like. Always all-in on BTC futures at 10x leverage: long when the 9-hour average is above the 21-hour average, short otherwise. A 9.5% move the wrong way wipes out the position. |
 
+**Added on 1 Oct, after the backtests.** Two bots built from what [the backtests](docs/research.md) found, replayed from the same start as the others:
+
+| Bot | Rules |
+|---|---|
+| Liquid 5, held | Holds the 5 coins with the most CoinDCX INR volume (the median day of the last 30) in equal parts, passing over any whose smallest order is more than its share (ZEC's is about ₹1,400) for the next one. Every 3 days it sells a coin that has dropped out of the 10 most traded and fills the gap. The yardstick for the next bot. |
+| Liquid 5, BTC trend filter | The same 5 coins, held only while BTC's price is above its 30-day average, and in cash otherwise. It checks every 3 days. In 17 past 15-day windows it ended flat (+0.1% a window after costs) while holding the same coins lost 2.2%, and its worst window was -10% instead of -20%. It was the best of 14 timing rules tried, which flatters that result; these 15 days are its real test. |
+
 No bot ever changes its rules. The self-learning bots only choose between fixed variants, and the fixed bots are the control group that shows whether those choices actually help.
 
 ## The AI trading desk
@@ -229,4 +236,4 @@ A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every wi
 
 ## Limits
 
-No bot here, including the self-learning ones, is guaranteed to make money, and no strategy wins on every coin: trend followers lose in choppy markets, dip buyers and grids lose in crashes, and leverage gets wiped out by sharp moves either way. With 1,041 bots, the best few will usually look impressive by chance alone, so check any bot against the coin-flip bots and against holding its coin before reading anything into it. In the synthetic stress tests the original self-learning bot gained about 23% on average when the market trended, lost about 5% on average when it went nowhere, and never lost more than about 16%. The AI desk is an experiment too: language models can misread data or change their minds from one meeting to the next, and its limits only cap how much it can lose, not whether it loses. Fills happen at candle prices, so the simulation can't see order-book depth or outages. The tax figure is an estimate, not tax advice. A strategy that does well for 15 days in a simulation can still lose real money. None of this is financial advice.
+No bot here, including the self-learning ones, is guaranteed to make money, and no strategy wins on every coin: trend followers lose in choppy markets, dip buyers and grids lose in crashes, and leverage gets wiped out by sharp moves either way. With 1,043 bots, the best few will usually look impressive by chance alone, so check any bot against the coin-flip bots and against holding its coin before reading anything into it. In the synthetic stress tests the original self-learning bot gained about 23% on average when the market trended, lost about 5% on average when it went nowhere, and never lost more than about 16%. The AI desk is an experiment too: language models can misread data or change their minds from one meeting to the next, and its limits only cap how much it can lose, not whether it loses. Fills happen at candle prices, so the simulation can't see order-book depth or outages. The tax figure is an estimate, not tax advice. A strategy that does well for 15 days in a simulation can still lose real money. None of this is financial advice.

@@ -6,7 +6,7 @@ import smtplib
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, desk, report, research, swarm
+from . import coindcx, desk, liquid, report, research, swarm
 from .accounts import FuturesAccount, SpotAccount
 from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
@@ -16,7 +16,7 @@ from .llm import Gemini
 from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
-STATE_VERSION = 2
+STATE_VERSION = 3
 FIFTEEN_MIN_MS = 15 * 60 * 1000
 HOUR_MS = 3600000
 DAY_MS = 86400000
@@ -133,7 +133,9 @@ def _upgrade(old, config):
 
 def _build_bots(state, config, trades):
     bots = []
-    makers = [(cls.key, cls.kind, cls) for cls in ALL_BOTS] + swarm.specs(config.get("universe", ())) + desk.specs(state, config)
+    universe = config.get("universe", ())
+    makers = ([(cls.key, cls.kind, cls) for cls in ALL_BOTS] + liquid.specs(universe) + swarm.specs(universe) +
+              desk.specs(state, config))
     for key, kind, make in makers:
         account_cls = FuturesAccount if kind == "futures" else SpotAccount
         acct_state = state["bots"].setdefault(key, account_cls.fresh(config["capital_inr"]))

@@ -7,7 +7,7 @@ from unittest import mock
 
 import test_desk
 import test_robustness as rb
-from sim import desk, engine, report, swarm
+from sim import desk, engine, liquid, report, swarm
 from sim.coindcx import DataUnavailable
 from synthetic import DAY, H1, START, build_market, make_fetch
 
@@ -34,7 +34,8 @@ class SwarmTest(unittest.TestCase):
         bots = engine._build_bots({"bots": {}}, config, [])
         keys = [bot.key for bot in bots]
         self.assertEqual(len(keys), len(set(keys)))
-        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(universe) * len(swarm.FAMILIES) + len(desk.BOOKS))
+        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(liquid.specs(universe)) + len(universe) * len(swarm.FAMILIES) +
+                         len(desk.BOOKS))
         self.assertGreaterEqual(len(bots), 1000)
         for bot in bots:
             if getattr(bot, "family", None):
@@ -71,7 +72,8 @@ class ScaleTest(unittest.TestCase):
                 ws.run(now, fetch, notify=False)
                 timings.append(time.time() - began)
             state = ws.state()
-            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 22 * len(universe) + len(desk.BOOKS))
+            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 2 + 22 * len(universe) + len(desk.BOOKS))
+            self.assertEqual(len(state["bots"][liquid.LiquidBasket.key]["positions"]), 5)
             rb.check_invariants(self, state)
             self.assertLess(max(timings), 20, timings)
             self.assertLess(os.path.getsize(os.path.join(ws.root, "state", "state.json")), 4000000)

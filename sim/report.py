@@ -64,6 +64,7 @@ def leaderboard(bots, prices, t, config):
             "family": getattr(bot, "family", None),
             "coin": getattr(bot, "coin", None),
             "desk": desk,
+            "added": getattr(bot, "added", False),
             "joined": s["memo"].get("joined") if desk else None,
             "value": value,
             "ret": value / config["capital_inr"] - 1,
@@ -201,22 +202,23 @@ def _top_lines(board, config, n):
     return lines
 
 
-def _original_lines(board):
+def _original_lines(board, added=False):
     lines = [
         "| Bot | Value if sold now | Return | Rank | Closed trades | Now |",
         "|---|---|---|---|---|---|",
     ]
     for rank, r in enumerate(board, 1):
-        if not r["family"] and not r["desk"]:
+        if not r["family"] and not r["desk"] and r.get("added", False) == added:
             lines.append("| %s | %s | %s | %s of %s | %d | %s |" % (
                 r["title"], inr(r["value"]), pct(r["ret"]), _count(rank), _count(len(board)), r["trades"], r["now"]))
     return lines
 
 
 def _desk_plan(plan):
-    spot = ", ".join("%s %d%% (stop -%g%%%s)" % (
+    spot = ", ".join(["%s %d%% (stop -%g%%%s)" % (
         symbol(e["pair"]), round(e["weight"] * 100), round(e["stop"] * 100, 1),
-        ", target +%g%%" % round(e["take_profit"] * 100, 1) if e.get("take_profit") else "") for e in plan["spot"])
+        ", target +%g%%" % round(e["take_profit"] * 100, 1) if e.get("take_profit") else "") for e in plan["spot"]] +
+        ["%s kept as it is" % symbol(p) for p in plan.get("keep") or ()])
     f = plan["futures"]
     futures = "%s %s at %gx (stop %g%% away%s)" % (
         f["side"], symbol(f["pair"]), f["leverage"], round(f["stop"] * 100, 1),
@@ -322,6 +324,9 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
     lines += _top_lines(board, config, 15)
     lines += ["", "**The original bots**", ""]
     lines += _original_lines(board)
+    if any(r.get("added") for r in board):
+        lines += ["", "**Added on 1 Oct, after the [backtests](docs/research.md)**", ""]
+        lines += _original_lines(board, added=True)
     cards = report_card(board)
     if cards:
         lines += [
@@ -535,12 +540,15 @@ def upgrade_message(state, board, config, prices, now_ms):
         "@%s the bots have been upgraded: there are now %s of them on %d volatile CoinDCX coins." % (
             config["notify_user"], _count(len(board)), coins),
         "",
-        "- Every coin gets the same %d strategies: trend following at three speeds and two faster ones, RSI dip buying, "
-        "breakouts, grids, a pump rider, 3x and 10x futures, long/short, a self-learning bot, buy & hold, and four "
-        "coin-flip bots that trade at random. The original bots keep running too." % len(report_card(board)),
-        "- Each coin's trading cost now includes its real bid-ask spread, so thinly traded coins cost more to trade.",
+        "- Every strategy was first replayed over the six months before the launch, with the same costs. None of them made "
+        "money on average after fees and tax; holding coins came closest. The details are in "
+        "https://github.com/%s/blob/main/docs/research.md." % config["repository"],
+        "- Two bots were added from that research: the 5 most traded coins held as a basket, and the same basket held only "
+        "while BTC is above its 30-day average. In the backtests the filter halved the worst losses but ended flat, so "
+        "these 15 days are its real test.",
+        "- The AI desk now trades only coins with a real market: at least ₹5 lakh of INR volume in the last 24 hours. "
+        "On quiet coins the last price goes stale, which made backtests look far better than real orders could do.",
         "- All bots were replayed from %s, so they share one timeline and the 15-day end date is unchanged." % ist(state["sim_start"]),
-        "- The coin-flip bots are there to show how much of any result is luck.",
         "",
         "Top 10 at %s:" % ist(now_ms),
         "",
