@@ -67,10 +67,11 @@ class SpotAccount(_Account):
     def _slippage(self, pair):
         return self.markets[pair].get("slippage", self.costs["slippage"])
 
-    def buy(self, pair, budget, price, t, reason):
+    def buy(self, pair, budget, price, t, reason, limit=False):
+        """A limit order fills at its own price: the bot is the one waiting in the book, so it pays no spread."""
         market = self.markets[pair]
         budget = min(budget, self.s["cash"])
-        fill = price * (1 + self._slippage(pair))
+        fill = price if limit else price * (1 + self._slippage(pair))
         qty = floor_step(budget / (fill * (1 + self._fee_rate())), market["step"])
         value = qty * fill
         if qty <= 0 or qty < market["min_qty"] or value < market["min_notional"]:
@@ -87,13 +88,13 @@ class SpotAccount(_Account):
                   "fee": fee, "tds": 0.0, "pnl": None, "tax": 0.0, "reason": reason})
         return qty
 
-    def sell(self, pair, price, t, reason, qty=None):
+    def sell(self, pair, price, t, reason, qty=None, limit=False):
         pos = self.s["positions"].get(pair)
         if not pos:
             return 0.0
         qty = pos["qty"] if qty is None else min(qty, pos["qty"])
         share = qty / pos["qty"]
-        fill = price * (1 - self._slippage(pair))
+        fill = price if limit else price * (1 - self._slippage(pair))
         value = qty * fill
         fee = value * self._fee_rate()
         cost = pos["cost"] * share

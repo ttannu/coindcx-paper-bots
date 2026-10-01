@@ -94,14 +94,15 @@ class MoneyReportTest(unittest.TestCase):
             ws.close()
         block = readme[readme.index(report.START_MARK):readme.index(report.END_MARK)]
         self.assertIn("**Where the money went.** On average a bot's trades have made ", block)
-        table = block.split("**Where the money went.**")[1].split("![Value of the top bots")[0]
+        table = block.split("**Where the money went.**")[1].split("**Low-cost test.**")[0]
         rows = [line for line in table.splitlines() if line.startswith("| ") and not line.startswith("| Strategy")]
         labels = [line.split(" | ")[0][2:] for line in rows]
         self.assertEqual(labels[-1], "**All bots**")
         self.assertEqual(len(rows), len(swarm.FAMILIES) + 4)
         for label in ("Original bots", "Added on 1 Oct", "AI desk"):
             self.assertIn(label, labels)
-        self.assertIn("| **All bots** | %s |" % "{:,}".format(len(state["bots"])), table)
+        ranked = sum(1 for key in state["bots"] if not key.endswith("_low"))
+        self.assertIn("| **All bots** | %s |" % "{:,}".format(ranked), table)
         for line in rows:
             cells = line.strip("| ").split(" | ")
             numbers = [0.0 if c == "–" else float(c.rstrip("%")) for c in cells[2:]]

@@ -18,6 +18,12 @@
     "maintenance_margin": 0.005,
     "min_trade_inr": 100
   },
+  "low_cost": {
+    "tier": "VIP 1",
+    "spot_fee_rate": 0.0017,
+    "monthly_volume_inr": 500000,
+    "families": ["hold", "grid_1_5pct", "grid_3pct", "dip_30_3", "dip_30_6", "flip_1"]
+  },
   "universe": [
     "I-SAGA_INR", "I-QNT_INR", "I-SIREN_INR", "I-ONE_INR", "I-PHA_INR", "I-MUBARAK_INR",
     "I-PUMP_INR", "I-ENA_INR", "I-ONDO_INR", "I-NEAR_INR", "I-HBAR_INR", "I-PENGU_INR",

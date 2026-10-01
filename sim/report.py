@@ -12,7 +12,14 @@ ISSUE_TITLE = "Paper-trading bots: daily reports"
 FINAL_TITLE = "Paper-trading bots: final results"
 WELCOME_TITLE = "Paper-trading bots: email reports are on"
 UPGRADE_TITLE = "Paper-trading bots: now %s bots on %d coins"
+LOWCOST_TITLE = "Paper-trading bots: %s low-cost twins added"
+LOWCOST_BACKTEST = (
+    "Replayed over the six months before the launch, these rules cut the losses but made nothing: per 15 days the 1.5% "
+    "grid averaged -1.5% (against -10.3% at normal costs), the 3% grid -0.3% and the dip-buyers -1.8% to -2.9%, while "
+    "holding at the same fee made +1.6%. Filling every limit order at the candle price, as the normal-cost bots fill, had "
+    "shown +2% to +6%, profits from fills a real order can't get. Details are in docs/research.md.")
 DESK_TITLE = "Paper-trading bots: the AI trading desk made its first decision"
+MIN_SKILL_DAYS = 3
 START_MARK = "<!-- DASHBOARD:START -->"
 END_MARK = "<!-- DASHBOARD:END -->"
 BENCHMARK = "hodl_btc"
@@ -52,32 +59,41 @@ def day_number(state, config, now_ms):
     return max(1, min(config["duration_days"], int(elapsed // DAY_MS) + 1))
 
 
+def _row(bot, prices, t, config):
+    s = bot.acct.s
+    value = bot.value(prices, t)
+    desk = getattr(bot, "desk", False)
+    return {
+        "key": bot.key,
+        "title": bot.title,
+        "family": getattr(bot, "family", None),
+        "coin": getattr(bot, "coin", None),
+        "desk": desk,
+        "added": getattr(bot, "added", False),
+        "joined": s["memo"].get("joined") if desk else None,
+        "value": value,
+        "ret": value / config["capital_inr"] - 1,
+        "goal": value / config["goal_inr"],
+        "trades": s["trades"],
+        "win_rate": float(s["wins"]) / s["trades"] if s["trades"] else None,
+        "max_dd": s["max_dd"],
+        "now": _holding(bot),
+        "fees": s["fees"],
+        "tds": s.get("tds_credit", 0.0),
+        "tax": s["tax_due"],
+        "money": _money(bot, prices, t),
+    }
+
+
 def leaderboard(bots, prices, t, config):
-    rows = []
-    for bot in bots:
-        s = bot.acct.s
-        value = bot.value(prices, t)
-        desk = getattr(bot, "desk", False)
-        rows.append({
-            "key": bot.key,
-            "title": bot.title,
-            "family": getattr(bot, "family", None),
-            "coin": getattr(bot, "coin", None),
-            "desk": desk,
-            "added": getattr(bot, "added", False),
-            "joined": s["memo"].get("joined") if desk else None,
-            "value": value,
-            "ret": value / config["capital_inr"] - 1,
-            "goal": value / config["goal_inr"],
-            "trades": s["trades"],
-            "win_rate": float(s["wins"]) / s["trades"] if s["trades"] else None,
-            "max_dd": s["max_dd"],
-            "now": _holding(bot),
-            "fees": s["fees"],
-            "tds": s.get("tds_credit", 0.0),
-            "tax": s["tax_due"],
-            "money": _money(bot, prices, t),
-        })
+    rows = [_row(bot, prices, t, config) for bot in bots if not getattr(bot, "lowcost", False)]
+    rows.sort(key=lambda r: r["value"], reverse=True)
+    return rows
+
+
+def lowcost_board(bots, prices, t, config):
+    """The low-cost twins. They pay costs a ₹5,000 account can't get, so they are kept out of the leaderboard."""
+    rows = [_row(bot, prices, t, config) for bot in bots if getattr(bot, "lowcost", False)]
     rows.sort(key=lambda r: r["value"], reverse=True)
     return rows
 
@@ -139,7 +155,24 @@ def summary_line(board, config):
                 _count(len(rivals))))
 
 
-def report_card(board):
+def elapsed_days(state, t):
+    return max(0, t - state["sim_start"]) / float(DAY_MS)
+
+
+def _verdict(luck, benchmark, median, luck_median, beat, coins, days):
+    # The profit condition matters on falling days, when a strategy that just sat in cash beats both yardsticks.
+    if luck:
+        return "luck control"
+    if benchmark:
+        return "benchmark"
+    if days < MIN_SKILL_DAYS:
+        return "too early"
+    if median > 0 and luck_median is not None and median > luck_median and 2 * beat > coins:
+        return "yes"
+    return "not yet"
+
+
+def report_card(board, days):
     hold = dict((r["coin"], r["value"]) for r in board if r["family"] and r["family"].key == "hold")
     groups = OrderedDict()
     for r in board:
@@ -152,14 +185,6 @@ def report_card(board):
         family = rows[0]["family"]
         median = _median(r["ret"] for r in rows)
         beat = sum(1 for r in rows if r["coin"] in hold and r["value"] > hold[r["coin"]])
-        if family.luck:
-            verdict = "luck control"
-        elif family.key == "hold":
-            verdict = "benchmark"
-        elif luck_median is not None and median > luck_median and 2 * beat > len(rows):
-            verdict = "yes"
-        else:
-            verdict = "not yet"
         cards.append({
             "label": family.label[0].upper() + family.label[1:],
             "median": median,
@@ -169,7 +194,7 @@ def report_card(board):
             "beat": None if family.key == "hold" else beat,
             "wiped": sum(1 for r in rows if r["now"] == "busted"),
             "coins": len(rows),
-            "verdict": verdict,
+            "verdict": _verdict(family.luck, family.key == "hold", median, luck_median, beat, len(rows), days),
         })
     cards.sort(key=lambda c: c["median"], reverse=True)
     return cards
@@ -193,8 +218,10 @@ def luck_line(board):
         return ""
     return ("**How much of this is luck?** The %s coin-flip bots trade at random. The luckiest is %s at %s, and their "
             "median is %s. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled "
-            "only if its median return beats the coin flips and it beats holding on most coins." % (
-                _count(len(flips)), flips[0]["title"], pct(flips[0]["ret"]), pct(_median(r["ret"] for r in flips))))
+            "only after %d days, and only if its median bot is in profit after costs, beats the coin flips, and beats "
+            "holding on most coins." % (
+                _count(len(flips)), flips[0]["title"], pct(flips[0]["ret"]), pct(_median(r["ret"] for r in flips)),
+                MIN_SKILL_DAYS))
 
 
 MONEY_PARTS = ("moves", "spread", "fees", "tax", "funding", "net")
@@ -250,6 +277,90 @@ def _money_lines(board, capital):
             "**All bots**" if row is total else row["label"], _count(row["bots"]), pct(row["moves"]),
             pct(-row["spread"]), pct(-row["fees"]), pct(-row["tax"]), pct(-row["funding"]) if row["funding"] else "–",
             pct(row["net"])))
+    return lines
+
+
+def _rate(fraction):
+    return "%g%%" % round(fraction * 100, 4)
+
+
+def _cost_share(rows, capital):
+    splits = [r["money"] for r in rows if r["money"] is not None]
+    return sum(m["spread"] + m["fees"] for m in splits) / (capital * len(splits)) if splits else None
+
+
+def lowcost_card(board, low, config, days):
+    """Each low-cost strategy next to the same strategy at normal costs, on the same coins. Skill and "beat holding" are
+    judged against the low-cost coin flip and buy & hold, so every comparison is at the same costs."""
+    capital = config["capital_inr"]
+    normal = {}
+    for r in board:
+        if r["family"]:
+            normal.setdefault(r["family"].key, []).append(r)
+    twins = OrderedDict()
+    for r in low:
+        twins.setdefault(r["family"].key, []).append(r)
+    hold = dict((r["coin"], r["value"]) for r in low if r["family"].base.key == "hold")
+    luck = [r["ret"] for r in low if r["family"].luck]
+    luck_median = _median(luck) if luck else None
+    fee_rate = config["low_cost"]["spot_fee_rate"] * (1 + config["costs"]["gst_rate"])
+    cards = []
+    for rows in twins.values():
+        family = rows[0]["family"]
+        base = family.base
+        originals = normal.get(base.key, [])
+        median = _median(r["ret"] for r in rows)
+        beat = sum(1 for r in rows if r["coin"] in hold and r["value"] > hold[r["coin"]])
+        cards.append({
+            "label": base.label[0].upper() + base.label[1:],
+            "name": base.label,
+            "normal": _median(r["ret"] for r in originals) if originals else None,
+            "median": median,
+            "costs_normal": _cost_share(originals, capital),
+            "costs_low": _cost_share(rows, capital),
+            "profit": sum(1 for r in rows if r["ret"] > 0),
+            "beat": None if base.key == "hold" else beat,
+            "coins": len(rows),
+            "volume": sum(r["fees"] for r in rows) / fee_rate / len(rows),
+            "verdict": _verdict(family.luck, base.key == "hold", median, luck_median, beat, len(rows), days),
+        })
+    cards.sort(key=lambda c: c["median"], reverse=True)
+    return cards
+
+
+def lowcost_lines(state, board, low, config, t):
+    days = elapsed_days(state, t)
+    cards = lowcost_card(board, low, config, days) if low else []
+    if not cards:
+        return []
+    tier = config["low_cost"]
+    lines = [
+        "**Low-cost test.** Since 1 Oct the strategies that had an edge before costs in the backtests also run with "
+        "CoinDCX's %s fee (%s instead of %s, plus GST). The grids and dip-buyers place limit orders, which pay no spread "
+        "but fill at exactly their price and only once the price trades through it; stops and the other exits are market "
+        "orders and still pay it. Tax is unchanged, so the gap to the same strategy at normal costs is what fees and spread "
+        "took. These %s bots are judged against a buy & hold and a coin flip at the same low cost, and are left out of the "
+        "rankings above." % (tier["tier"], _rate(tier["spot_fee_rate"]), _rate(config["costs"]["spot_fee_rate"]),
+                             _count(len(low))),
+        "",
+        "| Strategy | Median, normal costs | Median, low cost | Fees and spread | In profit | Beat holding | Skill shown? |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for c in cards:
+        costs = "–"
+        if c["costs_normal"] is not None and c["costs_low"] is not None:
+            costs = "%s → %s" % (pct(-c["costs_normal"]), pct(-c["costs_low"]))
+        lines.append("| %s | %s | %s | %s | %d/%d | %s | %s |" % (
+            c["label"], "–" if c["normal"] is None else pct(c["normal"]), pct(c["median"]), costs, c["profit"], c["coins"],
+            "–" if c["beat"] is None else "%d/%d" % (c["beat"], c["coins"]), c["verdict"]))
+    if days >= 0.5:
+        busiest = max(cards, key=lambda c: c["volume"])
+        pace = busiest["volume"] * 30 / days
+        lines += ["", "%s needs %s of trading in 30 days. The busiest of these strategies, %s, has traded %s per bot in "
+                  "%.1f days, a pace of %s a month%s." % (
+                      tier["tier"], inr(tier["monthly_volume_inr"]), busiest["name"], inr(busiest["volume"]), days,
+                      inr(pace), ", so a %s account trading this way would not get there on its own" % inr(config["capital_inr"])
+                      if pace < tier["monthly_volume_inr"] else "")]
     return lines
 
 
@@ -362,7 +473,7 @@ def desk_message(state, board, config, now_ms):
     return "\n".join(lines)
 
 
-def dashboard(state, board, config, prices, now_ms, bots=()):
+def dashboard(state, board, config, prices, now_ms, bots=(), low=()):
     capital, goal = config["capital_inr"], config["goal_inr"]
     if state["finished"]:
         heading = "### Final results after %d days" % config["duration_days"]
@@ -391,7 +502,7 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
     if any(r.get("added") for r in board):
         lines += ["", "**Added on 1 Oct, after the [backtests](docs/research.md)**", ""]
         lines += _original_lines(board, added=True)
-    cards = report_card(board)
+    cards = report_card(board, elapsed_days(state, state["last_event_t"] or state["sim_start"]))
     if cards:
         lines += [
             "",
@@ -405,6 +516,9 @@ def dashboard(state, board, config, prices, now_ms, bots=()):
     if money:
         lines += ["", money_line(board, capital) + " Average per bot, as a share of its starting money, counting the "
                   "costs of selling what is still held:", ""] + money
+    cheap = lowcost_lines(state, board, low, config, state["last_event_t"] or now_ms)
+    if cheap:
+        lines += [""] + cheap
     lines += [
         "",
         "![Value of the top bots over time](docs/equity.svg)",
@@ -454,13 +568,14 @@ def write_chart(root, state, board, config):
         with open(path, newline="", encoding="utf-8") as fh:
             reader = csv.reader(fh)
             columns = dict((name, n) for n, name in enumerate(next(reader, [])))
+            ranked = [columns[r["key"]] for r in board if r["key"] in columns]
             for row in reader:
                 t = int(row[0])
                 for key in keys:
                     n = columns.get(key)
                     if n is not None and n < len(row) and row[n]:
                         series[key].append((t, float(row[n])))
-                values = [float(v) for v in row[2:] if v]
+                values = [float(row[n]) for n in ranked if n < len(row) and row[n]]
                 if values:
                     series[MEDIAN].append((t, _median(values)))
     series = OrderedDict((key, points) for key, points in series.items() if key in titles)
@@ -598,36 +713,46 @@ def welcome_message(state, board, config, prices, now_ms):
     return "\n".join(lines)
 
 
-def upgrade_subject(board, config):
+def upgrade_subject(board, config, low=()):
+    if low:
+        return LOWCOST_TITLE % _count(len(low))
     return UPGRADE_TITLE % (_count(len(board)), len(set(r["coin"] for r in board if r["coin"])))
 
 
-def upgrade_message(state, board, config, prices, now_ms):
+def upgrade_message(state, board, config, prices, now_ms, low=()):
     coins = len(set(r["coin"] for r in board if r["coin"]))
     lines = [
-        "@%s the bots have been upgraded: there are now %s of them on %d volatile CoinDCX coins." % (
-            config["notify_user"], _count(len(board)), coins),
+        "@%s the bots have been upgraded: there are now %s of them on %d volatile CoinDCX coins%s." % (
+            config["notify_user"], _count(len(board)), coins, ", plus %s low-cost twins" % _count(len(low)) if low else ""),
         "",
-        "- Every strategy was first replayed over the six months before the launch, with the same costs. None of them made "
-        "money on average after fees and tax; holding coins came closest. The details are in "
-        "https://github.com/%s/blob/main/docs/research.md." % config["repository"],
-        "- Two bots were added from that research: the 5 most traded coins held as a basket, and the same basket held only "
-        "while BTC is above its 30-day average. In the backtests the filter halved the worst losses but ended flat, so "
-        "these 15 days are its real test.",
-        "- The AI desk now trades only coins with a real market: at least ₹5 lakh of INR volume in the last 24 hours. "
-        "On quiet coins the last price goes stale, which made backtests look far better than real orders could do.",
+    ]
+    if low:
+        tier = config["low_cost"]
+        names = list(OrderedDict((r["family"].base.label, None) for r in low))
+        lines += [
+            "- %d strategies now also run with CoinDCX's %s fee (%s instead of %s): %s. The grids and dip-buyers use limit "
+            "orders, which pay no spread but only fill once the price trades through them. Tax is unchanged, so the gap to "
+            "the normal-cost bots shows what fees and spread take." % (
+                len(names), tier["tier"], _rate(tier["spot_fee_rate"]), _rate(config["costs"]["spot_fee_rate"]),
+                ", ".join(names)),
+            "- %s needs %s of trading a month, about %d times a %s account, so this tests whether costs are what stands in "
+            "the way, not a fee a small account would get." % (
+                tier["tier"], inr(tier["monthly_volume_inr"]), tier["monthly_volume_inr"] // config["capital_inr"],
+                inr(config["capital_inr"])),
+            "- " + LOWCOST_BACKTEST,
+        ]
+    lines += [
         "- All bots were replayed from %s, so they share one timeline and the 15-day end date is unchanged." % ist(state["sim_start"]),
         "",
         "Top 10 at %s:" % ist(now_ms),
         "",
     ]
     lines += _standings(board, config, 10)
-    lines += [
-        "",
-        summary_line(board, config),
-        "",
-        "Dashboard: https://github.com/%s" % config["repository"],
-    ]
+    lines += ["", summary_line(board, config)]
+    cheap = lowcost_lines(state, board, low, config, state["last_event_t"] or now_ms)
+    if cheap:
+        lines += [""] + cheap
+    lines += ["", "Dashboard: https://github.com/%s" % config["repository"]]
     return "\n".join(lines)
 
 
@@ -637,7 +762,7 @@ def daily_subject(state, board, config, now_ms):
         day_number(state, config, now_ms), config["duration_days"], best["title"], inr(best["value"]))
 
 
-def daily_message(state, board, config, prices, now_ms, previous):
+def daily_message(state, board, config, prices, now_ms, previous, low=()):
     lines = [
         "@%s **Day %d of %d**, %s" % (config["notify_user"], day_number(state, config, now_ms),
                                      config["duration_days"], ist(now_ms, "%d %b %Y")),
@@ -666,12 +791,15 @@ def daily_message(state, board, config, prices, now_ms, previous):
             lines += ["", heading, "", "| Bot | Value if sold now | Since start | Last 24 hours | Rank |", "|---|---|---|---|---|"]
             lines += ["| %s | %s | %s | %s | %s |" % (r["title"], inr(r["value"]), pct(r["ret"]), change(r), _count(rank))
                       for rank, r in rows]
-    cards = report_card(board)
+    cards = report_card(board, elapsed_days(state, state["last_event_t"] or state["sim_start"]))
     if cards:
         lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
     money = _money_lines(board, config["capital_inr"])
     if money:
         lines += ["", money_line(board, config["capital_inr"]), ""] + money
+    cheap = lowcost_lines(state, board, low, config, state["last_event_t"] or now_ms)
+    if cheap:
+        lines += [""] + cheap
     best = board[0]
     lines += [
         "",
@@ -684,7 +812,7 @@ def daily_message(state, board, config, prices, now_ms, previous):
     return "\n".join(lines)
 
 
-def final_message(state, board, config, prices):
+def final_message(state, board, config, prices, low=()):
     goal = config["goal_inr"]
     lines = [
         "@%s **Final results after %d days** (%s to %s)" % (
@@ -708,12 +836,15 @@ def final_message(state, board, config, prices):
     lines += ["", "**The original bots**", ""] + _original_lines(board)
     if any(r.get("added") for r in board):
         lines += ["", "**Added on 1 Oct, after the backtests**", ""] + _original_lines(board, added=True)
-    cards = report_card(board)
+    cards = report_card(board, elapsed_days(state, state["last_event_t"] or state["sim_start"]))
     if cards:
         lines += ["", "**Strategy report card**", ""] + _card_lines(cards) + ["", luck_line(board)]
     money = _money_lines(board, config["capital_inr"])
     if money:
         lines += ["", money_line(board, config["capital_inr"]), ""] + money
+    cheap = lowcost_lines(state, board, low, config, state["last_event_t"] or state["sim_end"])
+    if cheap:
+        lines += [""] + cheap
     reached = [r["title"] for r in board if r["value"] >= goal]
     best = board[0]
     lines.append("")

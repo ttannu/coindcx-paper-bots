@@ -1,6 +1,6 @@
 # What six months of CoinDCX prices say about these strategies
 
-Before trusting 15 days of live paper trading, every strategy in this repository was replayed over the six months before the launch. The short answer: none of them made money on CoinDCX's INR spot market after fees and tax, and the few that looked promising either lost in the next window or came from prices that could not really be traded. This page explains how that was tested, where the money went, and the two mistakes in the research that were caught along the way.
+Before trusting 15 days of live paper trading, every strategy in this repository was replayed over the six months before the launch. The short answer: none of them made money on CoinDCX's INR spot market after fees and tax, not even at CoinDCX's VIP fee with limit orders, and the few that looked promising either lost in the next window or came from prices that could not really be traded. This page explains how that was tested, where the money went, and the three mistakes in the research that were caught along the way.
 
 Written on 1 Oct 2026. The market in this period mostly fell and then rallied hard in the second half of September, so these results describe one stretch of one market, not a law.
 
@@ -145,12 +145,30 @@ The last idea was to stay out of falling markets: hold the most liquid coins (BT
 
 Every filter checked every 3 days did better than holding, and the slow ones halved the worst window, but none made real money: the best ended flat, with a profit in 4 of 17 windows. The gain came from sitting in cash through the fall from February to June, after one or two switches a window, so it rests on a handful of decisions in one falling market. A filter like this limits losses; it doesn't create profits.
 
-## Two mistakes that were caught
+## Cheaper trading
 
-Both made a signal look far better than it was, and both are easy to make:
+Added on 1 Oct. Fees and spread took most of what the grids and dip-buyers made before costs, so they were replayed over the same 12 windows with the lowest costs a CoinDCX INR account can realistically reach: the VIP 1 spot fee of 0.17% instead of 0.5% (plus GST), which needs ₹5 lakh of trading in 30 days, and limit orders instead of market orders. A limit order pays no spread, but it fills at exactly its price and only once a later candle trades through it. The dip-buyers bid the signal candle's close for an hour; stops and time exits stay market orders. Tax is unchanged. Mean result per bot per window, after all costs:
+
+| Strategy | Normal costs | VIP 1 fee and limit orders | Windows in profit | On the 10 most liquid coins |
+|---|---:|---:|---:|---:|
+| Buy & hold | +0.8% | +1.6% | 5 of 12 | +1.1% |
+| Grid, 3% steps | -2.7% | -0.3% | 5 of 12 | -0.1% |
+| Grid, 1.5% steps | -10.3% | -1.5% | 3 of 12 | -0.8% |
+| RSI dip <30, ±6% | -6.5% | -1.8% | 0 of 12 | -1.0% |
+| RSI dip <30, ±3% | -8.5% | -2.9% | 0 of 12 | -1.4% |
+| Coin flip | -27.2% | -17.9% | 0 of 12 | -13.3% |
+
+The last two columns are for the low-cost runs. Cheaper trading cut the losses by two-thirds or more, but nothing made money, and every strategy did worse on average than holding the coin at the same fee. The volume is out of reach as well: the busiest strategy, the 1.5% grid, traded about ₹1.6 lakh a month per ₹5,000 bot, a third of what VIP 1 requires.
+
+The first version of this test filled limit orders the way the normal-cost bots fill: at the candle price, and at the open when the price gapped past the order. That showed the grids and dip-buyers making +2.4% to +5.8% a window, and making money in 9 to 12 of the 12 windows. All of it came from fills a real order can't get. An order resting in the book fills at its own price even when the market gaps through it, and a bid at the last traded price only fills if sellers keep coming, which is when the price is still falling. Filling at the order's own price was enough to wipe out the grids' profit. Requiring the price to trade through an order instead of touching it made no difference to the grids, and took the dip-buyers from between -1.2% and +0.3% a window to a loss in all 12. The normal-cost grids get the same flattering gap fills, so their real results would be somewhat worse than the table at the top shows.
+
+## Three mistakes that were caught
+
+All three made a strategy look far better than it was, and all are easy to make:
 
 - **The stale-price discount** (above). The profit only existed at prices nobody could trade at. The check that caught it was entering one candle later, at a price the strategy could really have got, and filtering on volume.
 - **A tie that leaked the future.** The first funding study ranked coins by funding rate with a sort that broke ties by the next day's return. Many coins sit at exactly the base funding rate, so the ties were common, and the sort quietly put the next day's winners on top. That produced an "edge" of +1.1% to +2.4% a day. Ranking by funding alone brought it down to the 0.1% to 0.25% above. A day-by-day check against a direct simulation of the strategy showed the mismatch.
+- **Fills a resting order can't get** ([above](#cheaper-trading)). The first low-cost test filled limit orders at the candle's open when the price gapped past them, and as soon as the price touched them. That alone made the grids and dip-buyers look profitable at the VIP fee. The check that caught it was filling each order at its own price, and only after the price traded through it.
 
 ## Limits of this research
 
@@ -164,7 +182,7 @@ Both made a signal look far better than it was, and both are easy to make:
 
 For a rule-based bot to make money here, at least one of these would have to be true:
 
-- **Much cheaper trading.** CoinDCX's INR spot fee falls from 0.5% to 0.42% above ₹2 lakh of trading a month, and to 0.17% or less at its VIP levels. Futures cost 0.05% a side, but the rule-based futures strategies lost before costs.
+- **Much cheaper trading, though that alone wasn't enough.** CoinDCX's INR spot fee falls from 0.5% to 0.42% above ₹2 lakh of trading a month, and to 0.17% or less at its VIP levels, which start at ₹5 lakh. At 0.17% and with limit orders the strategies here still lost ([above](#cheaper-trading)). Futures cost 0.05% a side, but the rule-based futures strategies lost before costs.
 - **Losses that offset gains.** Under the current rules every winning trade is taxed on its own, which punishes strategies that win and lose often.
 - **Liquid coins only.** On the thin coins the backtests promise profits the market would not have given.
 - **An edge from outside the price chart.** Every rule here reads the same 15-minute and hourly prices that thousands of other bots read. That information is already in the price.

@@ -37,6 +37,8 @@ class CoinBot(Bot):
         self.family = family
         self.p = family.params
         self.key = bot_key(pair, family)
+        # The coin flips draw from this; a low-cost twin keeps its original's, so both make the same random calls.
+        self.seed = self.key
         self.title = "%s: %s" % (self.coin, family.label)
         self.subscriptions = ((pair, self.interval),)
 
@@ -176,7 +178,7 @@ class PumpRider(CoinBot):
 class CoinFlip(CoinBot):
     def on_candle(self, ctx, s, i):
         c = s.candles[i]
-        if draw(self.key, c["t"]) >= FLIP_ODDS:
+        if draw(self.seed, c["t"]) >= FLIP_ODDS:
             return
         if self.acct.position(self.pair):
             self.acct.sell(self.pair, c["c"], ctx.t, "coin flip")
@@ -208,12 +210,12 @@ class FuturesFlip(CoinBot):
 
     def on_candle(self, ctx, s, i):
         c = s.candles[i]
-        if self.acct.check_liquidation(c, ctx.t) or draw(self.key, c["t"]) >= FLIP_ODDS:
+        if self.acct.check_liquidation(c, ctx.t) or draw(self.seed, c["t"]) >= FLIP_ODDS:
             return
         if self.acct.open_position:
             self.acct.close(c["c"], ctx.t, "coin flip")
         else:
-            side = "long" if draw(self.key, c["t"], "side") < 0.5 else "short"
+            side = "long" if draw(self.seed, c["t"], "side") < 0.5 else "short"
             self.acct.open(self.pair, side, self.p["leverage"], c["c"], ctx.t, "coin flip: %s" % side)
 
 

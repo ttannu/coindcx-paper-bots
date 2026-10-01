@@ -7,7 +7,7 @@ from unittest import mock
 
 import test_desk
 import test_robustness as rb
-from sim import desk, engine, liquid, report, swarm
+from sim import desk, engine, liquid, lowcost, report, swarm
 from sim.coindcx import DataUnavailable
 from synthetic import DAY, H1, START, build_market, make_fetch
 
@@ -35,7 +35,7 @@ class SwarmTest(unittest.TestCase):
         keys = [bot.key for bot in bots]
         self.assertEqual(len(keys), len(set(keys)))
         self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(liquid.specs(universe)) + len(universe) * len(swarm.FAMILIES) +
-                         len(desk.BOOKS))
+                         len(lowcost.specs(universe, config)) + len(desk.BOOKS))
         self.assertGreaterEqual(len(bots), 1000)
         for bot in bots:
             if getattr(bot, "family", None):
@@ -72,7 +72,8 @@ class ScaleTest(unittest.TestCase):
                 ws.run(now, fetch, notify=False)
                 timings.append(time.time() - began)
             state = ws.state()
-            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 2 + 22 * len(universe) + len(desk.BOOKS))
+            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 2 + 22 * len(universe) +
+                             len(lowcost.specs(universe, read_config())) + len(desk.BOOKS))
             self.assertEqual(len(state["bots"][liquid.LiquidBasket.key]["positions"]), 5)
             rb.check_invariants(self, state)
             self.assertLess(max(timings), 20, timings)
@@ -226,7 +227,7 @@ class UpgradeTest(unittest.TestCase):
                     self.assertAlmostEqual(a["bots"][key][field], b["bots"][key][field], places=6, msg="%s %s" % (key, field))
             upgrades = [c for c in github.calls if c[0] == "comment" and "upgraded" in c[2]]
             self.assertEqual(len(upgrades), 1)
-            self.assertEqual(sum(1 for s, _ in mailer.sent if s.startswith("Paper-trading bots: now")), 1)
+            self.assertEqual(sum(1 for s, _ in mailer.sent if s.endswith("low-cost twins added")), 1)
             for name in ("equity.csv", "trades.csv"):
                 with open(os.path.join(old.root, "state", name), encoding="utf-8") as fh_a, \
                         open(os.path.join(fresh.root, "state", name), encoding="utf-8") as fh_b:
@@ -274,13 +275,14 @@ class UpgradeTest(unittest.TestCase):
                 ws.run(START + 12 * H1, fetch)
                 state = ws.state()
                 before = json.loads(json.dumps(state["bots"]))
-                state["version"] = 3
+                state["version"] = engine.STATE_VERSION - 1
                 for acct in state["bots"].values():
                     del acct["spread"]
                 with open(os.path.join(ws.root, "state", "state.json"), "w", encoding="utf-8") as fh:
                     json.dump(state, fh)
                 calls, sent = len(github.calls), len(mailer.sent)
-                ws.run(START + 12 * H1, fetch)
+                with mock.patch.object(engine, "QUIET_UPGRADES", frozenset([engine.STATE_VERSION])):
+                    ws.run(START + 12 * H1, fetch)
             after = ws.state()
             self.assertEqual(after["version"], engine.STATE_VERSION)
             self.assertFalse(after["reports"].get("announce"))
@@ -343,7 +345,7 @@ class ReportTest(unittest.TestCase):
             with open(os.path.join(ws.root, "docs", "equity.svg"), encoding="utf-8") as fh:
                 svg = fh.read()
             self.assertIn(svg.count("<polyline"), range(7, 10))
-            self.assertIn("Median of all %d bots" % len(ws.state()["bots"]), svg)
+            self.assertIn("Median of all %d bots" % sum(1 for key in ws.state()["bots"] if not key.endswith("_low")), svg)
             self.assertIn("AI desk: spot portfolio", svg)
             self.assertIn("AI desk: futures, up to 3x", svg)
             self.assertLess(block.index("**AI trading desk.**"), block.index("**Top 15 bots**"))
@@ -351,6 +353,17 @@ class ReportTest(unittest.TestCase):
             self.assertNotIn("AI desk", originals)
         finally:
             ws.close()
+
+    def test_skill_needs_three_days_and_a_profit_as_well_as_beating_both_yardsticks(self):
+        self.assertEqual(report._verdict(False, False, 0.02, -0.01, 30, 47, 5), "yes")
+        self.assertEqual(report._verdict(False, False, 0.02, -0.01, 30, 47, 2.9), "too early")
+        # Sat in cash on a falling day: ahead of holding and of the coin flips, but it made nothing.
+        self.assertEqual(report._verdict(False, False, 0.0, -0.01, 41, 47, 5), "not yet")
+        self.assertEqual(report._verdict(False, False, -0.007, -0.01, 39, 47, 5), "not yet")
+        self.assertEqual(report._verdict(False, False, 0.02, 0.03, 30, 47, 5), "not yet")
+        self.assertEqual(report._verdict(False, False, 0.02, -0.01, 23, 47, 5), "not yet")
+        self.assertEqual(report._verdict(True, False, 0.05, -0.01, 47, 47, 0.5), "luck control")
+        self.assertEqual(report._verdict(False, True, 0.05, -0.01, 0, 47, 0.5), "benchmark")
 
 
 if __name__ == "__main__":

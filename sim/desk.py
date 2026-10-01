@@ -334,8 +334,8 @@ def _swarm_table(rows):
     return "\n".join(lines)
 
 
-def _card_text(board, capital):
-    cards = report.report_card(board)
+def _card_text(board, capital, days):
+    cards = report.report_card(board, days)
     money = dict((row["label"], row) for row in report.money_table(board, capital)[0])
     lines = []
     for c in cards:
@@ -674,7 +674,7 @@ def hold_meeting(root, state, config, series, prices, board, bots, now_ms, llm, 
                "day": report.day_number(state, config, now_ms), "capital": report.inr(config["capital_inr"]),
                "every": settings["every_hours"], "min_volume": MIN_VOLUME_LAKH, "max_idle": int(round(MAX_IDLE * 100))}
     ctx = {"rows": rows, "research": outside, "now": report.ist(now_ms), "start": context["start"],
-           "swarm": swarm_rows(board), "card": _card_text(board, config["capital_inr"]),
+           "swarm": swarm_rows(board), "card": _card_text(board, config["capital_inr"], report.elapsed_days(state, t)),
            "backtests": settings.get("backtests") or []}
     minutes = {"t": now_ms, "data_t": t, "agents": {}, "models": {}, "failed": {},
                "sources": {"coins": len(rows), "tradable": len(tradable), "headlines": len(outside.get("headlines", [])),

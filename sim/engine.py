@@ -6,7 +6,7 @@ import smtplib
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, desk, liquid, report, research, swarm
+from . import coindcx, desk, liquid, lowcost, report, research, swarm
 from .accounts import FuturesAccount, SpotAccount
 from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
@@ -16,7 +16,7 @@ from .llm import Gemini
 from .mailer import Mailer
 
 ALL_BOTS = FIXED_BOTS + (SelfLearner,)
-STATE_VERSION = 4
+STATE_VERSION = 5
 # Versions that only add bookkeeping: the replay changes no bot, so nobody is told about it.
 QUIET_UPGRADES = frozenset([4])
 FIFTEEN_MIN_MS = 15 * 60 * 1000
@@ -82,17 +82,18 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
         _write_json(state_path, state)
 
     board = report.leaderboard(bots, prices, state["last_event_t"] or now_ms, config)
+    low = report.lowcost_board(bots, prices, state["last_event_t"] or now_ms, config)
     if series is not None:
         _safely(_desk_meeting, root, state, config, series, prices, board, bots, now_ms, desk_llm, gather)
         _write_json(state_path, state)
     try:
-        report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots))
+        report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots, low))
         report.write_chart(root, state, board, config)
     except Exception:  # the dashboard is cosmetic; a rendering bug must not block saving or reporting
         traceback.print_exc()
     if notify:
         mailer = Mailer.from_env()
-        _safely(_notify, root, state, board, config, prices, now_ms, len(bots))
+        _safely(_notify, root, state, board, low, config, prices, now_ms)
         _safely(_deliver_mail, state, board, config, prices, now_ms, mailer)
         _safely(_switch_off, state, now_ms, mailer)
         _write_json(state_path, state)
@@ -148,7 +149,7 @@ def _build_bots(state, config, trades):
     bots = []
     universe = config.get("universe", ())
     makers = ([(cls.key, cls.kind, cls) for cls in ALL_BOTS] + liquid.specs(universe) + swarm.specs(universe) +
-              desk.specs(state, config))
+              lowcost.specs(universe, config) + desk.specs(state, config))
     for key, kind, make in makers:
         account_cls = FuturesAccount if kind == "futures" else SpotAccount
         acct_state = state["bots"].setdefault(key, account_cls.fresh(config["capital_inr"]))
@@ -339,13 +340,13 @@ def _new_notes(root, reports):
             yield name, title[2:].strip(), body.strip()
 
 
-def _notify(root, state, board, config, prices, now_ms, bot_count):
+def _notify(root, state, board, low, config, prices, now_ms):
     github = GitHub.from_env()
     reports = state["reports"]
     today = report.ist(now_ms, "%Y-%m-%d")
     try:
         if reports["issue"] is None:
-            body = report.start_message(state, config, bot_count)
+            body = report.start_message(state, config, len(board))
             reports["issue"] = github.create_issue(report.ISSUE_TITLE, body) if github else 0
             if not github:
                 print(body)
@@ -360,13 +361,13 @@ def _notify(root, state, board, config, prices, now_ms, bot_count):
             reports.setdefault("notes_sent", []).append(name)
             _queue_mail(reports, "note:" + name, title, text, config)
         if reports.get("announce") and not state["finished"]:
-            body = report.upgrade_message(state, board, config, prices, now_ms)
+            body = report.upgrade_message(state, board, config, prices, now_ms, low)
             if github:
                 github.comment(reports["issue"], body)
             else:
                 print(body)
             reports["announce"] = False
-            _queue_mail(reports, "upgrade", report.upgrade_subject(board, config), body, config)
+            _queue_mail(reports, "upgrade", report.upgrade_subject(board, config, low), body, config)
         book = state.get("desk") or {}
         if book.get("announce") and not state["finished"]:
             body = report.desk_message(state, board, config, now_ms)
@@ -378,7 +379,7 @@ def _notify(root, state, board, config, prices, now_ms, bot_count):
             _queue_mail(reports, "desk", report.DESK_TITLE, body, config)
         if state["finished"]:
             if not reports.get("final_posted"):
-                body = report.final_message(state, board, config, prices)
+                body = report.final_message(state, board, config, prices, low)
                 if github:
                     github.comment(reports["issue"], body)
                 else:
@@ -390,7 +391,7 @@ def _notify(root, state, board, config, prices, now_ms, bot_count):
                     github.close_issue(reports["issue"], report.FINAL_TITLE)
                 reports["issue_closed"] = True
         elif reports["last_daily"] != today and int(report.ist(now_ms, "%H")) >= config["report_hour_ist"]:
-            body = report.daily_message(state, board, config, prices, now_ms, reports["values"])
+            body = report.daily_message(state, board, config, prices, now_ms, reports["values"], low)
             if github:
                 github.comment(reports["issue"], body)
             else:
