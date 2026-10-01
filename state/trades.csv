@@ -5679,3 +5679,10 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-02 01:45,ai_desk_spot,BUY,PUMP/INR,1189.00000000,0.59,695.84,4.11,0.00,,0.00,desk: buy to 15%
 2026-10-02 01:45,ai_desk_futures,CLOSE SHORT,SAGA/INR,3083.98737143,2.49,7681.12,4.53,0.00,39.95,22.25,desk: switch to short NEAR
 2026-10-02 01:45,ai_desk_futures,OPEN SHORT,NEAR/INR,16.21696835,485.78,7877.83,4.65,0.00,,0.00,"desk, 2x, liquidation at 726"
+2026-10-02 02:00,arb.trend_2_8h,SELL,ARB/INR,181.40000000,19.91,3612.38,21.31,0.00,-126.66,0.00,closed below the slow average
+2026-10-02 02:00,pha.grid_1_5pct,SELL,PHA/INR,114.00000000,7.34,836.49,4.94,0.00,-18.52,0.00,"grid sell, level 6"
+2026-10-02 02:00,pha.grid_1_5pct_low,SELL,PHA/INR,115.00000000,7.35,845.49,1.70,0.00,-8.36,0.00,"grid sell, level 6"
+2026-10-02 02:00,sol.trend_2_8h,BUY,SOL/INR,0.35800000,11881.35,4253.52,25.10,0.00,,0.00,uptrend entry
+2026-10-02 02:00,trx.trend_2_8h,SELL,TRX/INR,127.20000000,33.12,4213.11,24.86,0.00,-128.48,0.00,closed below the slow average
+2026-10-02 02:00,vvv.grid_1_5pct,SELL,VVV/INR,0.31000000,2679.96,830.79,4.90,0.00,-13.23,0.00,"grid sell, level 5"
+2026-10-02 02:00,vvv.grid_1_5pct_low,SELL,VVV/INR,0.31000000,2678.15,830.23,1.67,0.00,-9.77,0.00,"grid sell, level 5"
