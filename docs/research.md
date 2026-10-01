@@ -1,6 +1,6 @@
 # What six months of CoinDCX prices say about these strategies
 
-Before trusting 15 days of live paper trading, every strategy in this repository was replayed over the six months before the launch. The short answer: none of them made money on CoinDCX's INR spot market after fees and tax, not even at CoinDCX's VIP fee with limit orders, and the few that looked promising either lost in the next window or came from prices that could not really be traded. This page explains how that was tested, where the money went, and the three mistakes in the research that were caught along the way.
+Before trusting 15 days of live paper trading, every strategy in this repository was replayed over the six months before the launch. The short answer: none of them made money on CoinDCX's INR spot market after fees and tax, not even at CoinDCX's VIP fee with limit orders, and the few that looked promising either lost in the next window or came from prices that could not really be traded. Machine-learning models retrained every day or week did no better, and even a forecast that was always right about the direction of the next hour, 4 hours, or day would have lost money on average. This page explains how that was tested, where the money went, and the three mistakes in the research that were caught along the way.
 
 Written on 1 Oct 2026. The market in this period mostly fell and then rallied hard in the second half of September, so these results describe one stretch of one market, not a law.
 
@@ -162,6 +162,50 @@ The last two columns are for the low-cost runs. Cheaper trading cut the losses b
 
 The first version of this test filled limit orders the way the normal-cost bots fill: at the candle price, and at the open when the price gapped past the order. That showed the grids and dip-buyers making +2.4% to +5.8% a window, and making money in 9 to 12 of the 12 windows. All of it came from fills a real order can't get. An order resting in the book fills at its own price even when the market gaps through it, and a bid at the last traded price only fills if sellers keep coming, which is when the price is still falling. Filling at the order's own price was enough to wipe out the grids' profit. Requiring the price to trade through an order instead of touching it made no difference to the grids, and took the dip-buyers from between -1.2% and +0.3% a window to a loss in all 12. The normal-cost grids get the same flattering gap fills, so their real results would be somewhat worse than the table at the top shows.
 
+## Machine learning
+
+Added on 1 Oct. Every strategy above follows a rule someone chose. This test let models find their own rules in the same prices, and asked how good a forecast would have to be to make money here at all.
+
+- **Inputs.** For every coin and hour, 33 measures known at the hour's close: the coin's returns over the last hour to the last week, its volatility and RSI, its distance from its recent highs and lows, its volume against its own average and the share of recent hours with no trades, the shape of its last candle, BTC's recent moves, where the coin's last hour and last day ranked among the 47, the hour and weekday, and its spread.
+- **Questions.** Will the next hour close higher? And will the next 4 hours rise by more than a round trip costs?
+- **Walk-forward.** From 3 Apr to 30 Sep, each model was retrained at the start of every day or week on everything known by then, back to late December, and scored only on the hours that followed: 203,748 coin-hours it had never seen. Their settings were fixed before the first run.
+- **Trading.** In the same 12 windows, each coin had its own ₹5,000. It bought at an hour's close when a model gave the 4-hour trade at least an even chance of beating its costs, and sold 4 hours later, paying the spread, fees, and tax.
+
+Five models came from scikit-learn: logistic regression, gradient boosting, a random forest, a small neural network, and a "memorizer", a decision tree with no limits that learns its training data by heart. The sixth, [Kronos](https://github.com/shiyu-coder/Kronos), is an open-source model pretrained on candles from over 45 exchanges. Its small version forecast the next 4 hourly candles of the 10 most liquid coins every 8 hours, from the previous 20 days, without being fitted to CoinDCX at all.
+
+| Model | Retrained | Next hour right | On its surest tenth of hours | 4-hour trades | Trades that made money | Mean per window | Windows in profit |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Logistic regression | daily | 62.8% | 75.6% | 609 | 31% | -1.7% | 0 of 12 |
+| Gradient boosting | daily | 63.7% | 80.8% | 856 | 41% | -1.1% | 1 of 12 |
+| Random forest | weekly | 63.8% | 80.6% | 166 | 52% | -0.2% | 6 of 12 |
+| Neural network | weekly | 63.1% | 78.8% | 1,080 | 36% | -1.9% | 0 of 12 |
+| Memorizer | weekly | 55.1% | 55.1% | 17,007 | 13% | -41.9% | 0 of 12 |
+| Kronos | never | 54.6% | - | 281 | 4% | -3.9% | 0 of 12 |
+| Buy & hold | - | - | - | - | - | +0.8% | 5 of 12 |
+
+The mean is for an equal-weight portfolio of all 47 coins, most of which a model rarely traded; for Kronos it is for the 10 coins it forecast.
+
+**Calling the next hour is worth nothing here.** 63% sounds like skill, and on the hours they were surest about the models were right 76% to 81% of the time. Most of it is the bounce between the bid and the ask that the [signal studies](#signals-studied-directly) found: a rule that simply bets the next hour will reverse the last one was right 58.5% of the time, and the models agreed with it on three hours in four. Kronos, which had never seen CoinDCX's prices, was right 54.6% of the time, where gradient boosting was right 61.9% on the same hours.
+
+Even a perfect call would lose. Mean per window across the 47 coins, for a forecast of the direction that buys before every rise it predicts and sells at the end of it, with real costs and tax:
+
+| Right about the direction | Next hour | Next 4 hours | Next day |
+|---|---:|---:|---:|
+| 60% of the time | -95.7% | -73.9% | -24.4% |
+| 80% of the time | -91.0% | -64.8% | -20.6% |
+| 90% of the time | -86.6% | -56.5% | -16.5% |
+| 100% of the time | -78.8% | -42.0% | -1.4% |
+
+Most rises over an hour or 4 hours are smaller than the roughly 2% a round trip costs, so a forecast that is never wrong about the direction still pays more in costs than it makes. Over a day it lost 1.4% a window on average, and made money in only 2 of the 12 windows.
+
+**The question that matters is too hard.** A trade needs a rise bigger than its costs, and only 11.8% of 4-hour periods had one. A model that always says no is right 88.2% of the time, and none of the models beat that: the memorizer scored 79.6% and the rest 87.9% to 88.2%. Every model lost money on the trades it took. The random forest came closest, losing 0.2% a window and making money in 6 of 12, but all 166 of its trades were on the 37 thinner coins, typically at hours when the coin had gone without a trade in about half of the previous 24. Buying an hour later, at a price that could really have been traded, cut the average 4-hour move after its signals from +2.2% to +0.8%, its winning trades from 52% to 29%, and its windows in profit from 6 to 1. It was the same kind of stale price that made [the INR premium](#signals-studied-directly) look good. Gradient boosting's signals fell the same way, from +1.7% to +0.5%.
+
+**Training until it is always right only memorizes the past.** The memorizer was right on 100.0% of the hours it trained on, and on 55.1% of the hours that followed, against about 63% for the other four models. Trading its 4-hour calls lost 41.9% a window. More training on the same prices makes a model better at the past, not at the future.
+
+**Knowing the future would work, but not every time.** Knowing in advance exactly which 4-hour trades would beat the fees and spread made +12.7% a window, and made money in all 12. Even so, 40% of those trades lost money, because tax is charged on the gain before fees, so a trade that only just beats the fees loses after tax. On the 10 most liquid coins, where fewer moves are big enough, it made +3.9% a window, and 43 of the 120 coin-windows still ended down.
+
+So over an hour, 4 hours, or a day, knowing the direction isn't enough even when it is always right. A forecast would have to know how far each coin will move, well enough to tell a 1% rise from a 3% one, and none of these models could do that well enough to pay for their trades.
+
 ## Three mistakes that were caught
 
 All three made a strategy look far better than it was, and all are easy to make:
@@ -176,6 +220,7 @@ All three made a strategy look far better than it was, and all are easy to make:
 - **Today's coins.** The 47 coins were chosen on 30 Sep 2026 for their volatility and trading on CoinDCX, so coins delisted during the period are missing, and coins that had just rallied are over-represented. That flatters buy & hold in the last window.
 - **Candle fills.** Trades fill at candle prices plus half the spread measured on 30 Sep, so order-book depth and outages are not modelled. For thin coins that is optimistic.
 - **Futures prices.** The simulation prices futures off CoinDCX's INR spot candles. Real INR-margined futures follow global perpetual prices, which are smoother on thin coins.
+- **Models.** The machine-learning models saw only hourly candles, and their settings were fixed before the first run rather than tuned. Kronos ran in its small version, on the 10 most liquid coins, with one sampled forecast every 8 hours; averaging several samples might be steadier. Order books, news, and global prices weren't used.
 - **Tax.** Futures gains are taxed like spot sales, the strictest reading of the rules. If they were taxed as business income with losses set off, the futures results would be better, but the rule-based futures strategies lost before tax too.
 
 ## What would have to change
@@ -185,6 +230,6 @@ For a rule-based bot to make money here, at least one of these would have to be 
 - **Much cheaper trading, though that alone wasn't enough.** CoinDCX's INR spot fee falls from 0.5% to 0.42% above ₹2 lakh of trading a month, and to 0.17% or less at its VIP levels, which start at ₹5 lakh. At 0.17% and with limit orders the strategies here still lost ([above](#cheaper-trading)). Futures cost 0.05% a side, but the rule-based futures strategies lost before costs.
 - **Losses that offset gains.** Under the current rules every winning trade is taxed on its own, which punishes strategies that win and lose often.
 - **Liquid coins only.** On the thin coins the backtests promise profits the market would not have given.
-- **An edge from outside the price chart.** Every rule here reads the same 15-minute and hourly prices that thousands of other bots read. That information is already in the price.
+- **An edge from outside the price chart.** Every rule here reads the same 15-minute and hourly prices that thousands of other bots read. That information is already in the price, and machine-learning models given 33 measures of it found nothing that paid for its trades ([above](#machine-learning)).
 
 Until then, the approaches that did least badly were the ones that paid costs rarely: holding a few liquid coins, at most stepping aside while BTC is below its 30-day average. They make or lose roughly what the market does, which is exposure, not an edge.
