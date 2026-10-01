@@ -5827,3 +5827,21 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-02 03:30,near.learner,CLOSE LONG,NEAR/INR,3.61546407,478.61,1730.40,1.02,0.00,-172.05,0.00,switching to NEAR trend 6/24h
 2026-10-02 03:30,near.learner,OPEN SHORT,NEAR/INR,5.74789825,478.61,2751.00,1.62,0.00,,0.00,"following NEAR trend 6/24h, 0.57x, liquidation at 1316"
 2026-10-02 03:30,render.learner,OPEN SHORT,RENDER/INR,21.57702203,189.91,4097.80,2.42,0.00,,0.00,"following RENDER hold short, 0.83x, liquidation at 418"
+2026-10-02 03:45,mubarak.trend_2_8h,SELL,MUBARAK/INR,654.70000000,6.09,3985.27,23.51,0.00,-117.16,0.00,closed below the slow average
+2026-10-02 03:45,mubarak.grid_1_5pct,BUY,MUBARAK/INR,134.10000000,6.17,827.96,4.88,0.00,,0.00,"grid buy, level 1"
+2026-10-02 03:45,mubarak.grid_1_5pct_low,BUY,MUBARAK/INR,135.10000000,6.15,831.52,1.67,0.00,,0.00,"grid buy, level 1"
+2026-10-02 03:45,ai_desk_spot,SELL,PUMP/INR,1189.00000000,0.57,674.59,3.98,0.00,-29.34,0.00,desk: exit
+2026-10-02 04:00,btc.trend_2_8h,SELL,BTC/INR,0.00050000,8414973.74,4207.49,24.82,0.00,-86.55,0.00,closed below the slow average
+2026-10-02 04:00,ena.grid_3pct,BUY,ENA/INR,33.71000000,24.57,828.34,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-02 04:00,ena.grid_3pct_low,BUY,ENA/INR,33.99000000,24.46,831.48,1.67,0.00,,0.00,"grid buy, level 4"
+2026-10-02 04:00,fil.grid_1_5pct,BUY,FIL/INR,8.20000000,101.00,828.21,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-02 04:00,fil.grid_1_5pct_low,BUY,FIL/INR,8.21000000,101.27,831.43,1.67,0.00,,0.00,"grid buy, level 5"
+2026-10-02 04:00,link.trend_2_8h,SELL,LINK/INR,2.50000000,1427.87,3569.68,21.06,35.70,-94.48,0.00,closed below the slow average
+2026-10-02 04:00,one.grid_1_5pct,BUY,ONE/INR,3506.20000000,0.21,752.79,4.44,0.00,,0.00,"grid buy, level 6"
+2026-10-02 04:00,one.grid_3pct,BUY,ONE/INR,3858.50000000,0.21,828.43,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-02 04:00,one.grid_1_5pct_low,BUY,ONE/INR,3877.70000000,0.21,831.66,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-02 04:00,one.grid_3pct_low,BUY,ONE/INR,3880.40000000,0.21,831.66,1.67,0.00,,0.00,"grid buy, level 3"
+2026-10-02 04:00,shib.trend_5_20h,BUY,SHIB/INR,7616903.00000000,0.00,4425.50,26.11,0.00,,0.00,uptrend entry
+2026-10-02 04:00,sol.trend_2_8h,BUY,SOL/INR,0.35000000,11874.23,4155.98,24.52,0.00,,0.00,uptrend entry
+2026-10-02 04:00,xrp.trend_2_8h,BUY,XRP/INR,29.60000000,150.31,4449.32,26.25,0.00,,0.00,uptrend entry
+2026-10-02 04:00,xrp.trend_5_20h,BUY,XRP/INR,27.70000000,150.31,4163.72,24.57,0.00,,0.00,uptrend entry
