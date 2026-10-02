@@ -10124,3 +10124,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-03 01:30,vvv.breakout_48_24h,SELL,VVV/INR,1.68000000,2793.73,4693.46,27.69,0.00,-326.76,0.00,stop loss
 2026-10-03 01:30,zec.flip_2,SELL,ZEC/INR,0.03400000,126966.92,4316.88,25.47,0.00,-481.48,0.00,coin flip
 2026-10-03 01:30,uni.learner,OPEN SHORT,UNI/INR,4.17136107,866.28,3613.55,2.13,0.00,,0.00,"following UNI 72h breakout, 0.73x, liquidation at 2049"
+2026-10-03 01:45,aave.grid_1_5pct,SELL,AAVE/INR,0.04600000,18037.57,829.73,4.90,0.00,-11.25,0.00,"grid sell, level 3"
+2026-10-03 01:45,aave.grid_1_5pct_low,SELL,AAVE/INR,0.04700000,18095.47,850.49,1.71,0.00,-1.26,0.97,"grid sell, level 3"
+2026-10-03 01:45,gala.trend_5_20h,BUY,GALA/INR,15799.11000000,0.26,4051.64,23.90,0.00,,0.00,uptrend entry
+2026-10-03 01:45,gala.grid_1_5pct,SELL,GALA/INR,3066.83000000,0.25,775.36,4.57,0.00,-29.33,0.00,"grid sell, level 6"
+2026-10-03 01:45,gala.grid_1_5pct_low,SELL,GALA/INR,3462.20000000,0.25,880.07,1.77,0.00,-17.14,0.00,"grid sell, level 6"
+2026-10-03 01:45,link.grid_1_5pct,BUY,LINK/INR,0.59000000,1356.25,800.19,4.72,0.00,,0.00,"grid buy, level 6"
+2026-10-03 01:45,link.grid_1_5pct_low,BUY,LINK/INR,0.61000000,1350.44,823.77,1.65,0.00,,0.00,"grid buy, level 6"
+2026-10-03 01:45,trx.trend_5_20h,SELL,TRX/INR,98.70000000,32.95,3252.63,19.19,32.53,-102.43,0.00,closed below the slow average
+2026-10-03 02:00,ondo.dip_30_3_low,SELL,ONDO/INR,105.60000000,48.64,5136.13,10.30,0.00,82.62,46.67,take profit
+2026-10-03 02:00,siren.grid_1_5pct,BUY,SIREN/INR,199.20000000,4.16,829.18,4.89,0.00,,0.00,"grid buy, level 6"
+2026-10-03 02:00,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
+2026-10-03 02:00,trx.trend_5_20h,BUY,TRX/INR,94.80000000,33.59,3184.69,18.79,0.00,,0.00,uptrend entry
