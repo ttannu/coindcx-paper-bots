@@ -10188,3 +10188,31 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-03 02:30,zec.flip_1_low,BUY,ZEC/INR,0.03900000,128785.19,5022.62,10.08,0.00,,0.00,coin flip
 2026-10-03 02:30,ena.learner,CLOSE LONG,ENA/INR,142.39900691,23.22,3306.42,1.95,0.00,-3.10,0.36,switching to ENA hold short
 2026-10-03 02:30,ena.learner,OPEN SHORT,ENA/INR,127.40793023,23.22,2958.33,1.75,0.00,,0.00,"following ENA hold short, 0.6x, liquidation at 62"
+2026-10-03 02:45,aave.trend_5_20h,BUY,AAVE/INR,0.20300000,18338.50,3722.71,21.96,0.00,,0.00,uptrend entry
+2026-10-03 02:45,aave.grid_1_5pct,SELL,AAVE/INR,0.04600000,18221.50,838.19,4.95,0.00,-3.03,3.09,"grid sell, level 3"
+2026-10-03 02:45,aave.grid_1_5pct_low,SELL,AAVE/INR,0.04700000,18095.47,850.49,1.71,0.00,0.96,1.98,"grid sell, level 3"
+2026-10-03 02:45,bch.grid_1_5pct,SELL,BCH/INR,0.02770000,30311.76,839.64,4.95,0.00,-14.37,0.00,"grid sell, level 4"
+2026-10-03 02:45,bch.grid_1_5pct_low,SELL,BCH/INR,0.02780000,30324.57,843.02,1.69,0.00,-6.66,0.00,"grid sell, level 4"
+2026-10-03 02:45,hbar.dip_25_3,SELL,HBAR/INR,502.00000000,10.14,5090.03,30.03,0.00,26.62,38.97,take profit
+2026-10-03 02:45,hbar.grid_1_5pct,SELL,HBAR/INR,81.00000000,10.12,819.38,4.83,0.00,-29.62,0.00,"grid sell, level 6"
+2026-10-03 02:45,hbar.grid_1_5pct_low,SELL,HBAR/INR,83.00000000,10.16,843.58,1.69,0.00,-15.85,0.00,"grid sell, level 6"
+2026-10-03 02:45,hbar.dip_30_3_low,SELL,HBAR/INR,505.00000000,10.16,5131.28,10.29,0.00,82.54,46.63,take profit
+2026-10-03 02:45,one.dip_30_3,SELL,ONE/INR,23995.20000000,0.21,5149.78,30.38,0.00,40.59,45.57,take profit
+2026-10-03 02:45,one.grid_3pct,SELL,ONE/INR,3957.20000000,0.21,849.28,5.01,0.00,-15.95,0.00,"grid sell, level 4"
+2026-10-03 02:45,one.grid_3pct_low,SELL,ONE/INR,4000.40000000,0.21,856.61,1.72,0.00,-5.84,0.00,"grid sell, level 4"
+2026-10-03 02:45,trump.grid_3pct,SELL,TRUMP/INR,4.14600000,204.04,845.95,4.99,0.00,-24.43,0.00,"grid sell, level 4"
+2026-10-03 02:45,trump.grid_3pct_low,SELL,TRUMP/INR,4.19500000,205.07,860.25,1.73,0.00,-10.33,0.00,"grid sell, level 4"
+2026-10-03 03:00,gala.grid_1_5pct,SELL,GALA/INR,3090.38000000,0.25,781.32,4.61,0.00,-23.64,0.00,"grid sell, level 6"
+2026-10-03 03:00,gala.grid_1_5pct_low,SELL,GALA/INR,3462.20000000,0.25,880.07,1.77,0.00,-12.53,0.00,"grid sell, level 6"
+2026-10-03 03:00,hbar.grid_1_5pct,BUY,HBAR/INR,80.00000000,10.06,804.84,4.75,0.00,,0.00,"grid buy, level 6"
+2026-10-03 03:00,hbar.grid_1_5pct_low,BUY,HBAR/INR,83.00000000,10.01,831.11,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-03 03:00,ondo.grid_3pct,SELL,ONDO/INR,17.30000000,48.87,845.40,4.99,0.00,-9.09,0.40,"grid sell, level 3"
+2026-10-03 03:00,ondo.grid_3pct_low,SELL,ONDO/INR,17.40000000,48.98,852.24,1.71,0.00,0.68,1.85,"grid sell, level 3"
+2026-10-03 03:00,pha.grid_1_5pct,BUY,PHA/INR,112.00000000,7.21,807.79,4.77,0.00,,0.00,"grid buy, level 6"
+2026-10-03 03:00,pha.grid_3pct,BUY,PHA/INR,115.00000000,7.21,829.43,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-03 03:00,pha.grid_1_5pct_low,BUY,PHA/INR,115.00000000,7.24,833.00,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-03 03:00,pha.grid_3pct_low,BUY,PHA/INR,115.00000000,7.24,832.42,1.67,0.00,,0.00,"grid buy, level 3"
+2026-10-03 03:00,siren.grid_1_5pct,SELL,SIREN/INR,199.20000000,4.36,868.30,5.12,8.68,2.89,5.91,"grid sell, level 6"
+2026-10-03 03:00,siren.grid_1_5pct_low,SELL,SIREN/INR,196.90000000,4.31,848.57,1.70,8.49,-0.58,1.28,"grid sell, level 6"
+2026-10-03 03:00,tao.grid_1_5pct,SELL,TAO/INR,0.02790000,29128.02,812.67,4.79,0.00,-28.56,0.00,"grid sell, level 6"
+2026-10-03 03:00,tao.grid_1_5pct_low,SELL,TAO/INR,0.02880000,29232.82,841.91,1.69,0.00,-16.24,0.00,"grid sell, level 6"
