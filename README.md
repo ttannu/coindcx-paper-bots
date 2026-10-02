@@ -5,7 +5,7 @@
 <!-- DASHBOARD:START -->
 ### Live results: day 2 of 15
 
-Last updated 02 Oct 2026, 05:40 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
+Last updated 02 Oct 2026, 05:43 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
 Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.8% (₹85,22,786 to ₹84,55,221).
 
@@ -18,7 +18,7 @@ Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x)
 | AI desk: spot portfolio | ₹4,586 | -8.3% | 805 of 1,045 | 6 | holding BTC, SUI |
 | AI desk: futures, up to 3x | ₹3,963 | -20.7% | 972 of 1,045 | 4 | short NEAR at 2x |
 
-Both books started with ₹5,000 on 30 Sep 2026, 19:00 IST. **Latest decision, 02 Oct 2026, 05:40 IST** (market neutral, news mood greed, Fear & Greed 72): We are maintaining our core spot positions in BTC and SUI while trimming them back to 30% to strictly comply with concentration limits. We are deploying a portion of our idle cash into AAVE to capture its strong relative strength and positive technical momentum. In the futures book, we will hold our profitable 2x short on NEAR, as the recent protocol exploit and negative news sentiment continue to provide a strong catalyst for downside pressure. Spot: BTC 30% (stop -5%, target +20%), SUI 30% (stop -5%, target +20%), AAVE 25% (stop -5%, target +15%). Futures: short NEAR at 2x (stop 7% away, target 14% away).
+Both books started with ₹5,000 on 30 Sep 2026, 19:00 IST. **Latest decision, 02 Oct 2026, 05:43 IST** (market neutral, news mood greed, Fear & Greed 72): We adjust our BTC spot allocation down to 30% to strictly comply with our risk management concentration limits, while maintaining our high-conviction SUI position to ride its upward trend. The remaining 40% of the spot book is held in cash to avoid unnecessary churn and tax friction in a mixed market regime. In the futures book, we maintain our short position on NEAR at 2x leverage, as the recent protocol exploit and technical breakdown provide a strong fundamental catalyst for continued downside. Spot: BTC 30% (stop -5%, target +20%), SUI 30% (stop -6%, target +20%). Futures: short NEAR at 2x (stop 6.5% away, target 14% away).
 
 Minutes of every meeting: https://github.com/ttannu/coindcx-paper-bots/blob/main/docs/desk.md
 
