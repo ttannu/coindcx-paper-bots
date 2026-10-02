@@ -10287,3 +10287,14 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-03 03:30,zec.flip_3,BUY,ZEC/INR,0.03600000,128602.29,4629.68,27.32,0.00,,0.00,coin flip
 2026-10-03 03:30,pha.learner,CLOSE LONG,PHA/INR,178.16114030,6.91,1230.30,0.73,0.00,-71.89,0.00,switching to PHA 24h breakout
 2026-10-03 03:30,pha.learner,OPEN SHORT,PHA/INR,263.99128108,6.91,1823.00,1.08,0.00,,0.00,"following PHA 24h breakout, 0.37x, liquidation at 26"
+2026-10-03 03:45,one.trend_2_8h,BUY,ONE/INR,11498.20000000,0.22,2502.27,14.76,0.00,,0.00,uptrend entry
+2026-10-03 03:45,xlm.grid_1_5pct,SELL,XLM/INR,39.00000000,21.36,833.12,4.92,0.00,-17.74,0.00,"grid sell, level 6"
+2026-10-03 03:45,xlm.grid_1_5pct_low,SELL,XLM/INR,39.00000000,21.36,833.15,1.67,0.00,-10.22,0.00,"grid sell, level 6"
+2026-10-03 04:00,bch.grid_1_5pct,SELL,BCH/INR,0.02720000,30847.32,839.05,4.95,0.00,-2.82,3.19,"grid sell, level 3"
+2026-10-03 04:00,bch.grid_3pct,SELL,BCH/INR,0.02770000,30847.32,854.47,5.04,0.00,-0.47,4.32,"grid sell, level 2"
+2026-10-03 04:00,bch.grid_1_5pct_low,SELL,BCH/INR,0.02740000,30786.36,843.55,1.69,0.00,3.12,2.94,"grid sell, level 3"
+2026-10-03 04:00,bch.grid_3pct_low,SELL,BCH/INR,0.02780000,30758.44,855.08,1.72,0.00,5.03,3.82,"grid sell, level 2"
+2026-10-03 04:00,ena.grid_3pct,BUY,ENA/INR,35.77000000,23.15,828.22,4.89,0.00,,0.00,"grid buy, level 6"
+2026-10-03 04:00,ena.grid_3pct_low,BUY,ENA/INR,36.13000000,23.02,831.59,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-03 04:00,gala.trend_2_8h,BUY,GALA/INR,15773.39000000,0.26,4050.91,23.90,0.00,,0.00,uptrend entry
+2026-10-03 04:00,trump.dip_30_3_low,SELL,TRUMP/INR,24.89700000,206.43,5139.55,10.31,0.00,82.67,46.71,take profit
