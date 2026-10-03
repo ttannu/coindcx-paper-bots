@@ -1,13 +1,13 @@
 # CoinDCX paper-trading bots
 
-1,043 rule-based trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices, across 47 of the most volatile coins. The goal is ₹1,00,000. Every strategy runs separately on every coin, next to coin-flip bots that trade at random, so the results show which strategies have an edge and which are just lucky. Every strategy was also replayed over the six months before the launch, and none made money on average after fees and tax ([what the backtests found](#what-the-backtests-found)). Since 1 Oct, 282 low-cost twins also run the closest of them with CoinDCX's VIP fee and limit orders, to test whether cheaper trading would be enough; in the backtests it wasn't. Alongside them, an AI trading desk of ten Gemini agents reads the prices, the news, and what the bots have learned, and runs two more books. No real money, exchange accounts, or exchange API keys are involved. GitHub Actions runs everything on a schedule, so nobody needs to touch it.
+1,043 original rule-based trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices, across 47 coins. The current goal is ₹15,000: ₹10,000 profit on a ₹5,000 wallet. Every rule runs independently alongside coin-flip controls; those virtual wallets cannot be added together as spendable capital. None of the original strategies made money on average after fees and estimated tax in the [six-month backtests](#what-the-backtests-found). The 282 low-cost twins and two AI-desk books are experiments too. Four later-start, single-wallet spot portfolios now run slow trend, relative momentum and breakout rules as a separate paper cohort; none passed its [17-window historical screen](docs/strategy-lab.md). GitHub Actions runs the paper simulation on a schedule. No real money, exchange account or exchange API key is connected.
 
 <!-- DASHBOARD:START -->
 ### Live results: day 3 of 15
 
 Last updated 03 Oct 2026, 15:12 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
-Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.7% (₹85,22,786 to ₹84,63,916).
+Each original leaderboard bot started with ₹5,000 of simulated money. The goal is ₹15,000 (3x). BTC/INR since the start: -0.7% (₹85,22,786 to ₹84,63,916).
 
 1,045 bots on 47 coins. 144 are up and 747 are down; 1 are wiped out. The median bot is at ₹4,756. 550 of 987 bots are ahead of simply holding their coin.
 
@@ -26,23 +26,23 @@ Minutes of every meeting: https://github.com/ttannu/coindcx-paper-bots/blob/main
 
 **Top 15 bots**
 
-| # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹1,00,000 | Closed trades | Worst drop | Now |
+| # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹15,000 | Closed trades | Worst drop | Now |
 |---|---|---|---|---|---|---|---|
-| 1 | ONE: coin flip, 3x futures | ₹7,694 | +53.9% | 7.7% | 2 | 16.6% | long 3x |
-| 2 | ENA: 10x futures trend | ₹7,660 | +53.2% | 7.7% | 1 | 50.2% | short 10x |
-| 3 | NEAR: 10x futures trend | ₹6,786 | +35.7% | 6.8% | 1 | 53.3% | short 10x |
-| 4 | NEAR: coin flip, 3x futures | ₹6,137 | +22.7% | 6.1% | 1 | 3.8% | flat |
-| 5 | ENA: 3x futures trend | ₹5,942 | +18.8% | 5.9% | 1 | 17.7% | short 3x |
-| 6 | ONE: 3x futures trend | ₹5,917 | +18.3% | 5.9% | 3 | 35.0% | long 3x |
-| 7 | ICP: coin flip, 3x futures | ₹5,874 | +17.5% | 5.9% | 2 | 7.7% | long 3x |
-| 8 | PENGU: coin flip, 3x futures | ₹5,824 | +16.5% | 5.8% | 3 | 13.3% | long 3x |
-| 9 | PEPE: coin flip, 3x futures | ₹5,720 | +14.4% | 5.7% | 2 | 7.6% | long 3x |
-| 10 | NEAR: 3x futures trend | ₹5,675 | +13.5% | 5.7% | 1 | 19.6% | short 3x |
-| 11 | ONE: coin flip #1 | ₹5,560 | +11.2% | 5.6% | 3 | 8.2% | holding ONE |
-| 12 | SAGA: long/short 12/48h | ₹5,482 | +9.6% | 5.5% | 0 | 3.3% | short 1x |
-| 13 | APT: coin flip, 3x futures | ₹5,477 | +9.5% | 5.5% | 2 | 15.4% | short 3x |
-| 14 | ONE: buy & hold | ₹5,466 | +9.3% | 5.5% | 0 | 14.1% | holding ONE |
-| 15 | UNI: coin flip, 3x futures | ₹5,453 | +9.1% | 5.5% | 3 | 7.2% | long 3x |
+| 1 | ONE: coin flip, 3x futures | ₹7,694 | +53.9% | 51.3% | 2 | 16.6% | long 3x |
+| 2 | ENA: 10x futures trend | ₹7,660 | +53.2% | 51.1% | 1 | 50.2% | short 10x |
+| 3 | NEAR: 10x futures trend | ₹6,786 | +35.7% | 45.2% | 1 | 53.3% | short 10x |
+| 4 | NEAR: coin flip, 3x futures | ₹6,137 | +22.7% | 40.9% | 1 | 3.8% | flat |
+| 5 | ENA: 3x futures trend | ₹5,942 | +18.8% | 39.6% | 1 | 17.7% | short 3x |
+| 6 | ONE: 3x futures trend | ₹5,917 | +18.3% | 39.4% | 3 | 35.0% | long 3x |
+| 7 | ICP: coin flip, 3x futures | ₹5,874 | +17.5% | 39.2% | 2 | 7.7% | long 3x |
+| 8 | PENGU: coin flip, 3x futures | ₹5,824 | +16.5% | 38.8% | 3 | 13.3% | long 3x |
+| 9 | PEPE: coin flip, 3x futures | ₹5,720 | +14.4% | 38.1% | 2 | 7.6% | long 3x |
+| 10 | NEAR: 3x futures trend | ₹5,675 | +13.5% | 37.8% | 1 | 19.6% | short 3x |
+| 11 | ONE: coin flip #1 | ₹5,560 | +11.2% | 37.1% | 3 | 8.2% | holding ONE |
+| 12 | SAGA: long/short 12/48h | ₹5,482 | +9.6% | 36.5% | 0 | 3.3% | short 1x |
+| 13 | APT: coin flip, 3x futures | ₹5,477 | +9.5% | 36.5% | 2 | 15.4% | short 3x |
+| 14 | ONE: buy & hold | ₹5,466 | +9.3% | 36.4% | 0 | 14.1% | holding ONE |
+| 15 | UNI: coin flip, 3x futures | ₹5,453 | +9.1% | 36.4% | 3 | 7.2% | long 3x |
 
 **The original bots**
 
@@ -62,6 +62,15 @@ Minutes of every meeting: https://github.com/ttannu/coindcx-paper-bots/blob/main
 |---|---|---|---|---|---|
 | Liquid 5, held | ₹4,803 | -3.9% | 472 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
 | Liquid 5, BTC trend filter | ₹4,803 | -3.9% | 473 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
+
+**Slow spot paper experiments.** These four separate virtual wallets each start with ₹5,000 when their code first runs. They are excluded from the original leaderboard because they started later. None made money on average in 17 earlier 15-day windows after costs, and none met the ₹15,000 target. They collect forward data only; [rules, backtests and fill limits](docs/strategy-lab.md).
+
+| Paper rule | Started | Value if sold now | Return | Closed trades | Now |
+|---|---|---:|---:|---:|---|
+| BTC 30-day trend timing | awaiting first hourly candle | – | – | 0 | waiting |
+| four-coin 7-day relative momentum | awaiting first hourly candle | – | – | 0 | waiting |
+| four-coin 20/10-day breakout | awaiting first hourly candle | – | – | 0 | waiting |
+| four-coin 30-day time-series momentum | awaiting first hourly candle | – | – | 0 | waiting |
 
 **Strategy report card.** Each strategy runs separately on every coin. "Beat holding" counts the coins where it is ahead of buying that coin and holding it.
 
@@ -203,6 +212,8 @@ The strategy report card on the dashboard ranks the 22 strategies by their media
 
 **Low-cost twins, added on 1 Oct.** On each of the 47 coins, 6 strategies also run a second time with the lowest costs a CoinDCX INR account can realistically reach: buy & hold, the 1.5% and 3% grids, the two RSI dip <30 strategies, and coin flip #1. They pay the VIP 1 spot fee, 0.17% instead of 0.5% plus GST, and the grids and dip-buyers place limit orders instead of trading at the market. A limit order pays no spread, but it fills at exactly its price and only once a later candle trades through it. The dip-buyers bid the signal candle's close for an hour, so they only get in if the price keeps falling. Stops and time exits stay market orders. Tax is unchanged, so the gap between a twin and its original is what fees and spread took. The 282 twins are compared with buy & hold and a coin flip at the same low cost in their own table on the dashboard, and are left out of the rankings, the report card, and what the AI desk sees.
 
+**Slow paper portfolios, added on 3 Oct.** Four independent ₹5,000 virtual spot wallets on BTC, ETH, SOL and XRP test BTC 30-day trend timing, four-coin 30-day time-series momentum, four-coin 7-day relative momentum, and a four-coin 20/10-day breakout. They use completed hourly candles and wait one more hour before a paper fill, reserve estimated tax, and defer orders on quiet hours. They start when the new code first runs, so their results are kept out of the older bots' rankings. In 17 earlier 15-day tests none had a positive average return after costs, so this is a forward research cohort, not a recommendation to trade them with real money. [Rules and results](docs/strategy-lab.md).
+
 No bot ever changes its rules. The self-learning bots only choose between fixed variants, and the fixed bots are the control group that shows whether those choices actually help.
 
 ## The AI trading desk
@@ -225,13 +236,13 @@ AI traders have no proven edge. In [Alpha Arena](https://nof1.ai) Season 1 (Octo
 
 ## What the simulation charges
 
-The costs follow what a CoinDCX INR account in India pays. They are set in [`config.json`](config.json).
+The configured costs estimate a CoinDCX INR account in India; an actual account's fee tier and tax treatment must be checked. They are set in [`config.json`](config.json).
 
 - **Spot trading fee:** 0.5% of each trade, plus 18% GST on the fee.
 - **Futures fee (INR margin):** 0.05% plus GST, and 0.01% funding every 8 hours. Futures are priced off CoinDCX's INR spot candles.
 - **Slippage:** spot buys fill above the candle price and sells below it by half of the coin's bid-ask spread, measured on 30 Sep 2026: from 0.1% (the minimum) for the most liquid coins up to 0.73% for the thinnest. Futures fill 0.05% away.
-- **TDS:** 1% of each spot sale is held back once a bot's total sales pass ₹50,000. It is refundable when you file your return, so it counts toward the bot's value. Futures have no TDS.
-- **Tax:** an estimated 31.2% (30% plus 4% cess) of the gain on every profitable sale. Losses can't be set off against gains, and fees aren't deductible. Because of this, a bot that wins early and then loses everything can end with a negative value: it still owes tax on the early wins.
+- **TDS assumption:** 1% of each spot sale is held back once that virtual wallet's sales pass ₹50,000, then counted as a credit toward its value. Actual Indian thresholds depend on the payer and tax year, not the count of paper bots; another tax jurisdiction could differ. The simulator does not model futures TDS.
+- **Tax assumption:** an estimated 31.2% (30% plus 4% cess) of each profitable Indian spot sale, following the no-loss-setoff rule in the [Income-tax Act, 2025, section 194(1), table row 4](https://www.incometaxindia.gov.in/documents/d/guest/income_tax_act_2025_as_amended_by_fa_act_2026-pdf). Fees are not deducted from taxable gains in this model. Actual jurisdiction, surcharge and futures treatment require review. A bot that wins early and then loses everything can show a negative after-tax value because tax remains due on early wins.
 - **Minimum order:** ₹100, and quantities are rounded down to each coin's lot size.
 - **Low-cost twins:** the VIP 1 spot fee of 0.17% plus GST, which CoinDCX charges from ₹5 lakh of trading in 30 days, and no spread on limit orders. Everything else is the same.
 
@@ -281,9 +292,9 @@ A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every wi
 - Progress is saved before the dashboard is drawn, so a drawing problem can't lose data, and a bug in reporting or email is logged without stopping the run from saving. Saving to the repo retries up to 5 times.
 - The AI desk can't hold up a run. A meeting has a 5-minute budget, every news and data source is optional, and a failed meeting only means no new decision. Models that are out of daily quota are skipped until it resets. Decisions are saved with the time of the candle they were based on and replayed at the next one, so catching up after missed runs gives exactly the same trades.
 - The start message, daily reports, emails, final report, closing the issue, and switching off each retry on later runs until they succeed, and none of them is ever posted twice.
-- A code change that adds bots replays every bot from the start, so they all share one timeline. CoinDCX only returns about 10 days of 15-minute prices, so after that such a change stops the run with an error instead of replaying from a later start, and the saved state is left as it was.
+- A state-version upgrade replays every original bot from the start, and stops safely if the required 15-minute candles are no longer available. The new slow portfolios instead begin on the first run with their code and appear in a separate table, so their shorter history cannot be mistaken for the original cohort's.
 - Only the newest unsent email of each kind is kept, so a late or broken email setup can't flood the inbox. If Gmail rejects the password, the next attempt waits 6 hours. The workflow switches off once the final report and email are out, or a day after the end at the latest.
-- Before launch the code was stress-tested on synthetic 15-day markets: calm, bull, bear, violent chop, a 48% crash, a pump and dump, flash wicks of -45% and +60%, a coin falling 95%, and missing, duplicated, and garbage candles, all with irregular run schedules. It was also run at full size (1,041 bots and the AI desk on 47 coins, about a second per run plus about a minute for a desk meeting), with coins dropping out and coming back. The desk's tests use stand-in agents to cover its limits, stop losses in a crash, failed and skipped meetings, a missing or rejected key, and replaying its decisions. The tests are in [`tests/`](tests).
+- Before launch the code was stress-tested on synthetic 15-day markets: calm, bull, bear, violent chop, a 48% crash, a pump and dump, flash wicks of -45% and +60%, a coin falling 95%, and missing, duplicated, and garbage candles, all with irregular run schedules. It also ran with 1,331 virtual accounts on 47 coins in the current test suite. The desk's tests use stand-in agents to cover its limits, stop losses in a crash, failed and skipped meetings, a missing or rejected key, and replaying its decisions. The tests are in [`tests/`](tests).
 
 ## Controls
 
@@ -293,7 +304,8 @@ A round trip on CoinDCX spot costs about 2%, and the tax takes 31.2% of every wi
 - **Send a note:** add a Markdown file to [`notes/`](notes) whose first line is `# Title`. The next run posts it on the report issue and emails it, once.
 - **Run one step locally:** `python3 -m sim --no-notify`. Tests: `python3 -m unittest discover -s tests`.
 - **Check live-pilot evidence:** `python3 -m sim.readiness` updates [`docs/live-readiness.md`](docs/live-readiness.md). It does not place orders.
+- **Reproduce the slow-strategy screen:** `python3 -m research.strategy_screen --history-dir /path/to/local/history`. The [results](docs/strategy-lab.md) use archived CoinDCX candles that are intentionally not committed.
 
 ## Limits
 
-No bot here, including the self-learning ones, is guaranteed to make money, and no strategy wins on every coin: trend followers lose in choppy markets, dip buyers and grids lose in crashes, and leverage gets wiped out by sharp moves either way. With 1,043 bots, the best few will usually look impressive by chance alone, so check any bot against the coin-flip bots and against holding its coin before reading anything into it. In the synthetic stress tests the original self-learning bot gained about 23% on average when the market trended, lost about 5% on average when it went nowhere, and never lost more than about 16%. The AI desk is an experiment too: language models can misread data or change their minds from one meeting to the next, and its limits only cap how much it can lose, not whether it loses. Fills happen at candle prices, so the simulation can't see order-book depth or outages. The tax figure is an estimate, not tax advice. A strategy that does well for 15 days in a simulation can still lose real money. None of this is financial advice.
+No bot here, including the self-learning ones, is guaranteed to make money, and no strategy wins on every coin: trend followers lose in choppy markets, dip buyers and grids lose in crashes, and leverage gets wiped out by sharp moves either way. With over 1,300 virtual accounts, some winners will look impressive by chance alone; compare them with the coin flips and holding benchmarks. The AI desk and the four slow portfolios are experiments too. Fills happen at candle prices, so the simulation cannot see order-book depth or outages; the tax figure is an estimate. A strategy that does well for 15 days on paper can still lose real money.

@@ -7,7 +7,7 @@ from unittest import mock
 
 import test_desk
 import test_robustness as rb
-from sim import desk, engine, liquid, lowcost, report, swarm
+from sim import desk, engine, liquid, lowcost, report, slow, swarm
 from sim.coindcx import DataUnavailable
 from synthetic import DAY, H1, START, build_market, make_fetch
 
@@ -34,7 +34,8 @@ class SwarmTest(unittest.TestCase):
         bots = engine._build_bots({"bots": {}}, config, [])
         keys = [bot.key for bot in bots]
         self.assertEqual(len(keys), len(set(keys)))
-        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(liquid.specs(universe)) + len(universe) * len(swarm.FAMILIES) +
+        self.assertEqual(len(bots), len(engine.ALL_BOTS) + len(liquid.specs(universe)) + len(slow.specs()) +
+                         len(universe) * len(swarm.FAMILIES) +
                          len(lowcost.specs(universe, config)) + len(desk.BOOKS))
         self.assertGreaterEqual(len(bots), 1000)
         for bot in bots:
@@ -72,7 +73,7 @@ class ScaleTest(unittest.TestCase):
                 ws.run(now, fetch, notify=False)
                 timings.append(time.time() - began)
             state = ws.state()
-            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 2 + 22 * len(universe) +
+            self.assertEqual(len(state["bots"]), len(engine.ALL_BOTS) + 2 + len(slow.specs()) + 22 * len(universe) +
                              len(lowcost.specs(universe, read_config())) + len(desk.BOOKS))
             self.assertEqual(len(state["bots"][liquid.LiquidBasket.key]["positions"]), 5)
             rb.check_invariants(self, state)
@@ -345,7 +346,8 @@ class ReportTest(unittest.TestCase):
             with open(os.path.join(ws.root, "docs", "equity.svg"), encoding="utf-8") as fh:
                 svg = fh.read()
             self.assertIn(svg.count("<polyline"), range(7, 10))
-            self.assertIn("Median of all %d bots" % sum(1 for key in ws.state()["bots"] if not key.endswith("_low")), svg)
+            self.assertIn("Median of all %d bots" % sum(1 for key in ws.state()["bots"]
+                                                      if not key.endswith("_low") and not key.startswith("slow_")), svg)
             self.assertIn("AI desk: spot portfolio", svg)
             self.assertIn("AI desk: futures, up to 3x", svg)
             self.assertLess(block.index("**AI trading desk.**"), block.index("**Top 15 bots**"))

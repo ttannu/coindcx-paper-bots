@@ -101,7 +101,7 @@ class MoneyReportTest(unittest.TestCase):
         self.assertEqual(len(rows), len(swarm.FAMILIES) + 4)
         for label in ("Original bots", "Added on 1 Oct", "AI desk"):
             self.assertIn(label, labels)
-        ranked = sum(1 for key in state["bots"] if not key.endswith("_low"))
+        ranked = sum(1 for key in state["bots"] if not key.endswith("_low") and not key.startswith("slow_"))
         self.assertIn("| **All bots** | %s |" % "{:,}".format(ranked), table)
         for line in rows:
             cells = line.strip("| ").split(" | ")

@@ -2,7 +2,7 @@
   "repository": "ttannu/coindcx-paper-bots",
   "notify_user": "ttannu",
   "capital_inr": 5000,
-  "goal_inr": 100000,
+  "goal_inr": 15000,
   "duration_days": 15,
   "report_hour_ist": 9,
   "costs": {
