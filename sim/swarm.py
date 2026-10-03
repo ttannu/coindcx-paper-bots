@@ -273,7 +273,7 @@ FAMILIES = (
            fast=9, slow=21, leverage=3),
     Family("trend_10x", "10x futures trend", FuturesTrend, "The same at 10x. A 9.5% move the wrong way wipes out the position.",
            fast=9, slow=21, leverage=10),
-    Family("long_short", "long/short 12/48h", FuturesTrend, "Futures at 1x (no liquidation risk): long when the 12-hour "
+    Family("long_short", "long/short 12/48h", FuturesTrend, "Futures at 1x: long when the 12-hour "
            "average is above the 48-hour average, short otherwise.", fast=12, slow=48, leverage=1),
     Family("flip_3x", "coin flip, 3x futures", FuturesFlip, "Luck control on futures at 3x. After every hourly candle, with "
            "1-in-12 odds, it opens a random long or short when flat, or closes its position.", luck=True, leverage=3),

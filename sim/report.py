@@ -5,6 +5,8 @@ import os
 from collections import OrderedDict
 from xml.sax.saxutils import escape
 
+from . import fill_audit
+
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 DAY_MS = 86400000
 BTC = "I-BTC_INR"
@@ -202,7 +204,7 @@ def report_card(board, days):
 
 def _card_lines(cards):
     lines = [
-        "| Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Skill shown? |",
+        "| Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Paper screen? |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for c in cards:
@@ -217,9 +219,9 @@ def luck_line(board):
     if not flips:
         return ""
     return ("**How much of this is luck?** The %s coin-flip bots trade at random. The luckiest is %s at %s, and their "
-            "median is %s. With this many bots, some will look brilliant by chance alone, so a strategy counts as skilled "
-            "only after %d days, and only if its median bot is in profit after costs, beats the coin flips, and beats "
-            "holding on most coins." % (
+            "median is %s. With this many bots, some will look brilliant by chance alone. The early paper screen starts "
+            "after %d days and asks whether the median bot is profitable after costs, beats the coin flips, and beats "
+            "holding on most coins. Passing it does not establish a live trading edge." % (
                 _count(len(flips)), flips[0]["title"], pct(flips[0]["ret"]), pct(_median(r["ret"] for r in flips)),
                 MIN_SKILL_DAYS))
 
@@ -290,7 +292,7 @@ def _cost_share(rows, capital):
 
 
 def lowcost_card(board, low, config, days):
-    """Each low-cost strategy next to the same strategy at normal costs, on the same coins. Skill and "beat holding" are
+    """Each low-cost strategy next to the same strategy at normal costs, on the same coins. The paper screen and "beat holding" are
     judged against the low-cost coin flip and buy & hold, so every comparison is at the same costs."""
     capital = config["capital_inr"]
     normal = {}
@@ -343,7 +345,7 @@ def lowcost_lines(state, board, low, config, t):
         "rankings above." % (tier["tier"], _rate(tier["spot_fee_rate"]), _rate(config["costs"]["spot_fee_rate"]),
                              _count(len(low))),
         "",
-        "| Strategy | Median, normal costs | Median, low cost | Fees and spread | In profit | Beat holding | Skill shown? |",
+        "| Strategy | Median, normal costs | Median, low cost | Fees and spread | In profit | Beat holding | Paper screen? |",
         "|---|---|---|---|---|---|---|",
     ]
     for c in cards:
@@ -492,6 +494,19 @@ def dashboard(state, board, config, prices, now_ms, bots=(), low=()):
         summary_line(board, config),
         "",
     ]
+    audit = state.get("fill_audit")
+    if audit and audit.get("initialized"):
+        checked = audit["spot"]
+        lines += [
+            "**Spot fill check.** Of %s simulated spot orders checked against the same 15-minute candle's reported "
+            "volume, %s were on zero-volume candles, %s were larger than the candle's entire traded value, %s used "
+            "more than 10%% of it, and %s could not be matched to a recent candle. These are execution warnings, "
+            "not proof that any other order could have filled at the quoted price. Futures results use INR spot candles "
+            "as a price proxy, not CoinDCX futures fills. [Live-readiness criteria](docs/live-readiness.md)." % (
+                _count(fill_audit.total(checked)), _count(checked["zero"]), _count(checked["over_full"]),
+                _count(checked["over_tenth"]), _count(checked["unmatched"])),
+            "",
+        ]
     desk = desk_lines(state, board, config)
     if desk:
         lines += desk + [""]

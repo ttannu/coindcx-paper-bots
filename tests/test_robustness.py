@@ -13,7 +13,7 @@ from unittest import mock
 
 from sim import engine
 from sim.bots import BTC, FIXED_BOTS, Bot
-from sim.coindcx import DataUnavailable, parse_candles
+from sim.coindcx import DataUnavailable, closed_candles, parse_candles
 from sim.learner import SelfLearner
 from sim.mailer import to_html
 from synthetic import DAY, H1, SCENARIOS, START, build_market, make_fetch
@@ -228,15 +228,29 @@ class FaultTest(unittest.TestCase):
             {"time": 2000, "open": 10, "high": 9, "low": 11, "close": 10.5, "volume": 1},
             {"time": 1000, "open": 10, "high": 12, "low": 9, "close": 11, "volume": None},
             {"time": 3000, "open": 0, "high": 1, "low": 1, "close": 1, "volume": 1},
+            {"time": 4000, "open": 10, "high": 12, "low": 9, "close": 11, "volume": -1},
+            {"time": 5000, "open": 10, "high": 12, "low": 9, "close": 11, "volume": "nan"},
             {"time": "later", "open": 1},
             None,
             {"time": 1000, "open": 10, "high": 12, "low": 9, "close": 11, "volume": 1},
         ]
         candles = parse_candles(rows)
-        self.assertEqual([c["t"] for c in candles], [1000, 2000])
-        self.assertEqual((candles[1]["h"], candles[1]["l"]), (11, 9))
+        self.assertEqual([c["t"] for c in candles], [1000])
+        self.assertEqual((candles[0]["h"], candles[0]["l"]), (12, 9))
         with self.assertRaises(ValueError):
             parse_candles({"message": "rate limited"})
+
+    def test_stale_public_candles_are_not_treated_as_fresh_prices(self):
+        from unittest.mock import patch
+
+        candle = {"t": 0, "o": 100, "h": 100, "l": 100, "c": 100, "v": 10}
+        with patch("sim.coindcx.fetch_candles", return_value=[candle]):
+            self.assertEqual(closed_candles(BTC, "15m", 1800000), [candle])
+            with self.assertRaises(DataUnavailable):
+                closed_candles(BTC, "15m", 8 * 3600000)
+        with patch("sim.coindcx.fetch_candles", return_value=[]):
+            with self.assertRaises(DataUnavailable):
+                closed_candles(BTC, "15m", 1800000)
 
 
 class NotificationTest(unittest.TestCase):

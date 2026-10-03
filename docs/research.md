@@ -88,6 +88,10 @@ The big moves were real, though. In the rally of 15 to 30 Sep, QNT rose 318% in 
 
 Since 1 Oct the AI desk may only trade coins with at least ₹5 lakh of INR volume in the last 24 hours and trades in at least three quarters of those 15-minute candles.
 
+### Spot fill audit, 3 Oct 2026
+
+The first 2.8 days of the forward paper run made 9,912 simulated spot orders. Comparing each order's value with the reported traded value of its closing 15-minute CoinDCX candle found 278 orders on zero-volume candles, 1,896 larger than the candle's entire traded value, and another 3,234 above 10% of that value. Only 4,504 were at or below 10%. This comparison is a warning screen: it does not show the order book immediately after the close, so it cannot prove which orders would have filled. It does show that many quoted fills are unsupported by the available candle data. The [live-pilot evidence screen](live-readiness.md) now includes this audit and blocks promotion when fills are questionable. Historical returns above have not been recomputed with real order-book fills.
+
 ## Strategies added for this test
 
 Before giving up on rules, several strategies built around the failures above were added and run through the same 12 windows, with real costs:
