@@ -13694,3 +13694,37 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-04 01:30,vvv.trend_10x,CLOSE SHORT,VVV/INR,5.02643205,2835.87,14254.29,8.41,0.00,-309.82,0.00,signal flipped to long
 2026-10-04 01:30,vvv.trend_10x,OPEN LONG,VVV/INR,3.83823738,2835.87,10884.73,6.42,0.00,,0.00,"go long, 10x, liquidation at 2566"
 2026-10-04 01:30,one.learner,OPEN LONG,ONE/INR,3542.65719954,0.26,927.26,0.55,0.00,,0.00,"following ONE hold long, 0.19x, liquidation at -1"
+2026-10-04 01:45,aave.trend_5_20h,BUY,AAVE/INR,0.14900000,18134.45,2702.03,15.94,0.00,,0.00,uptrend entry
+2026-10-04 01:45,avax.trend_2_8h,BUY,AVAX/INR,2.38220000,1118.93,2665.52,15.73,0.00,,0.00,uptrend entry
+2026-10-04 01:45,doge.trend_2_8h,SELL,DOGE/INR,331.00000000,9.23,3054.99,18.02,30.55,-67.99,0.00,closed below the slow average
+2026-10-04 01:45,dot.trend_2_8h,SELL,DOT/INR,27.91350000,118.86,3317.84,19.58,33.18,-81.21,0.00,closed below the slow average
+2026-10-04 01:45,fil.trend_2_8h,BUY,FIL/INR,27.31000000,107.52,2936.30,17.32,0.00,,0.00,uptrend entry
+2026-10-04 01:45,icp.trend_2_8h,SELL,ICP/INR,5.04000000,328.01,1653.19,9.75,16.53,-61.32,0.00,closed below the slow average
+2026-10-04 01:45,kas.trend_2_8h,SELL,KAS/INR,400.97570000,4.22,1691.43,9.98,16.91,-55.63,0.00,closed below the slow average
+2026-10-04 01:45,ondo.trend_2_8h,SELL,ONDO/INR,46.00000000,48.89,2249.13,13.27,22.49,-50.07,0.00,closed below the slow average
+2026-10-04 01:45,one.grid_1_5pct,BUY,ONE/INR,3056.90000000,0.26,803.93,4.74,0.00,,0.00,"grid buy, level 5"
+2026-10-04 01:45,one.grid_1_5pct_low,BUY,ONE/INR,3450.30000000,0.26,901.75,1.81,0.00,,0.00,"grid buy, level 5"
+2026-10-04 01:45,qnt.trend_2_8h,BUY,QNT/INR,0.10700000,25781.98,2758.67,16.28,0.00,,0.00,uptrend entry
+2026-10-04 01:45,qnt.trend_5_20h,BUY,QNT/INR,0.13800000,25781.98,3557.91,20.99,0.00,,0.00,uptrend entry
+2026-10-04 01:45,render.trend_5_20h,BUY,RENDER/INR,12.18000000,200.80,2445.70,14.43,0.00,,0.00,uptrend entry
+2026-10-04 01:45,sei.trend_2_8h,BUY,SEI/INR,256.00000000,7.16,1833.67,10.82,0.00,,0.00,uptrend entry
+2026-10-04 01:45,trx.trend_2_8h,SELL,TRX/INR,42.10000000,33.17,1396.32,8.24,13.96,-41.46,0.00,closed below the slow average
+2026-10-04 01:45,trx.trend_5_20h,SELL,TRX/INR,59.00000000,33.17,1956.83,11.55,19.57,-58.10,0.00,closed below the slow average
+2026-10-04 01:45,vet.trend_5_20h,BUY,VET/INR,4064.10000000,0.87,3552.25,20.96,0.00,,0.00,uptrend entry
+2026-10-04 01:45,vvv.grid_1_5pct,SELL,VVV/INR,0.29000000,2831.92,821.26,4.85,0.00,-4.81,2.20,"grid sell, level 4"
+2026-10-04 01:45,vvv.grid_1_5pct_low,SELL,VVV/INR,0.30000000,2848.45,854.53,1.71,0.00,7.85,5.10,"grid sell, level 4"
+2026-10-04 02:00,aave.trend_2_8h,SELL,AAVE/INR,0.15000000,17816.30,2672.45,15.77,26.72,-61.86,0.00,trailing stop
+2026-10-04 02:00,aave.trend_5_20h,SELL,AAVE/INR,0.14900000,17816.30,2654.63,15.66,26.55,-79.01,0.00,closed below the slow average
+2026-10-04 02:00,arb.trend_5_20h,SELL,ARB/INR,190.20000000,19.86,3776.65,22.28,0.00,-115.63,0.00,closed below the slow average
+2026-10-04 02:00,avax.trend_2_8h,SELL,AVAX/INR,2.38220000,1096.25,2611.50,15.41,26.11,-85.16,0.00,closed below the slow average
+2026-10-04 02:00,dot.trend_5_20h,SELL,DOT/INR,29.20300000,118.79,3469.11,20.47,34.69,-112.73,0.00,trailing stop
+2026-10-04 02:00,kas.trend_2_8h,BUY,KAS/INR,384.01520000,4.31,1654.77,9.76,0.00,,0.00,uptrend entry
+2026-10-04 02:00,link.trend_2_8h,SELL,LINK/INR,1.91000000,1383.24,2641.98,15.59,26.42,-60.38,0.00,closed below the slow average
+2026-10-04 02:00,pengu.trend_2_8h,SELL,PENGU/INR,3588.00000000,0.91,3277.56,19.34,32.78,-110.75,0.00,closed below the slow average
+2026-10-04 02:00,pengu.trend_5_20h,SELL,PENGU/INR,4038.00000000,0.91,3688.62,21.76,0.00,-126.64,0.00,closed below the slow average
+2026-10-04 02:00,pha.trend_2_8h,BUY,PHA/INR,527.00000000,6.98,3675.99,21.69,0.00,,0.00,uptrend entry
+2026-10-04 02:00,pol.trend_2_8h,BUY,POL/INR,189.10000000,11.07,2093.44,12.35,0.00,,0.00,uptrend entry
+2026-10-04 02:00,sei.trend_2_8h,SELL,SEI/INR,256.00000000,7.00,1791.89,10.57,17.92,-63.17,0.00,closed below the slow average
+2026-10-04 02:00,sui.trend_2_8h,BUY,SUI/INR,19.40000000,117.74,2284.19,13.48,0.00,,0.00,uptrend entry
+2026-10-04 02:00,vet.trend_2_8h,BUY,VET/INR,2912.80000000,0.87,2545.95,15.02,0.00,,0.00,uptrend entry
+2026-10-04 02:00,xrp.trend_2_8h,SELL,XRP/INR,22.30000000,148.16,3303.93,19.49,33.04,-62.31,0.00,closed below the slow average
