@@ -11755,3 +11755,36 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-03 14:30,uni.trend_24_96h,BUY,UNI/INR,4.90000000,928.03,4547.34,26.83,0.00,,0.00,uptrend entry
 2026-10-03 14:30,uni.breakout_20_10h,BUY,UNI/INR,5.06000000,928.03,4695.82,27.71,0.00,,0.00,20-hour breakout
 2026-10-03 14:30,vet.flip_3x,OPEN LONG,VET/INR,17727.83880156,0.85,15110.78,8.92,0.00,,0.00,"coin flip: long, 3x, liquidation at 1"
+2026-10-03 14:45,hype.grid_1_5pct,BUY,HYPE/INR,0.09000000,8781.33,790.32,4.66,0.00,,0.00,"grid buy, level 3"
+2026-10-03 14:45,hype.grid_1_5pct_low,BUY,HYPE/INR,0.09000000,8755.06,787.96,1.58,0.00,,0.00,"grid buy, level 3"
+2026-10-03 14:45,one.grid_1_5pct,SELL,ONE/INR,3030.20000000,0.27,819.92,4.84,0.00,2.30,5.39,"grid sell, level 1"
+2026-10-03 14:45,one.grid_1_5pct_low,SELL,ONE/INR,3421.90000000,0.27,913.61,1.83,0.00,5.65,4.21,"grid sell, level 1"
+2026-10-03 14:45,pol.trend_2_8h,BUY,POL/INR,278.20000000,10.85,3019.09,17.81,0.00,,0.00,uptrend entry
+2026-10-03 14:45,pump.trend_2_8h,BUY,PUMP/INR,6165.00000000,0.55,3414.79,20.15,0.00,,0.00,uptrend entry
+2026-10-03 14:45,qnt.grid_3pct,BUY,QNT/INR,0.03100000,26165.02,811.12,4.79,0.00,,0.00,"grid buy, level 5"
+2026-10-03 14:45,qnt.grid_3pct_low,BUY,QNT/INR,0.03100000,26071.17,808.21,1.62,0.00,,0.00,"grid buy, level 5"
+2026-10-03 14:45,saga.trend_2_8h,SELL,SAGA/INR,1554.80000000,2.28,3547.32,20.93,0.00,-174.79,0.00,closed below the slow average
+2026-10-03 14:45,sol.trend_2_8h,BUY,SOL/INR,0.22700000,11975.77,2718.50,16.04,0.00,,0.00,uptrend entry
+2026-10-03 14:45,sol.trend_5_20h,BUY,SOL/INR,0.36600000,11975.77,4383.13,25.86,0.00,,0.00,uptrend entry
+2026-10-03 14:45,trx.trend_2_8h,BUY,TRX/INR,62.30000000,33.55,2090.39,12.33,0.00,,0.00,uptrend entry
+2026-10-03 14:45,trx.trend_5_20h,BUY,TRX/INR,84.50000000,33.55,2835.28,16.73,0.00,,0.00,uptrend entry
+2026-10-03 14:45,uni.trend_2_8h,SELL,UNI/INR,4.01000000,908.79,3644.26,21.50,36.44,-100.11,0.00,trailing stop
+2026-10-03 14:45,vvv.grid_1_5pct,SELL,VVV/INR,0.30000000,2747.60,824.28,4.86,0.00,-27.85,0.00,"grid sell, level 6"
+2026-10-03 14:45,vvv.grid_1_5pct_low,SELL,VVV/INR,0.31000000,2763.63,856.73,1.72,0.00,-12.86,0.00,"grid sell, level 6"
+2026-10-03 15:00,link.trend_2_8h,SELL,LINK/INR,1.96000000,1391.22,2726.79,16.09,27.27,-67.73,0.00,closed below the slow average
+2026-10-03 15:00,one.grid_1_5pct,BUY,ONE/INR,2875.40000000,0.28,803.92,4.74,0.00,,0.00,"grid buy, level 1"
+2026-10-03 15:00,one.grid_1_5pct,BUY,ONE/INR,2919.20000000,0.28,803.92,4.74,0.00,,0.00,"grid buy, level 2"
+2026-10-03 15:00,one.grid_1_5pct,BUY,ONE/INR,2963.60000000,0.27,803.91,4.74,0.00,,0.00,"grid buy, level 3"
+2026-10-03 15:00,one.grid_3pct,BUY,ONE/INR,3064.90000000,0.28,843.85,4.98,0.00,,0.00,"grid buy, level 1"
+2026-10-03 15:00,one.grid_1_5pct_low,BUY,ONE/INR,3247.90000000,0.28,901.75,1.81,0.00,,0.00,"grid buy, level 1"
+2026-10-03 15:00,one.grid_1_5pct_low,BUY,ONE/INR,3297.30000000,0.27,901.74,1.81,0.00,,0.00,"grid buy, level 2"
+2026-10-03 15:00,one.grid_1_5pct_low,BUY,ONE/INR,3347.50000000,0.27,901.73,1.81,0.00,,0.00,"grid buy, level 3"
+2026-10-03 15:00,one.grid_3pct_low,BUY,ONE/INR,3226.10000000,0.27,882.06,1.77,0.00,,0.00,"grid buy, level 1"
+2026-10-03 15:00,pump.trend_2_8h,SELL,PUMP/INR,6165.00000000,0.54,3348.37,19.76,0.00,-106.33,0.00,closed below the slow average
+2026-10-03 15:00,saga.trend_2_8h,BUY,SAGA/INR,1493.90000000,2.35,3505.81,20.68,0.00,,0.00,uptrend entry
+2026-10-03 15:00,shib.grid_1_5pct,BUY,SHIB/INR,1464894.00000000,0.00,828.45,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-03 15:00,shib.grid_1_5pct_low,BUY,SHIB/INR,1475440.00000000,0.00,831.66,1.67,0.00,,0.00,"grid buy, level 4"
+2026-10-03 15:00,sol.trend_2_8h,SELL,SOL/INR,0.22700000,11890.49,2699.14,15.92,26.99,-51.32,0.00,closed below the slow average
+2026-10-03 15:00,sol.trend_5_20h,SELL,SOL/INR,0.36600000,11890.49,4351.92,25.68,0.00,-82.75,0.00,closed below the slow average
+2026-10-03 15:00,sui.trend_2_8h,BUY,SUI/INR,20.50000000,116.34,2384.91,14.07,0.00,,0.00,uptrend entry
+2026-10-03 15:00,render.learner,CLOSE LONG,RENDER/INR,12.92925815,191.66,2478.07,1.46,0.00,-118.93,0.00,"loss brake, cash for 24 hours"
