@@ -14059,3 +14059,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-04 04:30,xlm.flip_1_low,SELL,XLM/INR,243.00000000,21.31,5178.61,10.39,0.00,-33.10,0.00,coin flip
 2026-10-04 04:30,xrp.flip_2,BUY,XRP/INR,32.40000000,148.23,4802.53,28.33,0.00,,0.00,coin flip
 2026-10-04 04:30,xrp.flip_3x,CLOSE SHORT,XRP/INR,100.62390368,147.96,14888.31,8.78,0.00,38.67,25.53,coin flip
+2026-10-04 04:45,ada.trend_2_8h,SELL,ADA/INR,126.90000000,24.30,3083.97,18.20,30.84,-79.63,0.00,closed below the slow average
+2026-10-04 04:45,fil.trend_5_20h,SELL,FIL/INR,37.52000000,106.35,3990.38,23.54,0.00,-91.01,0.00,trailing stop
+2026-10-04 04:45,icp.trend_2_8h,BUY,ICP/INR,4.84000000,334.76,1620.25,9.56,0.00,,0.00,uptrend entry
+2026-10-04 04:45,icp.trend_5_20h,BUY,ICP/INR,7.79000000,334.76,2607.80,15.39,0.00,,0.00,uptrend entry
+2026-10-04 04:45,one.grid_3pct,BUY,ONE/INR,3358.10000000,0.25,843.84,4.98,0.00,,0.00,"grid buy, level 4"
+2026-10-04 04:45,one.grid_3pct_low,BUY,ONE/INR,3534.80000000,0.25,882.07,1.77,0.00,,0.00,"grid buy, level 4"
+2026-10-04 04:45,qnt.trend_2_8h,SELL,QNT/INR,0.10700000,25722.02,2752.26,16.24,27.52,-38.93,0.00,trailing stop
+2026-10-04 04:45,qnt.trend_5_20h,SELL,QNT/INR,0.13800000,25722.02,3549.64,20.94,0.00,-50.21,0.00,trailing stop
+2026-10-04 04:45,saga.trend_2_8h,BUY,SAGA/INR,1316.70000000,2.36,3111.64,18.36,0.00,,0.00,uptrend entry
+2026-10-04 04:45,saga.grid_3pct,SELL,SAGA/INR,362.90000000,2.35,851.29,5.02,0.00,-20.56,0.00,"grid sell, level 6"
+2026-10-04 04:45,saga.grid_3pct_low,SELL,SAGA/INR,365.70000000,2.34,856.55,1.72,0.00,-12.18,0.00,"grid sell, level 6"
+2026-10-04 04:45,sol.trend_2_8h,SELL,SOL/INR,0.19400000,11853.08,2299.50,13.57,22.99,-56.34,0.00,closed below the slow average
+2026-10-04 04:45,sol.trend_5_20h,SELL,SOL/INR,0.32700000,11853.08,3875.96,22.87,38.76,-92.23,0.00,closed below the slow average
