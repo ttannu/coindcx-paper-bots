@@ -2,6 +2,8 @@
 
 1,043 original rule-based trading bots each get ₹5,000 of **simulated** money and trade for 15 days on live CoinDCX INR prices, across 47 coins. The current goal is ₹15,000: ₹10,000 profit on a ₹5,000 wallet. Every rule runs independently alongside coin-flip controls; those virtual wallets cannot be added together as spendable capital. None of the original strategies made money on average after fees and estimated tax in the [six-month backtests](#what-the-backtests-found). The 282 low-cost twins and two AI-desk books are experiments too. Four later-start, single-wallet spot portfolios now run slow trend, relative momentum and breakout rules as a separate paper cohort; none passed its [17-window historical screen](docs/strategy-lab.md). GitHub Actions runs the paper simulation on a schedule. No real money, exchange account or exchange API key is connected.
 
+The user has since specified a **one-day** deadline for the ₹10,000 profit. The running 15-day challenge does not test that deadline. A separate [255-day historical one-day screen](docs/one-day-feasibility.md) found no fixed rule or hindsight-picked single-coin spot hold that turned ₹5,000 into ₹15,000 after modeled costs. The one-day request does not change this paper run's original start and end dates.
+
 <!-- DASHBOARD:START -->
 ### Live results: day 3 of 15
 

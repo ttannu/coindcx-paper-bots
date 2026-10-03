@@ -1,6 +1,6 @@
 # Predeclared CoinDCX strategy screen — 3 October 2026
 
-The user's target is **₹10,000 profit from ₹5,000**, meaning a final value of **₹15,000**. The existing paper challenge lasts 15 days, so this screen uses that horizon while the user clarifies their desired timeframe. No rule can assure a gain, let alone a 200% gain, in every market.
+The user's target is **₹10,000 profit from ₹5,000**, meaning a final value of **₹15,000**. The existing paper challenge lasts 15 days, so this earlier screen uses that horizon. The user later specified a one-day deadline, screened separately in [the one-day plan](one_day_plan.md). No rule can assure a gain, let alone a 200% gain, in every market.
 
 The candidate rules below were fixed before running `strategy_screen.py`. This is a single ₹5,000 spot wallet per rule and window; four bots do not create four times the user's capital. The four pairs, BTC/INR, ETH/INR, SOL/INR and XRP/INR, were chosen for continuous hourly history and comparatively deep INR trading, without picking past winners. The archival CoinDCX candles cover 17 non-overlapping 15-day windows from 18 January to 30 September 2026. All rules start each window in cash and can use only candles closed before an order.
 
