@@ -13540,3 +13540,52 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-04 00:30,inj.learner,OPEN LONG,INJ/INR,3.94238001,768.68,3030.45,1.79,0.00,,0.00,"following INJ hold long, 0.64x, liquidation at -429"
 2026-10-04 00:30,bch.learner,OPEN LONG,BCH/INR,0.15763493,31459.32,4959.09,2.93,0.00,,0.00,"following BCH hold long, 1x, liquidation at 157"
 2026-10-04 00:30,bnb.learner,OPEN LONG,BNB/INR,0.06251283,78725.74,4921.37,2.90,0.00,,0.00,"following BNB hold long, 1x, liquidation at 394"
+2026-10-04 00:45,btc.trend_2_8h,SELL,BTC/INR,0.00031000,8417235.37,2609.34,15.40,26.09,-59.48,0.00,closed below the slow average
+2026-10-04 00:45,doge.trend_2_8h,BUY,DOGE/INR,341.00000000,9.33,3181.23,18.77,0.00,,0.00,uptrend entry
+2026-10-04 00:45,eth.trend_2_8h,SELL,ETH/INR,0.01030000,265876.42,2738.53,16.16,27.39,-65.00,0.00,closed below the slow average
+2026-10-04 00:45,hype.trend_2_8h,SELL,HYPE/INR,0.37000000,8893.77,3290.69,19.42,32.91,-50.86,0.00,closed below the slow average
+2026-10-04 00:45,icp.grid_1_5pct,SELL,ICP/INR,2.52000000,329.34,829.95,4.90,0.00,-9.37,0.19,"grid sell, level 5"
+2026-10-04 00:45,icp.grid_1_5pct_low,SELL,ICP/INR,2.54000000,331.40,841.75,1.69,0.00,4.19,3.42,"grid sell, level 5"
+2026-10-04 00:45,inj.trend_2_8h,SELL,INJ/INR,2.85000000,749.93,2137.29,12.61,21.37,-106.57,0.00,trailing stop
+2026-10-04 00:45,inj.trend_5_20h,SELL,INJ/INR,3.43000000,749.93,2572.25,15.18,25.72,-128.26,0.00,trailing stop
+2026-10-04 00:45,inj.grid_1_5pct,BUY,INJ/INR,1.08000000,758.37,819.04,4.83,0.00,,0.00,"grid buy, level 3"
+2026-10-04 00:45,inj.grid_1_5pct_low,BUY,INJ/INR,1.15000000,755.88,869.26,1.74,0.00,,0.00,"grid buy, level 3"
+2026-10-04 00:45,link.trend_2_8h,BUY,LINK/INR,1.91000000,1398.44,2671.02,15.76,0.00,,0.00,uptrend entry
+2026-10-04 00:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,331.80000000,6.32,2096.83,12.37,0.00,,0.00,uptrend entry
+2026-10-04 00:45,mubarak.trend_5_20h,BUY,MUBARAK/INR,366.20000000,6.32,2314.22,13.65,0.00,,0.00,uptrend entry
+2026-10-04 00:45,near.trend_2_8h,BUY,NEAR/INR,7.50000000,468.15,3511.10,20.72,0.00,,0.00,uptrend entry
+2026-10-04 00:45,one.grid_1_5pct,BUY,ONE/INR,2198.90000000,0.26,570.03,3.36,0.00,,0.00,"grid buy, level 6"
+2026-10-04 00:45,one.grid_1_5pct_low,BUY,ONE/INR,3502.80000000,0.26,901.74,1.81,0.00,,0.00,"grid buy, level 6"
+2026-10-04 00:45,pump.grid_1_5pct,BUY,PUMP/INR,1261.00000000,0.64,801.96,4.73,0.00,,0.00,"grid buy, level 1"
+2026-10-04 00:45,pump.grid_1_5pct_low,BUY,PUMP/INR,1455.00000000,0.63,920.46,1.85,0.00,,0.00,"grid buy, level 1"
+2026-10-04 00:45,qnt.trend_2_8h,BUY,QNT/INR,0.11200000,25832.56,2893.25,17.07,0.00,,0.00,uptrend entry
+2026-10-04 00:45,qnt.trend_5_20h,BUY,QNT/INR,0.14400000,25832.56,3719.89,21.95,0.00,,0.00,uptrend entry
+2026-10-04 00:45,siren.grid_1_5pct,SELL,SIREN/INR,191.90000000,4.38,840.50,4.96,8.41,-4.60,2.39,"grid sell, level 5"
+2026-10-04 00:45,siren.grid_1_5pct_low,SELL,SIREN/INR,193.90000000,4.38,848.37,1.70,8.48,2.52,2.68,"grid sell, level 5"
+2026-10-04 00:45,tao.trend_5_20h,BUY,TAO/INR,0.09010000,29700.03,2675.97,15.79,0.00,,0.00,uptrend entry
+2026-10-04 00:45,xlm.trend_2_8h,BUY,XLM/INR,118.00000000,21.58,2546.70,15.03,0.00,,0.00,uptrend entry
+2026-10-04 00:45,xrp.trend_2_8h,SELL,XRP/INR,23.00000000,147.64,3395.71,20.03,33.96,-81.74,0.00,closed below the slow average
+2026-10-04 00:45,xrp.trend_5_20h,SELL,XRP/INR,27.10000000,147.64,4001.03,23.61,0.00,-94.87,0.00,closed below the slow average
+2026-10-04 01:00,aave.trend_2_8h,BUY,AAVE/INR,0.15000000,18017.27,2702.59,15.95,0.00,,0.00,uptrend entry
+2026-10-04 01:00,ada.trend_2_8h,SELL,ADA/INR,141.90000000,24.21,3435.93,20.27,34.36,-105.28,0.00,closed below the slow average
+2026-10-04 01:00,btc.trend_2_8h,BUY,BTC/INR,0.00030000,8504573.81,2551.37,15.05,0.00,,0.00,uptrend entry
+2026-10-04 01:00,doge.trend_2_8h,SELL,DOGE/INR,341.00000000,9.24,3152.02,18.60,31.52,-66.57,0.00,closed below the slow average
+2026-10-04 01:00,hype.trend_2_8h,BUY,HYPE/INR,0.36000000,9038.01,3253.68,19.20,0.00,,0.00,uptrend entry
+2026-10-04 01:00,near.grid_3pct,SELL,NEAR/INR,1.70000000,473.10,804.26,4.75,0.00,-28.60,0.00,"grid sell, level 6"
+2026-10-04 01:00,near.grid_3pct_low,SELL,NEAR/INR,1.80000000,474.71,854.48,1.71,0.00,-17.26,0.00,"grid sell, level 6"
+2026-10-04 01:00,one.grid_1_5pct,SELL,ONE/INR,3054.60000000,0.26,804.64,4.75,8.05,-3.63,2.64,"grid sell, level 5"
+2026-10-04 01:00,one.grid_1_5pct,SELL,ONE/INR,2198.90000000,0.26,570.54,3.37,5.71,-9.35,0.00,"grid sell, level 6"
+2026-10-04 01:00,one.grid_1_5pct,BUY,ONE/INR,3089.30000000,0.26,803.93,4.74,0.00,,0.00,"grid buy, level 5"
+2026-10-04 01:00,one.grid_3pct,SELL,ONE/INR,3257.40000000,0.26,857.08,5.06,0.00,1.91,5.41,"grid sell, level 3"
+2026-10-04 01:00,one.grid_1_5pct_low,SELL,ONE/INR,3450.30000000,0.27,915.28,1.84,9.15,10.53,6.42,"grid sell, level 5"
+2026-10-04 01:00,one.grid_1_5pct_low,SELL,ONE/INR,3502.80000000,0.26,915.27,1.84,9.15,1.13,2.17,"grid sell, level 6"
+2026-10-04 01:00,one.grid_1_5pct_low,BUY,ONE/INR,3450.30000000,0.26,901.75,1.81,0.00,,0.00,"grid buy, level 5"
+2026-10-04 01:00,one.grid_3pct_low,SELL,ONE/INR,3428.80000000,0.26,908.54,1.82,0.00,17.05,9.36,"grid sell, level 3"
+2026-10-04 01:00,pol.trend_2_8h,SELL,POL/INR,197.90000000,10.81,2139.77,12.62,21.40,-65.50,0.00,closed below the slow average
+2026-10-04 01:00,shib.trend_2_8h,SELL,SHIB/INR,4672445.00000000,0.00,2662.42,15.71,26.62,-51.51,0.00,closed below the slow average
+2026-10-04 01:00,shib.trend_5_20h,SELL,SHIB/INR,6224105.00000000,0.00,3546.58,20.92,35.47,-96.25,0.00,closed below the slow average
+2026-10-04 01:00,trx.trend_2_8h,SELL,TRX/INR,43.80000000,33.18,1453.14,8.57,14.53,-43.54,0.00,closed below the slow average
+2026-10-04 01:00,trx.trend_5_20h,SELL,TRX/INR,61.40000000,33.18,2037.05,12.02,20.37,-61.04,0.00,closed below the slow average
+2026-10-04 01:00,vet.trend_2_8h,SELL,VET/INR,3045.50000000,0.85,2602.35,15.35,26.02,-99.33,0.00,closed below the slow average
+2026-10-04 01:00,vet.trend_5_20h,SELL,VET/INR,4206.40000000,0.85,3594.33,21.21,0.00,-137.19,0.00,closed below the slow average
+2026-10-04 01:00,xrp.trend_2_8h,BUY,XRP/INR,22.30000000,149.20,3327.12,19.63,0.00,,0.00,uptrend entry
