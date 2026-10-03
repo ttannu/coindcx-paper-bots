@@ -1,0 +1,151 @@
+{
+  "assumed_c2c_fee_with_gst": 0.002006,
+  "assumed_inr_fee_with_gst": 0.0059,
+  "book_skew_ms": 3655,
+  "books": {
+    "B-BTC_USDT": {
+      "ask": {
+        "price": 84590.06,
+        "quantity": 3.64763
+      },
+      "bid": {
+        "price": 84590.05,
+        "quantity": 6.13109
+      },
+      "timestamp_ms": 1791021002014
+    },
+    "B-ETH_USDT": {
+      "ask": {
+        "price": 2681.44,
+        "quantity": 0.8024
+      },
+      "bid": {
+        "price": 2681.43,
+        "quantity": 145.6352
+      },
+      "timestamp_ms": 1791021003015
+    },
+    "B-SOL_USDT": {
+      "ask": {
+        "price": 119.31,
+        "quantity": 409.44
+      },
+      "bid": {
+        "price": 119.3,
+        "quantity": 249.835
+      },
+      "timestamp_ms": 1791021002795
+    },
+    "B-XRP_USDT": {
+      "ask": {
+        "price": 1.4834,
+        "quantity": 23559.3
+      },
+      "bid": {
+        "price": 1.4833,
+        "quantity": 7918.1
+      },
+      "timestamp_ms": 1791021002317
+    },
+    "I-BTC_INR": {
+      "ask": {
+        "price": 8463996.5,
+        "quantity": 0.030258
+      },
+      "bid": {
+        "price": 8425842.5,
+        "quantity": 0.01438
+      },
+      "timestamp_ms": 1791020999360
+    },
+    "I-ETH_INR": {
+      "ask": {
+        "price": 268358.4,
+        "quantity": 1.177947
+      },
+      "bid": {
+        "price": 266812.9,
+        "quantity": 0.0672
+      },
+      "timestamp_ms": 1791021001363
+    },
+    "I-SOL_INR": {
+      "ask": {
+        "price": 11933.5,
+        "quantity": 0.307296
+      },
+      "bid": {
+        "price": 11853.3,
+        "quantity": 2.59
+      },
+      "timestamp_ms": 1791021000857
+    },
+    "I-USDT_INR": {
+      "ask": {
+        "price": 99.52,
+        "quantity": 17.56
+      },
+      "bid": {
+        "price": 99.5,
+        "quantity": 9720.82
+      },
+      "timestamp_ms": 1791020999956
+    },
+    "I-XRP_INR": {
+      "ask": {
+        "price": 148.453,
+        "quantity": 38.7
+      },
+      "bid": {
+        "price": 147.562,
+        "quantity": 46.4
+      },
+      "timestamp_ms": 1791021002589
+    }
+  },
+  "capital_context_inr": 5000,
+  "fetched_at_utc": "2026-10-03T09:50:03.223894+00:00",
+  "qualification": "Best displayed quotes only. No depth, rounding, transfer, atomic execution or adverse movement. Negative gross return excludes a profitable market-order cycle at this snapshot; positive gross or net return would not establish an executable opportunity.",
+  "routes": {
+    "BTC": {
+      "inr_coin_usdt_inr": {
+        "gross_upper_bound": -0.005586784564478586,
+        "net_upper_bound": -0.01922342794268006
+      },
+      "inr_usdt_coin_inr": {
+        "gross_upper_bound": 0.0008837458841304269,
+        "net_upper_bound": -0.012837657160269411
+      }
+    },
+    "ETH": {
+      "inr_coin_usdt_inr": {
+        "gross_upper_bound": -0.0057986446483510035,
+        "net_upper_bound": -0.019432382734903997
+      },
+      "inr_usdt_coin_inr": {
+        "gross_upper_bound": -0.0001649153480711707,
+        "net_upper_bound": -0.013871941994129777
+      }
+    },
+    "SOL": {
+      "inr_coin_usdt_inr": {
+        "gross_upper_bound": -0.005291825533162875,
+        "net_upper_bound": -0.018932513760184455
+      },
+      "inr_usdt_coin_inr": {
+        "gross_upper_bound": -0.0017207059563552063,
+        "net_upper_bound": -0.015406403821647041
+      }
+    },
+    "XRP": {
+      "inr_coin_usdt_inr": {
+        "gross_upper_bound": -0.0058244023360928265,
+        "net_upper_bound": -0.01945778720086988
+      },
+      "inr_usdt_coin_inr": {
+        "gross_upper_bound": -0.00044685299739410933,
+        "net_upper_bound": -0.014150014479155981
+      }
+    }
+  }
+}

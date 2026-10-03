@@ -86,7 +86,8 @@ class LowCostTest(unittest.TestCase):
         self.assertGreaterEqual(compared, 2)
 
     def test_twins_stay_out_of_the_rankings(self):
-        ranked = sum(1 for key in self.state["bots"] if not key.endswith("_low"))
+        ranked = sum(1 for key in self.state["bots"]
+                     if not key.endswith("_low") and not key.startswith("slow_"))
         self.assertIn("%s bots on 2 coins." % "{:,}".format(ranked), self.block)
         top = self.block.split("**Top 15 bots**")[1].split("**The original bots**")[0]
         self.assertNotIn("low cost", top)

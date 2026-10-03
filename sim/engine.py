@@ -6,7 +6,7 @@ import smtplib
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, desk, fill_audit, liquid, lowcost, readiness, report, research, swarm
+from . import coindcx, desk, fill_audit, liquid, lowcost, readiness, report, research, slow, swarm
 from .accounts import FuturesAccount, SpotAccount
 from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
@@ -86,11 +86,12 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
 
     board = report.leaderboard(bots, prices, state["last_event_t"] or now_ms, config)
     low = report.lowcost_board(bots, prices, state["last_event_t"] or now_ms, config)
+    experimental = report.experimental_board(bots, prices, state["last_event_t"] or now_ms, config)
     if series is not None:
         _safely(_desk_meeting, root, state, config, series, prices, board, bots, now_ms, desk_llm, gather)
         _write_json(state_path, state)
     try:
-        report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots, low))
+        report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots, low, experimental))
         report.write_chart(root, state, board, config)
         readiness.write(root, state, config)
     except Exception:  # the dashboard is cosmetic; a rendering bug must not block saving or reporting
@@ -152,7 +153,7 @@ def _check_replayable(state, series):
 def _build_bots(state, config, trades, audit=None, market=None):
     bots = []
     universe = config.get("universe", ())
-    makers = ([(cls.key, cls.kind, cls) for cls in ALL_BOTS] + liquid.specs(universe) + swarm.specs(universe) +
+    makers = ([(cls.key, cls.kind, cls) for cls in ALL_BOTS] + liquid.specs(universe) + slow.specs() + swarm.specs(universe) +
               lowcost.specs(universe, config) + desk.specs(state, config))
     for key, kind, make in makers:
         account_cls = FuturesAccount if kind == "futures" else SpotAccount

@@ -72,7 +72,7 @@ def _row(bot, prices, t, config):
         "coin": getattr(bot, "coin", None),
         "desk": desk,
         "added": getattr(bot, "added", False),
-        "joined": s["memo"].get("joined") if desk else None,
+        "joined": s["memo"].get("joined") if desk or getattr(bot, "research_cohort", False) else None,
         "value": value,
         "ret": value / config["capital_inr"] - 1,
         "goal": value / config["goal_inr"],
@@ -88,7 +88,8 @@ def _row(bot, prices, t, config):
 
 
 def leaderboard(bots, prices, t, config):
-    rows = [_row(bot, prices, t, config) for bot in bots if not getattr(bot, "lowcost", False)]
+    rows = [_row(bot, prices, t, config) for bot in bots
+            if not getattr(bot, "lowcost", False) and not getattr(bot, "research_cohort", False)]
     rows.sort(key=lambda r: r["value"], reverse=True)
     return rows
 
@@ -97,6 +98,13 @@ def lowcost_board(bots, prices, t, config):
     """The low-cost twins. They pay costs a ₹5,000 account can't get, so they are kept out of the leaderboard."""
     rows = [_row(bot, prices, t, config) for bot in bots if getattr(bot, "lowcost", False)]
     rows.sort(key=lambda r: r["value"], reverse=True)
+    return rows
+
+
+def experimental_board(bots, prices, t, config):
+    """New portfolios have a later start, so they are never ranked with the original cohort."""
+    rows = [_row(bot, prices, t, config) for bot in bots if getattr(bot, "research_cohort", False)]
+    rows.sort(key=lambda r: r["key"])
     return rows
 
 
@@ -391,6 +399,28 @@ def _original_lines(board, added=False):
     return lines
 
 
+def _experiment_lines(rows, config):
+    if not rows:
+        return []
+    lines = [
+        "**Slow spot paper experiments.** These four separate virtual wallets each start with %s when their code "
+        "first runs. They are excluded from the original leaderboard because they started later. None made money on "
+        "average in 17 earlier 15-day windows after costs, and none met the %s target. They collect forward data only; "
+        "[rules, backtests and fill limits](docs/strategy-lab.md)." %
+        (inr(config["capital_inr"]), inr(config["goal_inr"])),
+        "",
+        "| Paper rule | Started | Value if sold now | Return | Closed trades | Now |",
+        "|---|---|---:|---:|---:|---|",
+    ]
+    for row in rows:
+        joined = row["joined"]
+        lines.append("| %s | %s | %s | %s | %d | %s |" % (
+            row["title"], ist(joined, "%d %b, %H:%M IST") if joined else "awaiting first hourly candle",
+            inr(row["value"]) if joined else "–", pct(row["ret"]) if joined else "–",
+            row["trades"], row["now"] if joined else "waiting"))
+    return lines
+
+
 def _desk_plan(plan):
     spot = ", ".join(["%s %d%% (stop -%g%%%s)" % (
         symbol(e["pair"]), round(e["weight"] * 100), round(e["stop"] * 100, 1),
@@ -475,7 +505,7 @@ def desk_message(state, board, config, now_ms):
     return "\n".join(lines)
 
 
-def dashboard(state, board, config, prices, now_ms, bots=(), low=()):
+def dashboard(state, board, config, prices, now_ms, bots=(), low=(), experimental=()):
     capital, goal = config["capital_inr"], config["goal_inr"]
     if state["finished"]:
         heading = "### Final results after %d days" % config["duration_days"]
@@ -488,7 +518,7 @@ def dashboard(state, board, config, prices, now_ms, bots=(), low=()):
         "",
         "Last updated %s. Runs from %s to %s. %s" % (ist(now_ms), ist(state["sim_start"]), ist(state["sim_end"]), status),
         "",
-        "Each bot started with %s of simulated money. The goal is %s (%dx). %s" % (
+        "Each original leaderboard bot started with %s of simulated money. The goal is %s (%dx). %s" % (
             inr(capital), inr(goal), goal // capital, _btc_line(state, prices)),
         "",
         summary_line(board, config),
@@ -517,6 +547,8 @@ def dashboard(state, board, config, prices, now_ms, bots=(), low=()):
     if any(r.get("added") for r in board):
         lines += ["", "**Added on 1 Oct, after the [backtests](docs/research.md)**", ""]
         lines += _original_lines(board, added=True)
+    if experimental:
+        lines += [""] + _experiment_lines(experimental, config)
     cards = report_card(board, elapsed_days(state, state["last_event_t"] or state["sim_start"]))
     if cards:
         lines += [
