@@ -11143,3 +11143,64 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-03 09:30,fil.learner,CLOSE SHORT,FIL/INR,36.45880144,104.68,3816.59,2.25,0.00,-68.30,0.00,switching to cash
 2026-10-03 09:30,zec.learner,CLOSE SHORT,ZEC/INR,0.02050649,132419.68,2715.46,1.60,0.00,60.95,29.12,switching to ZEC RSI reversion
 2026-10-03 09:30,zec.learner,OPEN LONG,ZEC/INR,0.01990969,132419.68,2636.44,1.56,0.00,,0.00,"following ZEC RSI reversion, 0.48x, liquidation at -142793"
+2026-10-03 09:45,aave.trend_2_8h,SELL,AAVE/INR,0.18100000,17909.90,3241.69,19.13,32.42,-83.15,0.00,closed below the slow average
+2026-10-03 09:45,aave.trend_5_20h,SELL,AAVE/INR,0.18100000,17909.90,3241.69,19.13,32.42,-97.64,0.00,closed below the slow average
+2026-10-03 09:45,arb.trend_2_8h,SELL,ARB/INR,128.80000000,19.40,2498.59,14.74,24.99,-99.20,0.00,trailing stop
+2026-10-03 09:45,arb.grid_1_5pct,BUY,ARB/INR,42.20000000,19.62,828.02,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,arb.grid_1_5pct_low,BUY,ARB/INR,42.60000000,19.52,831.38,1.67,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,avax.trend_2_8h,BUY,AVAX/INR,3.12740000,1097.38,3431.96,20.25,0.00,,0.00,uptrend entry
+2026-10-03 09:45,dot.grid_1_5pct,BUY,DOT/INR,7.02620000,114.44,804.10,4.74,0.00,,0.00,"grid buy, level 6"
+2026-10-03 09:45,dot.grid_1_5pct_low,BUY,DOT/INR,7.29680000,113.98,831.66,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-03 09:45,fil.grid_1_5pct,SELL,FIL/INR,7.92000000,106.23,841.37,4.96,0.00,12.15,9.93,"grid sell, level 3"
+2026-10-03 09:45,fil.grid_1_5pct_low,SELL,FIL/INR,7.96000000,105.94,843.32,1.69,0.00,17.48,9.44,"grid sell, level 3"
+2026-10-03 09:45,gala.trend_2_8h,SELL,GALA/INR,15235.93000000,0.26,3890.55,22.95,38.91,-204.43,0.00,closed below the slow average
+2026-10-03 09:45,gala.grid_1_5pct,BUY,GALA/INR,3130.12000000,0.26,812.32,4.79,0.00,,0.00,"grid buy, level 4"
+2026-10-03 09:45,gala.grid_3pct,BUY,GALA/INR,3209.44000000,0.26,832.52,4.91,0.00,,0.00,"grid buy, level 2"
+2026-10-03 09:45,gala.grid_1_5pct_low,BUY,GALA/INR,3359.12000000,0.26,867.07,1.74,0.00,,0.00,"grid buy, level 4"
+2026-10-03 09:45,gala.grid_3pct_low,BUY,GALA/INR,3265.28000000,0.26,842.46,1.69,0.00,,0.00,"grid buy, level 2"
+2026-10-03 09:45,hype.trend_2_8h,SELL,HYPE/INR,0.46000000,8843.69,4068.10,24.00,0.00,-106.62,0.00,closed below the slow average
+2026-10-03 09:45,icp.trend_2_8h,SELL,ICP/INR,7.05000000,327.94,2312.01,13.64,23.12,-96.76,0.00,closed below the slow average
+2026-10-03 09:45,inj.grid_1_5pct,BUY,INJ/INR,1.07000000,767.21,820.92,4.84,0.00,,0.00,"grid buy, level 1"
+2026-10-03 09:45,inj.grid_1_5pct_low,BUY,INJ/INR,1.09000000,762.94,831.61,1.67,0.00,,0.00,"grid buy, level 1"
+2026-10-03 09:45,ondo.grid_1_5pct,BUY,ONDO/INR,17.00000000,48.47,823.91,4.86,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,ondo.grid_1_5pct_low,BUY,ONDO/INR,17.20000000,48.31,830.95,1.67,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,pump.trend_2_8h,SELL,PUMP/INR,6299.00000000,0.55,3454.92,20.38,0.00,-100.73,0.00,closed below the slow average
+2026-10-03 09:45,pump.grid_1_5pct,BUY,PUMP/INR,1375.00000000,0.55,762.40,4.50,0.00,,0.00,"grid buy, level 6"
+2026-10-03 09:45,pump.grid_3pct,BUY,PUMP/INR,1513.00000000,0.55,838.92,4.95,0.00,,0.00,"grid buy, level 3"
+2026-10-03 09:45,pump.grid_1_5pct_low,BUY,PUMP/INR,1587.00000000,0.55,876.90,1.76,0.00,,0.00,"grid buy, level 6"
+2026-10-03 09:45,pump.grid_3pct_low,BUY,PUMP/INR,1558.00000000,0.55,860.28,1.73,0.00,,0.00,"grid buy, level 3"
+2026-10-03 09:45,render.trend_2_8h,BUY,RENDER/INR,11.45000000,199.07,2279.30,13.45,0.00,,0.00,uptrend entry
+2026-10-03 09:45,render.trend_5_20h,BUY,RENDER/INR,16.62000000,199.07,3308.47,19.52,0.00,,0.00,uptrend entry
+2026-10-03 09:45,siren.grid_1_5pct,SELL,SIREN/INR,194.80000000,4.36,848.93,5.01,8.49,4.31,6.44,"grid sell, level 6"
+2026-10-03 09:45,siren.grid_1_5pct_low,SELL,SIREN/INR,196.90000000,4.31,848.57,1.70,8.49,3.71,3.22,"grid sell, level 6"
+2026-10-03 09:45,sol.trend_2_8h,SELL,SOL/INR,0.26700000,11850.79,3164.16,18.67,31.64,-73.79,0.00,closed below the slow average
+2026-10-03 09:45,sui.trend_2_8h,SELL,SUI/INR,21.80000000,115.28,2513.20,14.83,25.13,-53.27,0.00,closed below the slow average
+2026-10-03 09:45,trx.trend_2_8h,BUY,TRX/INR,70.00000000,33.55,2348.82,13.86,0.00,,0.00,uptrend entry
+2026-10-03 09:45,vet.grid_1_5pct,BUY,VET/INR,965.40000000,0.86,828.36,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,vet.grid_1_5pct_low,BUY,VET/INR,974.10000000,0.85,831.59,1.67,0.00,,0.00,"grid buy, level 5"
+2026-10-03 09:45,zec.trend_2_8h,SELL,ZEC/INR,0.02800000,130507.70,3654.22,21.56,0.00,-115.89,0.00,closed below the slow average
+2026-10-03 10:00,ada.trend_2_8h,SELL,ADA/INR,167.90000000,24.46,4106.80,24.23,0.00,-116.23,0.00,closed below the slow average
+2026-10-03 10:00,btc.trend_2_8h,SELL,BTC/INR,0.00041000,8438164.62,3459.65,20.41,34.60,-67.36,0.00,closed below the slow average
+2026-10-03 10:00,doge.trend_2_8h,SELL,DOGE/INR,399.00000000,9.25,3690.89,21.78,36.91,-95.86,0.00,closed below the slow average
+2026-10-03 10:00,eth.trend_2_8h,SELL,ETH/INR,0.01170000,266271.99,3115.38,18.38,31.15,-70.84,0.00,closed below the slow average
+2026-10-03 10:00,gala.grid_1_5pct,SELL,GALA/INR,3130.12000000,0.26,815.65,4.81,0.00,-16.02,0.00,"grid sell, level 4"
+2026-10-03 10:00,gala.grid_1_5pct_low,SELL,GALA/INR,3359.12000000,0.26,880.08,1.77,0.00,-3.58,0.00,"grid sell, level 4"
+2026-10-03 10:00,hype.grid_1_5pct,BUY,HYPE/INR,0.09000000,8778.44,790.06,4.66,0.00,,0.00,"grid buy, level 3"
+2026-10-03 10:00,hype.grid_1_5pct_low,BUY,HYPE/INR,0.09000000,8755.06,787.96,1.58,0.00,,0.00,"grid buy, level 3"
+2026-10-03 10:00,kas.trend_2_8h,BUY,KAS/INR,625.57490000,4.28,2675.71,15.79,0.00,,0.00,uptrend entry
+2026-10-03 10:00,pepe.trend_2_8h,SELL,PEPE/INR,8746620.00000000,0.00,3692.62,21.79,36.93,-111.00,0.00,closed below the slow average
+2026-10-03 10:00,sei.trend_2_8h,SELL,SEI/INR,379.10000000,7.00,2652.00,15.65,26.52,-104.91,0.00,closed below the slow average
+2026-10-03 10:00,shib.trend_2_8h,SELL,SHIB/INR,5175957.00000000,0.00,2956.04,17.44,29.56,-75.47,0.00,closed below the slow average
+2026-10-03 10:00,siren.trend_2_8h,SELL,SIREN/INR,292.70000000,4.29,1255.72,7.41,12.56,-41.00,0.00,closed below the slow average
+2026-10-03 10:00,siren.grid_1_5pct,BUY,SIREN/INR,195.60000000,4.24,829.29,4.89,0.00,,0.00,"grid buy, level 6"
+2026-10-03 10:00,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
+2026-10-03 10:00,sol.trend_2_8h,BUY,SOL/INR,0.25900000,11950.81,3095.26,18.26,0.00,,0.00,uptrend entry
+2026-10-03 10:00,sui.grid_1_5pct,BUY,SUI/INR,7.20000000,114.80,826.53,4.88,0.00,,0.00,"grid buy, level 3"
+2026-10-03 10:00,sui.grid_1_5pct_low,BUY,SUI/INR,7.20000000,114.68,825.71,1.66,0.00,,0.00,"grid buy, level 3"
+2026-10-03 10:00,trump.trend_2_8h,SELL,TRUMP/INR,13.18200000,205.67,2711.10,16.00,27.11,-111.10,0.00,closed below the slow average
+2026-10-03 10:00,trump.trend_5_20h,SELL,TRUMP/INR,17.63000000,205.67,3625.90,21.39,0.00,-148.59,0.00,closed below the slow average
+2026-10-03 10:00,trx.trend_2_8h,SELL,TRX/INR,70.00000000,32.92,2304.18,13.59,23.04,-72.09,0.00,closed below the slow average
+2026-10-03 10:00,vet.trend_2_8h,SELL,VET/INR,3808.90000000,0.85,3222.04,19.01,32.22,-141.30,0.00,trailing stop
+2026-10-03 10:00,vvv.grid_1_5pct,BUY,VVV/INR,0.30000000,2738.58,821.57,4.85,0.00,,0.00,"grid buy, level 6"
+2026-10-03 10:00,vvv.grid_1_5pct_low,BUY,VVV/INR,0.31000000,2722.79,844.07,1.69,0.00,,0.00,"grid buy, level 6"
+2026-10-03 10:00,xlm.trend_2_8h,SELL,XLM/INR,137.00000000,21.46,2940.68,17.35,29.41,-66.90,0.00,closed below the slow average
