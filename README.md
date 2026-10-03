@@ -5,7 +5,7 @@
 <!-- DASHBOARD:START -->
 ### Live results: day 3 of 15
 
-Last updated 03 Oct 2026, 14:33 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
+Last updated 03 Oct 2026, 14:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
 Each bot started with ₹5,000 of simulated money. The goal is ₹1,00,000 (20x). BTC/INR since the start: -0.8% (₹85,22,786 to ₹84,51,305).
 
