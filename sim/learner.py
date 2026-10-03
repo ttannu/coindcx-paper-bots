@@ -90,7 +90,7 @@ class SelfLearner(Bot):
              "as unfunded shadow accounts that pay the same costs, and scores each on its last 3 days after fees and tax. "
              "Every hour it follows the best one. It switches only when another is ahead by more than 2 points and at least "
              "12 hours have passed since its last change, and it holds cash when none has made at least 2%. "
-             "Trades futures at 1x or less (no leverage, no liquidation risk, about a tenth of spot fees) and takes smaller "
+             "Trades futures at 1x or less (lower liquidation risk than leveraged futures, about a tenth of spot fees) and takes smaller "
              "positions when the market is swinging hard. Studies the previous 7 days before its first trade. "
              "Checked every 15 minutes: if it falls 8% below its best value it holds cash for 24 hours, and if it "
              "falls 15% below its starting money it stops trading for good.")

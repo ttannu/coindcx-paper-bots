@@ -22,11 +22,12 @@ def parse_candles(rows):
             t = int(row["time"])
             o, h, l, c = (float(row[k]) for k in ("open", "high", "low", "close"))
             v = float(row.get("volume") or 0)
-        except (KeyError, TypeError, ValueError, AttributeError):
+        except (KeyError, TypeError, ValueError, OverflowError, AttributeError):
             continue
-        if not all(math.isfinite(p) and p > 0 for p in (o, h, l, c)):
+        if (t < 0 or not all(math.isfinite(p) and p > 0 for p in (o, h, l, c))
+                or not math.isfinite(v) or v < 0 or h < max(o, c) or l > min(o, c) or h < l):
             continue
-        by_time[t] = {"t": t, "o": o, "h": max(o, h, l, c), "l": min(o, h, l, c), "c": c, "v": v}
+        by_time[t] = {"t": t, "o": o, "h": h, "l": l, "c": c, "v": v}
     return [by_time[t] for t in sorted(by_time)]
 
 
@@ -47,4 +48,7 @@ def fetch_candles(pair, interval, limit=1000, retries=4):
 
 def closed_candles(pair, interval, now_ms):
     span = INTERVAL_MS[interval]
-    return [c for c in fetch_candles(pair, interval) if c["t"] + span <= now_ms]
+    candles = [c for c in fetch_candles(pair, interval) if c["t"] + span <= now_ms]
+    if not candles or now_ms - (candles[-1]["t"] + span) > max(3 * span, 3600000):
+        raise DataUnavailable("%s %s: no recent closed candles" % (pair, interval))
+    return candles

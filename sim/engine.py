@@ -6,7 +6,7 @@ import smtplib
 import traceback
 from concurrent.futures import ThreadPoolExecutor
 
-from . import coindcx, desk, liquid, lowcost, report, research, swarm
+from . import coindcx, desk, fill_audit, liquid, lowcost, readiness, report, research, swarm
 from .accounts import FuturesAccount, SpotAccount
 from .bots import BTC, FIXED_BOTS, Bot
 from .github import GitHub
@@ -57,7 +57,9 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
         return state
 
     trades = []
-    bots = _build_bots(state, config, trades)
+    audit = state.setdefault("fill_audit", fill_audit.fresh(state["sim_start"]))
+    market = {}
+    bots = _build_bots(state, config, trades, audit, market)
     prices = state["last_prices"]
     processed = 0
     series = None
@@ -69,11 +71,12 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
             for name in ("equity.csv", "trades.csv"):
                 if os.path.exists(os.path.join(state_dir, name)):
                     os.remove(os.path.join(state_dir, name))
+        fill_audit.backfill(audit, state_dir, series, state["bots"])
         _seed_prices(prices, series, state["sim_start"])
         for pair, price in prices.items():
             state["start_prices"].setdefault(pair, price)
         _freeze_stale(state, bots, now_ms)
-        processed, snapshots = _replay(state, bots, series, prices)
+        processed, snapshots = _replay(state, bots, series, prices, market)
         _append_equity(state_dir, [bot.key for bot in bots], snapshots)
         _append_trades(state_dir, trades)
         state["runs"] += 1
@@ -89,6 +92,7 @@ def run(root, now_ms, start_ms=None, notify=True, fetch=coindcx.closed_candles, 
     try:
         report.update_readme(root, report.dashboard(state, board, config, prices, now_ms, bots, low))
         report.write_chart(root, state, board, config)
+        readiness.write(root, state, config)
     except Exception:  # the dashboard is cosmetic; a rendering bug must not block saving or reporting
         traceback.print_exc()
     if notify:
@@ -145,7 +149,7 @@ def _check_replayable(state, series):
                                report.ist(state["sim_start"]), report.ist(probe.candles[0]["t"])))
 
 
-def _build_bots(state, config, trades):
+def _build_bots(state, config, trades, audit=None, market=None):
     bots = []
     universe = config.get("universe", ())
     makers = ([(cls.key, cls.kind, cls) for cls in ALL_BOTS] + liquid.specs(universe) + swarm.specs(universe) +
@@ -154,8 +158,10 @@ def _build_bots(state, config, trades):
         account_cls = FuturesAccount if kind == "futures" else SpotAccount
         acct_state = state["bots"].setdefault(key, account_cls.fresh(config["capital_inr"]))
 
-        def log(row, key=key):
+        def log(row, key=key, kind=kind):
             trades.append(dict(row, bot=key))
+            if audit is not None:
+                fill_audit.record(audit, key, kind, row, market)
 
         bots.append(make(account_cls(acct_state, config["costs"], config["markets"], log)))
     return bots
@@ -213,7 +219,7 @@ def _guard(bot, stage, fn, *args):
         traceback.print_exc()
 
 
-def _replay(state, bots, series, prices):
+def _replay(state, bots, series, prices, market=None):
     events = []
     for (pair, interval), s in series.items():
         span = coindcx.INTERVAL_MS[interval]
@@ -236,6 +242,8 @@ def _replay(state, bots, series, prices):
         s = series[(pair, interval)]
         ctx.t = close_t
         prices[pair] = s.candles[i]["c"]
+        if market is not None and interval == "15m":
+            market[pair] = (close_t, s.candles[i]["v"] * s.candles[i]["c"])
         for bot in listeners.get((pair, interval), ()):
             if bot.acct.active:
                 _guard(bot, "on_candle", bot.on_candle, ctx, s, i)
