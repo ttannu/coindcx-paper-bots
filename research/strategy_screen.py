@@ -32,8 +32,9 @@ WINDOW_DAYS = 15
 WINDOW_COUNT = 17
 
 
-def run_window(name, histories, config, start, slippage_multiplier=1.0, execution="next_open"):
-    end = start + WINDOW_DAYS * DAY_MS
+def run_window(name, histories, config, start, slippage_multiplier=1.0, execution="next_open",
+               window_days=None):
+    end = start + (WINDOW_DAYS if window_days is None else window_days) * DAY_MS
     costs = config["costs"]
     markets = {pair: dict(config["markets"][pair],
                           slippage=config["markets"][pair]["slippage"] * slippage_multiplier)
