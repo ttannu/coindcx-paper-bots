@@ -14738,3 +14738,34 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-04 09:30,vvv.flip_1_low,SELL,VVV/INR,1.75000000,2780.54,4865.94,9.76,0.00,-151.67,0.00,coin flip
 2026-10-04 09:30,mubarak.learner,OPEN LONG,MUBARAK/INR,470.40142796,6.68,3142.02,1.85,0.00,,0.00,"following MUBARAK hold long, 0.62x, liquidation at -4"
 2026-10-04 09:30,vvv.learner,OPEN LONG,VVV/INR,1.74210981,2798.16,4874.70,2.88,0.00,,0.00,"following VVV hold long, 1x, liquidation at 14"
+2026-10-04 09:45,arb.trend_5_20h,BUY,ARB/INR,148.40000000,20.23,3002.83,17.72,0.00,,0.00,uptrend entry
+2026-10-04 09:45,avax.trend_2_8h,BUY,AVAX/INR,2.02160000,1108.92,2241.79,13.23,0.00,,0.00,uptrend entry
+2026-10-04 09:45,avax.trend_5_20h,BUY,AVAX/INR,3.38450000,1108.92,3753.13,22.14,0.00,,0.00,uptrend entry
+2026-10-04 09:45,eth.trend_2_8h,SELL,ETH/INR,0.00900000,266855.97,2401.70,14.17,24.02,-56.11,0.00,closed below the slow average
+2026-10-04 09:45,eth.trend_5_20h,SELL,ETH/INR,0.01380000,266855.97,3682.61,21.73,36.83,-86.03,0.00,closed below the slow average
+2026-10-04 09:45,fil.trend_5_20h,SELL,FIL/INR,33.73000000,105.16,3547.21,20.93,35.47,-86.02,0.00,closed below the slow average
+2026-10-04 09:45,one.trend_2_8h,SELL,ONE/INR,7249.40000000,0.25,1809.31,10.67,18.09,-118.39,0.00,closed below the slow average
+2026-10-04 09:45,one.trend_5_20h,SELL,ONE/INR,15519.60000000,0.25,3873.39,22.85,0.00,-139.47,0.00,closed below the slow average
+2026-10-04 09:45,one.grid_3pct,BUY,ONE/INR,3358.10000000,0.25,843.84,4.98,0.00,,0.00,"grid buy, level 4"
+2026-10-04 09:45,one.grid_3pct_low,BUY,ONE/INR,3534.80000000,0.25,882.07,1.77,0.00,,0.00,"grid buy, level 4"
+2026-10-04 09:45,pha.grid_3pct,SELL,PHA/INR,118.00000000,7.20,849.27,5.01,0.00,-3.41,2.97,"grid sell, level 4"
+2026-10-04 09:45,pha.grid_3pct_low,SELL,PHA/INR,118.00000000,7.23,853.36,1.71,0.00,7.48,4.93,"grid sell, level 4"
+2026-10-04 09:45,saga.trend_5_20h,BUY,SAGA/INR,1536.60000000,2.34,3601.24,21.25,0.00,,0.00,uptrend entry
+2026-10-04 09:45,xrp.trend_5_20h,BUY,XRP/INR,26.50000000,149.18,3953.38,23.32,0.00,,0.00,uptrend entry
+2026-10-04 10:00,avax.trend_2_8h,SELL,AVAX/INR,2.02160000,1088.97,2201.46,12.99,22.01,-66.55,0.00,closed below the slow average
+2026-10-04 10:00,avax.trend_5_20h,SELL,AVAX/INR,3.38450000,1088.97,3685.61,21.75,0.00,-111.41,0.00,closed below the slow average
+2026-10-04 10:00,bnb.trend_2_8h,SELL,BNB/INR,0.02000000,77724.01,1554.48,9.17,15.54,-39.02,0.00,closed below the slow average
+2026-10-04 10:00,bonk.grid_1_5pct,SELL,BONK/INR,2189176.00000000,0.00,836.17,4.93,0.00,-2.49,3.32,"grid sell, level 3"
+2026-10-04 10:00,bonk.grid_1_5pct_low,SELL,BONK/INR,2205376.00000000,0.00,844.14,1.69,0.00,6.89,4.65,"grid sell, level 3"
+2026-10-04 10:00,fil.trend_5_20h,BUY,FIL/INR,32.59000000,106.47,3469.74,20.47,0.00,,0.00,uptrend entry
+2026-10-04 10:00,gala.grid_1_5pct,SELL,GALA/INR,2674.56000000,0.25,680.33,4.01,6.80,-8.30,0.00,"grid sell, level 6"
+2026-10-04 10:00,gala.grid_1_5pct_low,SELL,GALA/INR,3462.20000000,0.25,880.07,1.77,8.80,-0.30,1.46,"grid sell, level 6"
+2026-10-04 10:00,hype.trend_2_8h,SELL,HYPE/INR,0.33000000,8918.61,2943.14,17.36,29.43,-82.69,0.00,closed below the slow average
+2026-10-04 10:00,hype.trend_5_20h,SELL,HYPE/INR,0.38000000,8918.61,3389.07,20.00,33.89,-95.22,0.00,closed below the slow average
+2026-10-04 10:00,kas.trend_5_20h,SELL,KAS/INR,611.64420000,4.19,2562.54,15.12,25.63,-102.79,0.00,closed below the slow average
+2026-10-04 10:00,link.trend_5_20h,SELL,LINK/INR,2.47000000,1383.28,3416.69,20.16,34.17,-106.91,0.00,closed below the slow average
+2026-10-04 10:00,ondo.trend_2_8h,BUY,ONDO/INR,40.10000000,49.79,1996.65,11.78,0.00,,0.00,uptrend entry
+2026-10-04 10:00,pol.trend_2_8h,BUY,POL/INR,159.60000000,11.02,1758.02,10.37,0.00,,0.00,uptrend entry
+2026-10-04 10:00,sei.trend_2_8h,BUY,SEI/INR,219.80000000,7.29,1603.32,9.46,0.00,,0.00,uptrend entry
+2026-10-04 10:00,sei.trend_5_20h,BUY,SEI/INR,465.60000000,7.29,3396.30,20.04,0.00,,0.00,uptrend entry
+2026-10-04 10:00,xlm.trend_2_8h,BUY,XLM/INR,106.00000000,21.59,2288.03,13.50,0.00,,0.00,uptrend entry
