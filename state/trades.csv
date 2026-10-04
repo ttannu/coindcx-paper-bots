@@ -17529,3 +17529,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-05 03:30,one.learner,OPEN SHORT,ONE/INR,9712.06952133,0.24,2307.70,1.36,0.00,,0.00,"following ONE trend 6/24h, 0.48x, liquidation at 1"
 2026-10-05 03:30,sei.learner,OPEN LONG,SEI/INR,407.01671487,7.40,3012.17,1.78,0.00,,0.00,"following SEI hold long, 0.6x, liquidation at -5"
 2026-10-05 03:30,fil.learner,OPEN LONG,FIL/INR,47.50566772,104.60,4969.20,2.93,0.00,,0.00,"following FIL hold long, 1x, liquidation at 1"
+2026-10-05 03:45,ada.grid_1_5pct,SELL,ADA/INR,33.30000000,25.03,833.48,4.92,0.00,-1.85,3.59,"grid sell, level 2"
+2026-10-05 03:45,ada.grid_1_5pct_low,SELL,ADA/INR,33.60000000,25.10,843.39,1.69,0.00,8.57,5.41,"grid sell, level 2"
+2026-10-05 03:45,bnb.trend_2_8h,BUY,BNB/INR,0.01600000,78869.64,1261.91,7.45,0.00,,0.00,uptrend entry
+2026-10-05 03:45,eth.trend_2_8h,BUY,ETH/INR,0.00740000,268956.59,1990.28,11.74,0.00,,0.00,uptrend entry
+2026-10-05 03:45,hbar.trend_2_8h,BUY,HBAR/INR,146.00000000,10.29,1501.99,8.86,0.00,,0.00,uptrend entry
+2026-10-05 03:45,hbar.trend_5_20h,BUY,HBAR/INR,234.00000000,10.29,2407.30,14.20,0.00,,0.00,uptrend entry
+2026-10-05 03:45,pepe.trend_2_8h,BUY,PEPE/INR,4698634.00000000,0.00,2044.20,12.06,0.00,,0.00,uptrend entry
+2026-10-05 03:45,pepe.trend_5_20h,BUY,PEPE/INR,7064114.00000000,0.00,3073.33,18.13,0.00,,0.00,uptrend entry
+2026-10-05 03:45,pol.trend_2_8h,BUY,POL/INR,130.00000000,10.99,1428.63,8.43,0.00,,0.00,uptrend entry
+2026-10-05 03:45,pump.trend_2_8h,BUY,PUMP/INR,4238.00000000,0.65,2739.48,16.16,0.00,,0.00,uptrend entry
+2026-10-05 03:45,render.trend_5_20h,BUY,RENDER/INR,9.71000000,198.01,1922.66,11.34,0.00,,0.00,uptrend entry
+2026-10-05 03:45,zec.trend_2_8h,BUY,ZEC/INR,0.01900000,134642.06,2558.20,15.09,0.00,,0.00,uptrend entry

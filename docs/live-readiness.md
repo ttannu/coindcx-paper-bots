@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 04 Oct 2026, 22:00 UTC (4.4 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 04 Oct 2026, 22:15 UTC (4.4 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -14,13 +14,13 @@ A family passes only if its historical mean and median are positive, at least 9 
 | RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | +0.0% | 37/108 | 62.6% | blocked |
 | breakout 48/24h | -8.2% | 2/12 | 1/12 | -1.7% | 15/58 | 54.5% | blocked |
 | RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | +0.0% | 36/112 | 57.7% | blocked |
-| grid 1.5% | -10.3% | 0/12 | 2/12 | -3.9% | 260/2638 | 36.1% | blocked |
+| grid 1.5% | -10.3% | 0/12 | 2/12 | -3.8% | 261/2639 | 36.1% | blocked |
 | breakout 20/10h | -15.4% | 1/12 | 0/12 | -5.2% | 55/134 | 68.6% | blocked |
 | trend 24/96h | -26.1% | 0/12 | 0/12 | -9.3% | 124/300 | 72.0% | blocked |
 | trend 12/48h | -36.0% | 0/12 | 0/12 | -13.3% | 185/405 | 76.5% | blocked |
 | trend 6/24h | -47.6% | 0/12 | 0/12 | -20.9% | 310/669 | 77.1% | blocked |
-| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -37.2% | 612/1676 | 76.3% | blocked |
-| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -52.5% | 910/2723 | 73.1% | blocked |
+| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -38.0% | 614/1679 | 76.4% | blocked |
+| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -52.5% | 912/2730 | 73.1% | blocked |
 
 Futures are excluded because their simulated P&L uses CoinDCX INR spot candles, and funding is a fixed assumption rather than CoinDCX futures data. The VIP-fee twins are excluded because a ₹5,000 account has not demonstrated the trading volume needed for that fee tier. Coin flips and buy-and-hold are controls, not candidate strategies. The four later-start spot portfolios are evaluated separately in [the slow-strategy screen](strategy-lab.md); none had a positive historical mean after costs.
 
