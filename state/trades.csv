@@ -17638,3 +17638,23 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-05 04:30,zec.trend_10x,OPEN LONG,ZEC/INR,0.20746651,133085.51,27610.79,16.29,0.00,,0.00,"go long, 10x, liquidation at 120442"
 2026-10-05 04:30,ena.learner,CLOSE SHORT,ENA/INR,127.40793023,24.12,3073.47,1.81,0.00,-120.54,0.00,switching to cash
 2026-10-05 04:30,ada.learner,OPEN SHORT,ADA/INR,125.56723493,26.02,3266.88,1.93,0.00,,0.00,"following ADA RSI reversion, 0.71x, liquidation at 63"
+2026-10-05 04:45,hype.trend_5_20h,BUY,HYPE/INR,0.27000000,9049.01,2443.23,14.42,0.00,,0.00,uptrend entry
+2026-10-05 04:45,link.trend_2_8h,BUY,LINK/INR,1.11000000,1420.72,1577.00,9.30,0.00,,0.00,uptrend entry
+2026-10-05 04:45,link.trend_5_20h,BUY,LINK/INR,1.36000000,1420.72,1932.18,11.40,0.00,,0.00,uptrend entry
+2026-10-05 04:45,pol.trend_5_20h,BUY,POL/INR,239.90000000,10.99,2636.37,15.55,0.00,,0.00,uptrend entry
+2026-10-05 04:45,siren.grid_1_5pct,SELL,SIREN/INR,193.10000000,4.40,849.42,5.01,8.49,0.47,4.72,"grid sell, level 5"
+2026-10-05 04:45,siren.grid_1_5pct_low,SELL,SIREN/INR,193.90000000,4.38,848.37,1.70,8.48,3.05,2.92,"grid sell, level 5"
+2026-10-05 04:45,vet.grid_1_5pct,SELL,VET/INR,951.00000000,0.88,832.33,4.91,0.00,-1.10,3.92,"grid sell, level 4"
+2026-10-05 04:45,vet.grid_1_5pct_low,SELL,VET/INR,959.50000000,0.88,844.07,1.69,0.00,10.82,6.42,"grid sell, level 4"
+2026-10-05 04:45,xlm.grid_1_5pct,SELL,XLM/INR,38.00000000,22.17,842.62,4.97,0.00,8.37,8.23,"grid sell, level 4"
+2026-10-05 04:45,xlm.grid_1_5pct_low,SELL,XLM/INR,38.00000000,22.02,836.70,1.68,0.00,11.45,6.69,"grid sell, level 4"
+2026-10-05 05:00,fil.trend_2_8h,BUY,FIL/INR,23.14000000,105.50,2441.16,14.40,0.00,,0.00,uptrend entry
+2026-10-05 05:00,hbar.trend_2_8h,BUY,HBAR/INR,140.00000000,10.35,1449.65,8.55,0.00,,0.00,uptrend entry
+2026-10-05 05:00,hype.trend_2_8h,SELL,HYPE/INR,0.23000000,8914.92,2050.43,12.10,20.50,-55.22,0.00,closed below the slow average
+2026-10-05 05:00,hype.trend_5_20h,SELL,HYPE/INR,0.27000000,8914.92,2407.03,14.20,24.07,-64.82,0.00,closed below the slow average
+2026-10-05 05:00,near.trend_2_8h,SELL,NEAR/INR,5.50000000,483.97,2661.83,15.70,26.62,-76.16,0.00,trailing stop
+2026-10-05 05:00,near.trend_5_20h,SELL,NEAR/INR,8.40000000,483.97,4065.34,23.99,0.00,-116.31,0.00,trailing stop
+2026-10-05 05:00,saga.trend_2_8h,BUY,SAGA/INR,1174.60000000,2.29,2691.06,15.88,0.00,,0.00,uptrend entry
+2026-10-05 05:00,siren.grid_1_5pct,BUY,SIREN/INR,193.00000000,4.29,828.91,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-05 05:00,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-05 05:00,trump.trend_5_20h,BUY,TRUMP/INR,17.31000000,207.01,3583.34,21.14,0.00,,0.00,uptrend entry
