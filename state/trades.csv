@@ -17541,3 +17541,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-05 03:45,pump.trend_2_8h,BUY,PUMP/INR,4238.00000000,0.65,2739.48,16.16,0.00,,0.00,uptrend entry
 2026-10-05 03:45,render.trend_5_20h,BUY,RENDER/INR,9.71000000,198.01,1922.66,11.34,0.00,,0.00,uptrend entry
 2026-10-05 03:45,zec.trend_2_8h,BUY,ZEC/INR,0.01900000,134642.06,2558.20,15.09,0.00,,0.00,uptrend entry
+2026-10-05 04:00,bonk.grid_1_5pct,SELL,BONK/INR,2156338.00000000,0.00,837.81,4.94,0.00,1.88,5.29,"grid sell, level 2"
+2026-10-05 04:00,bonk.grid_1_5pct_low,SELL,BONK/INR,2172295.00000000,0.00,844.14,1.69,0.00,10.31,6.19,"grid sell, level 2"
+2026-10-05 04:00,render.trend_2_8h,BUY,RENDER/INR,6.14000000,198.01,1215.77,7.17,0.00,,0.00,uptrend entry
+2026-10-05 04:00,sui.trend_5_20h,BUY,SUI/INR,16.20000000,120.28,1948.54,11.50,0.00,,0.00,uptrend entry
+2026-10-05 04:00,vvv.grid_1_5pct,SELL,VVV/INR,0.27000000,2963.28,800.09,4.72,0.00,10.09,8.78,"grid sell, level 1"
+2026-10-05 04:00,vvv.grid_1_5pct,SELL,VVV/INR,0.28000000,2938.31,822.73,4.85,0.00,5.70,6.93,"grid sell, level 2"
+2026-10-05 04:00,vvv.grid_3pct,SELL,VVV/INR,0.28000000,2961.28,829.16,4.89,0.00,17.62,12.32,"grid sell, level 1"
+2026-10-05 04:00,vvv.grid_1_5pct_low,SELL,VVV/INR,0.29000000,2980.57,864.37,1.73,0.00,23.67,12.27,"grid sell, level 1"
+2026-10-05 04:00,vvv.grid_1_5pct_low,SELL,VVV/INR,0.29000000,2935.86,851.40,1.71,0.00,14.78,8.23,"grid sell, level 2"
+2026-10-05 04:00,vvv.grid_3pct_low,SELL,VVV/INR,0.29000000,2978.56,863.78,1.73,0.00,31.27,15.71,"grid sell, level 1"
+2026-10-05 04:00,xrp.grid_1_5pct,SELL,XRP/INR,5.50000000,150.23,826.25,4.87,0.00,-3.82,2.67,"grid sell, level 2"
+2026-10-05 04:00,xrp.grid_1_5pct_low,SELL,XRP/INR,5.60000000,150.57,843.21,1.69,0.00,5.22,3.89,"grid sell, level 2"
