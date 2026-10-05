@@ -21275,3 +21275,20 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-06 03:30,sei.learner,OPEN LONG,SEI/INR,421.27917256,7.36,3100.10,1.83,0.00,,0.00,"following SEI hold long, 0.62x, liquidation at -4"
 2026-10-06 03:30,fil.learner,OPEN LONG,FIL/INR,17.71224463,117.15,2074.96,1.22,0.00,,0.00,"following FIL hold long, 0.41x, liquidation at -168"
 2026-10-06 03:30,eth.learner,CLOSE SHORT,ETH/INR,0.01857127,267605.04,4969.77,2.93,0.00,12.38,8.28,switching to cash
+2026-10-06 03:45,ada.grid_1_5pct,SELL,ADA/INR,30.60000000,26.84,821.32,4.85,0.00,-5.74,1.78,"grid sell, level 2"
+2026-10-06 03:45,ada.grid_1_5pct_low,SELL,ADA/INR,32.20000000,26.95,867.74,1.74,0.00,5.41,4.02,"grid sell, level 2"
+2026-10-06 03:45,doge.trend_5_20h,BUY,DOGE/INR,415.00000000,9.53,3955.69,23.34,0.00,,0.00,uptrend entry
+2026-10-06 03:45,hbar.trend_2_8h,SELL,HBAR/INR,106.00000000,10.00,1059.94,6.25,10.60,-31.18,0.00,closed below the slow average
+2026-10-06 03:45,pepe.trend_5_20h,BUY,PEPE/INR,6543469.00000000,0.00,2902.68,17.13,0.00,,0.00,uptrend entry
+2026-10-06 03:45,pump.grid_1_5pct,BUY,PUMP/INR,1248.00000000,0.64,797.17,4.70,0.00,,0.00,"grid buy, level 2"
+2026-10-06 03:45,pump.grid_1_5pct_low,BUY,PUMP/INR,1434.00000000,0.64,920.99,1.85,0.00,,0.00,"grid buy, level 2"
+2026-10-06 03:45,saga.trend_5_20h,SELL,SAGA/INR,1273.80000000,2.36,3004.94,17.73,30.05,-81.83,0.00,closed below the slow average
+2026-10-06 03:45,sol.trend_2_8h,BUY,SOL/INR,0.10600000,12035.42,1275.75,7.53,0.00,,0.00,uptrend entry
+2026-10-06 03:45,xrp.trend_2_8h,BUY,XRP/INR,11.60000000,150.07,1740.77,10.27,0.00,,0.00,uptrend entry
+2026-10-06 04:00,btc.trend_2_8h,BUY,BTC/INR,0.00019000,8548656.95,1624.24,9.58,0.00,,0.00,uptrend entry
+2026-10-06 04:00,eth.trend_2_8h,BUY,ETH/INR,0.00590000,269899.10,1592.40,9.40,0.00,,0.00,uptrend entry
+2026-10-06 04:00,ondo.grid_1_5pct,SELL,ONDO/INR,16.80000000,49.66,834.25,4.92,0.00,-5.68,1.87,"grid sell, level 4"
+2026-10-06 04:00,ondo.grid_1_5pct_low,SELL,ONDO/INR,16.90000000,49.78,841.32,1.69,0.00,0.16,1.60,"grid sell, level 4"
+2026-10-06 04:00,pump.trend_5_20h,BUY,PUMP/INR,3709.00000000,0.64,2384.03,14.07,0.00,,0.00,uptrend entry
+2026-10-06 04:00,qnt.trend_5_20h,BUY,QNT/INR,0.10700000,25590.09,2738.14,16.16,0.00,,0.00,uptrend entry
+2026-10-06 04:00,shib.trend_5_20h,BUY,SHIB/INR,4552264.00000000,0.00,2667.75,15.74,0.00,,0.00,uptrend entry
