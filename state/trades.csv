@@ -17862,3 +17862,53 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-05 06:30,zec.long_short,CLOSE SHORT,ZEC/INR,0.03460922,134606.07,4658.61,2.75,0.00,222.59,103.53,signal flipped to long
 2026-10-05 06:30,zec.long_short,OPEN LONG,ZEC/INR,0.03954489,134606.07,5322.98,3.14,0.00,,0.00,"go long, 1x, liquidation at 673"
 2026-10-05 06:30,aave.learner,CLOSE LONG,AAVE/INR,0.13717077,17665.06,2423.13,1.43,0.00,-62.50,0.00,switching to AAVE RSI reversion
+2026-10-05 06:45,bonk.grid_1_5pct,SELL,BONK/INR,2123993.00000000,0.00,835.01,4.93,0.00,8.51,8.25,"grid sell, level 1"
+2026-10-05 06:45,bonk.grid_3pct,SELL,BONK/INR,2156839.00000000,0.00,847.35,5.00,0.00,20.53,13.73,"grid sell, level 1"
+2026-10-05 06:45,bonk.grid_1_5pct_low,SELL,BONK/INR,2139711.00000000,0.00,844.14,1.69,0.00,18.84,10.05,"grid sell, level 1"
+2026-10-05 06:45,bonk.grid_3pct_low,SELL,BONK/INR,2172799.00000000,0.00,856.61,1.72,0.00,31.17,15.65,"grid sell, level 1"
+2026-10-05 06:45,fil.trend_2_8h,SELL,FIL/INR,23.14000000,104.07,2408.08,14.21,24.08,-61.69,0.00,trailing stop
+2026-10-05 06:45,kas.trend_2_8h,SELL,KAS/INR,291.65140000,4.16,1212.40,7.15,12.12,-46.66,0.00,trailing stop
+2026-10-05 06:45,link.trend_2_8h,SELL,LINK/INR,1.06000000,1397.74,1481.61,8.74,14.82,-43.29,0.00,closed below the slow average
+2026-10-05 06:45,link.trend_5_20h,SELL,LINK/INR,1.31000000,1397.74,1831.04,10.80,18.31,-53.50,0.00,closed below the slow average
+2026-10-05 06:45,ondo.trend_2_8h,BUY,ONDO/INR,33.90000000,49.69,1684.44,9.94,0.00,,0.00,uptrend entry
+2026-10-05 06:45,one.trend_2_8h,BUY,ONE/INR,7063.10000000,0.24,1697.91,10.02,0.00,,0.00,uptrend entry
+2026-10-05 06:45,one.grid_3pct,SELL,ONE/INR,3569.10000000,0.24,858.95,5.07,0.00,-28.35,0.00,"grid sell, level 6"
+2026-10-05 06:45,one.grid_3pct_low,SELL,ONE/INR,3756.80000000,0.24,908.52,1.82,0.00,-12.58,0.00,"grid sell, level 6"
+2026-10-05 06:45,pol.trend_2_8h,SELL,POL/INR,125.00000000,10.79,1349.21,7.96,13.49,-39.94,0.00,closed below the slow average
+2026-10-05 06:45,pol.trend_5_20h,SELL,POL/INR,230.70000000,10.79,2490.10,14.69,24.90,-73.72,0.00,closed below the slow average
+2026-10-05 06:45,sui.grid_1_5pct,SELL,SUI/INR,6.90000000,121.52,838.49,4.95,0.00,-5.64,1.91,"grid sell, level 3"
+2026-10-05 06:45,sui.grid_1_5pct_low,SELL,SUI/INR,7.20000000,121.10,871.94,1.75,0.00,-0.56,1.33,"grid sell, level 3"
+2026-10-05 06:45,trump.trend_2_8h,SELL,TRUMP/INR,8.89200000,202.93,1804.46,10.65,18.04,-54.64,0.00,closed below the slow average
+2026-10-05 06:45,vvv.trend_5_20h,BUY,VVV/INR,1.11000000,2953.82,3278.74,19.34,0.00,,0.00,uptrend entry
+2026-10-05 07:00,ada.grid_1_5pct,SELL,ADA/INR,31.40000000,26.28,825.30,4.87,0.00,-1.51,3.70,"grid sell, level 1"
+2026-10-05 07:00,ada.grid_3pct,SELL,ADA/INR,32.30000000,26.27,848.38,5.01,0.00,2.54,5.65,"grid sell, level 1"
+2026-10-05 07:00,ada.grid_1_5pct_low,SELL,ADA/INR,32.70000000,26.39,862.92,1.73,0.00,9.77,5.98,"grid sell, level 1"
+2026-10-05 07:00,ada.grid_3pct_low,SELL,ADA/INR,32.90000000,26.37,867.61,1.74,0.00,13.96,7.88,"grid sell, level 1"
+2026-10-05 07:00,bch.trend_2_8h,BUY,BCH/INR,0.06470000,31503.37,2038.27,12.03,0.00,,0.00,uptrend entry
+2026-10-05 07:00,dot.grid_1_5pct,SELL,DOT/INR,7.02340000,118.75,834.00,4.92,0.00,-9.82,0.01,"grid sell, level 4"
+2026-10-05 07:00,dot.grid_1_5pct_low,SELL,DOT/INR,7.07960000,119.24,844.14,1.69,0.00,1.30,2.12,"grid sell, level 4"
+2026-10-05 07:00,fil.trend_2_8h,BUY,FIL/INR,22.24000000,105.94,2356.01,13.90,0.00,,0.00,uptrend entry
+2026-10-05 07:00,kas.trend_2_8h,BUY,KAS/INR,274.83540000,4.32,1186.13,7.00,0.00,,0.00,uptrend entry
+2026-10-05 07:00,kas.grid_1_5pct,SELL,KAS/INR,195.41830000,4.24,828.68,4.89,0.00,-8.79,0.44,"grid sell, level 4"
+2026-10-05 07:00,kas.grid_1_5pct_low,SELL,KAS/INR,197.60980000,4.27,844.14,1.69,0.00,6.05,4.27,"grid sell, level 4"
+2026-10-05 07:00,link.trend_2_8h,BUY,LINK/INR,1.02000000,1423.43,1451.90,8.57,0.00,,0.00,uptrend entry
+2026-10-05 07:00,link.trend_5_20h,BUY,LINK/INR,1.26000000,1423.43,1793.53,10.58,0.00,,0.00,uptrend entry
+2026-10-05 07:00,mubarak.dip_30_3,SELL,MUBARAK/INR,765.70000000,6.64,5083.28,29.99,0.00,18.27,35.18,take profit
+2026-10-05 07:00,mubarak.grid_3pct,SELL,MUBARAK/INR,129.50000000,6.59,853.29,5.03,0.00,-62.57,0.00,"grid sell, level 6"
+2026-10-05 07:00,mubarak.grid_3pct_low,SELL,MUBARAK/INR,135.80000000,6.64,901.20,1.81,0.00,-45.40,0.00,"grid sell, level 6"
+2026-10-05 07:00,pengu.grid_3pct,SELL,PENGU/INR,902.00000000,0.96,863.80,5.10,0.00,12.49,10.20,"grid sell, level 4"
+2026-10-05 07:00,pengu.grid_3pct_low,SELL,PENGU/INR,889.00000000,0.96,855.72,1.72,0.00,17.35,9.40,"grid sell, level 4"
+2026-10-05 07:00,pol.trend_2_8h,BUY,POL/INR,119.70000000,11.02,1319.20,7.78,0.00,,0.00,uptrend entry
+2026-10-05 07:00,pol.trend_5_20h,BUY,POL/INR,221.00000000,11.02,2435.62,14.37,0.00,,0.00,uptrend entry
+2026-10-05 07:00,pump.grid_1_5pct,BUY,PUMP/INR,1253.00000000,0.64,796.87,4.70,0.00,,0.00,"grid buy, level 3"
+2026-10-05 07:00,pump.grid_1_5pct_low,BUY,PUMP/INR,1456.00000000,0.63,921.09,1.85,0.00,,0.00,"grid buy, level 3"
+2026-10-05 07:00,render.trend_2_8h,BUY,RENDER/INR,5.88000000,199.36,1172.22,6.92,0.00,,0.00,uptrend entry
+2026-10-05 07:00,render.trend_5_20h,BUY,RENDER/INR,9.29000000,199.36,1852.03,10.93,0.00,,0.00,uptrend entry
+2026-10-05 07:00,shib.grid_1_5pct,SELL,SHIB/INR,1421277.00000000,0.00,835.34,4.93,0.00,-0.48,4.22,"grid sell, level 2"
+2026-10-05 07:00,shib.grid_1_5pct_low,SELL,SHIB/INR,1431509.00000000,0.00,844.14,1.69,0.00,9.81,5.97,"grid sell, level 2"
+2026-10-05 07:00,siren.grid_1_5pct,SELL,SIREN/INR,191.90000000,4.37,837.69,4.94,8.38,-3.37,2.93,"grid sell, level 5"
+2026-10-05 07:00,siren.grid_1_5pct,BUY,SIREN/INR,194.50000000,4.26,829.11,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-05 07:00,siren.grid_1_5pct_low,SELL,SIREN/INR,193.90000000,4.38,848.37,1.70,8.48,3.86,3.29,"grid sell, level 5"
+2026-10-05 07:00,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-05 07:00,sol.trend_2_8h,BUY,SOL/INR,0.12300000,12105.68,1489.00,8.79,0.00,,0.00,uptrend entry
+2026-10-05 07:00,trump.trend_2_8h,BUY,TRUMP/INR,8.48400000,208.10,1765.48,10.42,0.00,,0.00,uptrend entry
