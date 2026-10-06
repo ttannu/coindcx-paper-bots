@@ -24812,3 +24812,69 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-07 04:00,pha.grid_3pct_low,BUY,PHA/INR,118.00000000,7.02,828.51,1.66,0.00,,0.00,"grid buy, level 4"
 2026-10-07 04:00,sol.trend_2_8h,SELL,SOL/INR,0.06700000,11935.79,799.70,4.72,8.00,-15.70,0.00,closed below the slow average
 2026-10-07 04:00,trx.trend_2_8h,SELL,TRX/INR,12.90000000,32.88,424.10,2.50,4.24,-12.69,0.00,closed below the slow average
+2026-10-07 04:15,aave.grid_1_5pct,BUY,AAVE/INR,0.04600000,17856.96,821.42,4.85,0.00,,0.00,"grid buy, level 3"
+2026-10-07 04:15,aave.grid_1_5pct_low,BUY,AAVE/INR,0.04700000,17828.05,837.92,1.68,0.00,,0.00,"grid buy, level 3"
+2026-10-07 04:15,arb.grid_1_5pct,BUY,ARB/INR,41.60000000,19.89,827.58,4.88,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:15,arb.grid_3pct,BUY,ARB/INR,41.60000000,19.89,827.58,4.88,0.00,,0.00,"grid buy, level 2"
+2026-10-07 04:15,arb.grid_1_5pct_low,BUY,ARB/INR,41.90000000,19.81,830.18,1.67,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:15,arb.grid_3pct_low,BUY,ARB/INR,41.90000000,19.80,829.79,1.66,0.00,,0.00,"grid buy, level 2"
+2026-10-07 04:15,bonk.grid_1_5pct,BUY,BONK/INR,2123685.00000000,0.00,768.04,4.53,0.00,,0.00,"grid buy, level 6"
+2026-10-07 04:15,bonk.grid_1_5pct_low,BUY,BONK/INR,2307671.00000000,0.00,831.66,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-07 04:15,bonk.dip_30_3_low,BUY,BONK/INR,14559390.00000000,0.00,5251.57,10.53,0.00,,0.00,"RSI 27, limit buy"
+2026-10-07 04:15,bonk.dip_30_6_low,BUY,BONK/INR,14956901.00000000,0.00,5394.95,10.82,0.00,,0.00,"RSI 27, limit buy"
+2026-10-07 04:15,mubarak.trend_2_8h,BUY,MUBARAK/INR,124.20000000,7.57,940.55,5.55,0.00,,0.00,uptrend entry
+2026-10-07 04:15,sol.trend_2_8h,BUY,SOL/INR,0.06500000,12053.66,783.49,4.62,0.00,,0.00,uptrend entry
+2026-10-07 04:15,trx.trend_2_8h,BUY,TRX/INR,12.40000000,33.47,415.03,2.45,0.00,,0.00,uptrend entry
+2026-10-07 04:30,bonk.grid_1_5pct,SELL,BONK/INR,2123685.00000000,0.00,774.34,4.57,0.00,-18.55,0.00,"grid sell, level 6"
+2026-10-07 04:30,bonk.grid_1_5pct_low,SELL,BONK/INR,2307671.00000000,0.00,844.14,1.69,0.00,-18.30,0.00,"grid sell, level 6"
+2026-10-07 04:30,fil.trend_2_8h,SELL,FIL/INR,14.75000000,114.89,1694.55,10.00,16.95,-33.21,0.00,closed below the slow average
+2026-10-07 04:30,fil.trend_5_20h,SELL,FIL/INR,17.35000000,114.89,1993.25,11.76,19.93,-52.69,0.00,trailing stop
+2026-10-07 04:30,icp.grid_1_5pct,SELL,ICP/INR,2.48000000,334.68,830.01,4.90,0.00,-22.62,0.00,"grid sell, level 4"
+2026-10-07 04:30,icp.grid_1_5pct_low,SELL,ICP/INR,2.50000000,336.44,841.11,1.69,0.00,-6.64,0.00,"grid sell, level 4"
+2026-10-07 04:30,mubarak.trend_2_8h,SELL,MUBARAK/INR,124.20000000,7.39,917.60,5.41,9.18,-33.92,0.00,closed below the slow average
+2026-10-07 04:30,sei.grid_1_5pct,BUY,SEI/INR,116.20000000,7.13,828.39,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:30,sei.grid_1_5pct_low,BUY,SEI/INR,117.40000000,7.08,831.29,1.67,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:30,siren.grid_1_5pct,SELL,SIREN/INR,189.00000000,4.48,847.60,5.00,8.48,4.88,6.69,"grid sell, level 4"
+2026-10-07 04:30,siren.grid_1_5pct,BUY,SIREN/INR,189.00000000,4.39,829.02,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:30,siren.grid_1_5pct_low,SELL,SIREN/INR,191.00000000,4.44,848.41,1.70,8.48,5.73,4.13,"grid sell, level 4"
+2026-10-07 04:30,siren.grid_1_5pct_low,BUY,SIREN/INR,191.00000000,4.38,835.87,1.68,0.00,,0.00,"grid buy, level 4"
+2026-10-07 04:30,sol.trend_2_8h,SELL,SOL/INR,0.06500000,11909.15,774.09,4.57,7.74,-18.58,0.00,closed below the slow average
+2026-10-07 04:30,sol.trend_5_20h,SELL,SOL/INR,0.18400000,11909.15,2191.28,12.93,21.91,-47.98,0.00,closed below the slow average
+2026-10-07 04:30,trx.trend_2_8h,SELL,TRX/INR,12.40000000,32.88,407.66,2.41,4.08,-12.22,0.00,closed below the slow average
+2026-10-07 04:30,aave.trend_24_96h,SELL,AAVE/INR,0.26400000,17743.04,4684.16,27.64,0.00,-144.35,0.00,closed below the slow average
+2026-10-07 04:30,aave.trend_3x,CLOSE LONG,AAVE/INR,0.49215953,17791.10,8756.06,5.17,0.00,-171.82,0.00,signal flipped to short
+2026-10-07 04:30,aave.trend_3x,OPEN SHORT,AAVE/INR,0.47229022,17791.10,8402.56,4.96,0.00,,0.00,"go short, 3x, liquidation at 23633"
+2026-10-07 04:30,aave.trend_10x,CLOSE LONG,AAVE/INR,0.33393940,17791.10,5941.15,3.51,0.00,-116.59,0.00,signal flipped to short
+2026-10-07 04:30,aave.trend_10x,OPEN SHORT,AAVE/INR,0.27493630,17791.10,4891.42,2.89,0.00,,0.00,"go short, 10x, liquidation at 19481"
+2026-10-07 04:30,ada.flip_3,BUY,ADA/INR,155.50000000,26.67,4147.69,24.47,0.00,,0.00,coin flip
+2026-10-07 04:30,ada.flip_3x,CLOSE SHORT,ADA/INR,518.76806561,26.58,13789.00,8.14,0.00,233.58,113.40,coin flip
+2026-10-07 04:30,bch.trend_6_24h,SELL,BCH/INR,0.10930000,30909.86,3378.45,19.93,33.78,-83.11,0.00,closed below the slow average
+2026-10-07 04:30,bch.flip_3,SELL,BCH/INR,0.14260000,30909.86,4407.75,26.01,0.00,-60.18,0.00,coin flip
+2026-10-07 04:30,bch.trend_3x,CLOSE LONG,BCH/INR,0.12367112,30925.33,3824.57,2.26,0.00,-49.43,0.00,signal flipped to short
+2026-10-07 04:30,bch.trend_3x,OPEN SHORT,BCH/INR,0.12033290,30925.33,3721.33,2.20,0.00,,0.00,"go short, 3x, liquidation at 41079"
+2026-10-07 04:30,bch.trend_10x,CLOSE LONG,BCH/INR,0.00950428,30925.33,293.92,0.17,0.00,-3.80,0.00,signal flipped to short
+2026-10-07 04:30,bch.trend_10x,OPEN SHORT,BCH/INR,0.00839442,30925.33,259.60,0.15,0.00,,0.00,"go short, 10x, liquidation at 33863"
+2026-10-07 04:30,bch.flip_3x,CLOSE LONG,BCH/INR,0.50017022,30925.33,15467.93,9.13,0.00,-266.95,0.00,coin flip
+2026-10-07 04:30,bonk.flip_2,SELL,BONK/INR,11613739.00000000,0.00,4234.59,24.98,0.00,-276.84,0.00,coin flip
+2026-10-07 04:30,gala.flip_3x,OPEN SHORT,GALA/INR,65732.32155514,0.24,15920.29,9.39,0.00,,0.00,"coin flip: short, 3x, liquidation at 0"
+2026-10-07 04:30,hype.flip_3x,OPEN SHORT,HYPE/INR,1.56543979,9057.76,14179.38,8.37,0.00,,0.00,"coin flip: short, 3x, liquidation at 12032"
+2026-10-07 04:30,kas.trend_12_48h,SELL,KAS/INR,778.90870000,4.23,3295.63,19.44,0.00,-131.76,0.00,closed below the slow average
+2026-10-07 04:30,kas.trend_24_96h,SELL,KAS/INR,966.87890000,4.23,4090.95,24.14,0.00,-163.56,0.00,closed below the slow average
+2026-10-07 04:30,kas.flip_2,BUY,KAS/INR,1024.49200000,4.29,4398.47,25.95,0.00,,0.00,coin flip
+2026-10-07 04:30,kas.flip_3,SELL,KAS/INR,1054.29230000,4.23,4460.80,26.32,0.00,-90.64,0.00,coin flip
+2026-10-07 04:30,mubarak.flip_2,BUY,MUBARAK/INR,552.80000000,7.49,4142.53,24.44,0.00,,0.00,coin flip
+2026-10-07 04:30,near.trend_12_48h,SELL,NEAR/INR,8.30000000,503.28,4177.25,24.65,0.00,-158.89,0.00,closed below the slow average
+2026-10-07 04:30,ondo.flip_1,BUY,ONDO/INR,98.30000000,49.13,4829.16,28.49,0.00,,0.00,coin flip
+2026-10-07 04:30,ondo.trend_3x,CLOSE LONG,ONDO/INR,150.62345174,48.95,7372.34,4.35,0.00,-136.78,0.00,signal flipped to short
+2026-10-07 04:30,ondo.trend_3x,OPEN SHORT,ONDO/INR,144.84697549,48.95,7089.61,4.18,0.00,,0.00,"go short, 3x, liquidation at 65"
+2026-10-07 04:30,ondo.trend_10x,CLOSE LONG,ONDO/INR,65.63917340,48.95,3212.74,1.90,0.00,-59.61,0.00,signal flipped to short
+2026-10-07 04:30,ondo.trend_10x,OPEN SHORT,ONDO/INR,54.66221913,48.95,2675.47,1.58,0.00,,0.00,"go short, 10x, liquidation at 54"
+2026-10-07 04:30,ondo.flip_1_low,BUY,ONDO/INR,103.50000000,49.13,5084.61,10.20,0.00,,0.00,coin flip
+2026-10-07 04:30,pol.flip_3x,CLOSE SHORT,POL/INR,1329.28094593,10.72,14255.29,8.41,0.00,237.74,115.54,coin flip
+2026-10-07 04:30,sol.trend_6_24h,SELL,SOL/INR,0.31700000,11909.15,3775.20,22.27,37.75,-82.32,0.00,closed below the slow average
+2026-10-07 04:30,sol.trend_12_48h,SELL,SOL/INR,0.34600000,11909.15,4120.57,24.31,0.00,-90.23,0.00,closed below the slow average
+2026-10-07 04:30,trx.flip_3,SELL,TRX/INR,129.30000000,32.88,4250.88,25.08,0.00,-125.47,0.00,coin flip
+2026-10-07 04:30,xrp.flip_3x,CLOSE SHORT,XRP/INR,102.31017857,149.05,15249.69,9.00,0.00,7.42,11.54,coin flip
+2026-10-07 04:30,kas.learner,CLOSE LONG,KAS/INR,900.94072910,4.26,3838.07,2.26,0.00,-81.11,0.00,switching to cash
+2026-10-07 04:30,doge.learner,CLOSE LONG,DOGE/INR,508.27981325,9.29,4721.18,2.79,0.00,-99.00,0.00,switching to cash
+2026-10-07 04:30,bnb.learner,OPEN SHORT,BNB/INR,0.06293747,77011.48,4846.91,2.86,0.00,,0.00,"following BNB hold short, 1x, liquidation at 153638"
