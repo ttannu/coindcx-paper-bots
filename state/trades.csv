@@ -24730,3 +24730,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-07 02:30,zec.flip_1_low,BUY,ZEC/INR,0.03700000,133510.23,4939.88,9.91,0.00,,0.00,coin flip
 2026-10-07 02:30,apt.learner,OPEN LONG,APT/INR,36.76921073,84.51,3107.19,1.83,0.00,,0.00,"following APT hold long, 0.6x, liquidation at -56"
 2026-10-07 02:30,xlm.learner,OPEN SHORT,XLM/INR,244.33673945,20.92,5111.90,3.02,0.00,,0.00,"following XLM hold short, 1x, liquidation at 42"
+2026-10-07 02:45,kas.trend_2_8h,SELL,KAS/INR,126.01690000,4.23,533.54,3.15,5.34,-18.93,0.00,closed below the slow average
+2026-10-07 02:45,kas.trend_5_20h,SELL,KAS/INR,240.47540000,4.23,1018.14,6.01,10.18,-38.36,0.00,closed below the slow average
+2026-10-07 02:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,131.00000000,7.56,990.32,5.84,0.00,,0.00,uptrend entry
+2026-10-07 02:45,pump.grid_1_5pct,BUY,PUMP/INR,1301.00000000,0.61,796.85,4.70,0.00,,0.00,"grid buy, level 5"
+2026-10-07 02:45,pump.grid_1_5pct_low,BUY,PUMP/INR,1501.00000000,0.61,921.28,1.85,0.00,,0.00,"grid buy, level 5"
+2026-10-07 02:45,saga.trend_2_8h,SELL,SAGA/INR,601.10000000,2.40,1442.27,8.51,14.42,-67.67,0.00,trailing stop
+2026-10-07 02:45,saga.trend_5_20h,SELL,SAGA/INR,775.00000000,2.40,1859.53,10.97,18.60,-87.24,0.00,trailing stop
+2026-10-07 03:00,aave.trend_2_8h,SELL,AAVE/INR,0.07400000,17892.96,1324.08,7.81,13.24,-29.43,0.00,trailing stop
+2026-10-07 03:00,aave.trend_5_20h,SELL,AAVE/INR,0.09600000,17892.96,1717.72,10.13,17.18,-38.18,0.00,trailing stop
+2026-10-07 03:00,mubarak.trend_2_8h,SELL,MUBARAK/INR,131.00000000,7.34,962.06,5.68,9.62,-39.78,0.00,closed below the slow average
+2026-10-07 03:00,mubarak.trend_5_20h,SELL,MUBARAK/INR,204.80000000,7.34,1504.05,8.87,15.04,-72.66,0.00,closed below the slow average
+2026-10-07 03:00,saga.trend_2_8h,BUY,SAGA/INR,578.40000000,2.44,1411.06,8.33,0.00,,0.00,uptrend entry
