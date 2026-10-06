@@ -24742,3 +24742,8 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-07 03:00,mubarak.trend_2_8h,SELL,MUBARAK/INR,131.00000000,7.34,962.06,5.68,9.62,-39.78,0.00,closed below the slow average
 2026-10-07 03:00,mubarak.trend_5_20h,SELL,MUBARAK/INR,204.80000000,7.34,1504.05,8.87,15.04,-72.66,0.00,closed below the slow average
 2026-10-07 03:00,saga.trend_2_8h,BUY,SAGA/INR,578.40000000,2.44,1411.06,8.33,0.00,,0.00,uptrend entry
+2026-10-07 03:15,ada.grid_1_5pct,BUY,ADA/INR,30.60000000,26.66,815.69,4.81,0.00,,0.00,"grid buy, level 2"
+2026-10-07 03:15,ada.grid_3pct,BUY,ADA/INR,31.20000000,26.65,831.49,4.91,0.00,,0.00,"grid buy, level 1"
+2026-10-07 03:15,ada.grid_1_5pct_low,BUY,ADA/INR,32.20000000,26.55,854.92,1.71,0.00,,0.00,"grid buy, level 2"
+2026-10-07 03:15,ada.grid_3pct_low,BUY,ADA/INR,31.80000000,26.54,844.10,1.69,0.00,,0.00,"grid buy, level 1"
+2026-10-07 03:15,link.trend_2_8h,SELL,LINK/INR,0.61000000,1381.90,842.96,4.97,8.43,-19.98,0.00,closed below the slow average
