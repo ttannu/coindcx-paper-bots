@@ -24878,3 +24878,5 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-07 04:30,kas.learner,CLOSE LONG,KAS/INR,900.94072910,4.26,3838.07,2.26,0.00,-81.11,0.00,switching to cash
 2026-10-07 04:30,doge.learner,CLOSE LONG,DOGE/INR,508.27981325,9.29,4721.18,2.79,0.00,-99.00,0.00,switching to cash
 2026-10-07 04:30,bnb.learner,OPEN SHORT,BNB/INR,0.06293747,77011.48,4846.91,2.86,0.00,,0.00,"following BNB hold short, 1x, liquidation at 153638"
+2026-10-07 04:45,avax.grid_1_5pct,SELL,AVAX/INR,0.71610000,1147.09,821.43,4.85,0.00,-6.41,1.48,"grid sell, level 1"
+2026-10-07 04:45,avax.grid_1_5pct_low,SELL,AVAX/INR,0.75250000,1152.39,867.17,1.74,0.00,5.36,4.00,"grid sell, level 1"

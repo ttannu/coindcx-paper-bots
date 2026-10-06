@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 06 Oct 2026, 23:00 UTC (6.4 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 06 Oct 2026, 23:30 UTC (6.4 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -14,8 +14,8 @@ A family passes only if its historical mean and median are positive, at least 9 
 | RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | -0.1% | 53/156 | 66.5% | blocked |
 | breakout 48/24h | -8.2% | 2/12 | 1/12 | -4.8% | 36/106 | 66.0% | blocked |
 | RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | -0.2% | 53/162 | 62.7% | blocked |
-| grid 1.5% | -10.3% | 0/12 | 2/12 | -5.7% | 351/3510 | 36.7% | blocked |
-| breakout 20/10h | -15.4% | 1/12 | 0/12 | -7.6% | 93/218 | 71.8% | blocked |
+| grid 1.5% | -10.3% | 0/12 | 2/12 | -5.8% | 351/3511 | 36.7% | blocked |
+| breakout 20/10h | -15.4% | 1/12 | 0/12 | -7.5% | 93/218 | 71.8% | blocked |
 | trend 24/96h | -26.1% | 0/12 | 0/12 | -15.8% | 206/506 | 71.7% | blocked |
 | trend 12/48h | -36.0% | 0/12 | 0/12 | -19.1% | 321/693 | 75.4% | blocked |
 | trend 6/24h | -47.6% | 0/12 | 0/12 | -28.0% | 466/1008 | 75.7% | blocked |
