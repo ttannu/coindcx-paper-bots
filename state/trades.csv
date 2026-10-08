@@ -30039,3 +30039,10 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-09 04:30,siren.flip_2,SELL,SIREN/INR,916.20000000,4.16,3807.20,22.46,0.00,-233.47,0.00,coin flip
 2026-10-09 04:30,sui.flip_2,SELL,SUI/INR,41.40000000,104.86,4341.04,25.61,0.00,-366.11,0.00,coin flip
 2026-10-09 04:30,zec.flip_3x,OPEN SHORT,ZEC/INR,0.09370263,117094.82,10972.09,6.47,0.00,,0.00,"coin flip: short, 3x, liquidation at 155541"
+2026-10-09 04:45,arb.trend_2_8h,SELL,ARB/INR,41.50000000,17.08,708.91,4.18,7.09,-20.60,0.00,closed below the slow average
+2026-10-09 04:45,hype.trend_2_8h,BUY,HYPE/INR,0.09000000,8456.68,761.10,4.49,0.00,,0.00,uptrend entry
+2026-10-09 04:45,inj.trend_2_8h,BUY,INJ/INR,1.12000000,692.13,775.19,4.57,0.00,,0.00,uptrend entry
+2026-10-09 04:45,kas.trend_5_20h,BUY,KAS/INR,235.58730000,4.02,946.48,5.58,0.00,,0.00,uptrend entry
+2026-10-09 04:45,sol.trend_2_8h,SELL,SOL/INR,0.06300000,10886.31,685.84,4.05,6.86,-18.16,0.00,closed below the slow average
+2026-10-09 05:00,arb.trend_2_8h,BUY,ARB/INR,39.60000000,17.50,692.84,4.09,0.00,,0.00,uptrend entry
+2026-10-09 05:00,sol.trend_2_8h,BUY,SOL/INR,0.06100000,11016.18,671.99,3.96,0.00,,0.00,uptrend entry
