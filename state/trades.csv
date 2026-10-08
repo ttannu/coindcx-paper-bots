@@ -28117,3 +28117,35 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-08 11:00,siren.grid_1_5pct,BUY,SIREN/INR,165.00000000,4.26,702.20,4.14,0.00,,0.00,"grid buy, level 6"
 2026-10-08 11:00,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
 2026-10-08 11:00,sui.trend_2_8h,BUY,SUI/INR,9.40000000,113.45,1066.42,6.29,0.00,,0.00,uptrend entry
+2026-10-08 11:15,near.grid_1_5pct,SELL,NEAR/INR,1.50000000,545.17,817.75,4.82,0.00,10.25,8.95,"grid sell, level 1"
+2026-10-08 11:15,near.grid_1_5pct,BUY,NEAR/INR,1.50000000,540.78,811.16,4.79,0.00,,0.00,"grid buy, level 1"
+2026-10-08 11:15,near.grid_1_5pct_low,SELL,NEAR/INR,1.50000000,547.03,820.54,1.65,0.00,19.70,10.39,"grid sell, level 1"
+2026-10-08 11:15,near.grid_1_5pct_low,BUY,NEAR/INR,1.50000000,538.94,808.41,1.62,0.00,,0.00,"grid buy, level 1"
+2026-10-08 11:15,siren.grid_1_5pct,SELL,SIREN/INR,165.00000000,4.30,709.46,4.19,7.09,-5.70,1.20,"grid sell, level 6"
+2026-10-08 11:15,siren.grid_1_5pct,BUY,SIREN/INR,164.90000000,4.21,694.17,4.10,0.00,,0.00,"grid buy, level 6"
+2026-10-08 11:15,siren.grid_1_5pct_low,SELL,SIREN/INR,196.90000000,4.31,848.57,1.70,8.49,1.12,2.05,"grid sell, level 6"
+2026-10-08 11:15,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
+2026-10-08 11:30,apt.trend_2_8h,BUY,APT/INR,9.31000000,76.61,713.22,4.21,0.00,,0.00,uptrend entry
+2026-10-08 11:30,bnb.trend_5_20h,SELL,BNB/INR,0.02000000,76276.21,1525.52,9.00,15.26,-33.19,0.00,closed below the slow average
+2026-10-08 11:30,siren.grid_1_5pct,SELL,SIREN/INR,164.90000000,4.30,709.03,4.18,7.09,-4.56,1.71,"grid sell, level 6"
+2026-10-08 11:30,siren.grid_1_5pct,BUY,SIREN/INR,164.80000000,4.21,693.75,4.09,0.00,,0.00,"grid buy, level 6"
+2026-10-08 11:30,siren.grid_1_5pct_low,SELL,SIREN/INR,196.90000000,4.31,848.57,1.70,8.49,1.84,2.37,"grid sell, level 6"
+2026-10-08 11:30,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
+2026-10-08 11:30,sui.trend_2_8h,SELL,SUI/INR,9.40000000,111.95,1052.34,6.21,10.52,-26.59,0.00,closed below the slow average
+2026-10-08 11:30,aave.flip_3,BUY,AAVE/INR,0.26900000,17404.72,4681.87,27.62,0.00,,0.00,coin flip
+2026-10-08 11:30,inj.flip_3x,CLOSE SHORT,INJ/INR,18.43366435,727.34,13407.61,7.91,0.00,-33.62,0.00,coin flip
+2026-10-08 11:30,mubarak.trend_24_96h,SELL,MUBARAK/INR,651.90000000,7.10,4631.16,27.32,0.00,-389.00,0.00,trailing stop
+2026-10-08 11:30,near.flip_1,BUY,NEAR/INR,7.70000000,538.73,4148.19,24.47,0.00,,0.00,coin flip
+2026-10-08 11:30,near.flip_1_low,BUY,NEAR/INR,8.30000000,538.73,4471.42,8.97,0.00,,0.00,coin flip
+2026-10-08 11:30,saga.trend_6_24h,BUY,SAGA/INR,1321.30000000,2.35,3105.01,18.32,0.00,,0.00,uptrend entry
+2026-10-08 11:30,saga.trend_3x,CLOSE SHORT,SAGA/INR,3480.67340735,2.34,8153.38,4.81,0.00,-75.08,0.00,signal flipped to long
+2026-10-08 11:30,saga.trend_3x,OPEN LONG,SAGA/INR,3357.88860307,2.34,7865.76,4.64,0.00,,0.00,"go long, 3x, liquidation at 2"
+2026-10-08 11:30,saga.trend_10x,CLOSE SHORT,SAGA/INR,1719.42258110,2.34,4027.70,2.38,0.00,-37.09,0.00,signal flipped to long
+2026-10-08 11:30,saga.trend_10x,OPEN LONG,SAGA/INR,1548.77559998,2.34,3627.96,2.14,0.00,,0.00,"go long, 10x, liquidation at 2"
+2026-10-08 11:30,sei.flip_2,SELL,SEI/INR,641.60000000,6.76,4338.82,25.60,0.00,-59.76,0.00,coin flip
+2026-10-08 11:30,sui.flip_3,SELL,SUI/INR,36.70000000,111.95,4108.60,24.24,0.00,-286.98,0.00,coin flip
+2026-10-08 11:30,trx.trend_12_48h,BUY,TRX/INR,102.20000000,33.36,3409.36,20.12,0.00,,0.00,uptrend entry
+2026-10-08 11:30,uni.flip_1,SELL,UNI/INR,5.04000000,757.78,3819.22,22.53,0.00,-535.90,0.00,coin flip
+2026-10-08 11:30,uni.flip_1_low,SELL,UNI/INR,5.34000000,757.78,4046.56,8.12,0.00,-534.27,0.00,coin flip
+2026-10-08 11:30,siren.learner,OPEN LONG,SIREN/INR,497.48829647,4.35,2164.66,1.28,0.00,,0.00,"following SIREN hold long, 0.43x, liquidation at -6"
+2026-10-08 11:30,ena.learner,OPEN SHORT,ENA/INR,112.20723480,21.93,2460.37,1.45,0.00,,0.00,"following ENA hold short, 0.53x, liquidation at 63"
