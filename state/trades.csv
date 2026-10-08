@@ -28715,3 +28715,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-08 17:30,vvv.flip_1_low,SELL,VVV/INR,1.56000000,2420.61,3776.15,7.57,37.76,-251.62,0.00,coin flip
 2026-10-08 17:30,xrp.flip_3,SELL,XRP/INR,29.70000000,139.01,4128.49,24.36,0.00,-213.00,0.00,coin flip
 2026-10-08 17:30,apt.learner,CLOSE SHORT,APT/INR,33.04531565,78.58,2596.78,1.53,0.00,-49.04,0.00,switching to APT RSI reversion
+2026-10-08 17:45,gala.trend_2_8h,SELL,GALA/INR,6728.52000000,0.23,1523.94,8.99,15.24,-59.19,0.00,closed below the slow average
+2026-10-08 17:45,gala.trend_5_20h,SELL,GALA/INR,12302.18000000,0.23,2786.32,16.44,27.86,-108.23,0.00,closed below the slow average
+2026-10-08 17:45,pump.grid_3pct,BUY,PUMP/INR,1489.00000000,0.57,850.90,5.02,0.00,,0.00,"grid buy, level 5"
+2026-10-08 17:45,pump.grid_3pct_low,BUY,PUMP/INR,1579.00000000,0.57,897.58,1.80,0.00,,0.00,"grid buy, level 5"
+2026-10-08 17:45,siren.grid_1_5pct,BUY,SIREN/INR,193.70000000,4.28,829.20,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-08 17:45,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-08 17:45,near.learner,CLOSE LONG,NEAR/INR,4.09289452,502.52,2056.76,1.21,0.00,-55.65,0.00,"capital floor reached, stopping for good"
+2026-10-08 18:00,gala.trend_5_20h,BUY,GALA/INR,11767.27000000,0.23,2725.94,16.08,0.00,,0.00,uptrend entry
+2026-10-08 18:00,inj.trend_2_8h,SELL,INJ/INR,1.18000000,724.32,854.70,5.04,8.55,-31.30,0.00,trailing stop
+2026-10-08 18:00,pha.trend_2_8h,BUY,PHA/INR,242.00000000,6.28,1520.00,8.97,0.00,,0.00,uptrend entry
+2026-10-08 18:00,siren.grid_1_5pct,SELL,SIREN/INR,193.70000000,4.41,853.99,5.04,8.54,5.21,6.87,"grid sell, level 5"
+2026-10-08 18:00,siren.grid_1_5pct_low,SELL,SIREN/INR,193.90000000,4.38,848.37,1.70,8.48,6.26,4.37,"grid sell, level 5"
