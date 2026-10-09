@@ -31998,3 +31998,30 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-09 23:30,vvv.flip_3x,CLOSE SHORT,VVV/INR,4.27551356,2185.12,9342.52,5.51,0.00,20.55,14.33,coin flip
 2026-10-09 23:30,kas.learner,CLOSE SHORT,KAS/INR,806.90405497,4.17,3367.20,1.99,0.00,-114.76,0.00,switching to KAS trend 6/24h
 2026-10-09 23:30,kas.learner,OPEN LONG,KAS/INR,670.31151130,4.17,2797.20,1.65,0.00,,0.00,"following KAS trend 6/24h, 0.58x, liquidation at -3"
+2026-10-09 23:45,aave.trend_2_8h,SELL,AAVE/INR,0.05100000,16752.22,854.36,5.04,8.54,-28.32,0.00,closed below the slow average
+2026-10-09 23:45,ada.trend_2_8h,BUY,ADA/INR,59.80000000,23.99,1434.58,8.46,0.00,,0.00,uptrend entry
+2026-10-09 23:45,bnb.trend_2_8h,SELL,BNB/INR,0.00900000,73128.20,658.15,3.88,6.58,-16.18,0.00,closed below the slow average
+2026-10-09 23:45,bonk.trend_2_8h,BUY,BONK/INR,2905002.00000000,0.00,980.66,5.79,0.00,,0.00,uptrend entry
+2026-10-09 23:45,bonk.trend_5_20h,BUY,BONK/INR,6389812.00000000,0.00,2157.06,12.73,0.00,,0.00,uptrend entry
+2026-10-09 23:45,btc.trend_5_20h,SELL,BTC/INR,0.00030000,8181683.63,2454.51,14.48,24.55,-51.62,0.00,closed below the slow average
+2026-10-09 23:45,dot.trend_2_8h,BUY,DOT/INR,6.39360000,120.80,772.33,4.56,0.00,,0.00,uptrend entry
+2026-10-09 23:45,gala.trend_2_8h,BUY,GALA/INR,4804.31000000,0.22,1076.08,6.35,0.00,,0.00,uptrend entry
+2026-10-09 23:45,mubarak.grid_1_5pct,SELL,MUBARAK/INR,103.50000000,7.58,784.71,4.63,7.85,-5.46,1.71,"grid sell, level 2"
+2026-10-09 23:45,mubarak.grid_1_5pct_low,SELL,MUBARAK/INR,122.00000000,7.62,929.29,1.86,9.29,5.80,4.31,"grid sell, level 2"
+2026-10-09 23:45,ondo.trend_5_20h,SELL,ONDO/INR,39.40000000,47.49,1871.17,11.04,18.71,-45.38,0.00,closed below the slow average
+2026-10-09 23:45,pepe.trend_2_8h,BUY,PEPE/INR,2220495.00000000,0.00,875.96,5.17,0.00,,0.00,uptrend entry
+2026-10-09 23:45,sei.trend_2_8h,BUY,SEI/INR,50.10000000,6.71,335.93,1.98,0.00,,0.00,uptrend entry
+2026-10-09 23:45,siren.trend_5_20h,BUY,SIREN/INR,136.00000000,4.41,599.78,3.54,0.00,,0.00,uptrend entry
+2026-10-09 23:45,siren.grid_1_5pct,BUY,SIREN/INR,192.90000000,4.30,829.06,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-09 23:45,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-09 23:45,xlm.trend_2_8h,BUY,XLM/INR,43.00000000,19.36,832.63,4.91,0.00,,0.00,uptrend entry
+2026-10-10 00:00,bch.trend_2_8h,BUY,BCH/INR,0.03710000,27731.90,1028.85,6.07,0.00,,0.00,uptrend entry
+2026-10-10 00:00,btc.trend_5_20h,BUY,BTC/INR,0.00029000,8247197.78,2391.69,14.11,0.00,,0.00,uptrend entry
+2026-10-10 00:00,gala.trend_2_8h,SELL,GALA/INR,4804.31000000,0.22,1058.36,6.24,10.58,-30.32,0.00,closed below the slow average
+2026-10-10 00:00,inj.trend_2_8h,BUY,INJ/INR,0.87000000,699.72,608.75,3.59,0.00,,0.00,uptrend entry
+2026-10-10 00:00,link.trend_2_8h,SELL,LINK/INR,0.41000000,1265.47,518.84,3.06,5.19,-16.66,0.00,closed below the slow average
+2026-10-10 00:00,link.trend_5_20h,SELL,LINK/INR,0.62000000,1265.47,784.59,4.63,7.85,-22.09,0.00,closed below the slow average
+2026-10-10 00:00,siren.trend_5_20h,SELL,SIREN/INR,136.00000000,4.28,581.96,3.43,5.82,-24.79,0.00,closed below the slow average
+2026-10-10 00:00,sui.trend_5_20h,BUY,SUI/INR,13.50000000,106.71,1440.55,8.50,0.00,,0.00,uptrend entry
+2026-10-10 00:00,vet.grid_3pct,SELL,VET/INR,1074.70000000,0.79,844.61,4.98,0.00,-52.32,0.00,"grid sell, level 6"
+2026-10-10 00:00,vet.grid_3pct_low,SELL,VET/INR,1084.40000000,0.79,856.60,1.72,0.00,-37.08,0.00,"grid sell, level 6"
