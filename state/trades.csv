@@ -32102,3 +32102,19 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 00:30,xrp.flip_3,SELL,XRP/INR,29.30000000,137.65,4033.25,23.80,0.00,-84.88,0.00,coin flip
 2026-10-10 00:30,zec.trend_6_24h,SELL,ZEC/INR,0.02700000,120478.11,3252.91,19.19,32.53,-85.32,0.00,closed below the slow average
 2026-10-10 00:30,zec.pump,SELL,ZEC/INR,0.04000000,120478.11,4819.12,28.43,0.00,-126.40,0.00,closed below the 20-hour average
+2026-10-10 00:45,icp.trend_5_20h,BUY,ICP/INR,2.86000000,303.60,868.30,5.12,0.00,,0.00,uptrend entry
+2026-10-10 00:45,inj.trend_2_8h,SELL,INJ/INR,0.87000000,675.63,587.79,3.47,5.88,-28.02,0.00,trailing stop
+2026-10-10 00:45,kas.grid_1_5pct,BUY,KAS/INR,113.22050000,4.11,465.39,2.75,0.00,,0.00,"grid buy, level 6"
+2026-10-10 00:45,kas.grid_1_5pct_low,BUY,KAS/INR,203.67420000,4.08,831.66,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-10 00:45,link.trend_2_8h,BUY,LINK/INR,0.40000000,1289.83,515.93,3.04,0.00,,0.00,uptrend entry
+2026-10-10 00:45,mubarak.trend_2_8h,SELL,MUBARAK/INR,62.20000000,7.45,463.19,2.73,4.63,-14.44,0.00,trailing stop
+2026-10-10 00:45,mubarak.trend_5_20h,SELL,MUBARAK/INR,87.40000000,7.45,650.84,3.84,6.51,-20.29,0.00,trailing stop
+2026-10-10 00:45,mubarak.grid_1_5pct,BUY,MUBARAK/INR,102.90000000,7.56,777.71,4.59,0.00,,0.00,"grid buy, level 2"
+2026-10-10 00:45,mubarak.grid_1_5pct_low,BUY,MUBARAK/INR,122.00000000,7.50,915.56,1.84,0.00,,0.00,"grid buy, level 2"
+2026-10-10 00:45,pha.trend_2_8h,BUY,PHA/INR,216.00000000,5.92,1279.65,7.55,0.00,,0.00,uptrend entry
+2026-10-10 00:45,xrp.trend_2_8h,BUY,XRP/INR,8.30000000,138.81,1152.09,6.80,0.00,,0.00,uptrend entry
+2026-10-10 01:00,aave.trend_2_8h,SELL,AAVE/INR,0.04900000,16752.22,820.86,4.84,8.21,-18.70,0.00,closed below the slow average
+2026-10-10 01:00,aave.trend_5_20h,SELL,AAVE/INR,0.08600000,16752.22,1440.69,8.50,14.41,-47.76,0.00,trailing stop
+2026-10-10 01:00,btc.trend_5_20h,BUY,BTC/INR,0.00029000,8242087.63,2390.21,14.10,0.00,,0.00,uptrend entry
+2026-10-10 01:00,gala.trend_2_8h,SELL,GALA/INR,4644.46000000,0.22,1023.33,6.04,10.23,-24.24,0.00,closed below the slow average
+2026-10-10 01:00,link.trend_5_20h,BUY,LINK/INR,0.59000000,1291.25,761.84,4.49,0.00,,0.00,uptrend entry
