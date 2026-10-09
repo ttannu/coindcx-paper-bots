@@ -32419,3 +32419,10 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 04:30,saga.flip_2,BUY,SAGA/INR,1770.50000000,2.18,3856.20,22.75,0.00,,0.00,coin flip
 2026-10-10 04:30,uni.flip_3x,OPEN SHORT,UNI/INR,24.54586831,727.89,17866.59,10.54,0.00,,0.00,"coin flip: short, 3x, liquidation at 967"
 2026-10-10 04:30,xrp.trend_6_24h,BUY,XRP/INR,27.90000000,139.43,3890.12,22.95,0.00,,0.00,uptrend entry
+2026-10-10 04:45,sui.trend_5_20h,BUY,SUI/INR,13.00000000,106.98,1390.80,8.21,0.00,,0.00,uptrend entry
+2026-10-10 05:00,bonk.grid_3pct,SELL,BONK/INR,2511649.00000000,0.00,848.47,5.01,0.00,-32.54,0.00,"grid sell, level 6"
+2026-10-10 05:00,bonk.grid_3pct_low,SELL,BONK/INR,2530235.00000000,0.00,856.61,1.72,0.00,-23.94,0.00,"grid sell, level 6"
+2026-10-10 05:00,pha.trend_5_20h,BUY,PHA/INR,426.00000000,6.03,2568.27,15.15,0.00,,0.00,uptrend entry
+2026-10-10 05:00,pol.trend_5_20h,BUY,POL/INR,120.60000000,10.06,1213.82,7.16,0.00,,0.00,uptrend entry
+2026-10-10 05:00,shib.trend_2_8h,SELL,SHIB/INR,1538285.00000000,0.00,828.39,4.89,8.28,-16.22,0.00,closed below the slow average
+2026-10-10 05:00,xlm.trend_2_8h,SELL,XLM/INR,42.00000000,19.09,801.98,4.73,8.02,-20.27,0.00,trailing stop
