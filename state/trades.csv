@@ -31669,3 +31669,18 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-09 19:30,xrp.trend_10x,CLOSE LONG,XRP/INR,278.54264515,136.53,38029.90,22.44,0.00,-758.84,0.00,signal flipped to short
 2026-10-09 19:30,xrp.trend_10x,OPEN SHORT,XRP/INR,228.48671241,136.53,31195.68,18.41,0.00,,0.00,"go short, 10x, liquidation at 150"
 2026-10-09 19:30,hype.learner,OPEN SHORT,HYPE/INR,0.33262069,8510.33,2830.71,1.67,0.00,,0.00,"following HYPE hold short, 0.62x, liquidation at 22194"
+2026-10-09 19:45,aave.trend_2_8h,SELL,AAVE/INR,0.05500000,16625.03,914.38,5.39,9.14,-30.21,0.00,trailing stop
+2026-10-09 19:45,ena.trend_2_8h,BUY,ENA/INR,50.35000000,21.69,1092.01,6.44,0.00,,0.00,uptrend entry
+2026-10-09 19:45,mubarak.trend_5_20h,BUY,MUBARAK/INR,98.40000000,7.49,736.54,4.35,0.00,,0.00,uptrend entry
+2026-10-09 19:45,ondo.grid_1_5pct,BUY,ONDO/INR,15.90000000,47.74,759.04,4.48,0.00,,0.00,"grid buy, level 6"
+2026-10-09 19:45,ondo.grid_3pct,BUY,ONDO/INR,17.30000000,47.71,825.30,4.87,0.00,,0.00,"grid buy, level 3"
+2026-10-09 19:45,ondo.grid_1_5pct_low,BUY,ONDO/INR,17.40000000,47.59,828.00,1.66,0.00,,0.00,"grid buy, level 6"
+2026-10-09 19:45,ondo.grid_3pct_low,BUY,ONDO/INR,17.40000000,47.55,827.42,1.66,0.00,,0.00,"grid buy, level 3"
+2026-10-09 19:45,pha.dip_25_3,BUY,PHA/INR,844.00000000,5.69,4799.97,28.32,0.00,,0.00,RSI 25
+2026-10-09 20:00,aave.trend_2_8h,BUY,AAVE/INR,0.05300000,16903.62,895.89,5.29,0.00,,0.00,uptrend entry
+2026-10-09 20:00,apt.trend_5_20h,SELL,APT/INR,20.32000000,78.59,1596.98,9.42,15.97,-70.94,0.00,trailing stop
+2026-10-09 20:00,btc.trend_2_8h,BUY,BTC/INR,0.00014000,8299805.37,1161.97,6.86,0.00,,0.00,uptrend entry
+2026-10-09 20:00,btc.trend_5_20h,BUY,BTC/INR,0.00033000,8299805.37,2738.94,16.16,0.00,,0.00,uptrend entry
+2026-10-09 20:00,mubarak.trend_5_20h,SELL,MUBARAK/INR,98.40000000,7.28,716.03,4.22,7.16,-29.08,0.00,closed below the slow average
+2026-10-09 20:00,siren.grid_1_5pct,BUY,SIREN/INR,189.00000000,4.39,829.02,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-09 20:00,siren.grid_1_5pct_low,BUY,SIREN/INR,191.00000000,4.38,835.87,1.68,0.00,,0.00,"grid buy, level 4"
