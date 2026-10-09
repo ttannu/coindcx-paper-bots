@@ -32343,3 +32343,12 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 03:30,siren.flip_3x,OPEN LONG,SIREN/INR,2986.91014038,4.50,13447.82,7.93,0.00,,0.00,"coin flip: long, 3x, liquidation at 3"
 2026-10-10 03:30,siren.flip_1_low,SELL,SIREN/INR,967.80000000,4.49,4345.08,8.72,43.45,182.93,90.60,coin flip
 2026-10-10 03:30,vet.trend_6_24h,BUY,VET/INR,3278.50000000,0.78,2571.95,15.17,0.00,,0.00,uptrend entry
+2026-10-10 03:45,qnt.trend_2_8h,BUY,QNT/INR,0.04400000,24723.89,1087.85,6.42,0.00,,0.00,uptrend entry
+2026-10-10 03:45,sui.trend_2_8h,BUY,SUI/INR,7.30000000,106.20,775.24,4.57,0.00,,0.00,uptrend entry
+2026-10-10 03:45,xlm.trend_2_8h,BUY,XLM/INR,42.00000000,19.35,812.72,4.80,0.00,,0.00,uptrend entry
+2026-10-10 03:45,xrp.trend_2_8h,BUY,XRP/INR,7.50000000,139.04,1042.77,6.15,0.00,,0.00,uptrend entry
+2026-10-10 03:45,xrp.trend_5_20h,BUY,XRP/INR,14.50000000,139.04,2016.02,11.89,0.00,,0.00,uptrend entry
+2026-10-10 04:00,arb.trend_5_20h,SELL,ARB/INR,82.80000000,17.80,1473.70,8.69,14.74,-47.64,0.00,trailing stop
+2026-10-10 04:00,bch.trend_2_8h,BUY,BCH/INR,0.03620000,27621.29,999.89,5.90,0.00,,0.00,uptrend entry
+2026-10-10 04:00,icp.trend_5_20h,BUY,ICP/INR,2.72000000,304.68,828.72,4.89,0.00,,0.00,uptrend entry
+2026-10-10 04:00,pepe.trend_2_8h,SELL,PEPE/INR,2052947.00000000,0.00,797.62,4.71,7.98,-20.28,0.00,closed below the slow average
