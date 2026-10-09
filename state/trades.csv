@@ -31728,3 +31728,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-09 20:30,trump.flip_2,SELL,TRUMP/INR,19.19500000,183.55,3523.20,20.79,0.00,-104.75,0.00,coin flip
 2026-10-09 20:30,trump.flip_3,SELL,TRUMP/INR,20.81900000,183.55,3821.28,22.55,0.00,-31.38,6.17,coin flip
 2026-10-09 20:30,xrp.flip_2,SELL,XRP/INR,32.10000000,136.72,4388.64,25.89,0.00,-136.09,0.00,coin flip
+2026-10-09 20:45,apt.trend_5_20h,BUY,APT/INR,19.49000000,80.17,1562.48,9.22,0.00,,0.00,uptrend entry
+2026-10-09 20:45,arb.trend_5_20h,BUY,ARB/INR,86.30000000,17.87,1542.18,9.10,0.00,,0.00,uptrend entry
+2026-10-09 20:45,ena.trend_2_8h,SELL,ENA/INR,50.35000000,21.36,1075.27,6.34,10.75,-29.52,0.00,trailing stop
+2026-10-09 20:45,ena.trend_5_20h,SELL,ENA/INR,104.42000000,21.36,2229.99,13.16,22.30,-60.06,0.00,trailing stop
+2026-10-09 20:45,mubarak.trend_5_20h,BUY,MUBARAK/INR,93.00000000,7.53,700.39,4.13,0.00,,0.00,uptrend entry
+2026-10-09 20:45,zec.trend_5_20h,BUY,ZEC/INR,0.01900000,122172.14,2321.27,13.70,0.00,,0.00,uptrend entry
+2026-10-09 21:00,apt.trend_5_20h,SELL,APT/INR,19.49000000,78.11,1522.41,8.98,15.22,-58.27,0.00,closed below the slow average
+2026-10-09 21:00,btc.trend_2_8h,SELL,BTC/INR,0.00014000,8186801.10,1146.15,6.76,11.46,-29.44,0.00,closed below the slow average
+2026-10-09 21:00,btc.trend_5_20h,SELL,BTC/INR,0.00033000,8186801.10,2701.64,15.94,27.02,-69.39,0.00,closed below the slow average
+2026-10-09 21:00,mubarak.trend_5_20h,SELL,MUBARAK/INR,93.00000000,7.29,678.12,4.00,6.78,-30.40,0.00,closed below the slow average
+2026-10-09 21:00,pha.dip_30_3_low,BUY,PHA/INR,805.00000000,5.58,4495.12,9.02,0.00,,0.00,"RSI 28, limit buy"
+2026-10-09 21:00,siren.grid_1_5pct,BUY,SIREN/INR,189.00000000,4.39,829.02,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-09 21:00,siren.grid_1_5pct_low,BUY,SIREN/INR,191.00000000,4.38,835.87,1.68,0.00,,0.00,"grid buy, level 4"
