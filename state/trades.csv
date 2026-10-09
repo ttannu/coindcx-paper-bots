@@ -32208,3 +32208,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 01:45,fil.trend_5_20h,SELL,FIL/INR,14.58000000,106.37,1550.93,9.15,15.51,-52.40,0.00,trailing stop
 2026-10-10 01:45,link.trend_5_20h,BUY,LINK/INR,0.57000000,1283.54,731.62,4.32,0.00,,0.00,uptrend entry
 2026-10-10 01:45,pepe.trend_5_20h,BUY,PEPE/INR,5643710.00000000,0.00,2207.68,13.03,0.00,,0.00,uptrend entry
+2026-10-10 02:00,ada.trend_2_8h,BUY,ADA/INR,57.50000000,23.81,1368.84,8.08,0.00,,0.00,uptrend entry
+2026-10-10 02:00,btc.trend_5_20h,BUY,BTC/INR,0.00028000,8240153.11,2307.24,13.61,0.00,,0.00,uptrend entry
+2026-10-10 02:00,icp.trend_2_8h,BUY,ICP/INR,1.71000000,304.19,520.17,3.07,0.00,,0.00,uptrend entry
+2026-10-10 02:00,kas.trend_2_8h,BUY,KAS/INR,60.76450000,4.18,254.09,1.50,0.00,,0.00,uptrend entry
+2026-10-10 02:00,kas.grid_1_5pct,SELL,KAS/INR,113.22050000,4.11,465.82,2.75,0.00,-13.92,0.00,"grid sell, level 6"
+2026-10-10 02:00,kas.grid_1_5pct_low,SELL,KAS/INR,203.67420000,4.14,844.14,1.69,0.00,-2.05,0.60,"grid sell, level 6"
+2026-10-10 02:00,link.trend_5_20h,SELL,LINK/INR,0.57000000,1271.97,725.02,4.28,7.25,-15.19,0.00,closed below the slow average
+2026-10-10 02:00,pengu.trend_2_8h,BUY,PENGU/INR,672.00000000,0.82,550.37,3.25,0.00,,0.00,uptrend entry
+2026-10-10 02:00,pepe.trend_2_8h,BUY,PEPE/INR,2052947.00000000,0.00,808.42,4.77,0.00,,0.00,uptrend entry
+2026-10-10 02:00,qnt.trend_5_20h,BUY,QNT/INR,0.06600000,24808.49,1637.36,9.66,0.00,,0.00,uptrend entry
+2026-10-10 02:00,shib.trend_2_8h,SELL,SHIB/INR,1592786.00000000,0.00,853.30,5.03,8.53,-19.77,0.00,closed below the slow average
+2026-10-10 02:00,xrp.trend_2_8h,BUY,XRP/INR,8.00000000,138.86,1110.85,6.55,0.00,,0.00,uptrend entry
