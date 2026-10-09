@@ -32198,3 +32198,13 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 01:30,zec.trend_3x,OPEN SHORT,ZEC/INR,0.09722341,118961.19,11565.81,6.82,0.00,,0.00,"go short, 3x, liquidation at 158020"
 2026-10-10 01:30,zec.trend_10x,CLOSE LONG,ZEC/INR,0.18498611,118961.19,22006.17,12.98,0.00,-658.96,0.00,signal flipped to short
 2026-10-10 01:30,zec.trend_10x,OPEN SHORT,ZEC/INR,0.13520497,118961.19,16084.14,9.49,0.00,,0.00,"go short, 10x, liquidation at 130263"
+2026-10-10 01:45,arb.trend_2_8h,BUY,ARB/INR,28.30000000,18.16,513.97,3.03,0.00,,0.00,uptrend entry
+2026-10-10 01:45,arb.trend_5_20h,BUY,ARB/INR,82.80000000,18.16,1503.78,8.87,0.00,,0.00,uptrend entry
+2026-10-10 01:45,dot.grid_1_5pct,SELL,DOT/INR,6.91800000,120.55,834.00,4.92,0.00,1.47,5.09,"grid sell, level 3"
+2026-10-10 01:45,dot.grid_1_5pct,BUY,DOT/INR,6.92360000,119.65,828.44,4.89,0.00,,0.00,"grid buy, level 3"
+2026-10-10 01:45,dot.grid_1_5pct_low,SELL,DOT/INR,6.97340000,121.05,844.14,1.69,0.00,12.54,7.20,"grid sell, level 3"
+2026-10-10 01:45,dot.grid_1_5pct_low,BUY,DOT/INR,6.97340000,119.26,831.66,1.67,0.00,,0.00,"grid buy, level 3"
+2026-10-10 01:45,fil.trend_2_8h,SELL,FIL/INR,11.05000000,106.37,1175.43,6.94,11.75,-38.49,0.00,trailing stop
+2026-10-10 01:45,fil.trend_5_20h,SELL,FIL/INR,14.58000000,106.37,1550.93,9.15,15.51,-52.40,0.00,trailing stop
+2026-10-10 01:45,link.trend_5_20h,BUY,LINK/INR,0.57000000,1283.54,731.62,4.32,0.00,,0.00,uptrend entry
+2026-10-10 01:45,pepe.trend_5_20h,BUY,PEPE/INR,5643710.00000000,0.00,2207.68,13.03,0.00,,0.00,uptrend entry
