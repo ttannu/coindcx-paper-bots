@@ -7,20 +7,20 @@ The user has since specified a **one-day** deadline for the ₹10,000 profit. Th
 <!-- DASHBOARD:START -->
 ### Live results: day 11 of 15
 
-Last updated 11 Oct 2026, 02:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
+Last updated 11 Oct 2026, 03:06 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
 
-Each original leaderboard bot started with ₹5,000 of simulated money. The goal is ₹15,000 (3x). BTC/INR since the start: -3.7% (₹85,22,786 to ₹82,07,182).
+Each original leaderboard bot started with ₹5,000 of simulated money. The goal is ₹15,000 (3x). BTC/INR since the start: -3.3% (₹85,22,786 to ₹82,45,562).
 
-1,045 bots on 47 coins. 58 are up and 949 are down; 5 are wiped out. The median bot is at ₹4,211. 368 of 987 bots are ahead of simply holding their coin.
+1,045 bots on 47 coins. 58 are up and 949 are down; 5 are wiped out. The median bot is at ₹4,214. 362 of 987 bots are ahead of simply holding their coin.
 
-**Spot fill check.** Of 30,114 simulated spot orders checked against the same 15-minute candle's reported volume, 1,343 were on zero-volume candles, 6,425 were larger than the candle's entire traded value, 9,517 used more than 10% of it, and 0 could not be matched to a recent candle. These are execution warnings, not proof that any other order could have filled at the quoted price. Futures results use INR spot candles as a price proxy, not CoinDCX futures fills. [Live-readiness criteria](docs/live-readiness.md).
+**Spot fill check.** Of 30,161 simulated spot orders checked against the same 15-minute candle's reported volume, 1,345 were on zero-volume candles, 6,434 were larger than the candle's entire traded value, 9,523 used more than 10% of it, and 0 could not be matched to a recent candle. These are execution warnings, not proof that any other order could have filled at the quoted price. Futures results use INR spot candles as a price proxy, not CoinDCX futures fills. [Live-readiness criteria](docs/live-readiness.md).
 
 **AI trading desk.** A team of AI agents (Google Gemini, free tier) meets every 2 hours to run two books: three analysts (market, news, quant), a bull and a bear who debate, a trader, a three-person risk team, and a portfolio manager who makes the final call. The desk's limits are enforced in code, not left to the AI.
 
 | Book | Value if sold now | Return | Rank | Closed trades | Now |
 |---|---|---|---|---|---|
-| AI desk: spot portfolio | ₹4,284 | -14.3% | 489 of 1,045 | 16 | cash |
-| AI desk: futures, up to 3x | ₹3,475 | -30.5% | 779 of 1,045 | 9 | flat, stopped at the capital floor |
+| AI desk: spot portfolio | ₹4,284 | -14.3% | 488 of 1,045 | 16 | cash |
+| AI desk: futures, up to 3x | ₹3,475 | -30.5% | 781 of 1,045 | 9 | flat, stopped at the capital floor |
 
 Both books started with ₹5,000 on 30 Sep 2026, 19:00 IST. **Latest decision, 11 Oct 2026, 02:12 IST** (market neutral, news mood greed, Fear & Greed 64): The broader crypto market remains in a neutral consolidation regime with ongoing BTC ETF outflows and mixed altcoin performance. Although top gainers like NEAR show strong short-term momentum, they are heavily crowded with maxed funding rates and inflated open interest, exposing entries to squeeze risks. Given the heavy friction of 1.2% spot round-trip costs and 31.2% non-deductible tax on profitable trades, entering marginal trades risks further capital erosion. Consequently, the spot book will remain fully in cash while the futures book stays permanently halted. Spot: all cash. Futures: flat.
 
@@ -30,11 +30,11 @@ Minutes of every meeting: https://github.com/ttannu/coindcx-paper-bots/blob/main
 
 | # | Bot | Value if sold now, after costs and tax | Return | Progress to ₹15,000 | Closed trades | Worst drop | Now |
 |---|---|---|---|---|---|---|---|
-| 1 | PEPE: coin flip, 3x futures | ₹6,788 | +35.8% | 45.3% | 9 | 20.3% | long 3x |
+| 1 | PEPE: coin flip, 3x futures | ₹6,751 | +35.0% | 45.0% | 9 | 20.3% | long 3x |
 | 2 | MUBARAK: coin flip, 3x futures | ₹6,653 | +33.1% | 44.4% | 8 | 31.3% | flat |
 | 3 | LINK: coin flip, 3x futures | ₹6,051 | +21.0% | 40.3% | 8 | 10.4% | long 3x |
-| 4 | SIREN: grid 1.5% | ₹5,759 | +15.2% | 38.4% | 481 | 9.2% | holding SIREN |
-| 5 | SIREN: grid 3% | ₹5,638 | +12.8% | 37.6% | 76 | 4.4% | cash |
+| 4 | SIREN: grid 1.5% | ₹5,865 | +17.3% | 39.1% | 482 | 9.2% | holding SIREN |
+| 5 | SIREN: grid 3% | ₹5,702 | +14.0% | 38.0% | 76 | 4.4% | holding SIREN |
 | 6 | MUBARAK: buy & hold | ₹5,553 | +11.1% | 37.0% | 0 | 12.7% | holding MUBARAK |
 | 7 | VET: coin flip, 3x futures | ₹5,453 | +9.1% | 36.4% | 7 | 12.2% | flat |
 | 8 | SAGA: long/short 12/48h | ₹5,314 | +6.3% | 35.4% | 2 | 15.2% | short 1x |
@@ -51,105 +51,105 @@ Minutes of every meeting: https://github.com/ttannu/coindcx-paper-bots/blob/main
 | Bot | Value if sold now | Return | Rank | Closed trades | Now |
 |---|---|---|---|---|---|
 | Self-learning ensemble | ₹5,117 | +2.3% | 26 of 1,045 | 3 | cash, nothing has an edge |
-| Grid trader | ₹4,968 | -0.6% | 109 of 1,045 | 2 | holding BTC |
-| Buy & hold BTC | ₹4,750 | -5.0% | 245 of 1,045 | 0 | holding BTC |
+| Grid trader | ₹4,973 | -0.5% | 109 of 1,045 | 2 | holding BTC |
+| Buy & hold BTC | ₹4,772 | -4.6% | 227 of 1,045 | 0 | holding BTC |
 | Dip buyer (RSI) | ₹4,618 | -7.6% | 323 of 1,045 | 7 | cash |
-| Breakout hunter | ₹4,605 | -7.9% | 334 of 1,045 | 12 | holding BTC, ETH, SOL, XRP |
-| Trend follower | ₹3,903 | -21.9% | 655 of 1,045 | 33 | cash |
-| Goal chaser (10x futures) | ₹2,687 | -46.3% | 867 of 1,045 | 12 | long 10x |
+| Breakout hunter | ₹4,604 | -7.9% | 333 of 1,045 | 12 | holding BTC, ETH, SOL, XRP |
+| Trend follower | ₹3,903 | -21.9% | 656 of 1,045 | 33 | cash |
+| Goal chaser (10x futures) | ₹2,789 | -44.2% | 857 of 1,045 | 12 | long 10x |
 
 **Added on 1 Oct, after the [backtests](docs/research.md)**
 
 | Bot | Value if sold now | Return | Rank | Closed trades | Now |
 |---|---|---|---|---|---|
-| Liquid 5, held | ₹4,496 | -10.1% | 385 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
-| Liquid 5, BTC trend filter | ₹4,496 | -10.1% | 386 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
+| Liquid 5, held | ₹4,490 | -10.2% | 388 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
+| Liquid 5, BTC trend filter | ₹4,490 | -10.2% | 389 of 1,045 | 0 | holding BTC, DOGE, ETH, SOL, XRP |
 
 **Slow spot paper experiments.** These four separate virtual wallets each start with ₹5,000 when their code first runs. They are excluded from the original leaderboard because they started later. None made money on average in 17 earlier 15-day windows after costs, and none met the ₹15,000 target. They collect forward data only; [rules, backtests and fill limits](docs/strategy-lab.md).
 
 | Paper rule | Started | Value if sold now | Return | Closed trades | Now |
 |---|---|---:|---:|---:|---|
-| BTC 30-day trend timing | 03 Oct, 15:30 IST | ₹4,778 | -4.4% | 0 | holding BTC |
+| BTC 30-day trend timing | 03 Oct, 15:30 IST | ₹4,799 | -4.0% | 0 | holding BTC |
 | four-coin 7-day relative momentum | 03 Oct, 15:30 IST | ₹4,907 | -1.9% | 1 | cash |
 | four-coin 20/10-day breakout | 03 Oct, 15:30 IST | ₹5,000 | +0.0% | 0 | cash |
-| four-coin 30-day time-series momentum | 03 Oct, 15:30 IST | ₹4,651 | -7.0% | 3 | holding BTC |
+| four-coin 30-day time-series momentum | 03 Oct, 15:30 IST | ₹4,656 | -6.9% | 3 | holding BTC |
 
 **Strategy report card.** Each strategy runs separately on every coin. "Beat holding" counts the coins where it is ahead of buying that coin and holding it.
 
 | Strategy | Median return | Best coin | Worst coin | In profit | Beat holding | Wiped out | Paper screen? |
 |---|---|---|---|---|---|---|---|
 | Pump rider | +0.0% | DOT +0.6% | MUBARAK -26.6% | 1/47 | 36/47 | 0 | not yet |
-| Grid 3% | -2.5% | SIREN +12.8% | ONE -19.2% | 8/47 | 42/47 | 0 | not yet |
-| RSI dip <25 ±3% | -2.8% | FIL +1.5% | ARB -16.1% | 8/47 | 37/47 | 0 | not yet |
-| Self-learning | -2.9% | XLM +5.0% | ICP -15.8% | 11/47 | 35/47 | 0 | not yet |
-| RSI dip <30 ±6% | -5.5% | SIREN +5.4% | UNI -24.0% | 7/47 | 35/47 | 0 | not yet |
-| Breakout 48/24h | -5.9% | PHA +0.0% | NEAR -17.3% | 0/47 | 31/47 | 0 | not yet |
+| Grid 3% | -2.2% | SIREN +14.0% | ONE -19.1% | 8/47 | 42/47 | 0 | not yet |
+| RSI dip <25 ±3% | -2.8% | FIL +1.5% | ARB -16.1% | 8/47 | 36/47 | 0 | not yet |
+| Self-learning | -3.3% | XLM +5.0% | ICP -15.8% | 11/47 | 35/47 | 0 | not yet |
+| RSI dip <30 ±6% | -5.5% | SIREN +5.4% | UNI -23.8% | 7/47 | 35/47 | 0 | not yet |
+| Breakout 48/24h | -5.9% | PHA +0.0% | NEAR -18.1% | 0/47 | 31/47 | 0 | not yet |
 | RSI dip <30 ±3% | -8.0% | SIREN +2.7% | ENA -22.4% | 3/47 | 31/47 | 0 | not yet |
-| Grid 1.5% | -10.2% | SIREN +15.2% | ONE -32.5% | 2/47 | 28/47 | 0 | not yet |
-| Coin flip, 3x futures | -10.7% | PEPE +35.8% | NEAR -57.9% | 9/47 | 22/47 | 0 | luck control |
-| Buy & hold | -11.4% | MUBARAK +11.1% | PENGU -23.8% | 5/47 | – | 0 | benchmark |
-| Breakout 20/10h | -11.8% | SAGA -1.2% | PUMP -24.3% | 0/47 | 19/47 | 0 | not yet |
-| Long/short 12/48h | -15.8% | SAGA +6.3% | QNT -42.2% | 2/47 | 15/47 | 0 | not yet |
-| Trend 24/96h | -17.1% | POL +0.0% | PHA -49.2% | 0/47 | 16/47 | 0 | not yet |
-| Trend 12/48h | -22.0% | BONK -12.9% | SIREN -54.4% | 0/47 | 6/47 | 0 | not yet |
-| Coin flip #1 | -22.5% | MUBARAK +0.0% | VVV -37.3% | 1/47 | 4/47 | 0 | luck control |
-| Coin flip #3 | -23.8% | APT -7.9% | VVV -43.4% | 0/47 | 4/47 | 0 | luck control |
-| Coin flip #2 | -23.8% | FIL -9.8% | ONE -37.4% | 0/47 | 3/47 | 0 | luck control |
-| Trend 6/24h | -36.4% | ADA -17.2% | KAS -59.3% | 0/47 | 1/47 | 0 | not yet |
-| 3x futures trend | -50.2% | ONE -2.4% | SIREN -84.7% | 0/47 | 3/47 | 0 | not yet |
-| Fast trend 5/20h | -60.3% | ADA -36.0% | SIREN -85.3% | 0/47 | 0/47 | 0 | not yet |
-| Fast trend 2/8h | -73.3% | FIL -61.2% | SIREN -88.5% | 0/47 | 0/47 | 0 | not yet |
-| 10x futures trend | -96.3% | XLM -29.9% | GALA -111.7% | 0/47 | 0/47 | 5 | not yet |
+| Coin flip, 3x futures | -10.7% | PEPE +35.0% | NEAR -56.3% | 9/47 | 22/47 | 0 | luck control |
+| Grid 1.5% | -10.8% | SIREN +17.3% | ONE -32.4% | 2/47 | 27/47 | 0 | not yet |
+| Buy & hold | -11.3% | MUBARAK +11.1% | QNT -22.5% | 5/47 | – | 0 | benchmark |
+| Breakout 20/10h | -11.4% | SAGA -1.2% | PUMP -24.3% | 0/47 | 18/47 | 0 | not yet |
+| Long/short 12/48h | -15.8% | SAGA +6.3% | QNT -42.2% | 2/47 | 14/47 | 0 | not yet |
+| Trend 24/96h | -17.1% | POL +0.0% | PHA -49.2% | 0/47 | 15/47 | 0 | not yet |
+| Trend 12/48h | -22.0% | BONK -12.9% | SIREN -54.0% | 0/47 | 6/47 | 0 | not yet |
+| Coin flip #1 | -22.5% | MUBARAK +0.0% | VVV -37.3% | 1/47 | 5/47 | 0 | luck control |
+| Coin flip #3 | -23.3% | APT -6.2% | VVV -41.8% | 0/47 | 4/47 | 0 | luck control |
+| Coin flip #2 | -23.5% | SOL -10.0% | ONE -37.4% | 0/47 | 2/47 | 0 | luck control |
+| Trend 6/24h | -36.4% | ADA -17.2% | KAS -59.3% | 0/47 | 0/47 | 0 | not yet |
+| 3x futures trend | -50.2% | ONE -2.6% | SIREN -84.3% | 0/47 | 3/47 | 0 | not yet |
+| Fast trend 5/20h | -60.3% | ADA -37.1% | SIREN -85.6% | 0/47 | 0/47 | 0 | not yet |
+| Fast trend 2/8h | -73.4% | XRP -61.4% | SIREN -88.5% | 0/47 | 0/47 | 0 | not yet |
+| 10x futures trend | -96.0% | XLM -36.4% | GALA -111.7% | 0/47 | 0/47 | 5 | not yet |
 
-**How much of this is luck?** The 188 coin-flip bots trade at random. The luckiest is PEPE: coin flip, 3x futures at +35.8%, and their median is -21.9%. With this many bots, some will look brilliant by chance alone. The early paper screen starts after 3 days and asks whether the median bot is profitable after costs, beats the coin flips, and beats holding on most coins. Passing it does not establish a live trading edge.
+**How much of this is luck?** The 188 coin-flip bots trade at random. The luckiest is PEPE: coin flip, 3x futures at +35.0%, and their median is -21.9%. With this many bots, some will look brilliant by chance alone. The early paper screen starts after 3 days and asks whether the median bot is profitable after costs, beats the coin flips, and beats holding on most coins. Passing it does not establish a live trading edge.
 
-**Where the money went.** On average a bot's trades have made -8.6% of its starting money from price moves, before any costs. The spread took 5.3%, fees and GST 7.6%, tax 2.0% and futures funding 0.1%, which leaves -23.6%. 6 of the 22 strategies are ahead before costs, and 0 after them. Tax is charged on every profitable sale and losses can't be set off against it, so a strategy can pay tax while losing money. Average per bot, as a share of its starting money, counting the costs of selling what is still held:
+**Where the money went.** On average a bot's trades have made -8.5% of its starting money from price moves, before any costs. The spread took 5.3%, fees and GST 7.6%, tax 2.0% and futures funding 0.1%, which leaves -23.6%. 6 of the 22 strategies are ahead before costs, and 0 after them. Tax is charged on every profitable sale and losses can't be set off against it, so a strategy can pay tax while losing money. Average per bot, as a share of its starting money, counting the costs of selling what is still held:
 
 | Strategy | Bots | Price moves | Spread | Fees and GST | Tax | Funding | Result |
 |---|---|---|---|---|---|---|---|
+| Grid 3% | 47 | +3.1% | -2.3% | -3.1% | -1.4% | – | -3.8% |
 | RSI dip <25 ±3% | 47 | +0.7% | -1.6% | -2.3% | -0.7% | – | -3.8% |
-| Self-learning | 47 | -1.4% | -0.4% | -0.5% | -1.4% | -0.1% | -3.9% |
-| Grid 3% | 47 | +2.9% | -2.3% | -3.1% | -1.4% | – | -3.9% |
-| Pump rider | 47 | -2.7% | -0.9% | -1.2% | -0.1% | – | -4.8% |
+| Self-learning | 47 | -1.3% | -0.4% | -0.5% | -1.4% | -0.1% | -3.8% |
+| Pump rider | 47 | -2.7% | -0.9% | -1.2% | -0.0% | – | -4.8% |
 | RSI dip <30 ±6% | 47 | +4.1% | -3.4% | -4.8% | -1.8% | – | -6.0% |
 | Breakout 48/24h | 47 | -3.6% | -1.3% | -1.8% | -0.1% | – | -6.8% |
 | RSI dip <30 ±3% | 47 | +2.8% | -4.1% | -5.8% | -1.7% | – | -8.8% |
-| Added on 1 Oct | 2 | -8.5% | -0.4% | -1.1% | -0.0% | – | -10.1% |
-| Buy & hold | 47 | -8.4% | -0.8% | -1.1% | -0.2% | – | -10.5% |
-| Grid 1.5% | 47 | +7.9% | -6.6% | -9.6% | -2.9% | – | -11.1% |
-| Breakout 20/10h | 47 | -5.2% | -2.8% | -3.9% | -0.3% | – | -12.3% |
-| Original bots | 7 | -3.7% | -2.7% | -4.6% | -1.0% | -0.3% | -12.4% |
-| Coin flip, 3x futures | 47 | +3.3% | -3.2% | -3.8% | -10.0% | -0.4% | -14.2% |
-| Long/short 12/48h | 47 | -12.7% | -0.9% | -1.1% | -2.0% | -0.3% | -16.9% |
-| Trend 24/96h | 47 | -8.1% | -4.5% | -6.4% | -0.4% | – | -19.4% |
+| Added on 1 Oct | 2 | -8.6% | -0.4% | -1.1% | -0.0% | – | -10.2% |
+| Buy & hold | 47 | -8.2% | -0.8% | -1.1% | -0.2% | – | -10.4% |
+| Grid 1.5% | 47 | +8.2% | -6.7% | -9.6% | -2.9% | – | -11.0% |
+| Original bots | 7 | -3.3% | -2.7% | -4.6% | -1.2% | -0.3% | -12.1% |
+| Breakout 20/10h | 47 | -5.2% | -2.8% | -3.9% | -0.4% | – | -12.3% |
+| Coin flip, 3x futures | 47 | +3.5% | -3.2% | -3.8% | -10.1% | -0.4% | -14.0% |
+| Long/short 12/48h | 47 | -12.5% | -0.9% | -1.1% | -2.1% | -0.3% | -16.8% |
+| Trend 24/96h | 47 | -8.0% | -4.5% | -6.4% | -0.5% | – | -19.3% |
 | Coin flip #1 | 47 | -1.2% | -7.5% | -10.9% | -1.9% | – | -21.5% |
 | AI desk | 2 | -17.3% | -1.7% | -2.5% | -0.8% | -0.1% | -22.4% |
-| Coin flip #2 | 47 | -2.7% | -7.6% | -11.0% | -1.7% | – | -23.1% |
-| Coin flip #3 | 47 | -3.9% | -7.5% | -10.7% | -1.5% | – | -23.6% |
-| Trend 12/48h | 47 | -9.6% | -6.4% | -9.4% | -0.5% | – | -25.9% |
-| Trend 6/24h | 47 | -11.8% | -9.6% | -14.0% | -0.6% | – | -36.0% |
-| 3x futures trend | 47 | -32.9% | -3.4% | -4.0% | -6.2% | -0.6% | -47.0% |
-| Fast trend 5/20h | 47 | -18.9% | -16.9% | -24.9% | -0.6% | – | -61.3% |
-| Fast trend 2/8h | 47 | -21.8% | -20.4% | -30.2% | -0.5% | – | -72.9% |
-| 10x futures trend | 47 | -66.0% | -6.0% | -7.1% | -8.5% | -1.1% | -88.6% |
-| **All bots** | 1,045 | -8.6% | -5.3% | -7.6% | -2.0% | -0.1% | -23.6% |
+| Coin flip #2 | 47 | -2.5% | -7.6% | -11.0% | -1.8% | – | -22.9% |
+| Coin flip #3 | 47 | -3.8% | -7.5% | -10.7% | -1.5% | – | -23.5% |
+| Trend 12/48h | 47 | -9.6% | -6.4% | -9.4% | -0.5% | – | -25.8% |
+| Trend 6/24h | 47 | -11.8% | -9.6% | -14.0% | -0.7% | – | -36.0% |
+| 3x futures trend | 47 | -32.9% | -3.4% | -4.0% | -6.2% | -0.6% | -47.1% |
+| Fast trend 5/20h | 47 | -18.9% | -16.9% | -25.0% | -0.6% | – | -61.4% |
+| Fast trend 2/8h | 47 | -21.8% | -20.5% | -30.2% | -0.5% | – | -72.9% |
+| 10x futures trend | 47 | -66.3% | -6.0% | -7.1% | -8.4% | -1.1% | -88.9% |
+| **All bots** | 1,045 | -8.5% | -5.3% | -7.6% | -2.0% | -0.1% | -23.6% |
 
 **Low-cost test.** Since 1 Oct the strategies that had an edge before costs in the backtests also run with CoinDCX's VIP 1 fee (0.17% instead of 0.5%, plus GST). The grids and dip-buyers place limit orders, which pay no spread but fill at exactly their price and only once the price trades through it; stops and the other exits are market orders and still pay it. Tax is unchanged, so the gap to the same strategy at normal costs is what fees and spread took. These 282 bots are judged against a buy & hold and a coin flip at the same low cost, and are left out of the rankings above.
 
 | Strategy | Median, normal costs | Median, low cost | Fees and spread | In profit | Beat holding | Paper screen? |
 |---|---|---|---|---|---|---|
-| Grid 3% | -2.5% | -0.4% | -5.4% → -1.3% | 18/47 | 46/47 | not yet |
+| Grid 3% | -2.2% | -0.5% | -5.4% → -1.3% | 18/47 | 46/47 | not yet |
 | RSI dip <30 ±6% | -5.5% | -1.5% | -8.2% → -2.6% | 16/47 | 39/47 | not yet |
-| Grid 1.5% | -10.2% | -3.0% | -16.2% → -3.7% | 9/47 | 44/47 | not yet |
-| RSI dip <30 ±3% | -8.0% | -3.9% | -9.9% → -2.6% | 8/47 | 38/47 | not yet |
-| Buy & hold | -11.4% | -10.8% | -1.9% → -1.2% | 6/47 | – | benchmark |
+| Grid 1.5% | -10.8% | -3.1% | -16.2% → -3.7% | 10/47 | 44/47 | not yet |
+| RSI dip <30 ±3% | -8.0% | -3.9% | -9.9% → -2.6% | 8/47 | 37/47 | not yet |
+| Buy & hold | -11.3% | -10.6% | -1.9% → -1.2% | 6/47 | – | benchmark |
 | Coin flip #1 | -22.5% | -15.1% | -18.4% → -11.7% | 1/47 | 11/47 | luck control |
 
-VIP 1 needs ₹5,00,000 of trading in 30 days. The busiest of these strategies, coin flip #1, has traded ₹94,063 per bot in 10.3 days, a pace of ₹2,73,361 a month, so a ₹5,000 account trading this way would not get there on its own.
+VIP 1 needs ₹5,00,000 of trading in 30 days. The busiest of these strategies, coin flip #1, has traded ₹94,063 per bot in 10.3 days, a pace of ₹2,72,810 a month, so a ₹5,000 account trading this way would not get there on its own.
 
 ![Value of the top bots over time](docs/equity.svg)
 
-Costs so far across all bots: ₹3,87,218 in fees and GST, ₹76,007 of TDS held back (refundable when you file taxes), and ₹97,209 of estimated tax.
+Costs so far across all bots: ₹3,87,426 in fees and GST, ₹76,128 of TDS held back (refundable when you file taxes), and ₹97,225 of estimated tax.
 
 **What the original self-learning bot sees.** Its best strategy variants over the last 3 days, after all costs:
 
