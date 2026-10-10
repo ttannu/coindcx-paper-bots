@@ -33281,3 +33281,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 11:45,mubarak.grid_1_5pct_low,SELL,MUBARAK/INR,122.00000000,7.62,929.29,1.86,9.29,5.76,4.29,"grid sell, level 2"
 2026-10-10 11:45,sol.trend_2_8h,SELL,SOL/INR,0.05400000,10841.62,585.45,3.45,5.85,-12.32,0.00,closed below the slow average
 2026-10-10 11:45,sol.trend_5_20h,SELL,SOL/INR,0.18300000,10841.62,1984.02,11.71,19.84,-48.55,0.00,closed below the slow average
+2026-10-10 12:00,arb.trend_2_8h,SELL,ARB/INR,25.20000000,18.29,460.82,2.72,4.61,-13.94,0.00,trailing stop
+2026-10-10 12:00,arb.trend_5_20h,SELL,ARB/INR,77.30000000,18.29,1413.56,8.34,14.14,-30.64,0.00,trailing stop
+2026-10-10 12:00,dot.trend_2_8h,SELL,DOT/INR,6.14860000,123.25,757.82,4.47,7.58,-28.52,0.00,closed below the slow average
+2026-10-10 12:00,fil.grid_1_5pct,BUY,FIL/INR,7.46000000,114.04,850.77,5.02,0.00,,0.00,"grid buy, level 2"
+2026-10-10 12:00,fil.grid_1_5pct_low,BUY,FIL/INR,7.61000000,114.77,873.38,1.75,0.00,,0.00,"grid buy, level 2"
+2026-10-10 12:00,pha.trend_2_8h,SELL,PHA/INR,199.00000000,6.05,1203.91,7.10,12.04,-46.60,0.00,trailing stop
+2026-10-10 12:00,pha.trend_5_20h,SELL,PHA/INR,416.00000000,6.05,2516.73,14.85,25.17,-65.05,0.00,trailing stop
+2026-10-10 12:00,shib.trend_2_8h,SELL,SHIB/INR,1484879.00000000,0.00,806.59,4.76,8.07,-13.39,0.00,closed below the slow average
+2026-10-10 12:00,sol.trend_2_8h,BUY,SOL/INR,0.05200000,10970.37,570.46,3.37,0.00,,0.00,uptrend entry
+2026-10-10 12:00,sol.trend_5_20h,BUY,SOL/INR,0.17700000,10970.37,1941.75,11.46,0.00,,0.00,uptrend entry
+2026-10-10 12:00,tao.trend_2_8h,SELL,TAO/INR,0.02700000,27581.33,744.70,4.39,7.45,-10.26,0.00,trailing stop
+2026-10-10 12:00,tao.trend_5_20h,SELL,TAO/INR,0.04610000,27581.33,1271.50,7.50,12.71,-17.52,0.00,trailing stop
+2026-10-10 12:00,vet.trend_5_20h,BUY,VET/INR,1508.60000000,0.79,1188.52,7.01,0.00,,0.00,uptrend entry
