@@ -35213,3 +35213,53 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 00:30,vvv.trend_6_24h,BUY,VVV/INR,1.75000000,2263.77,3961.60,23.37,0.00,,0.00,uptrend entry
 2026-10-11 00:30,vvv.flip_2,BUY,VVV/INR,1.78000000,2263.77,4029.52,23.77,0.00,,0.00,coin flip
 2026-10-11 00:30,one.learner,OPEN SHORT,ONE/INR,18691.25817166,0.21,3865.10,2.28,0.00,,0.00,"following ONE 72h breakout, 0.78x, liquidation at 0"
+2026-10-11 00:45,bnb.trend_2_8h,BUY,BNB/INR,0.00700000,74986.14,524.90,3.10,0.00,,0.00,uptrend entry
+2026-10-11 00:45,bnb.trend_5_20h,BUY,BNB/INR,0.01600000,74986.14,1199.78,7.08,0.00,,0.00,uptrend entry
+2026-10-11 00:45,btc.trend_2_8h,SELL,BTC/INR,0.00010000,8217960.11,821.80,4.85,8.22,-16.29,0.00,closed below the slow average
+2026-10-11 00:45,btc.trend_5_20h,SELL,BTC/INR,0.00021000,8217960.11,1725.77,10.18,17.26,-34.20,0.00,closed below the slow average
+2026-10-11 00:45,doge.trend_2_8h,SELL,DOGE/INR,100.00000000,8.54,854.28,5.04,8.54,-14.59,0.00,closed below the slow average
+2026-10-11 00:45,doge.trend_5_20h,SELL,DOGE/INR,294.00000000,8.54,2511.58,14.82,25.12,-42.91,0.00,closed below the slow average
+2026-10-11 00:45,ena.trend_2_8h,BUY,ENA/INR,30.79000000,22.22,684.27,4.04,0.00,,0.00,uptrend entry
+2026-10-11 00:45,hype.trend_2_8h,SELL,HYPE/INR,0.06000000,8436.20,506.17,2.99,5.06,-12.09,0.00,closed below the slow average
+2026-10-11 00:45,hype.trend_5_20h,SELL,HYPE/INR,0.16000000,8436.20,1349.79,7.96,13.50,-30.19,0.00,closed below the slow average
+2026-10-11 00:45,icp.trend_5_20h,SELL,ICP/INR,2.07000000,308.18,637.93,3.76,6.38,-24.90,0.00,closed below the slow average
+2026-10-11 00:45,link.trend_2_8h,SELL,LINK/INR,0.31000000,1290.98,400.21,2.36,4.00,-11.24,0.00,closed below the slow average
+2026-10-11 00:45,near.trend_2_8h,SELL,NEAR/INR,1.90000000,525.41,998.27,5.89,9.98,-24.84,0.00,closed below the slow average
+2026-10-11 00:45,near.grid_1_5pct,BUY,NEAR/INR,1.50000000,524.67,787.01,4.64,0.00,,0.00,"grid buy, level 3"
+2026-10-11 00:45,near.grid_1_5pct_low,BUY,NEAR/INR,1.50000000,522.90,784.34,1.57,0.00,,0.00,"grid buy, level 3"
+2026-10-11 00:45,pepe.trend_5_20h,SELL,PEPE/INR,5410602.00000000,0.00,2143.08,12.64,21.43,-62.49,0.00,closed below the slow average
+2026-10-11 00:45,pol.trend_2_8h,BUY,POL/INR,29.60000000,10.22,302.52,1.78,0.00,,0.00,uptrend entry
+2026-10-11 00:45,render.trend_2_8h,SELL,RENDER/INR,1.44000000,188.49,271.42,1.60,2.71,-8.80,0.00,trailing stop
+2026-10-11 00:45,render.trend_5_20h,SELL,RENDER/INR,4.25000000,188.49,801.07,4.73,8.01,-25.98,0.00,trailing stop
+2026-10-11 00:45,shib.trend_2_8h,SELL,SHIB/INR,1235356.00000000,0.00,663.54,3.91,6.64,-21.72,0.00,closed below the slow average
+2026-10-11 00:45,shib.trend_5_20h,SELL,SHIB/INR,3171599.00000000,0.00,1703.53,10.05,17.04,-55.78,0.00,closed below the slow average
+2026-10-11 00:45,siren.grid_1_5pct,SELL,SIREN/INR,192.80000000,4.45,857.91,5.06,8.58,-0.05,4.53,"grid sell, level 4"
+2026-10-11 00:45,siren.grid_1_5pct,SELL,SIREN/INR,192.80000000,4.45,857.91,5.06,8.58,-0.05,4.53,"grid sell, level 5"
+2026-10-11 00:45,siren.grid_1_5pct_low,SELL,SIREN/INR,191.00000000,4.44,848.41,1.70,8.48,-0.74,1.21,"grid sell, level 4"
+2026-10-11 00:45,siren.grid_1_5pct_low,SELL,SIREN/INR,193.90000000,4.38,848.37,1.70,8.48,-12.42,0.00,"grid sell, level 5"
+2026-10-11 00:45,trump.trend_2_8h,SELL,TRUMP/INR,2.65900000,186.72,496.49,2.93,4.96,-15.93,0.00,trailing stop
+2026-10-11 00:45,trump.trend_5_20h,SELL,TRUMP/INR,7.61000000,186.72,1420.95,8.38,14.21,-42.67,0.00,trailing stop
+2026-10-11 00:45,uni.dip_30_3,BUY,UNI/INR,5.60000000,746.82,4182.19,24.67,0.00,,0.00,RSI 28
+2026-10-11 00:45,uni.dip_30_6,BUY,UNI/INR,5.25000000,746.82,3920.80,23.13,0.00,,0.00,RSI 28
+2026-10-11 00:45,vet.trend_2_8h,SELL,VET/INR,581.60000000,0.77,447.24,2.64,4.47,-15.83,0.00,closed below the slow average
+2026-10-11 00:45,vet.trend_5_20h,SELL,VET/INR,1325.70000000,0.77,1019.45,6.01,10.19,-36.08,0.00,closed below the slow average
+2026-10-11 00:45,vvv.trend_5_20h,BUY,VVV/INR,0.80000000,2263.77,1811.02,10.69,0.00,,0.00,uptrend entry
+2026-10-11 00:45,xrp.trend_5_20h,SELL,XRP/INR,11.90000000,139.03,1654.40,9.76,16.54,-31.12,0.00,closed below the slow average
+2026-10-11 01:00,arb.trend_2_8h,BUY,ARB/INR,17.90000000,18.58,332.58,1.96,0.00,,0.00,uptrend entry
+2026-10-11 01:00,gala.trend_2_8h,SELL,GALA/INR,3110.13000000,0.24,744.29,4.39,7.44,-21.35,0.00,closed below the slow average
+2026-10-11 01:00,inj.trend_2_8h,SELL,INJ/INR,0.74000000,740.03,547.62,3.23,5.48,-5.69,0.35,trailing stop
+2026-10-11 01:00,inj.trend_5_20h,SELL,INJ/INR,2.00000000,740.03,1480.06,8.73,14.80,-15.37,0.94,trailing stop
+2026-10-11 01:00,inj.grid_1_5pct,BUY,INJ/INR,1.08000000,748.37,808.24,4.77,0.00,,0.00,"grid buy, level 5"
+2026-10-11 01:00,inj.grid_1_5pct_low,BUY,INJ/INR,1.22000000,745.65,909.69,1.82,0.00,,0.00,"grid buy, level 5"
+2026-10-11 01:00,ondo.trend_2_8h,SELL,ONDO/INR,14.70000000,48.80,717.41,4.23,7.17,-23.96,0.00,closed below the slow average
+2026-10-11 01:00,ondo.trend_5_20h,SELL,ONDO/INR,32.60000000,48.80,1590.99,9.39,15.91,-44.35,0.00,closed below the slow average
+2026-10-11 01:00,ondo.grid_1_5pct,BUY,ONDO/INR,16.80000000,49.12,825.16,4.87,0.00,,0.00,"grid buy, level 4"
+2026-10-11 01:00,ondo.grid_1_5pct_low,BUY,ONDO/INR,16.90000000,49.05,828.89,1.66,0.00,,0.00,"grid buy, level 4"
+2026-10-11 01:00,pepe.trend_5_20h,BUY,PEPE/INR,5207434.00000000,0.00,2096.64,12.37,0.00,,0.00,uptrend entry
+2026-10-11 01:00,siren.trend_5_20h,SELL,SIREN/INR,72.10000000,4.28,308.60,1.82,3.09,-17.43,0.00,closed below the slow average
+2026-10-11 01:00,siren.grid_1_5pct,BUY,SIREN/INR,189.00000000,4.39,829.02,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-11 01:00,siren.grid_1_5pct,BUY,SIREN/INR,191.90000000,4.32,829.11,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-11 01:00,siren.grid_1_5pct_low,BUY,SIREN/INR,191.00000000,4.38,835.87,1.68,0.00,,0.00,"grid buy, level 4"
+2026-10-11 01:00,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-11 01:00,vvv.trend_2_8h,SELL,VVV/INR,0.28000000,2207.25,618.03,3.65,6.18,-23.21,0.00,closed below the slow average
+2026-10-11 01:00,vvv.trend_5_20h,SELL,VVV/INR,0.80000000,2207.25,1765.80,10.42,17.66,-66.32,0.00,closed below the slow average
