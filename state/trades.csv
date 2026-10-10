@@ -32497,3 +32497,9 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 05:30,xrp.flip_1_low,SELL,XRP/INR,32.70000000,138.87,4540.95,9.11,45.41,-45.60,0.00,coin flip
 2026-10-10 05:30,mubarak.learner,OPEN SHORT,MUBARAK/INR,570.11620194,7.51,4284.28,2.53,0.00,,0.00,"following MUBARAK hold short, 0.89x, liquidation at 16"
 2026-10-10 05:30,ondo.learner,CLOSE SHORT,ONDO/INR,27.72807416,47.98,1330.36,0.78,0.00,-25.43,0.00,switching to cash
+2026-10-10 05:45,btc.trend_2_8h,BUY,BTC/INR,0.00013000,8250145.73,1072.52,6.33,0.00,,0.00,uptrend entry
+2026-10-10 05:45,btc.trend_5_20h,BUY,BTC/INR,0.00026000,8250145.73,2145.04,12.66,0.00,,0.00,uptrend entry
+2026-10-10 05:45,link.trend_2_8h,BUY,LINK/INR,0.38000000,1287.82,489.37,2.89,0.00,,0.00,uptrend entry
+2026-10-10 05:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,57.30000000,7.57,433.87,2.56,0.00,,0.00,uptrend entry
+2026-10-10 05:45,ondo.trend_5_20h,BUY,ONDO/INR,37.90000000,48.33,1831.79,10.81,0.00,,0.00,uptrend entry
+2026-10-10 05:45,render.trend_5_20h,BUY,RENDER/INR,5.64000000,192.51,1085.77,6.41,0.00,,0.00,uptrend entry
