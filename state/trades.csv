@@ -34267,3 +34267,33 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 18:30,qnt.learner,CLOSE SHORT,QNT/INR,0.08547595,24921.85,2130.22,1.26,0.00,-28.06,0.00,switching to QNT hold long
 2026-10-10 18:30,qnt.learner,OPEN LONG,QNT/INR,0.12237119,24921.85,3049.72,1.80,0.00,,0.00,"following QNT hold long, 0.7x, liquidation at -10556"
 2026-10-10 18:30,pha.learner,CLOSE SHORT,PHA/INR,317.12135702,6.07,1924.62,1.14,0.00,172.28,79.23,switching to PHA RSI reversion
+2026-10-10 18:45,ada.trend_2_8h,SELL,ADA/INR,53.50000000,25.04,1339.50,7.90,13.40,-41.76,0.00,closed below the slow average
+2026-10-10 18:45,arb.trend_5_20h,SELL,ARB/INR,68.00000000,18.11,1231.80,7.27,12.32,-44.49,0.00,closed below the slow average
+2026-10-10 18:45,gala.trend_2_8h,SELL,GALA/INR,3808.54000000,0.24,903.05,5.33,9.03,-30.77,0.00,closed below the slow average
+2026-10-10 18:45,inj.trend_2_8h,SELL,INJ/INR,0.78000000,720.70,562.15,3.32,5.62,-4.66,0.89,trailing stop
+2026-10-10 18:45,inj.trend_5_20h,SELL,INJ/INR,2.10000000,720.70,1513.47,8.93,15.13,1.60,8.75,trailing stop
+2026-10-10 18:45,kas.trend_2_8h,SELL,KAS/INR,49.92050000,4.06,202.69,1.20,2.03,-7.93,0.00,closed below the slow average
+2026-10-10 18:45,kas.trend_5_20h,SELL,KAS/INR,117.26350000,4.06,476.12,2.81,4.76,-18.86,0.00,closed below the slow average
+2026-10-10 18:45,ondo.trend_2_8h,SELL,ONDO/INR,16.40000000,48.84,801.03,4.73,8.01,-24.16,0.00,closed below the slow average
+2026-10-10 18:45,ondo.trend_5_20h,SELL,ONDO/INR,35.10000000,48.88,1715.85,10.12,17.16,-57.63,0.00,trailing stop
+2026-10-10 18:45,ondo.grid_1_5pct,BUY,ONDO/INR,16.80000000,49.20,826.62,4.88,0.00,,0.00,"grid buy, level 4"
+2026-10-10 18:45,ondo.grid_1_5pct_low,BUY,ONDO/INR,16.90000000,49.05,828.89,1.66,0.00,,0.00,"grid buy, level 4"
+2026-10-10 18:45,pengu.trend_5_20h,BUY,PENGU/INR,1722.00000000,0.84,1449.60,8.55,0.00,,0.00,uptrend entry
+2026-10-10 18:45,pol.trend_2_8h,SELL,POL/INR,35.00000000,9.92,347.10,2.05,3.47,-11.73,0.00,closed below the slow average
+2026-10-10 18:45,pol.trend_5_20h,SELL,POL/INR,97.60000000,9.92,967.91,5.71,9.68,-32.71,0.00,closed below the slow average
+2026-10-10 18:45,render.trend_2_8h,BUY,RENDER/INR,1.58000000,192.85,304.70,1.80,0.00,,0.00,uptrend entry
+2026-10-10 18:45,sei.trend_2_8h,SELL,SEI/INR,35.60000000,6.71,238.88,1.41,2.39,-6.98,0.00,trailing stop
+2026-10-10 18:45,sei.trend_5_20h,SELL,SEI/INR,136.40000000,6.71,915.24,5.40,9.15,-22.35,0.00,trailing stop
+2026-10-10 18:45,tao.trend_2_8h,BUY,TAO/INR,0.02410000,28214.41,679.97,4.01,0.00,,0.00,uptrend entry
+2026-10-10 18:45,trx.trend_5_20h,SELL,TRX/INR,16.70000000,32.64,545.16,3.22,5.45,-15.16,0.00,closed below the slow average
+2026-10-10 19:00,ada.trend_2_8h,BUY,ADA/INR,51.50000000,25.42,1309.30,7.72,0.00,,0.00,uptrend entry
+2026-10-10 19:00,gala.trend_2_8h,BUY,GALA/INR,3646.81000000,0.24,883.48,5.21,0.00,,0.00,uptrend entry
+2026-10-10 19:00,gala.trend_5_20h,SELL,GALA/INR,9350.21000000,0.24,2204.68,13.01,22.05,-86.50,0.00,trailing stop
+2026-10-10 19:00,kas.trend_5_20h,BUY,KAS/INR,111.64000000,4.17,465.80,2.75,0.00,,0.00,uptrend entry
+2026-10-10 19:00,ondo.trend_2_8h,BUY,ONDO/INR,15.80000000,49.63,784.13,4.63,0.00,,0.00,uptrend entry
+2026-10-10 19:00,ondo.trend_5_20h,BUY,ONDO/INR,33.90000000,49.63,1682.40,9.93,0.00,,0.00,uptrend entry
+2026-10-10 19:00,render.trend_2_8h,SELL,RENDER/INR,1.58000000,187.75,296.65,1.75,2.97,-11.59,0.00,trailing stop
+2026-10-10 19:00,render.trend_5_20h,SELL,RENDER/INR,4.89000000,187.98,919.24,5.42,9.19,-35.90,0.00,trailing stop
+2026-10-10 19:00,sol.trend_2_8h,BUY,SOL/INR,0.04700000,10966.46,515.42,3.04,0.00,,0.00,uptrend entry
+2026-10-10 19:00,sui.trend_2_8h,BUY,SUI/INR,6.80000000,111.22,756.31,4.46,0.00,,0.00,uptrend entry
+2026-10-10 19:00,zec.trend_5_20h,SELL,ZEC/INR,0.01500000,121333.87,1820.01,10.74,18.20,-44.09,0.00,closed below the slow average
