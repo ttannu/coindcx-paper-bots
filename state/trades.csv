@@ -33269,3 +33269,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-10 11:30,xrp.long_short,OPEN LONG,XRP/INR,31.50574542,140.63,4430.60,2.61,0.00,,0.00,"go long, 1x, liquidation at 1"
 2026-10-10 11:30,zec.trend_6_24h,BUY,ZEC/INR,0.02500000,122992.14,3074.80,18.14,0.00,,0.00,uptrend entry
 2026-10-10 11:30,arb.learner,CLOSE SHORT,ARB/INR,161.25568576,18.61,3000.86,1.77,0.00,-25.21,0.00,switching to ARB RSI reversion
+2026-10-10 11:45,btc.trend_2_8h,BUY,BTC/INR,0.00012000,8268163.66,992.18,5.85,0.00,,0.00,uptrend entry
+2026-10-10 11:45,btc.trend_5_20h,BUY,BTC/INR,0.00024000,8268163.66,1984.36,11.71,0.00,,0.00,uptrend entry
+2026-10-10 11:45,doge.trend_2_8h,SELL,DOGE/INR,117.00000000,8.53,998.38,5.89,9.98,-8.68,1.40,trailing stop
+2026-10-10 11:45,doge.trend_5_20h,SELL,DOGE/INR,390.00000000,8.53,3327.93,19.63,33.28,-47.76,0.00,trailing stop
+2026-10-10 11:45,eth.trend_2_8h,BUY,ETH/INR,0.00340000,249465.45,848.18,5.00,0.00,,0.00,uptrend entry
+2026-10-10 11:45,eth.trend_5_20h,BUY,ETH/INR,0.00700000,249465.45,1746.26,10.30,0.00,,0.00,uptrend entry
+2026-10-10 11:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,52.10000000,7.68,400.28,2.36,0.00,,0.00,uptrend entry
+2026-10-10 11:45,mubarak.trend_5_20h,BUY,MUBARAK/INR,80.20000000,7.68,616.17,3.64,0.00,,0.00,uptrend entry
+2026-10-10 11:45,mubarak.grid_1_5pct,SELL,MUBARAK/INR,103.10000000,7.56,779.75,4.60,7.80,-8.00,0.54,"grid sell, level 2"
+2026-10-10 11:45,mubarak.grid_1_5pct_low,SELL,MUBARAK/INR,122.00000000,7.62,929.29,1.86,9.29,5.76,4.29,"grid sell, level 2"
+2026-10-10 11:45,sol.trend_2_8h,SELL,SOL/INR,0.05400000,10841.62,585.45,3.45,5.85,-12.32,0.00,closed below the slow average
+2026-10-10 11:45,sol.trend_5_20h,SELL,SOL/INR,0.18300000,10841.62,1984.02,11.71,19.84,-48.55,0.00,closed below the slow average
