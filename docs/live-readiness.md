@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 11 Oct 2026, 06:30 UTC (10.7 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 11 Oct 2026, 07:00 UTC (10.7 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -8,19 +8,19 @@ A family passes only if its historical mean and median are positive, at least 9 
 
 | Spot family | Historical mean | Profitable windows | Beat holding, history | Forward median | Spot fill warnings | Above 10% volume | Pilot screen |
 |---|---:|---:|---:|---:|---:|---:|---|
-| grid 3% | -2.7% | 2/12 | 5/12 | -3.1% | 94/1353 | 26.1% | blocked |
+| grid 3% | -2.7% | 2/12 | 5/12 | -2.6% | 94/1354 | 26.1% | blocked |
 | RSI dip <25 ±3% | -3.9% | 0/12 | 3/12 | -2.8% | 32/192 | 40.2% | blocked |
 | pump rider | -6.2% | 0/12 | 4/12 | +0.0% | 37/103 | 64.5% | blocked |
-| RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | -5.6% | 129/406 | 61.7% | blocked |
+| RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | -5.6% | 130/407 | 61.8% | blocked |
 | breakout 48/24h | -8.2% | 2/12 | 1/12 | -6.4% | 56/149 | 68.8% | blocked |
-| RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | -8.0% | 130/494 | 55.2% | blocked |
-| grid 1.5% | -10.3% | 0/12 | 2/12 | -10.8% | 496/4530 | 38.3% | blocked |
-| breakout 20/10h | -15.4% | 1/12 | 0/12 | -12.1% | 143/329 | 73.3% | blocked |
-| trend 24/96h | -26.1% | 0/12 | 0/12 | -17.1% | 259/600 | 73.8% | blocked |
-| trend 12/48h | -36.0% | 0/12 | 0/12 | -24.0% | 449/926 | 77.6% | blocked |
-| trend 6/24h | -47.6% | 0/12 | 0/12 | -38.9% | 699/1483 | 74.9% | blocked |
-| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -61.4% | 1243/3774 | 70.4% | blocked |
-| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -73.6% | 1651/5907 | 64.4% | blocked |
+| RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | -8.1% | 131/495 | 55.3% | blocked |
+| grid 1.5% | -10.3% | 0/12 | 2/12 | -10.5% | 496/4533 | 38.3% | blocked |
+| breakout 20/10h | -15.4% | 1/12 | 0/12 | -12.1% | 144/330 | 73.4% | blocked |
+| trend 24/96h | -26.1% | 0/12 | 0/12 | -17.1% | 260/602 | 73.6% | blocked |
+| trend 12/48h | -36.0% | 0/12 | 0/12 | -24.0% | 452/930 | 77.5% | blocked |
+| trend 6/24h | -47.6% | 0/12 | 0/12 | -38.9% | 702/1488 | 74.8% | blocked |
+| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -61.9% | 1245/3779 | 70.4% | blocked |
+| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -73.6% | 1652/5912 | 64.4% | blocked |
 
 Futures are excluded because their simulated P&L uses CoinDCX INR spot candles, and funding is a fixed assumption rather than CoinDCX futures data. The VIP-fee twins are excluded because a ₹5,000 account has not demonstrated the trading volume needed for that fee tier. Coin flips and buy-and-hold are controls, not candidate strategies. The four later-start spot portfolios are evaluated separately in [the slow-strategy screen](strategy-lab.md); none had a positive historical mean after costs.
 
