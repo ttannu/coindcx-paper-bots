@@ -36625,3 +36625,10 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 11:30,aave.learner,OPEN SHORT,AAVE/INR,0.31906935,16659.47,5315.53,3.14,0.00,,0.00,"following AAVE hold short, 1x, liquidation at 33236"
 2026-10-11 11:30,hype.learner,CLOSE LONG,HYPE/INR,0.48122507,8387.91,4036.47,2.38,0.00,-93.88,0.00,switching to HYPE trend 12/48h
 2026-10-11 11:30,hype.learner,OPEN SHORT,HYPE/INR,0.45519465,8387.91,3818.13,2.25,0.00,,0.00,"following HYPE trend 12/48h, 0.86x, liquidation at 18099"
+2026-10-11 11:45,hype.dip_30_3_low,BUY,HYPE/INR,0.59000000,8392.11,4951.34,9.93,0.00,,0.00,"RSI 26, limit buy"
+2026-10-11 11:45,hype.dip_30_6_low,BUY,HYPE/INR,0.59000000,8392.11,4951.34,9.93,0.00,,0.00,"RSI 26, limit buy"
+2026-10-11 11:45,mubarak.trend_2_8h,SELL,MUBARAK/INR,37.70000000,7.34,276.72,1.63,2.77,-7.92,0.00,closed below the slow average
+2026-10-11 11:45,near.trend_5_20h,BUY,NEAR/INR,4.10000000,524.12,2148.88,12.68,0.00,,0.00,uptrend entry
+2026-10-11 11:45,pol.trend_5_20h,BUY,POL/INR,70.40000000,10.21,718.48,4.24,0.00,,0.00,uptrend entry
+2026-10-11 11:45,trx.trend_5_20h,BUY,TRX/INR,14.20000000,33.11,470.21,2.77,0.00,,0.00,uptrend entry
+2026-10-11 11:45,zec.trend_5_20h,BUY,ZEC/INR,0.01100000,122631.35,1348.94,7.96,0.00,,0.00,uptrend entry
