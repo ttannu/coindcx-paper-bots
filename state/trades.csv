@@ -36126,3 +36126,18 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 07:30,kas.learner,CLOSE LONG,KAS/INR,670.31151130,4.05,2713.54,1.60,0.00,-88.03,0.00,switching to KAS trend 6/24h
 2026-10-11 07:30,kas.learner,OPEN SHORT,KAS/INR,1064.13147508,4.05,4307.79,2.54,0.00,,0.00,"following KAS trend 6/24h, 0.91x, liquidation at 8"
 2026-10-11 07:30,trump.learner,CLOSE LONG,TRUMP/INR,24.22538784,188.49,4566.14,2.69,0.00,-19.34,0.00,switching to cash
+2026-10-11 07:45,dot.trend_2_8h,SELL,DOT/INR,4.31680000,123.19,531.79,3.14,5.32,-13.65,0.00,closed below the slow average
+2026-10-11 07:45,link.trend_2_8h,SELL,LINK/INR,0.29000000,1291.05,374.40,2.21,3.74,-10.01,0.00,trailing stop
+2026-10-11 07:45,link.trend_5_20h,SELL,LINK/INR,0.46000000,1291.05,593.88,3.50,5.94,-13.56,0.00,trailing stop
+2026-10-11 07:45,mubarak.trend_2_8h,SELL,MUBARAK/INR,41.30000000,7.29,301.11,1.78,3.01,-14.05,0.00,trailing stop
+2026-10-11 07:45,near.grid_1_5pct,BUY,NEAR/INR,1.50000000,524.67,787.01,4.64,0.00,,0.00,"grid buy, level 3"
+2026-10-11 07:45,near.grid_1_5pct_low,BUY,NEAR/INR,1.50000000,522.90,784.34,1.57,0.00,,0.00,"grid buy, level 3"
+2026-10-11 07:45,pha.trend_2_8h,BUY,PHA/INR,169.00000000,6.08,1027.36,6.06,0.00,,0.00,uptrend entry
+2026-10-11 07:45,render.trend_2_8h,SELL,RENDER/INR,1.32000000,189.39,250.00,1.47,2.50,-9.25,0.00,trailing stop
+2026-10-11 07:45,render.trend_5_20h,SELL,RENDER/INR,3.92000000,189.39,742.41,4.38,7.42,-27.46,0.00,trailing stop
+2026-10-11 07:45,tao.trend_2_8h,BUY,TAO/INR,0.01930000,28497.74,550.01,3.25,0.00,,0.00,uptrend entry
+2026-10-11 08:00,apt.trend_2_8h,SELL,APT/INR,4.64000000,85.06,394.68,2.33,3.95,-6.39,0.00,trailing stop
+2026-10-11 08:00,apt.trend_5_20h,SELL,APT/INR,13.70000000,85.06,1165.32,6.88,11.65,-18.86,0.00,trailing stop
+2026-10-11 08:00,dot.trend_5_20h,SELL,DOT/INR,9.42270000,122.82,1157.33,6.83,11.57,-34.50,0.00,trailing stop
+2026-10-11 08:00,saga.trend_2_8h,BUY,SAGA/INR,204.20000000,2.24,456.97,2.70,0.00,,0.00,uptrend entry
+2026-10-11 08:00,xlm.trend_5_20h,BUY,XLM/INR,69.00000000,19.65,1355.79,8.00,0.00,,0.00,uptrend entry
