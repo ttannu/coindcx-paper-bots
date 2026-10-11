@@ -38328,3 +38328,20 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 23:30,sei.learner,OPEN LONG,SEI/INR,491.87547731,7.09,3489.14,2.06,0.00,,0.00,"following SEI hold long, 0.68x, liquidation at -3"
 2026-10-11 23:30,aave.learner,CLOSE SHORT,AAVE/INR,0.31906935,17026.31,5432.57,3.21,0.00,-124.19,0.00,switching to AAVE hold long
 2026-10-11 23:30,aave.learner,OPEN LONG,AAVE/INR,0.27443092,17026.31,4672.55,2.76,0.00,,0.00,"following AAVE hold long, 0.9x, liquidation at -1807"
+2026-10-11 23:45,arb.trend_2_8h,BUY,ARB/INR,13.40000000,19.90,266.69,1.57,0.00,,0.00,uptrend entry
+2026-10-11 23:45,bnb.trend_2_8h,SELL,BNB/INR,0.00600000,74159.19,444.96,2.63,4.45,-8.37,0.00,closed below the slow average
+2026-10-11 23:45,bnb.trend_5_20h,SELL,BNB/INR,0.01100000,74159.19,815.75,4.81,8.16,-22.86,0.00,closed below the slow average
+2026-10-11 23:45,link.trend_2_8h,SELL,LINK/INR,0.27000000,1318.26,355.93,2.10,3.56,-0.92,1.47,trailing stop
+2026-10-11 23:45,link.trend_5_20h,SELL,LINK/INR,0.43000000,1318.26,566.85,3.34,5.67,-5.69,0.45,trailing stop
+2026-10-11 23:45,mubarak.grid_1_5pct,BUY,MUBARAK/INR,104.30000000,7.22,753.34,4.44,0.00,,0.00,"grid buy, level 5"
+2026-10-11 23:45,mubarak.grid_1_5pct_low,BUY,MUBARAK/INR,127.70000000,7.17,915.86,1.84,0.00,,0.00,"grid buy, level 5"
+2026-10-11 23:45,pha.trend_2_8h,BUY,PHA/INR,156.00000000,5.94,926.70,5.47,0.00,,0.00,uptrend entry
+2026-10-11 23:45,pha.trend_5_20h,BUY,PHA/INR,358.00000000,5.94,2126.66,12.55,0.00,,0.00,uptrend entry
+2026-10-11 23:45,saga.trend_5_20h,BUY,SAGA/INR,337.90000000,2.23,752.91,4.44,0.00,,0.00,uptrend entry
+2026-10-11 23:45,siren.grid_1_5pct,SELL,SIREN/INR,180.60000000,4.73,853.71,5.04,8.54,11.48,9.69,"grid sell, level 1"
+2026-10-11 23:45,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.73,866.95,5.12,8.67,11.66,9.84,"grid sell, level 2"
+2026-10-11 23:45,siren.grid_3pct,SELL,SIREN/INR,227.50000000,4.73,1075.42,6.34,10.75,9.57,10.01,"grid sell, level 2"
+2026-10-11 23:45,siren.grid_1_5pct_low,SELL,SIREN/INR,182.60000000,4.65,848.72,1.70,8.49,9.61,5.88,"grid sell, level 1"
+2026-10-11 23:45,siren.grid_1_5pct_low,SELL,SIREN/INR,185.30000000,4.58,848.35,1.70,8.48,0.89,1.94,"grid sell, level 2"
+2026-10-11 23:45,siren.grid_3pct_low,SELL,SIREN/INR,240.70000000,4.64,1117.36,2.24,11.17,6.57,5.00,"grid sell, level 2"
+2026-10-11 23:45,tao.trend_2_8h,BUY,TAO/INR,0.01560000,29194.91,455.44,2.69,0.00,,0.00,uptrend entry
