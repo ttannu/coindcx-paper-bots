@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 11 Oct 2026, 06:15 UTC (10.7 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 11 Oct 2026, 06:30 UTC (10.7 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -19,8 +19,8 @@ A family passes only if its historical mean and median are positive, at least 9 
 | trend 24/96h | -26.1% | 0/12 | 0/12 | -17.1% | 259/600 | 73.8% | blocked |
 | trend 12/48h | -36.0% | 0/12 | 0/12 | -24.0% | 449/926 | 77.6% | blocked |
 | trend 6/24h | -47.6% | 0/12 | 0/12 | -38.9% | 699/1483 | 74.9% | blocked |
-| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -61.3% | 1243/3772 | 70.5% | blocked |
-| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -73.6% | 1650/5903 | 64.4% | blocked |
+| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -61.4% | 1243/3774 | 70.4% | blocked |
+| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -73.6% | 1651/5907 | 64.4% | blocked |
 
 Futures are excluded because their simulated P&L uses CoinDCX INR spot candles, and funding is a fixed assumption rather than CoinDCX futures data. The VIP-fee twins are excluded because a ₹5,000 account has not demonstrated the trading volume needed for that fee tier. Coin flips and buy-and-hold are controls, not candidate strategies. The four later-start spot portfolios are evaluated separately in [the slow-strategy screen](strategy-lab.md); none had a positive historical mean after costs.
 

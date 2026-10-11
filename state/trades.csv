@@ -36632,3 +36632,9 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 11:45,pol.trend_5_20h,BUY,POL/INR,70.40000000,10.21,718.48,4.24,0.00,,0.00,uptrend entry
 2026-10-11 11:45,trx.trend_5_20h,BUY,TRX/INR,14.20000000,33.11,470.21,2.77,0.00,,0.00,uptrend entry
 2026-10-11 11:45,zec.trend_5_20h,BUY,ZEC/INR,0.01100000,122631.35,1348.94,7.96,0.00,,0.00,uptrend entry
+2026-10-11 12:00,btc.trend_2_8h,SELL,BTC/INR,0.00010000,8209004.06,820.90,4.84,8.21,-15.13,0.00,closed below the slow average
+2026-10-11 12:00,btc.trend_5_20h,SELL,BTC/INR,0.00019000,8209004.06,1559.71,9.20,15.60,-29.22,0.00,closed below the slow average
+2026-10-11 12:00,eth.trend_2_8h,SELL,ETH/INR,0.00220000,248619.48,546.96,3.23,5.47,-10.84,0.00,closed below the slow average
+2026-10-11 12:00,pol.trend_2_8h,BUY,POL/INR,24.00000000,10.23,245.44,1.45,0.00,,0.00,uptrend entry
+2026-10-11 12:00,saga.trend_2_8h,BUY,SAGA/INR,187.40000000,2.24,419.07,2.47,0.00,,0.00,uptrend entry
+2026-10-11 12:00,zec.trend_5_20h,SELL,ZEC/INR,0.01100000,121035.76,1331.39,7.86,13.31,-33.37,0.00,closed below the slow average
