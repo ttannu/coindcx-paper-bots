@@ -38779,3 +38779,13 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-12 03:30,xrp.trend_12_48h,SELL,XRP/INR,27.20000000,138.68,3772.10,22.26,37.72,-135.91,0.00,closed below the slow average
 2026-10-12 03:30,xrp.flip_3x,OPEN LONG,XRP/INR,106.54248395,139.07,14816.81,8.74,0.00,,0.00,"coin flip: long, 3x, liquidation at 93"
 2026-10-12 03:30,one.learner,OPEN SHORT,ONE/INR,24718.09424350,0.20,4899.39,2.89,0.00,,0.00,"following ONE 72h breakout, 0.98x, liquidation at 0"
+2026-10-12 03:45,arb.trend_5_20h,SELL,ARB/INR,52.20000000,19.46,1016.04,5.99,10.16,-31.64,0.00,trailing stop
+2026-10-12 03:45,eth.trend_5_20h,SELL,ETH/INR,0.00380000,249697.84,948.85,5.60,9.49,-17.15,0.00,trailing stop
+2026-10-12 03:45,one.dip_30_3_low,BUY,ONE/INR,25813.60000000,0.20,5119.10,10.27,0.00,,0.00,"RSI 28, limit buy"
+2026-10-12 03:45,one.dip_30_6_low,BUY,ONE/INR,25706.50000000,0.20,5097.86,10.23,0.00,,0.00,"RSI 28, limit buy"
+2026-10-12 03:45,pepe.trend_2_8h,BUY,PEPE/INR,887531.00000000,0.00,369.02,2.18,0.00,,0.00,uptrend entry
+2026-10-12 03:45,sei.trend_2_8h,BUY,SEI/INR,27.20000000,7.08,192.58,1.14,0.00,,0.00,uptrend entry
+2026-10-12 03:45,sei.trend_5_20h,BUY,SEI/INR,102.80000000,7.08,727.83,4.29,0.00,,0.00,uptrend entry
+2026-10-12 03:45,sol.trend_5_20h,BUY,SOL/INR,0.11800000,11056.17,1304.63,7.70,0.00,,0.00,uptrend entry
+2026-10-12 03:45,vet.trend_5_20h,SELL,VET/INR,1059.90000000,0.78,831.53,4.91,8.32,-19.61,0.00,trailing stop
+2026-10-12 03:45,vvv.trend_2_8h,SELL,VVV/INR,0.22000000,2371.43,521.71,3.08,5.22,-22.36,0.00,closed below the slow average
