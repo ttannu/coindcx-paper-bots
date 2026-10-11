@@ -38789,3 +38789,18 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-12 03:45,sol.trend_5_20h,BUY,SOL/INR,0.11800000,11056.17,1304.63,7.70,0.00,,0.00,uptrend entry
 2026-10-12 03:45,vet.trend_5_20h,SELL,VET/INR,1059.90000000,0.78,831.53,4.91,8.32,-19.61,0.00,trailing stop
 2026-10-12 03:45,vvv.trend_2_8h,SELL,VVV/INR,0.22000000,2371.43,521.71,3.08,5.22,-22.36,0.00,closed below the slow average
+2026-10-12 04:00,arb.trend_5_20h,BUY,ARB/INR,50.00000000,19.89,994.44,5.87,0.00,,0.00,uptrend entry
+2026-10-12 04:00,bonk.trend_2_8h,BUY,BONK/INR,1355813.00000000,0.00,469.53,2.77,0.00,,0.00,uptrend entry
+2026-10-12 04:00,doge.trend_5_20h,BUY,DOGE/INR,252.00000000,8.62,2171.63,12.81,0.00,,0.00,uptrend entry
+2026-10-12 04:00,icp.grid_1_5pct,SELL,ICP/INR,2.44000000,339.45,828.26,4.89,0.00,-1.32,3.80,"grid sell, level 3"
+2026-10-12 04:00,icp.grid_3pct,SELL,ICP/INR,2.48000000,339.14,841.07,4.96,0.00,39.98,22.44,"grid sell, level 2"
+2026-10-12 04:00,icp.grid_1_5pct_low,SELL,ICP/INR,2.47000000,341.57,843.67,1.69,0.00,12.95,7.38,"grid sell, level 3"
+2026-10-12 04:00,icp.grid_3pct_low,SELL,ICP/INR,2.51000000,341.26,856.56,1.72,0.00,53.49,25.74,"grid sell, level 2"
+2026-10-12 04:00,link.trend_2_8h,BUY,LINK/INR,0.25000000,1332.09,333.02,1.96,0.00,,0.00,uptrend entry
+2026-10-12 04:00,near.grid_1_5pct,SELL,NEAR/INR,1.40000000,567.79,794.91,4.69,7.95,-8.04,0.60,"grid sell, level 2"
+2026-10-12 04:00,near.grid_1_5pct_low,SELL,NEAR/INR,1.60000000,568.63,909.81,1.83,9.10,0.92,2.07,"grid sell, level 2"
+2026-10-12 04:00,ondo.grid_1_5pct,SELL,ONDO/INR,16.50000000,50.42,831.85,4.91,0.00,2.53,5.55,"grid sell, level 3"
+2026-10-12 04:00,ondo.grid_1_5pct_low,SELL,ONDO/INR,16.70000000,50.54,844.02,1.69,0.00,11.92,6.92,"grid sell, level 3"
+2026-10-12 04:00,saga.trend_2_8h,SELL,SAGA/INR,166.00000000,2.20,366.00,2.16,3.66,-12.22,0.00,trailing stop
+2026-10-12 04:00,tao.trend_2_8h,BUY,TAO/INR,0.01390000,29029.76,403.51,2.38,0.00,,0.00,uptrend entry
+2026-10-12 04:00,xrp.trend_5_20h,BUY,XRP/INR,10.10000000,140.42,1418.19,8.37,0.00,,0.00,uptrend entry
