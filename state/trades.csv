@@ -36437,3 +36437,38 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 09:30,zec.learner,CLOSE LONG,ZEC/INR,0.04277558,121051.44,5178.05,3.06,0.00,-110.12,0.00,switching to ZEC trend 24/96h
 2026-10-11 09:30,zec.learner,OPEN SHORT,ZEC/INR,0.04272459,121051.44,5171.87,3.05,0.00,,0.00,"following ZEC trend 24/96h, 1x, liquidation at 241498"
 2026-10-11 09:30,tao.learner,CLOSE LONG,TAO/INR,0.16789382,27641.47,4640.83,2.74,0.00,-108.21,0.00,switching to TAO RSI reversion
+2026-10-11 09:45,bnb.trend_2_8h,SELL,BNB/INR,0.00600000,73667.52,442.01,2.61,4.42,-11.03,0.00,closed below the slow average
+2026-10-11 09:45,bnb.trend_5_20h,SELL,BNB/INR,0.01300000,73667.52,957.68,5.65,9.58,-23.89,0.00,closed below the slow average
+2026-10-11 09:45,dot.grid_1_5pct,BUY,DOT/INR,6.68400000,121.50,812.08,4.79,0.00,,0.00,"grid buy, level 3"
+2026-10-11 09:45,dot.grid_3pct,BUY,DOT/INR,6.81870000,121.50,828.45,4.89,0.00,,0.00,"grid buy, level 1"
+2026-10-11 09:45,dot.grid_1_5pct_low,BUY,DOT/INR,7.31860000,121.30,887.75,1.78,0.00,,0.00,"grid buy, level 3"
+2026-10-11 09:45,dot.grid_3pct_low,BUY,DOT/INR,6.87040000,121.05,831.66,1.67,0.00,,0.00,"grid buy, level 1"
+2026-10-11 09:45,fil.dip_30_3_low,BUY,FIL/INR,45.29000000,108.00,4891.32,9.81,0.00,,0.00,"RSI 27, limit buy"
+2026-10-11 09:45,fil.dip_30_6_low,BUY,FIL/INR,48.56000000,108.00,5244.48,10.52,0.00,,0.00,"RSI 27, limit buy"
+2026-10-11 09:45,icp.grid_3pct,BUY,ICP/INR,2.72000000,304.26,827.59,4.88,0.00,,0.00,"grid buy, level 5"
+2026-10-11 09:45,icp.grid_3pct_low,BUY,ICP/INR,2.75000000,302.39,831.56,1.67,0.00,,0.00,"grid buy, level 5"
+2026-10-11 09:45,inj.grid_1_5pct,BUY,INJ/INR,1.09000000,743.50,810.42,4.78,0.00,,0.00,"grid buy, level 5"
+2026-10-11 09:45,inj.grid_3pct,BUY,INJ/INR,1.12000000,743.50,832.72,4.91,0.00,,0.00,"grid buy, level 2"
+2026-10-11 09:45,inj.grid_1_5pct_low,BUY,INJ/INR,1.22000000,745.65,909.69,1.82,0.00,,0.00,"grid buy, level 5"
+2026-10-11 09:45,inj.grid_3pct_low,BUY,INJ/INR,1.13000000,750.69,848.28,1.70,0.00,,0.00,"grid buy, level 2"
+2026-10-11 09:45,render.grid_3pct,BUY,RENDER/INR,4.39000000,189.86,833.50,4.92,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,render.grid_3pct_low,BUY,RENDER/INR,4.48000000,188.64,845.10,1.70,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,sei.grid_3pct,BUY,SEI/INR,124.40000000,6.66,828.14,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,sei.grid_3pct_low,BUY,SEI/INR,124.80000000,6.66,831.08,1.67,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,siren.grid_1_5pct,SELL,SIREN/INR,190.20000000,4.43,842.91,4.97,8.43,-0.12,4.42,"grid sell, level 4"
+2026-10-11 09:45,siren.grid_1_5pct,BUY,SIREN/INR,190.20000000,4.36,829.27,4.89,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,siren.grid_1_5pct_low,SELL,SIREN/INR,191.00000000,4.44,848.41,1.70,8.48,5.80,4.16,"grid sell, level 4"
+2026-10-11 09:45,siren.grid_1_5pct_low,BUY,SIREN/INR,191.00000000,4.38,835.87,1.68,0.00,,0.00,"grid buy, level 4"
+2026-10-11 09:45,zec.learner,CLOSE SHORT,ZEC/INR,0.04272459,122460.10,5232.06,3.09,0.00,-66.34,0.00,"loss brake, cash for 24 hours"
+2026-10-11 10:00,eth.trend_2_8h,BUY,ETH/INR,0.00220000,250600.16,551.32,3.25,0.00,,0.00,uptrend entry
+2026-10-11 10:00,inj.trend_2_8h,BUY,INJ/INR,0.65000000,762.76,495.79,2.93,0.00,,0.00,uptrend entry
+2026-10-11 10:00,inj.trend_5_20h,BUY,INJ/INR,1.76000000,762.76,1342.45,7.92,0.00,,0.00,uptrend entry
+2026-10-11 10:00,inj.grid_1_5pct,SELL,INJ/INR,1.09000000,754.26,822.15,4.85,8.22,-6.83,1.29,"grid sell, level 5"
+2026-10-11 10:00,inj.grid_1_5pct_low,SELL,INJ/INR,1.22000000,756.83,923.34,1.85,9.23,2.17,2.65,"grid sell, level 5"
+2026-10-11 10:00,near.trend_5_20h,BUY,NEAR/INR,4.20000000,524.49,2202.85,13.00,0.00,,0.00,uptrend entry
+2026-10-11 10:00,near.grid_1_5pct,SELL,NEAR/INR,1.60000000,521.00,833.60,4.92,0.00,-13.49,0.00,"grid sell, level 4"
+2026-10-11 10:00,near.grid_1_5pct_low,SELL,NEAR/INR,1.60000000,522.78,836.44,1.68,0.00,-2.09,0.57,"grid sell, level 4"
+2026-10-11 10:00,one.trend_2_8h,BUY,ONE/INR,2640.40000000,0.21,550.07,3.25,0.00,,0.00,uptrend entry
+2026-10-11 10:00,pol.trend_5_20h,BUY,POL/INR,79.20000000,10.20,807.60,4.76,0.00,,0.00,uptrend entry
+2026-10-11 10:00,saga.trend_2_8h,BUY,SAGA/INR,197.20000000,2.23,439.98,2.60,0.00,,0.00,uptrend entry
+2026-10-11 10:00,saga.trend_5_20h,BUY,SAGA/INR,385.30000000,2.23,859.65,5.07,0.00,,0.00,uptrend entry
