@@ -36703,3 +36703,37 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 12:30,xrp.flip_3x,CLOSE LONG,XRP/INR,106.77960445,139.31,14875.39,8.78,0.00,-17.68,0.00,coin flip
 2026-10-11 12:30,zec.trend_6_24h,BUY,ZEC/INR,0.02200000,123000.67,2706.01,15.97,0.00,,0.00,uptrend entry
 2026-10-11 12:30,arb.learner,OPEN SHORT,ARB/INR,228.04084796,19.62,4473.29,2.64,0.00,,0.00,"following ARB RSI reversion, 0.92x, liquidation at 41"
+2026-10-11 12:45,apt.grid_1_5pct,SELL,APT/INR,10.39000000,84.58,878.81,5.18,8.79,-7.35,1.36,"grid sell, level 2"
+2026-10-11 12:45,apt.grid_1_5pct_low,SELL,APT/INR,11.06000000,84.68,936.61,1.88,9.37,0.98,2.14,"grid sell, level 2"
+2026-10-11 12:45,ena.trend_2_8h,BUY,ENA/INR,26.91000000,22.33,601.03,3.55,0.00,,0.00,uptrend entry
+2026-10-11 12:45,ena.trend_5_20h,BUY,ENA/INR,72.73000000,22.33,1624.40,9.58,0.00,,0.00,uptrend entry
+2026-10-11 12:45,gala.trend_2_8h,BUY,GALA/INR,2890.60000000,0.24,697.49,4.12,0.00,,0.00,uptrend entry
+2026-10-11 12:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,35.90000000,7.54,270.67,1.60,0.00,,0.00,uptrend entry
+2026-10-11 12:45,pol.trend_2_8h,BUY,POL/INR,23.20000000,10.20,236.74,1.40,0.00,,0.00,uptrend entry
+2026-10-11 12:45,saga.trend_2_8h,SELL,SAGA/INR,187.40000000,2.20,411.42,2.43,4.11,-12.55,0.00,trailing stop
+2026-10-11 12:45,saga.trend_5_20h,SELL,SAGA/INR,366.10000000,2.20,803.75,4.74,8.04,-24.51,0.00,trailing stop
+2026-10-11 12:45,siren.grid_1_5pct,BUY,SIREN/INR,162.80000000,4.26,692.83,4.09,0.00,,0.00,"grid buy, level 6"
+2026-10-11 12:45,siren.grid_3pct,BUY,SIREN/INR,241.80000000,4.25,1027.72,6.06,0.00,,0.00,"grid buy, level 4"
+2026-10-11 12:45,siren.grid_1_5pct_low,BUY,SIREN/INR,196.90000000,4.25,836.03,1.68,0.00,,0.00,"grid buy, level 6"
+2026-10-11 12:45,siren.grid_3pct_low,BUY,SIREN/INR,255.80000000,4.24,1084.73,2.18,0.00,,0.00,"grid buy, level 4"
+2026-10-11 12:45,tao.trend_5_20h,BUY,TAO/INR,0.03480000,28410.99,988.70,5.83,0.00,,0.00,uptrend entry
+2026-10-11 12:45,uni.trend_2_8h,BUY,UNI/INR,1.28000000,759.69,972.40,5.74,0.00,,0.00,uptrend entry
+2026-10-11 12:45,zec.trend_5_20h,SELL,ZEC/INR,0.01100000,121452.68,1335.98,7.88,13.36,-32.89,0.00,closed below the slow average
+2026-10-11 13:00,apt.trend_5_20h,BUY,APT/INR,12.93000000,84.63,1094.31,6.46,0.00,,0.00,uptrend entry
+2026-10-11 13:00,bonk.trend_2_8h,BUY,BONK/INR,1790824.00000000,0.00,610.47,3.60,0.00,,0.00,uptrend entry
+2026-10-11 13:00,ena.trend_2_8h,SELL,ENA/INR,26.91000000,21.78,586.05,3.46,5.86,-21.98,0.00,trailing stop
+2026-10-11 13:00,ena.trend_5_20h,SELL,ENA/INR,72.73000000,21.78,1583.92,9.35,15.84,-59.41,0.00,trailing stop
+2026-10-11 13:00,eth.trend_2_8h,SELL,ETH/INR,0.00210000,248164.10,521.14,3.07,5.21,-10.94,0.00,closed below the slow average
+2026-10-11 13:00,eth.trend_5_20h,SELL,ETH/INR,0.00450000,248164.10,1116.74,6.59,11.17,-25.00,0.00,closed below the slow average
+2026-10-11 13:00,inj.trend_2_8h,SELL,INJ/INR,0.63000000,746.01,469.99,2.77,4.70,-15.58,0.00,trailing stop
+2026-10-11 13:00,inj.trend_5_20h,SELL,INJ/INR,1.76000000,746.01,1312.98,7.75,13.13,-45.14,0.00,trailing stop
+2026-10-11 13:00,inj.grid_1_5pct,BUY,INJ/INR,1.07000000,754.41,807.22,4.76,0.00,,0.00,"grid buy, level 4"
+2026-10-11 13:00,inj.grid_1_5pct_low,BUY,INJ/INR,1.20000000,757.00,908.40,1.82,0.00,,0.00,"grid buy, level 4"
+2026-10-11 13:00,mubarak.trend_2_8h,SELL,MUBARAK/INR,35.90000000,7.30,261.94,1.55,2.62,-11.87,0.00,trailing stop
+2026-10-11 13:00,pol.trend_2_8h,SELL,POL/INR,23.20000000,10.07,233.68,1.38,2.34,-5.83,0.00,closed below the slow average
+2026-10-11 13:00,saga.trend_5_20h,BUY,SAGA/INR,354.40000000,2.22,786.41,4.64,0.00,,0.00,uptrend entry
+2026-10-11 13:00,siren.grid_1_5pct,SELL,SIREN/INR,162.80000000,4.30,700.05,4.13,7.00,-13.34,0.00,"grid sell, level 6"
+2026-10-11 13:00,siren.grid_1_5pct_low,SELL,SIREN/INR,196.90000000,4.31,848.57,1.70,8.49,-7.82,0.00,"grid sell, level 6"
+2026-10-11 13:00,uni.trend_2_8h,SELL,UNI/INR,1.28000000,746.63,955.68,5.64,9.56,-28.10,0.00,closed below the slow average
+2026-10-11 13:00,uni.trend_5_20h,SELL,UNI/INR,2.59000000,746.63,1933.76,11.41,19.34,-49.73,0.00,closed below the slow average
+2026-10-11 13:00,zec.trend_5_20h,BUY,ZEC/INR,0.01000000,122949.00,1229.49,7.25,0.00,,0.00,uptrend entry
