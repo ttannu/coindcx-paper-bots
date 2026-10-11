@@ -36539,3 +36539,17 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-11 10:30,zec.trend_6_24h,BUY,ZEC/INR,0.02200000,123000.67,2706.01,15.97,0.00,,0.00,uptrend entry
 2026-10-11 10:30,zec.flip_2,SELL,ZEC/INR,0.02900000,122191.53,3543.55,20.91,0.00,-57.93,0.00,coin flip
 2026-10-11 10:30,bnb.learner,CLOSE SHORT,BNB/INR,0.06678129,74535.55,4977.58,2.94,0.00,-46.03,0.00,switching to cash
+2026-10-11 10:45,bonk.trend_2_8h,SELL,BONK/INR,1861990.00000000,0.00,624.00,3.68,6.24,-17.97,0.00,closed below the slow average
+2026-10-11 10:45,ena.trend_2_8h,BUY,ENA/INR,28.10000000,22.41,629.67,3.72,0.00,,0.00,uptrend entry
+2026-10-11 10:45,ena.trend_5_20h,BUY,ENA/INR,75.95000000,22.41,1701.90,10.04,0.00,,0.00,uptrend entry
+2026-10-11 10:45,inj.trend_2_8h,BUY,INJ/INR,0.63000000,761.84,479.96,2.83,0.00,,0.00,uptrend entry
+2026-10-11 10:45,pol.trend_5_20h,BUY,POL/INR,76.10000000,10.20,776.47,4.58,0.00,,0.00,uptrend entry
+2026-10-11 10:45,uni.trend_5_20h,SELL,UNI/INR,2.70000000,743.92,2008.59,11.85,20.09,-68.55,0.00,closed below the slow average
+2026-10-11 11:00,aave.trend_2_8h,BUY,AAVE/INR,0.03700000,16908.74,625.62,3.69,0.00,,0.00,uptrend entry
+2026-10-11 11:00,mubarak.trend_2_8h,BUY,MUBARAK/INR,37.70000000,7.46,281.35,1.66,0.00,,0.00,uptrend entry
+2026-10-11 11:00,near.trend_5_20h,SELL,NEAR/INR,4.20000000,514.34,2160.24,12.75,21.60,-68.35,0.00,trailing stop
+2026-10-11 11:00,one.trend_2_8h,BUY,ONE/INR,2523.20000000,0.21,525.63,3.10,0.00,,0.00,uptrend entry
+2026-10-11 11:00,pol.trend_5_20h,SELL,POL/INR,76.10000000,10.04,764.23,4.51,7.64,-21.33,0.00,closed below the slow average
+2026-10-11 11:00,siren.grid_1_5pct,BUY,SIREN/INR,191.90000000,4.32,829.11,4.89,0.00,,0.00,"grid buy, level 5"
+2026-10-11 11:00,siren.grid_1_5pct_low,BUY,SIREN/INR,193.90000000,4.31,835.83,1.68,0.00,,0.00,"grid buy, level 5"
+2026-10-11 11:00,zec.trend_5_20h,SELL,ZEC/INR,0.01100000,121454.47,1336.00,7.88,13.36,-32.87,0.00,closed below the slow average
