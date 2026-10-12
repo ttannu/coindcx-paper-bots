@@ -41729,3 +41729,7 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 02:30,vet.flip_2,SELL,VET/INR,4541.30000000,0.76,3430.44,20.24,0.00,-252.35,0.00,coin flip
 2026-10-13 02:30,zec.long_short,CLOSE LONG,ZEC/INR,0.03970296,122148.90,4849.67,2.86,0.00,-28.14,0.00,signal flipped to short
 2026-10-13 02:30,zec.long_short,OPEN SHORT,ZEC/INR,0.03963771,122148.90,4841.70,2.86,0.00,,0.00,"go short, 1x, liquidation at 243687"
+2026-10-13 02:45,link.trend_2_8h,BUY,LINK/INR,0.21000000,1311.17,275.35,1.62,0.00,,0.00,uptrend entry
+2026-10-13 02:45,near.grid_3pct,BUY,NEAR/INR,1.60000000,528.79,846.06,4.99,0.00,,0.00,"grid buy, level 3"
+2026-10-13 02:45,near.grid_3pct_low,BUY,NEAR/INR,1.70000000,527.00,895.89,1.80,0.00,,0.00,"grid buy, level 3"
+2026-10-13 02:45,siren.trend_5_20h,BUY,SIREN/INR,44.10000000,4.50,198.42,1.17,0.00,,0.00,uptrend entry
