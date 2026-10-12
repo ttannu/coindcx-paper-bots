@@ -40365,3 +40365,35 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-12 14:30,uni.trend_24_96h,BUY,UNI/INR,5.14000000,774.69,3981.93,23.49,0.00,,0.00,uptrend entry
 2026-10-12 14:30,vet.trend_24_96h,BUY,VET/INR,6232.60000000,0.80,4970.67,29.33,0.00,,0.00,uptrend entry
 2026-10-12 14:30,sei.learner,CLOSE LONG,SEI/INR,491.87547731,6.84,3364.37,1.98,0.00,-129.47,0.00,switching to cash
+2026-10-12 14:45,avax.trend_2_8h,BUY,AVAX/INR,0.38490000,1105.06,425.34,2.51,0.00,,0.00,uptrend entry
+2026-10-12 14:45,avax.grid_1_5pct,SELL,AVAX/INR,0.74920000,1096.24,821.30,4.85,0.00,0.68,4.66,"grid sell, level 4"
+2026-10-12 14:45,avax.grid_3pct,SELL,AVAX/INR,0.77180000,1095.42,845.45,4.99,0.00,23.85,15.21,"grid sell, level 2"
+2026-10-12 14:45,avax.grid_1_5pct_low,SELL,AVAX/INR,0.78740000,1101.31,867.17,1.74,0.00,12.72,7.32,"grid sell, level 4"
+2026-10-12 14:45,avax.grid_3pct_low,SELL,AVAX/INR,0.77830000,1100.48,856.51,1.72,0.00,35.74,17.71,"grid sell, level 2"
+2026-10-12 14:45,eth.trend_2_8h,SELL,ETH/INR,0.00170000,252011.34,428.42,2.53,4.28,-9.66,0.00,closed below the slow average
+2026-10-12 14:45,hbar.trend_5_20h,SELL,HBAR/INR,69.00000000,9.22,636.14,3.75,6.36,-22.42,0.00,closed below the slow average
+2026-10-12 14:45,pepe.trend_5_20h,SELL,PEPE/INR,3976374.00000000,0.00,1652.21,9.75,16.52,-28.23,0.00,trailing stop
+2026-10-12 14:45,pump.trend_2_8h,SELL,PUMP/INR,916.00000000,0.57,520.55,3.07,5.21,-17.37,0.00,closed below the slow average
+2026-10-12 14:45,siren.grid_1_5pct,BUY,SIREN/INR,188.50000000,4.35,820.16,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-12 14:45,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-12 14:45,sui.trend_2_8h,SELL,SUI/INR,4.80000000,111.82,536.74,3.17,5.37,-9.69,0.00,closed below the slow average
+2026-10-12 14:45,xlm.trend_5_20h,SELL,XLM/INR,53.00000000,19.76,1047.09,6.18,10.47,-35.33,0.00,trailing stop
+2026-10-12 15:00,btc.trend_5_20h,SELL,BTC/INR,0.00014000,8281061.86,1159.35,6.84,11.59,-23.39,0.00,closed below the slow average
+2026-10-12 15:00,doge.trend_2_8h,SELL,DOGE/INR,79.00000000,8.66,684.19,4.04,6.84,-11.80,0.00,closed below the slow average
+2026-10-12 15:00,kas.trend_2_8h,SELL,KAS/INR,24.28480000,4.15,100.84,0.59,1.01,-3.19,0.00,closed below the slow average
+2026-10-12 15:00,pump.grid_3pct,BUY,PUMP/INR,1489.00000000,0.57,850.90,5.02,0.00,,0.00,"grid buy, level 5"
+2026-10-12 15:00,pump.grid_3pct_low,BUY,PUMP/INR,1579.00000000,0.57,897.58,1.80,0.00,,0.00,"grid buy, level 5"
+2026-10-12 15:00,siren.trend_5_20h,SELL,SIREN/INR,58.80000000,4.37,256.95,1.52,2.57,-10.69,0.00,closed below the slow average
+2026-10-12 15:00,siren.grid_1_5pct,SELL,SIREN/INR,188.50000000,4.45,838.60,4.95,8.39,-1.35,3.84,"grid sell, level 5"
+2026-10-12 15:00,siren.grid_1_5pct,BUY,SIREN/INR,186.70000000,4.39,819.81,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-12 15:00,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,5.91,4.46,"grid sell, level 5"
+2026-10-12 15:00,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-12 15:00,sui.trend_5_20h,SELL,SUI/INR,9.90000000,111.38,1102.71,6.51,11.03,-20.26,0.00,closed below the slow average
+2026-10-12 15:00,tao.grid_1_5pct,BUY,TAO/INR,0.02650000,28916.01,766.27,4.52,0.00,,0.00,"grid buy, level 6"
+2026-10-12 15:00,tao.grid_1_5pct_low,BUY,TAO/INR,0.02880000,28800.81,829.46,1.66,0.00,,0.00,"grid buy, level 6"
+2026-10-12 15:00,trx.trend_5_20h,BUY,TRX/INR,10.00000000,33.13,331.26,1.95,0.00,,0.00,uptrend entry
+2026-10-12 15:00,uni.trend_5_20h,SELL,UNI/INR,1.82000000,751.80,1368.27,8.07,13.68,-58.07,0.00,trailing stop
+2026-10-12 15:00,uni.grid_3pct,BUY,UNI/INR,1.08000000,760.26,821.08,4.84,0.00,,0.00,"grid buy, level 6"
+2026-10-12 15:00,uni.grid_3pct_low,BUY,UNI/INR,1.09000000,760.34,828.77,1.66,0.00,,0.00,"grid buy, level 6"
+2026-10-12 15:00,vet.trend_2_8h,SELL,VET/INR,337.10000000,0.79,264.95,1.56,2.65,-7.40,0.00,closed below the slow average
+2026-10-12 15:00,vet.trend_5_20h,SELL,VET/INR,865.50000000,0.79,680.26,4.01,6.80,-19.04,0.00,closed below the slow average
