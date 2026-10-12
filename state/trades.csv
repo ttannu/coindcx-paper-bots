@@ -41397,3 +41397,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-12 21:30,zec.trend_10x,OPEN SHORT,ZEC/INR,0.06734421,124967.49,8415.84,4.97,0.00,,0.00,"go short, 10x, liquidation at 136839"
 2026-10-12 21:30,pump.learner,OPEN SHORT,PUMP/INR,3451.56425766,0.53,1814.62,1.07,0.00,,0.00,"following PUMP hold short, 0.38x, liquidation at 2"
 2026-10-12 21:30,pengu.learner,OPEN SHORT,PENGU/INR,5220.67129605,0.78,4091.53,2.41,0.00,,0.00,"following PENGU 24h breakout, 0.77x, liquidation at 2"
+2026-10-12 21:45,fil.grid_1_5pct,BUY,FIL/INR,7.61000000,114.71,872.98,5.15,0.00,,0.00,"grid buy, level 4"
+2026-10-12 21:45,fil.grid_1_5pct,BUY,FIL/INR,7.61000000,114.71,872.98,5.15,0.00,,0.00,"grid buy, level 5"
+2026-10-12 21:45,fil.grid_3pct,BUY,FIL/INR,7.61000000,114.71,872.98,5.15,0.00,,0.00,"grid buy, level 2"
+2026-10-12 21:45,fil.grid_1_5pct_low,BUY,FIL/INR,7.82000000,117.67,920.16,1.85,0.00,,0.00,"grid buy, level 4"
+2026-10-12 21:45,fil.grid_1_5pct_low,BUY,FIL/INR,7.94000000,115.90,920.26,1.85,0.00,,0.00,"grid buy, level 5"
+2026-10-12 21:45,fil.grid_3pct_low,BUY,FIL/INR,7.73000000,114.63,886.09,1.78,0.00,,0.00,"grid buy, level 2"
+2026-10-12 21:45,pol.grid_3pct,SELL,POL/INR,82.30000000,10.29,847.01,5.00,0.00,-30.05,0.00,"grid sell, level 6"
+2026-10-12 21:45,pol.grid_3pct_low,SELL,POL/INR,83.00000000,10.31,855.68,1.72,0.00,-17.59,0.00,"grid sell, level 6"
+2026-10-12 21:45,siren.trend_5_20h,BUY,SIREN/INR,46.20000000,4.50,207.87,1.23,0.00,,0.00,uptrend entry
+2026-10-12 21:45,siren.grid_1_5pct,SELL,SIREN/INR,186.40000000,4.45,829.26,4.89,8.29,-0.91,3.99,"grid sell, level 5"
+2026-10-12 21:45,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,7.38,5.13,"grid sell, level 5"
+2026-10-12 22:00,render.trend_5_20h,BUY,RENDER/INR,2.67000000,204.98,547.31,3.23,0.00,,0.00,uptrend entry
+2026-10-12 22:00,siren.trend_5_20h,SELL,SIREN/INR,46.20000000,4.39,202.81,1.20,2.03,-7.48,0.00,closed below the slow average
