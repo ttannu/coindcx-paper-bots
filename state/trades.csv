@@ -41678,3 +41678,13 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 01:30,fil.learner,CLOSE LONG,FIL/INR,32.29417770,111.08,3587.38,2.12,0.00,6.23,4.74,switching to FIL RSI reversion
 2026-10-13 01:30,apt.learner,CLOSE LONG,APT/INR,43.53274902,82.95,3611.06,2.13,0.00,30.32,15.67,switching to APT 24h breakout
 2026-10-13 01:30,apt.learner,OPEN SHORT,APT/INR,35.00159352,82.95,2903.40,1.71,0.00,,0.00,"following APT 24h breakout, 0.59x, liquidation at 223"
+2026-10-13 01:45,one.trend_2_8h,SELL,ONE/INR,2474.40000000,0.19,464.36,2.74,4.64,-21.31,0.00,trailing stop
+2026-10-13 01:45,render.trend_2_8h,BUY,RENDER/INR,0.82000000,210.80,172.86,1.02,0.00,,0.00,uptrend entry
+2026-10-13 01:45,render.grid_1_5pct,SELL,RENDER/INR,3.88000000,208.08,807.35,4.76,8.07,6.38,7.15,"grid sell, level 4"
+2026-10-13 01:45,render.grid_1_5pct,SELL,RENDER/INR,3.94000000,208.08,819.83,4.84,8.20,6.47,7.26,"grid sell, level 5"
+2026-10-13 01:45,render.grid_3pct,SELL,RENDER/INR,4.15000000,208.08,863.53,5.09,0.00,25.61,16.10,"grid sell, level 2"
+2026-10-13 01:45,render.grid_1_5pct_low,SELL,RENDER/INR,4.36000000,206.88,901.98,1.81,9.02,14.65,8.26,"grid sell, level 4"
+2026-10-13 01:45,render.grid_1_5pct_low,SELL,RENDER/INR,4.42000000,203.77,900.67,1.81,9.01,5.44,4.09,"grid sell, level 5"
+2026-10-13 01:45,render.grid_3pct_low,SELL,RENDER/INR,4.21000000,206.50,869.37,1.74,0.00,30.17,15.22,"grid sell, level 2"
+2026-10-13 02:00,one.trend_2_8h,BUY,ONE/INR,2356.20000000,0.19,454.30,2.68,0.00,,0.00,uptrend entry
+2026-10-13 02:00,apt.learner,CLOSE SHORT,APT/INR,35.00159352,83.91,2937.02,1.73,0.00,-37.08,0.00,"loss brake, cash for 24 hours"
