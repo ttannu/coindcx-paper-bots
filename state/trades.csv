@@ -41634,3 +41634,8 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 00:30,vet.learner,OPEN SHORT,VET/INR,5253.07729231,0.76,3971.91,2.34,0.00,,0.00,"following VET hold short, 0.85x, liquidation at 2"
 2026-10-13 00:30,tao.learner,OPEN LONG,TAO/INR,0.14189320,28060.92,3981.65,2.35,0.00,,0.00,"following TAO hold long, 0.87x, liquidation at -4053"
 2026-10-13 00:30,trump.learner,OPEN LONG,TRUMP/INR,20.37902510,189.33,3858.45,2.28,0.00,,0.00,"following TRUMP hold long, 0.84x, liquidation at -35"
+2026-10-13 00:45,siren.grid_1_5pct,SELL,SIREN/INR,187.30000000,4.47,836.61,4.94,8.37,1.62,5.17,"grid sell, level 5"
+2026-10-13 00:45,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,6.91,4.92,"grid sell, level 5"
+2026-10-13 01:00,fil.grid_3pct,BUY,FIL/INR,7.85000000,111.25,873.32,5.15,0.00,,0.00,"grid buy, level 3"
+2026-10-13 01:00,fil.grid_3pct_low,BUY,FIL/INR,7.96000000,111.19,885.08,1.78,0.00,,0.00,"grid buy, level 3"
+2026-10-13 01:00,render.trend_5_20h,BUY,RENDER/INR,2.45000000,203.32,498.14,2.94,0.00,,0.00,uptrend entry
