@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 13 Oct 2026, 21:30 UTC (13.3 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 13 Oct 2026, 22:00 UTC (13.4 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -18,9 +18,9 @@ A family passes only if its historical mean and median are positive, at least 9 
 | breakout 20/10h | -15.4% | 1/12 | 0/12 | -14.2% | 181/417 | 73.2% | blocked |
 | trend 24/96h | -26.1% | 0/12 | 0/12 | -20.8% | 320/730 | 74.2% | blocked |
 | trend 12/48h | -36.0% | 0/12 | 0/12 | -27.9% | 544/1138 | 76.0% | blocked |
-| trend 6/24h | -47.6% | 0/12 | 0/12 | -43.2% | 844/1792 | 74.5% | blocked |
-| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -65.8% | 1408/4521 | 67.7% | blocked |
-| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -76.3% | 1828/7031 | 61.1% | blocked |
+| trend 6/24h | -47.6% | 0/12 | 0/12 | -43.2% | 848/1796 | 74.5% | blocked |
+| fast trend 5/20h | -71.4% | 0/12 | 0/12 | -65.8% | 1409/4528 | 67.7% | blocked |
+| fast trend 2/8h | -78.1% | 0/12 | 0/12 | -76.3% | 1828/7038 | 61.1% | blocked |
 
 Futures are excluded because their simulated P&L uses CoinDCX INR spot candles, and funding is a fixed assumption rather than CoinDCX futures data. The VIP-fee twins are excluded because a ₹5,000 account has not demonstrated the trading volume needed for that fee tier. Coin flips and buy-and-hold are controls, not candidate strategies. The four later-start spot portfolios are evaluated separately in [the slow-strategy screen](strategy-lab.md); none had a positive historical mean after costs.
 
