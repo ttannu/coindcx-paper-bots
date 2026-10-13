@@ -43910,3 +43910,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 22:30,siren.learner,CLOSE SHORT,SIREN/INR,390.01741604,4.37,1702.50,1.00,0.00,-20.71,0.00,switching to cash
 2026-10-13 22:30,sui.learner,OPEN SHORT,SUI/INR,29.45182909,105.27,3100.32,1.83,0.00,,0.00,"following SUI hold short, 0.67x, liquidation at 262"
 2026-10-13 22:30,pol.learner,CLOSE LONG,POL/INR,344.30521735,10.07,3468.52,2.05,0.00,-131.91,0.00,switching to POL RSI reversion
+2026-10-13 22:45,btc.trend_5_20h,BUY,BTC/INR,0.00012000,8330021.12,999.60,5.90,0.00,,0.00,uptrend entry
+2026-10-13 22:45,eth.trend_2_8h,SELL,ETH/INR,0.00150000,249573.62,374.36,2.21,3.74,-7.92,0.00,closed below the slow average
+2026-10-13 22:45,eth.trend_5_20h,SELL,ETH/INR,0.00300000,249573.62,748.72,4.42,7.49,-15.84,0.00,closed below the slow average
+2026-10-13 22:45,pengu.trend_2_8h,BUY,PENGU/INR,273.00000000,0.79,215.51,1.27,0.00,,0.00,uptrend entry
+2026-10-13 22:45,trump.trend_2_8h,SELL,TRUMP/INR,1.42900000,188.47,269.33,1.59,2.69,-8.69,0.00,closed below the slow average
+2026-10-13 22:45,xlm.trend_2_8h,SELL,XLM/INR,21.00000000,19.12,401.47,2.37,4.01,-7.77,0.00,closed below the slow average
+2026-10-13 23:00,apt.grid_3pct,SELL,APT/INR,10.82000000,83.94,908.21,5.36,0.00,-11.82,0.00,"grid sell, level 5"
+2026-10-13 23:00,apt.grid_3pct_low,SELL,APT/INR,11.08000000,83.63,926.61,1.86,0.00,-8.86,0.00,"grid sell, level 5"
+2026-10-13 23:00,bonk.trend_2_8h,SELL,BONK/INR,978632.00000000,0.00,312.65,1.84,3.13,-8.66,0.00,closed below the slow average
+2026-10-13 23:00,btc.trend_5_20h,SELL,BTC/INR,0.00012000,8252252.76,990.27,5.84,9.90,-21.07,0.00,closed below the slow average
+2026-10-13 23:00,trump.trend_2_8h,BUY,TRUMP/INR,1.36700000,192.78,263.53,1.55,0.00,,0.00,uptrend entry
+2026-10-13 23:00,zec.trend_2_8h,BUY,ZEC/INR,0.01000000,121308.10,1213.08,7.16,0.00,,0.00,uptrend entry
