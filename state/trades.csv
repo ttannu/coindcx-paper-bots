@@ -43290,3 +43290,22 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 15:30,xrp.trend_10x,CLOSE LONG,XRP/INR,99.34793186,136.24,13535.64,7.99,0.00,-164.85,0.00,signal flipped to short
 2026-10-13 15:30,xrp.trend_10x,OPEN SHORT,XRP/INR,88.40988498,136.24,12045.39,7.11,0.00,,0.00,"go short, 10x, liquidation at 149"
 2026-10-13 15:30,xrp.flip_3x,CLOSE LONG,XRP/INR,106.54248395,136.24,14515.86,8.56,0.00,-324.92,0.00,coin flip
+2026-10-13 15:45,mubarak.grid_1_5pct_low,BUY,MUBARAK/INR,129.60000000,7.06,915.54,1.84,0.00,,0.00,"grid buy, level 6"
+2026-10-13 15:45,pol.trend_2_8h,BUY,POL/INR,13.90000000,10.56,146.81,0.87,0.00,,0.00,uptrend entry
+2026-10-13 15:45,pol.trend_5_20h,BUY,POL/INR,38.60000000,10.56,407.70,2.41,0.00,,0.00,uptrend entry
+2026-10-13 15:45,sei.grid_3pct,BUY,SEI/INR,131.60000000,6.29,827.83,4.88,0.00,,0.00,"grid buy, level 6"
+2026-10-13 15:45,sei.grid_3pct_low,BUY,SEI/INR,132.70000000,6.27,831.46,1.67,0.00,,0.00,"grid buy, level 6"
+2026-10-13 15:45,uni.trend_2_8h,SELL,UNI/INR,0.83000000,739.02,613.39,3.62,6.13,-23.05,0.00,trailing stop
+2026-10-13 16:00,fil.trend_5_20h,SELL,FIL/INR,8.76000000,115.48,1011.64,5.97,10.12,-33.12,0.00,closed below the slow average
+2026-10-13 16:00,fil.grid_1_5pct,BUY,FIL/INR,7.52000000,116.02,872.46,5.15,0.00,,0.00,"grid buy, level 5"
+2026-10-13 16:00,fil.grid_1_5pct_low,BUY,FIL/INR,7.94000000,115.90,920.26,1.85,0.00,,0.00,"grid buy, level 5"
+2026-10-13 16:00,link.trend_2_8h,SELL,LINK/INR,0.19000000,1288.97,244.90,1.44,2.45,-6.45,0.00,closed below the slow average
+2026-10-13 16:00,link.trend_5_20h,SELL,LINK/INR,0.30000000,1288.97,386.69,2.28,3.87,-10.19,0.00,closed below the slow average
+2026-10-13 16:00,ondo.dip_30_3,BUY,ONDO/INR,103.20000000,46.82,4831.76,28.51,0.00,,0.00,RSI 30
+2026-10-13 16:00,ondo.dip_30_6,BUY,ONDO/INR,105.40000000,46.82,4934.76,29.12,0.00,,0.00,RSI 30
+2026-10-13 16:00,pepe.trend_2_8h,SELL,PEPE/INR,862752.00000000,0.00,349.27,2.06,3.49,-5.87,0.00,trailing stop
+2026-10-13 16:00,pepe.trend_5_20h,SELL,PEPE/INR,3724144.00000000,0.00,1507.65,8.90,15.08,-61.81,0.00,trailing stop
+2026-10-13 16:00,pha.dip_30_3_low,BUY,PHA/INR,844.00000000,5.34,4506.96,9.04,0.00,,0.00,"RSI 23, limit buy"
+2026-10-13 16:00,pol.trend_2_8h,SELL,POL/INR,13.90000000,10.31,143.26,0.85,1.43,-5.27,0.00,closed below the slow average
+2026-10-13 16:00,render.grid_1_5pct,SELL,RENDER/INR,3.82000000,209.16,799.00,4.71,7.99,-14.67,0.00,"grid sell, level 3"
+2026-10-13 16:00,render.grid_1_5pct_low,SELL,RENDER/INR,4.29000000,210.03,901.01,1.81,9.01,-1.36,1.02,"grid sell, level 3"
