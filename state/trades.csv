@@ -43811,3 +43811,22 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 21:30,xlm.flip_3x,OPEN LONG,XLM/INR,412.53479530,19.10,7881.29,4.65,0.00,,0.00,"coin flip: long, 3x, liquidation at 13"
 2026-10-13 21:30,zec.flip_2,SELL,ZEC/INR,0.02900000,119066.58,3452.93,20.37,34.53,-81.85,0.00,coin flip
 2026-10-13 21:30,fil.learner,CLOSE LONG,FIL/INR,16.17120445,113.35,1833.06,1.08,0.00,-72.83,0.00,"loss brake, cash for 24 hours"
+2026-10-13 21:45,btc.trend_5_20h,SELL,BTC/INR,0.00012000,8265503.05,991.86,5.85,9.92,-19.85,0.00,closed below the slow average
+2026-10-13 21:45,fil.grid_3pct,BUY,FIL/INR,7.85000000,111.30,873.72,5.15,0.00,,0.00,"grid buy, level 3"
+2026-10-13 21:45,fil.grid_3pct_low,BUY,FIL/INR,7.96000000,111.19,885.08,1.78,0.00,,0.00,"grid buy, level 3"
+2026-10-13 21:45,render.grid_1_5pct,SELL,RENDER/INR,2.49000000,199.41,496.53,2.93,4.97,-18.36,0.00,"grid sell, level 6"
+2026-10-13 21:45,render.grid_1_5pct,BUY,RENDER/INR,2.45000000,198.41,486.11,2.87,0.00,,0.00,"grid buy, level 6"
+2026-10-13 21:45,render.grid_1_5pct_low,SELL,RENDER/INR,4.49000000,200.72,901.21,1.81,9.01,-13.62,0.00,"grid sell, level 6"
+2026-10-13 21:45,render.grid_1_5pct_low,BUY,RENDER/INR,4.49000000,197.75,887.90,1.78,0.00,,0.00,"grid buy, level 6"
+2026-10-13 21:45,siren.trend_5_20h,SELL,SIREN/INR,36.40000000,4.28,155.68,0.92,1.56,-8.55,0.00,trailing stop
+2026-10-13 21:45,siren.grid_1_5pct,SELL,SIREN/INR,187.80000000,4.47,839.41,4.95,8.39,9.50,8.72,"grid sell, level 5"
+2026-10-13 21:45,siren.grid_1_5pct,SELL,SIREN/INR,182.20000000,4.47,814.38,4.80,8.14,9.22,8.46,"grid sell, level 6"
+2026-10-13 21:45,siren.grid_1_5pct,BUY,SIREN/INR,186.20000000,4.40,819.89,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-13 21:45,siren.grid_1_5pct,BUY,SIREN/INR,184.00000000,4.34,798.05,4.71,0.00,,0.00,"grid buy, level 6"
+2026-10-13 21:45,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,15.93,8.99,"grid sell, level 5"
+2026-10-13 21:45,siren.grid_1_5pct_low,SELL,SIREN/INR,225.00000000,4.39,988.24,1.98,9.88,5.85,4.44,"grid sell, level 6"
+2026-10-13 21:45,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-13 21:45,siren.grid_1_5pct_low,BUY,SIREN/INR,225.00000000,4.33,973.63,1.95,0.00,,0.00,"grid buy, level 6"
+2026-10-13 21:45,uni.trend_2_8h,SELL,UNI/INR,0.78000000,748.63,583.93,3.45,5.84,-22.22,0.00,trailing stop
+2026-10-13 21:45,uni.trend_5_20h,SELL,UNI/INR,1.68000000,748.63,1257.71,7.42,12.58,-47.85,0.00,trailing stop
+2026-10-13 21:45,xrp.trend_5_20h,BUY,XRP/INR,8.70000000,137.73,1198.22,7.07,0.00,,0.00,uptrend entry
