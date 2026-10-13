@@ -43085,3 +43085,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 13:45,shib.trend_2_8h,SELL,SHIB/INR,931379.00000000,0.00,484.02,2.86,4.84,-12.98,0.00,closed below the slow average
 2026-10-13 13:45,vet.trend_2_8h,SELL,VET/INR,319.40000000,0.73,232.80,1.37,2.33,-8.34,0.00,closed below the slow average
 2026-10-13 13:45,vvv.trend_2_8h,BUY,VVV/INR,0.17000000,2319.05,394.24,2.33,0.00,,0.00,uptrend entry
+2026-10-13 14:00,apt.trend_2_8h,BUY,APT/INR,3.51000000,85.03,298.45,1.76,0.00,,0.00,uptrend entry
+2026-10-13 14:00,apt.trend_5_20h,BUY,APT/INR,8.84000000,85.03,751.66,4.43,0.00,,0.00,uptrend entry
+2026-10-13 14:00,gala.trend_2_8h,SELL,GALA/INR,2079.09000000,0.22,460.27,2.72,4.60,-12.94,0.00,trailing stop
+2026-10-13 14:00,hype.trend_2_8h,BUY,HYPE/INR,0.04000000,8452.32,338.09,1.99,0.00,,0.00,uptrend entry
+2026-10-13 14:00,mubarak.trend_2_8h,SELL,MUBARAK/INR,21.70000000,7.02,152.36,0.90,1.52,-6.34,0.00,closed below the slow average
+2026-10-13 14:00,one.dip_30_3,BUY,ONE/INR,25355.00000000,0.18,4472.01,26.38,0.00,,0.00,RSI 30
+2026-10-13 14:00,one.dip_30_6,BUY,ONE/INR,26797.90000000,0.18,4726.51,27.89,0.00,,0.00,RSI 30
+2026-10-13 14:00,pengu.trend_2_8h,SELL,PENGU/INR,294.00000000,0.78,230.44,1.36,2.30,-8.03,0.00,closed below the slow average
+2026-10-13 14:00,pengu.trend_5_20h,SELL,PENGU/INR,1191.00000000,0.78,933.53,5.51,9.34,-32.52,0.00,closed below the slow average
+2026-10-13 14:00,shib.trend_2_8h,BUY,SHIB/INR,898993.00000000,0.00,473.53,2.79,0.00,,0.00,uptrend entry
+2026-10-13 14:00,trump.trend_2_8h,SELL,TRUMP/INR,1.56800000,188.43,295.46,1.74,2.95,-8.44,0.00,closed below the slow average
+2026-10-13 14:00,vet.trend_2_8h,BUY,VET/INR,306.40000000,0.74,227.78,1.34,0.00,,0.00,uptrend entry
+2026-10-13 14:00,xlm.trend_2_8h,BUY,XLM/INR,23.00000000,19.57,450.02,2.66,0.00,,0.00,uptrend entry
