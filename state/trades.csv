@@ -44441,3 +44441,17 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 04:30,zec.flip_1,BUY,ZEC/INR,0.03500000,122166.22,4275.82,25.23,0.00,,0.00,coin flip
 2026-10-14 04:30,zec.flip_2,BUY,ZEC/INR,0.02700000,122166.22,3298.49,19.46,0.00,,0.00,coin flip
 2026-10-14 04:30,zec.flip_1_low,BUY,ZEC/INR,0.03900000,122166.22,4764.48,9.56,0.00,,0.00,coin flip
+2026-10-14 04:45,dot.grid_1_5pct,BUY,DOT/INR,6.83200000,115.89,791.77,4.67,0.00,,0.00,"grid buy, level 6"
+2026-10-14 04:45,dot.grid_1_5pct_low,BUY,DOT/INR,7.65800000,115.92,887.74,1.78,0.00,,0.00,"grid buy, level 6"
+2026-10-14 04:45,eth.trend_2_8h,SELL,ETH/INR,0.00130000,249589.97,324.47,1.91,3.24,-6.98,0.00,closed below the slow average
+2026-10-14 04:45,eth.trend_5_20h,SELL,ETH/INR,0.00270000,249589.97,673.89,3.98,6.74,-14.50,0.00,closed below the slow average
+2026-10-14 04:45,hbar.trend_2_8h,SELL,HBAR/INR,20.00000000,8.73,174.54,1.03,1.75,-4.58,0.00,closed below the slow average
+2026-10-14 04:45,shib.trend_2_8h,SELL,SHIB/INR,697170.00000000,0.00,362.03,2.14,3.62,-8.58,0.00,closed below the slow average
+2026-10-14 04:45,siren.trend_5_20h,SELL,SIREN/INR,31.10000000,4.45,138.51,0.82,1.39,-1.81,0.00,trailing stop
+2026-10-14 04:45,sui.trend_2_8h,SELL,SUI/INR,4.60000000,105.35,484.61,2.86,4.85,-9.77,0.00,closed below the slow average
+2026-10-14 04:45,sui.trend_5_20h,SELL,SUI/INR,10.10000000,105.35,1064.03,6.28,10.64,-20.10,0.00,closed below the slow average
+2026-10-14 04:45,xlm.trend_2_8h,SELL,XLM/INR,19.00000000,19.11,363.14,2.14,3.63,-6.72,0.00,closed below the slow average
+2026-10-14 05:00,link.trend_2_8h,SELL,LINK/INR,0.16000000,1276.29,204.21,1.20,2.04,-6.58,0.00,trailing stop
+2026-10-14 05:00,link.trend_5_20h,SELL,LINK/INR,0.28000000,1276.29,357.36,2.11,3.57,-12.44,0.00,trailing stop
+2026-10-14 05:00,one.trend_2_8h,SELL,ONE/INR,2300.90000000,0.17,388.94,2.29,3.89,-16.03,0.00,trailing stop
+2026-10-14 05:00,zec.trend_5_20h,SELL,ZEC/INR,0.01000000,120505.12,1205.05,7.11,12.05,-36.43,0.00,closed below the slow average
