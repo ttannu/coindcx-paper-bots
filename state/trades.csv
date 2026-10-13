@@ -42751,3 +42751,24 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-13 10:30,avax.learner,CLOSE LONG,AVAX/INR,3.22084789,1057.25,3405.25,2.01,0.00,155.00,72.05,switching to AVAX RSI reversion
 2026-10-13 10:30,dot.learner,CLOSE LONG,DOT/INR,31.62288014,117.94,3729.63,2.20,0.00,-2.84,0.71,switching to DOT hold short
 2026-10-13 10:30,dot.learner,OPEN SHORT,DOT/INR,20.80453962,117.94,2453.71,1.45,0.00,,0.00,"following DOT hold short, 0.54x, liquidation at 336"
+2026-10-13 10:45,dot.grid_1_5pct,SELL,DOT/INR,6.90160000,118.96,821.04,4.84,0.00,-18.10,0.00,"grid sell, level 5"
+2026-10-13 10:45,dot.grid_1_5pct_low,SELL,DOT/INR,7.54320000,119.45,901.07,1.81,0.00,-9.22,0.00,"grid sell, level 5"
+2026-10-13 10:45,hbar.trend_2_8h,BUY,HBAR/INR,27.00000000,8.86,239.34,1.41,0.00,,0.00,uptrend entry
+2026-10-13 10:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,24.00000000,7.20,172.79,1.02,0.00,,0.00,uptrend entry
+2026-10-13 10:45,mubarak.grid_1_5pct_low,SELL,MUBARAK/INR,129.60000000,7.17,929.27,1.86,9.29,-3.46,0.12,"grid sell, level 6"
+2026-10-13 10:45,one.dip_25_3,SELL,ONE/INR,26210.90000000,0.18,4828.22,28.49,0.00,17.68,33.57,take profit
+2026-10-13 10:45,one.dip_30_3,SELL,ONE/INR,24573.60000000,0.18,4525.10,26.70,0.00,16.57,31.46,take profit
+2026-10-13 10:45,one.dip_30_6,SELL,ONE/INR,26151.60000000,0.18,4782.63,28.22,0.00,-98.04,0.00,RSI recovered to 55
+2026-10-13 10:45,one.dip_30_6_low,SELL,ONE/INR,26557.00000000,0.18,4856.77,9.74,0.00,-27.45,0.00,RSI recovered to 55
+2026-10-13 10:45,pump.trend_2_8h,BUY,PUMP/INR,994.00000000,0.51,509.62,3.01,0.00,,0.00,uptrend entry
+2026-10-13 10:45,qnt.trend_2_8h,BUY,QNT/INR,0.02100000,23083.00,484.74,2.86,0.00,,0.00,uptrend entry
+2026-10-13 10:45,sei.trend_2_8h,BUY,SEI/INR,26.70000000,6.56,175.06,1.03,0.00,,0.00,uptrend entry
+2026-10-13 10:45,vet.trend_2_8h,BUY,VET/INR,347.70000000,0.75,259.25,1.53,0.00,,0.00,uptrend entry
+2026-10-13 11:00,btc.grid_1_5pct,SELL,BTC/INR,0.00010000,8354100.25,835.41,4.93,0.00,-1.69,3.67,"grid sell, level 3"
+2026-10-13 11:00,btc.grid_1_5pct_low,SELL,BTC/INR,0.00010000,8375037.84,837.50,1.68,0.00,7.62,4.97,"grid sell, level 3"
+2026-10-13 11:00,eth.trend_5_20h,BUY,ETH/INR,0.00340000,253384.06,861.51,5.08,0.00,,0.00,uptrend entry
+2026-10-13 11:00,link.grid_3pct,SELL,LINK/INR,0.64000000,1309.88,838.33,4.95,0.00,-6.21,1.66,"grid sell, level 5"
+2026-10-13 11:00,link.grid_3pct_low,SELL,LINK/INR,0.65000000,1307.84,850.10,1.71,0.00,2.11,2.50,"grid sell, level 5"
+2026-10-13 11:00,saga.trend_2_8h,SELL,SAGA/INR,136.10000000,2.10,285.20,1.68,2.85,-7.96,0.00,trailing stop
+2026-10-13 11:00,sol.grid_3pct,SELL,SOL/INR,0.07800000,10821.07,844.04,4.98,0.00,-13.48,0.00,"grid sell, level 5"
+2026-10-13 11:00,sol.grid_3pct_low,SELL,SOL/INR,0.07800000,10847.11,846.07,1.70,0.00,-3.04,0.16,"grid sell, level 5"
