@@ -45263,3 +45263,20 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 10:45,vet.trend_2_8h,SELL,VET/INR,190.70000000,0.73,139.46,0.82,1.39,-4.33,0.00,closed below the slow average
 2026-10-14 10:45,vet.trend_5_20h,SELL,VET/INR,729.00000000,0.73,533.11,3.15,5.33,-16.54,0.00,closed below the slow average
 2026-10-14 10:45,xrp.trend_2_8h,SELL,XRP/INR,3.60000000,136.84,492.63,2.91,4.93,-10.78,0.00,closed below the slow average
+2026-10-14 11:00,bnb.trend_2_8h,SELL,BNB/INR,0.00300000,73711.46,221.13,1.30,2.21,-5.69,0.00,trailing stop
+2026-10-14 11:00,bnb.trend_5_20h,SELL,BNB/INR,0.00500000,73711.46,368.56,2.17,3.69,-9.48,0.00,trailing stop
+2026-10-14 11:00,bnb.dip_30_3,BUY,BNB/INR,0.06200000,74132.90,4596.24,27.12,0.00,,0.00,RSI 27
+2026-10-14 11:00,bnb.dip_30_6,BUY,BNB/INR,0.06400000,74132.90,4744.51,27.99,0.00,,0.00,RSI 27
+2026-10-14 11:00,btc.trend_2_8h,SELL,BTC/INR,0.00005000,8298966.39,414.95,2.45,4.15,-7.75,0.00,closed below the slow average
+2026-10-14 11:00,hype.trend_5_20h,BUY,HYPE/INR,0.12000000,8346.10,1001.53,5.91,0.00,,0.00,uptrend entry
+2026-10-14 11:00,kas.trend_5_20h,BUY,KAS/INR,62.58100000,3.95,247.40,1.46,0.00,,0.00,uptrend entry
+2026-10-14 11:00,mubarak.dip_30_3_low,BUY,MUBARAK/INR,751.40000000,6.27,4710.23,9.45,0.00,,0.00,"RSI 15, limit buy"
+2026-10-14 11:00,pengu.trend_2_8h,BUY,PENGU/INR,209.00000000,0.79,165.95,0.98,0.00,,0.00,uptrend entry
+2026-10-14 11:00,pengu.trend_5_20h,BUY,PENGU/INR,931.00000000,0.79,739.22,4.36,0.00,,0.00,uptrend entry
+2026-10-14 11:00,pepe.trend_2_8h,SELL,PEPE/INR,644076.00000000,0.00,268.77,1.59,2.69,-8.56,0.00,closed below the slow average
+2026-10-14 11:00,render.grid_1_5pct,BUY,RENDER/INR,3.93000000,202.07,794.12,4.69,0.00,,0.00,"grid buy, level 5"
+2026-10-14 11:00,render.grid_3pct,BUY,RENDER/INR,4.13000000,201.79,833.39,4.92,0.00,,0.00,"grid buy, level 2"
+2026-10-14 11:00,render.grid_1_5pct_low,BUY,RENDER/INR,4.42000000,200.76,887.36,1.78,0.00,,0.00,"grid buy, level 5"
+2026-10-14 11:00,render.grid_3pct_low,BUY,RENDER/INR,4.21000000,200.49,844.05,1.69,0.00,,0.00,"grid buy, level 2"
+2026-10-14 11:00,vvv.trend_2_8h,SELL,VVV/INR,0.16000000,2316.54,370.65,2.19,3.71,2.55,3.11,trailing stop
+2026-10-14 11:00,vvv.trend_5_20h,SELL,VVV/INR,0.55000000,2316.54,1274.10,7.52,12.74,-10.18,2.18,trailing stop
