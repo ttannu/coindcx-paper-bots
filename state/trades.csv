@@ -44626,3 +44626,52 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 06:30,zec.trend_10x,CLOSE SHORT,ZEC/INR,0.06734421,124659.60,8395.10,4.95,0.00,1.96,5.39,signal flipped to long
 2026-10-14 06:30,zec.trend_10x,OPEN LONG,ZEC/INR,0.06809624,124659.60,8488.85,5.01,0.00,,0.00,"go long, 10x, liquidation at 112817"
 2026-10-14 06:30,zec.flip_1_low,SELL,ZEC/INR,0.03900000,124186.13,4843.26,9.72,48.43,34.92,24.58,coin flip
+2026-10-14 06:45,ada.trend_2_8h,SELL,ADA/INR,31.00000000,23.62,732.11,4.32,7.32,-20.46,0.00,trailing stop
+2026-10-14 06:45,ada.trend_5_20h,SELL,ADA/INR,88.70000000,23.62,2094.77,12.36,20.95,-43.24,0.00,trailing stop
+2026-10-14 06:45,arb.trend_2_8h,SELL,ARB/INR,11.00000000,19.14,210.52,1.24,2.11,-0.32,0.97,trailing stop
+2026-10-14 06:45,arb.trend_5_20h,SELL,ARB/INR,41.60000000,19.14,796.14,4.70,7.96,-5.47,1.77,trailing stop
+2026-10-14 06:45,doge.trend_2_8h,SELL,DOGE/INR,66.00000000,8.41,554.76,3.27,5.55,-12.19,0.00,closed below the slow average
+2026-10-14 06:45,doge.trend_5_20h,SELL,DOGE/INR,220.00000000,8.41,1849.20,10.91,18.49,-30.56,0.00,closed below the slow average
+2026-10-14 06:45,eth.trend_2_8h,SELL,ETH/INR,0.00130000,249711.69,324.63,1.92,3.25,-7.39,0.00,closed below the slow average
+2026-10-14 06:45,hbar.trend_2_8h,BUY,HBAR/INR,19.00000000,8.84,167.89,0.99,0.00,,0.00,uptrend entry
+2026-10-14 06:45,icp.trend_2_8h,BUY,ICP/INR,0.63000000,315.01,198.46,1.17,0.00,,0.00,uptrend entry
+2026-10-14 06:45,inj.trend_2_8h,BUY,INJ/INR,0.34000000,820.03,278.81,1.64,0.00,,0.00,uptrend entry
+2026-10-14 06:45,inj.trend_5_20h,BUY,INJ/INR,0.99000000,820.03,811.83,4.79,0.00,,0.00,uptrend entry
+2026-10-14 06:45,inj.grid_1_5pct,BUY,INJ/INR,0.94000000,808.21,759.72,4.48,0.00,,0.00,"grid buy, level 3"
+2026-10-14 06:45,inj.grid_1_5pct_low,BUY,INJ/INR,1.15000000,803.87,924.45,1.85,0.00,,0.00,"grid buy, level 3"
+2026-10-14 06:45,one.trend_2_8h,SELL,ONE/INR,2194.20000000,0.17,372.86,2.20,3.73,-12.09,0.00,closed below the slow average
+2026-10-14 06:45,pepe.trend_2_8h,BUY,PEPE/INR,732143.00000000,0.00,310.51,1.83,0.00,,0.00,uptrend entry
+2026-10-14 06:45,pol.trend_2_8h,BUY,POL/INR,13.20000000,10.23,135.02,0.80,0.00,,0.00,uptrend entry
+2026-10-14 06:45,siren.trend_5_20h,BUY,SIREN/INR,29.60000000,4.59,135.79,0.80,0.00,,0.00,uptrend entry
+2026-10-14 06:45,uni.trend_5_20h,BUY,UNI/INR,1.56000000,761.79,1188.40,7.01,0.00,,0.00,uptrend entry
+2026-10-14 06:45,vet.trend_2_8h,BUY,VET/INR,225.50000000,0.74,167.87,0.99,0.00,,0.00,uptrend entry
+2026-10-14 06:45,vet.trend_5_20h,BUY,VET/INR,861.90000000,0.74,641.62,3.79,0.00,,0.00,uptrend entry
+2026-10-14 07:00,apt.trend_2_8h,SELL,APT/INR,3.16000000,83.16,262.77,1.55,2.63,-6.93,0.00,trailing stop
+2026-10-14 07:00,apt.trend_5_20h,SELL,APT/INR,7.93000000,83.16,659.42,3.89,6.59,-17.40,0.00,trailing stop
+2026-10-14 07:00,arb.trend_5_20h,BUY,ARB/INR,40.30000000,19.29,777.29,4.59,0.00,,0.00,uptrend entry
+2026-10-14 07:00,btc.trend_2_8h,SELL,BTC/INR,0.00006000,8268843.08,496.13,2.93,4.96,-10.50,0.00,closed below the slow average
+2026-10-14 07:00,btc.trend_5_20h,SELL,BTC/INR,0.00010000,8268843.08,826.88,4.88,8.27,-17.50,0.00,closed below the slow average
+2026-10-14 07:00,doge.trend_2_8h,BUY,DOGE/INR,64.00000000,8.49,543.42,3.21,0.00,,0.00,uptrend entry
+2026-10-14 07:00,doge.trend_5_20h,BUY,DOGE/INR,213.00000000,8.49,1808.57,10.67,0.00,,0.00,uptrend entry
+2026-10-14 07:00,eth.trend_2_8h,BUY,ETH/INR,0.00130000,251476.87,326.92,1.93,0.00,,0.00,uptrend entry
+2026-10-14 07:00,inj.grid_1_5pct,SELL,INJ/INR,0.94000000,812.34,763.60,4.51,7.64,-11.80,0.00,"grid sell, level 3"
+2026-10-14 07:00,inj.grid_1_5pct_low,SELL,INJ/INR,1.15000000,815.93,938.32,1.88,9.38,-0.57,1.44,"grid sell, level 3"
+2026-10-14 07:00,link.trend_5_20h,BUY,LINK/INR,0.26000000,1308.61,340.24,2.01,0.00,,0.00,uptrend entry
+2026-10-14 07:00,one.trend_2_8h,BUY,ONE/INR,2092.70000000,0.17,364.78,2.15,0.00,,0.00,uptrend entry
+2026-10-14 07:00,render.grid_1_5pct,SELL,RENDER/INR,3.95000000,205.17,810.41,4.78,8.10,-4.44,2.30,"grid sell, level 5"
+2026-10-14 07:00,render.grid_3pct,SELL,RENDER/INR,4.13000000,205.17,847.34,5.00,0.00,-4.15,2.63,"grid sell, level 2"
+2026-10-14 07:00,render.grid_1_5pct_low,SELL,RENDER/INR,4.42000000,203.77,900.67,1.81,9.01,1.37,2.25,"grid sell, level 5"
+2026-10-14 07:00,render.grid_3pct_low,SELL,RENDER/INR,4.21000000,206.50,869.37,1.74,0.00,9.61,5.92,"grid sell, level 2"
+2026-10-14 07:00,siren.trend_5_20h,SELL,SIREN/INR,29.60000000,4.49,132.79,0.78,1.33,-4.59,0.00,trailing stop
+2026-10-14 07:00,siren.grid_1_5pct,BUY,SIREN/INR,183.40000000,4.47,819.85,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-14 07:00,siren.grid_1_5pct,BUY,SIREN/INR,186.20000000,4.40,819.89,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-14 07:00,siren.grid_1_5pct,BUY,SIREN/INR,180.90000000,4.34,784.60,4.63,0.00,,0.00,"grid buy, level 6"
+2026-10-14 07:00,siren.grid_3pct,BUY,SIREN/INR,234.50000000,4.38,1027.52,6.06,0.00,,0.00,"grid buy, level 3"
+2026-10-14 07:00,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-14 07:00,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-14 07:00,siren.grid_1_5pct_low,BUY,SIREN/INR,225.00000000,4.33,973.63,1.95,0.00,,0.00,"grid buy, level 6"
+2026-10-14 07:00,siren.grid_3pct_low,BUY,SIREN/INR,248.20000000,4.37,1085.06,2.18,0.00,,0.00,"grid buy, level 3"
+2026-10-14 07:00,uni.trend_5_20h,SELL,UNI/INR,1.56000000,745.79,1163.43,6.86,11.63,-38.84,0.00,trailing stop
+2026-10-14 07:00,vvv.dip_30_3,SELL,VVV/INR,1.90000000,2211.45,4201.75,24.79,0.00,-48.09,0.67,12-hour time limit
+2026-10-14 07:00,vvv.dip_30_6,SELL,VVV/INR,1.96000000,2211.45,4334.44,25.57,0.00,-49.61,0.69,12-hour time limit
+2026-10-14 07:00,xlm.trend_2_8h,SELL,XLM/INR,19.00000000,19.08,362.48,2.14,3.62,-7.75,0.00,closed below the slow average
