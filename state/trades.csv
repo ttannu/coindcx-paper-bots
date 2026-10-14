@@ -46496,3 +46496,8 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 00:30,vet.flip_3,BUY,VET/INR,5315.00000000,0.71,3794.55,22.39,0.00,,0.00,coin flip
 2026-10-15 00:30,zec.flip_2,BUY,ZEC/INR,0.02800000,115582.07,3236.30,19.09,0.00,,0.00,coin flip
 2026-10-15 00:30,zec.flip_3,BUY,ZEC/INR,0.03100000,115582.07,3583.04,21.14,0.00,,0.00,coin flip
+2026-10-15 00:45,apt.trend_2_8h,BUY,APT/INR,3.06000000,81.20,248.48,1.47,0.00,,0.00,uptrend entry
+2026-10-15 01:00,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.52,828.33,4.89,8.28,-1.15,3.88,"grid sell, level 4"
+2026-10-15 01:00,siren.grid_1_5pct,BUY,SIREN/INR,184.90000000,4.43,819.88,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-15 01:00,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,8.65,5.70,"grid sell, level 4"
+2026-10-15 01:00,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
