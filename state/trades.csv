@@ -45842,3 +45842,13 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 15:30,zec.pump,SELL,ZEC/INR,0.03600000,122432.63,4407.57,26.00,0.00,-145.29,0.00,closed below the 20-hour average
 2026-10-14 15:30,zec.flip_2,SELL,ZEC/INR,0.02700000,122432.63,3305.68,19.50,33.06,-34.02,2.24,coin flip
 2026-10-14 15:30,zec.flip_3,BUY,ZEC/INR,0.03100000,123243.37,3820.54,22.54,0.00,,0.00,coin flip
+2026-10-14 15:45,ena.trend_2_8h,SELL,ENA/INR,17.26000000,20.77,358.54,2.12,3.59,-12.96,0.00,trailing stop
+2026-10-14 15:45,link.trend_2_8h,SELL,LINK/INR,0.13000000,1272.74,165.46,0.98,1.65,-6.11,0.00,closed below the slow average
+2026-10-14 15:45,one.trend_2_8h,BUY,ONE/INR,1736.60000000,0.18,307.78,1.82,0.00,,0.00,uptrend entry
+2026-10-14 15:45,pepe.trend_5_20h,SELL,PEPE/INR,3064204.00000000,0.00,1262.82,7.45,12.63,-38.25,0.00,closed below the slow average
+2026-10-14 15:45,sei.trend_5_20h,SELL,SEI/INR,81.30000000,6.38,518.58,3.06,5.19,-20.22,0.00,trailing stop
+2026-10-14 15:45,siren.trend_5_20h,BUY,SIREN/INR,23.90000000,4.51,107.77,0.64,0.00,,0.00,uptrend entry
+2026-10-14 16:00,apt.dip_30_3_low,BUY,APT/INR,59.29000000,80.95,4799.76,9.63,0.00,,0.00,"RSI 29, limit buy"
+2026-10-14 16:00,apt.dip_30_6_low,BUY,APT/INR,61.27000000,80.95,4960.05,9.95,0.00,,0.00,"RSI 29, limit buy"
+2026-10-14 16:00,bch.trend_2_8h,BUY,BCH/INR,0.01700000,28158.03,478.69,2.82,0.00,,0.00,uptrend entry
+2026-10-14 16:00,one.trend_2_8h,SELL,ONE/INR,1736.60000000,0.17,297.93,1.76,2.98,-13.42,0.00,closed below the slow average
