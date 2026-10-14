@@ -46310,3 +46310,7 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 20:45,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,7.89,5.36,"grid sell, level 4"
 2026-10-14 20:45,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
 2026-10-14 20:45,zec.dip_30_3_low,BUY,ZEC/INR,0.04100000,116020.10,4756.82,9.54,0.00,,0.00,"RSI 25, limit buy"
+2026-10-14 21:00,pha.dip_30_3,BUY,PHA/INR,711.00000000,5.02,3572.06,21.08,0.00,,0.00,RSI 23
+2026-10-14 21:00,siren.trend_5_20h,SELL,SIREN/INR,23.10000000,4.40,101.66,0.60,1.02,-2.84,0.00,trailing stop
+2026-10-14 21:00,xlm.dip_30_3_low,BUY,XLM/INR,253.00000000,18.23,4612.95,9.25,0.00,,0.00,"RSI 29, limit buy"
+2026-10-14 21:00,xlm.dip_30_6_low,BUY,XLM/INR,272.00000000,18.23,4959.38,9.95,0.00,,0.00,"RSI 29, limit buy"
