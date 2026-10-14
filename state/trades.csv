@@ -46551,3 +46551,7 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 02:30,siren.trend_12_48h,SELL,SIREN/INR,214.60000000,4.40,944.85,5.57,9.45,-44.31,0.00,closed below the slow average
 2026-10-15 02:30,siren.trend_24_96h,SELL,SIREN/INR,279.30000000,4.40,1229.72,7.26,12.30,-57.67,0.00,closed below the slow average
 2026-10-15 02:30,vvv.flip_3,SELL,VVV/INR,1.23000000,2320.20,2853.85,16.84,28.54,-62.69,0.00,coin flip
+2026-10-15 02:45,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.52,828.33,4.89,8.28,-1.25,3.83,"grid sell, level 4"
+2026-10-15 02:45,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,7.16,5.03,"grid sell, level 4"
+2026-10-15 02:45,trump.trend_2_8h,SELL,TRUMP/INR,0.92800000,186.58,173.15,1.02,1.73,-5.29,0.00,closed below the slow average
+2026-10-15 03:00,icp.trend_2_8h,BUY,ICP/INR,0.55000000,306.29,168.46,0.99,0.00,,0.00,uptrend entry
