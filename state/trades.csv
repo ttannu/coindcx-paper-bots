@@ -46521,3 +46521,7 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 01:30,sei.flip_3x,OPEN LONG,SEI/INR,2735.65332238,6.27,17143.88,10.11,0.00,,0.00,"coin flip: long, 3x, liquidation at 4"
 2026-10-15 01:30,xrp.flip_2,SELL,XRP/INR,29.50000000,132.82,3918.27,23.12,39.18,-66.73,0.00,coin flip
 2026-10-15 01:30,saga.learner,OPEN SHORT,SAGA/INR,1801.96085149,2.02,3647.15,2.15,0.00,,0.00,"following SAGA trend 24/96h, 0.76x, liquidation at 5"
+2026-10-15 01:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,20.70000000,5.99,124.03,0.73,0.00,,0.00,uptrend entry
+2026-10-15 02:00,siren.grid_1_5pct,BUY,SIREN/INR,184.90000000,4.44,820.06,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-15 02:00,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-15 02:00,trump.trend_2_8h,BUY,TRUMP/INR,0.92800000,190.07,176.38,1.04,0.00,,0.00,uptrend entry
