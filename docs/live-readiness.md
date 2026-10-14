@@ -1,6 +1,6 @@
 # CoinDCX live-pilot evidence screen
 
-Paper prices through 14 Oct 2026, 15:30 UTC (14.1 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
+Paper prices through 14 Oct 2026, 16:00 UTC (14.1 of 15 forward-paper days). **0 spot strategy families pass this screen.** No live trading is wired to this repository.
 
 The historical inputs are 12 non-overlapping 15-day CoinDCX candle replays from 3 Apr to 30 Sep 2026, after the simulation's fees, spread, and estimated tax. They came from the local backtest output identified by SHA-256 `e6d3c6267cd897697f489b99bc1763fe2afa7bb795b6f1cecbdc75cb8b7cf81f`. Candle fills and tax assumptions are imperfect; these results cannot guarantee a future gain.
 
@@ -8,17 +8,17 @@ A family passes only if its historical mean and median are positive, at least 9 
 
 | Spot family | Historical mean | Profitable windows | Beat holding, history | Forward median | Spot fill warnings | Above 10% volume | Pilot screen |
 |---|---:|---:|---:|---:|---:|---:|---|
-| grid 3% | -2.7% | 2/12 | 5/12 | -6.0% | 123/1736 | 27.0% | blocked |
+| grid 3% | -2.7% | 2/12 | 5/12 | -6.5% | 123/1737 | 27.0% | blocked |
 | RSI dip <25 ±3% | -3.9% | 0/12 | 3/12 | -4.2% | 63/309 | 50.8% | blocked |
 | pump rider | -6.2% | 0/12 | 4/12 | +0.0% | 55/138 | 66.9% | blocked |
-| RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | -9.4% | 194/590 | 65.1% | blocked |
+| RSI dip <30 ±6% | -6.5% | 0/12 | 2/12 | -7.8% | 194/591 | 65.2% | blocked |
 | breakout 48/24h | -8.2% | 2/12 | 1/12 | -9.3% | 89/225 | 69.5% | blocked |
-| RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | -12.8% | 208/738 | 59.5% | blocked |
-| grid 1.5% | -10.3% | 0/12 | 2/12 | -15.2% | 611/5275 | 38.9% | blocked |
-| breakout 20/10h | -15.4% | 1/12 | 0/12 | -15.2% | 194/436 | 73.4% | blocked |
-| trend 24/96h | -26.1% | 0/12 | 0/12 | -20.9% | 332/754 | 74.5% | blocked |
-| trend 12/48h | -36.0% | 0/12 | 0/12 | -30.2% | 567/1194 | 75.5% | blocked |
-| trend 6/24h | -47.6% | 0/12 | 0/12 | -45.2% | 901/1924 | 74.2% | blocked |
+| RSI dip <30 ±3% | -8.5% | 0/12 | 2/12 | -13.0% | 208/739 | 59.6% | blocked |
+| grid 1.5% | -10.3% | 0/12 | 2/12 | -15.8% | 611/5275 | 38.9% | blocked |
+| breakout 20/10h | -15.4% | 1/12 | 0/12 | -14.8% | 194/436 | 73.4% | blocked |
+| trend 24/96h | -26.1% | 0/12 | 0/12 | -20.9% | 333/755 | 74.5% | blocked |
+| trend 12/48h | -36.0% | 0/12 | 0/12 | -30.2% | 568/1195 | 75.5% | blocked |
+| trend 6/24h | -47.6% | 0/12 | 0/12 | -45.2% | 903/1926 | 74.2% | blocked |
 | fast trend 5/20h | -71.4% | 0/12 | 0/12 | -67.8% | 1464/4798 | 66.7% | blocked |
 | fast trend 2/8h | -78.1% | 0/12 | 0/12 | -76.7% | 1873/7388 | 59.9% | blocked |
 
