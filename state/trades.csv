@@ -46419,3 +46419,14 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 22:30,pol.learner,OPEN SHORT,POL/INR,527.64924608,9.62,5078.41,3.00,0.00,,0.00,"following POL hold short, 1x, liquidation at 19"
 2026-10-14 22:30,bnb.learner,OPEN LONG,BNB/INR,0.06669696,73196.88,4882.01,2.88,0.00,,0.00,"following BNB RSI reversion, 1x, liquidation at 366"
 2026-10-14 22:30,eth.learner,OPEN LONG,ETH/INR,0.02106409,245631.75,5174.01,3.05,0.00,,0.00,"following ETH RSI reversion, 1x, liquidation at 1228"
+2026-10-14 22:45,arb.grid_3pct,SELL,ARB/INR,45.60000000,18.52,844.40,4.98,0.00,-9.36,0.27,"grid sell, level 5"
+2026-10-14 22:45,arb.grid_3pct_low,SELL,ARB/INR,46.00000000,18.62,856.38,1.72,0.00,2.56,2.71,"grid sell, level 5"
+2026-10-14 22:45,siren.grid_1_5pct,BUY,SIREN/INR,183.40000000,4.47,819.85,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-14 22:45,siren.grid_1_5pct,BUY,SIREN/INR,186.20000000,4.40,819.89,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-14 22:45,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-14 22:45,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-14 22:45,trump.trend_2_8h,BUY,TRUMP/INR,0.96500000,192.21,185.48,1.09,0.00,,0.00,uptrend entry
+2026-10-14 22:45,vvv.trend_2_8h,BUY,VVV/INR,0.14000000,2312.64,323.77,1.91,0.00,,0.00,uptrend entry
+2026-10-14 22:45,vvv.trend_5_20h,BUY,VVV/INR,0.49000000,2312.64,1133.19,6.69,0.00,,0.00,uptrend entry
+2026-10-14 23:00,bnb.dip_30_3,SELL,BNB/INR,0.06200000,72773.70,4511.97,26.62,0.00,-138.01,0.00,12-hour time limit
+2026-10-14 23:00,bnb.dip_30_6,SELL,BNB/INR,0.06400000,72773.70,4657.52,27.48,0.00,-142.46,0.00,12-hour time limit
