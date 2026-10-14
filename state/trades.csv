@@ -46449,3 +46449,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 23:30,siren.trend_12_48h,SELL,SIREN/INR,228.20000000,4.38,999.49,5.90,9.99,-53.01,0.00,closed below the slow average
 2026-10-14 23:30,siren.trend_24_96h,SELL,SIREN/INR,297.00000000,4.38,1300.83,7.67,13.01,-68.99,0.00,closed below the slow average
 2026-10-14 23:30,xrp.flip_3x,OPEN SHORT,XRP/INR,103.82054052,133.34,13843.77,8.17,0.00,,0.00,"coin flip: short, 3x, liquidation at 177"
+2026-10-14 23:45,pengu.trend_2_8h,BUY,PENGU/INR,185.00000000,0.78,143.85,0.85,0.00,,0.00,uptrend entry
+2026-10-14 23:45,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.52,828.33,4.89,8.28,1.36,5.01,"grid sell, level 4"
+2026-10-14 23:45,siren.grid_1_5pct,SELL,SIREN/INR,186.20000000,4.48,834.12,4.92,8.34,-3.30,2.94,"grid sell, level 5"
+2026-10-14 23:45,siren.grid_1_5pct,BUY,SIREN/INR,183.40000000,4.47,819.85,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-14 23:45,siren.grid_1_5pct,BUY,SIREN/INR,186.20000000,4.40,819.89,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-14 23:45,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,10.34,6.47,"grid sell, level 4"
+2026-10-14 23:45,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,0.18,1.87,"grid sell, level 5"
+2026-10-14 23:45,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-14 23:45,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
+2026-10-14 23:45,trump.trend_2_8h,SELL,TRUMP/INR,0.96500000,186.84,180.30,1.06,1.80,-7.34,0.00,trailing stop
+2026-10-15 00:00,pengu.trend_2_8h,SELL,PENGU/INR,185.00000000,0.76,140.27,0.83,1.40,-5.26,0.00,trailing stop
+2026-10-15 00:00,vvv.trend_2_8h,SELL,VVV/INR,0.14000000,2246.23,314.47,1.86,3.14,-13.06,0.00,trailing stop
+2026-10-15 00:00,vvv.trend_5_20h,SELL,VVV/INR,0.49000000,2246.23,1100.65,6.49,11.01,-45.72,0.00,trailing stop
