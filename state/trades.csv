@@ -46358,3 +46358,15 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-14 21:30,zec.learner,OPEN LONG,ZEC/INR,0.02342309,114057.10,2671.57,1.58,0.00,,0.00,"following ZEC RSI reversion, 0.53x, liquidation at -100575"
 2026-10-14 21:30,tao.learner,OPEN SHORT,TAO/INR,0.16850881,26545.12,4473.09,2.64,0.00,,0.00,"following TAO hold short, 0.97x, liquidation at 53778"
 2026-10-14 21:30,avax.learner,OPEN LONG,AVAX/INR,5.03730763,975.51,4913.93,2.90,0.00,,0.00,"following AVAX RSI reversion, 0.99x, liquidation at -5"
+2026-10-14 21:45,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.53,830.90,4.90,8.31,0.24,4.52,"grid sell, level 4"
+2026-10-14 21:45,siren.grid_1_5pct,BUY,SIREN/INR,183.40000000,4.47,819.85,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-14 21:45,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,7.43,5.15,"grid sell, level 4"
+2026-10-14 21:45,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-14 22:00,pump.dip_30_3,BUY,PUMP/INR,8764.00000000,0.47,4116.42,24.29,0.00,,0.00,RSI 30
+2026-10-14 22:00,pump.dip_30_6,BUY,PUMP/INR,8258.00000000,0.47,3878.75,22.88,0.00,,0.00,RSI 30
+2026-10-14 22:00,siren.grid_1_5pct,SELL,SIREN/INR,183.40000000,4.52,828.33,4.89,8.28,-2.10,3.45,"grid sell, level 4"
+2026-10-14 22:00,siren.grid_1_5pct,BUY,SIREN/INR,183.80000000,4.46,819.79,4.84,0.00,,0.00,"grid buy, level 4"
+2026-10-14 22:00,siren.grid_1_5pct,BUY,SIREN/INR,186.20000000,4.40,819.89,4.84,0.00,,0.00,"grid buy, level 5"
+2026-10-14 22:00,siren.grid_1_5pct_low,SELL,SIREN/INR,218.30000000,4.53,988.23,1.98,9.88,7.10,5.00,"grid sell, level 4"
+2026-10-14 22:00,siren.grid_1_5pct_low,BUY,SIREN/INR,218.30000000,4.46,973.63,1.95,0.00,,0.00,"grid buy, level 4"
+2026-10-14 22:00,siren.grid_1_5pct_low,BUY,SIREN/INR,221.60000000,4.39,973.52,1.95,0.00,,0.00,"grid buy, level 5"
