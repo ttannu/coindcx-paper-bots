@@ -47134,3 +47134,12 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 09:30,trump.learner,CLOSE LONG,TRUMP/INR,16.70253156,177.61,2966.56,1.75,0.00,-34.10,0.00,switching to TRUMP hold short
 2026-10-15 09:30,trump.learner,OPEN SHORT,TRUMP/INR,16.74399475,177.61,2973.92,1.75,0.00,,0.00,"following TRUMP hold short, 0.68x, liquidation at 438"
 2026-10-15 09:30,doge.learner,OPEN LONG,DOGE/INR,581.48581364,8.00,4654.21,2.75,0.00,,0.00,"following DOGE RSI reversion, 1x, liquidation at 0"
+2026-10-15 09:45,pump.dip_30_6_low,BUY,PUMP/INR,9302.00000000,0.44,4100.97,8.23,0.00,,0.00,"RSI 28, limit buy"
+2026-10-15 09:45,siren.grid_1_5pct,BUY,SIREN/INR,150.70000000,4.34,653.62,3.86,0.00,,0.00,"grid buy, level 6"
+2026-10-15 09:45,siren.grid_3pct,BUY,SIREN/INR,235.70000000,4.36,1027.65,6.06,0.00,,0.00,"grid buy, level 3"
+2026-10-15 09:45,siren.grid_1_5pct_low,BUY,SIREN/INR,225.00000000,4.33,973.63,1.95,0.00,,0.00,"grid buy, level 6"
+2026-10-15 09:45,siren.grid_3pct_low,BUY,SIREN/INR,248.20000000,4.37,1085.06,2.18,0.00,,0.00,"grid buy, level 3"
+2026-10-15 10:00,gala.dip_25_3,SELL,GALA/INR,23033.89000000,0.20,4559.32,26.90,0.00,21.67,33.93,take profit
+2026-10-15 10:00,gala.dip_30_3,SELL,GALA/INR,18852.10000000,0.20,3731.58,22.02,0.00,17.74,27.77,take profit
+2026-10-15 10:00,siren.grid_1_5pct,SELL,SIREN/INR,150.70000000,4.39,661.55,3.90,6.62,-9.49,0.00,"grid sell, level 6"
+2026-10-15 10:00,siren.grid_1_5pct_low,SELL,SIREN/INR,225.00000000,4.39,988.24,1.98,9.88,-5.17,0.00,"grid sell, level 6"
