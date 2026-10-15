@@ -47314,3 +47314,16 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 13:30,trx.flip_1_low,SELL,TRX/INR,123.20000000,33.21,4091.77,8.21,40.92,-31.98,0.00,coin flip
 2026-10-15 13:30,vvv.flip_3x,CLOSE SHORT,VVV/INR,3.31673453,2233.88,7409.17,4.37,0.00,33.08,18.98,coin flip
 2026-10-15 13:30,zec.flip_3x,CLOSE SHORT,ZEC/INR,0.11563507,111393.57,12881.00,7.60,0.00,-190.18,0.00,coin flip
+2026-10-15 13:45,pha.trend_2_8h,BUY,PHA/INR,106.00000000,5.08,538.08,3.17,0.00,,0.00,uptrend entry
+2026-10-15 13:45,siren.grid_1_5pct,SELL,SIREN/INR,151.80000000,4.39,666.38,3.93,6.66,-4.52,1.50,"grid sell, level 6"
+2026-10-15 13:45,siren.grid_1_5pct,BUY,SIREN/INR,150.30000000,4.34,651.88,3.85,0.00,,0.00,"grid buy, level 6"
+2026-10-15 13:45,siren.grid_3pct,SELL,SIREN/INR,241.80000000,4.39,1061.47,6.26,10.61,-4.29,3.70,"grid sell, level 4"
+2026-10-15 13:45,siren.grid_3pct,BUY,SIREN/INR,241.80000000,4.25,1027.72,6.06,0.00,,0.00,"grid buy, level 4"
+2026-10-15 13:45,siren.grid_1_5pct_low,SELL,SIREN/INR,225.00000000,4.39,988.24,1.98,9.88,0.36,1.96,"grid sell, level 6"
+2026-10-15 13:45,siren.grid_1_5pct_low,BUY,SIREN/INR,225.00000000,4.33,973.63,1.95,0.00,,0.00,"grid buy, level 6"
+2026-10-15 13:45,siren.grid_3pct_low,SELL,SIREN/INR,255.80000000,4.37,1117.28,2.24,11.17,0.86,2.42,"grid sell, level 4"
+2026-10-15 13:45,siren.grid_3pct_low,BUY,SIREN/INR,255.80000000,4.24,1084.73,2.18,0.00,,0.00,"grid buy, level 4"
+2026-10-15 14:00,apt.dip_30_6,SELL,APT/INR,64.41000000,79.20,5101.39,30.10,51.01,78.83,62.51,RSI recovered to 56
+2026-10-15 14:00,apt.dip_30_6_low,SELL,APT/INR,66.32000000,79.20,5252.67,10.54,0.00,125.45,66.25,RSI recovered to 56
+2026-10-15 14:00,trump.dip_30_6,SELL,TRUMP/INR,24.48900000,181.92,4454.94,26.28,0.00,41.89,42.47,RSI recovered to 57
+2026-10-15 14:00,trump.learner,CLOSE SHORT,TRUMP/INR,16.74399475,182.92,3062.84,1.81,0.00,-92.64,0.00,"capital floor reached, stopping for good"
