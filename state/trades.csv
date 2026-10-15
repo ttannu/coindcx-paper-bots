@@ -47231,3 +47231,11 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 11:30,zec.learner,CLOSE LONG,ZEC/INR,0.02342309,109882.23,2573.78,1.52,0.00,-101.35,0.00,switching to ZEC hold short
 2026-10-15 11:30,zec.learner,OPEN SHORT,ZEC/INR,0.02382433,109882.23,2617.87,1.54,0.00,,0.00,"following ZEC hold short, 0.53x, liquidation at 316658"
 2026-10-15 11:30,doge.learner,CLOSE LONG,DOGE/INR,581.48581364,7.95,4622.01,2.73,0.00,-37.79,0.00,"loss brake, cash for 24 hours"
+2026-10-15 11:45,pump.dip_30_3,BUY,PUMP/INR,8594.00000000,0.43,3705.16,21.86,0.00,,0.00,RSI 28
+2026-10-15 11:45,siren.grid_1_5pct,BUY,SIREN/INR,151.00000000,4.29,648.22,3.82,0.00,,0.00,"grid buy, level 6"
+2026-10-15 11:45,siren.grid_1_5pct_low,BUY,SIREN/INR,225.00000000,4.33,973.63,1.95,0.00,,0.00,"grid buy, level 6"
+2026-10-15 11:45,uni.dip_30_3,SELL,UNI/INR,5.33000000,678.98,3618.96,21.35,36.19,-176.43,0.00,stop loss
+2026-10-15 12:00,siren.grid_1_5pct,SELL,SIREN/INR,186.20000000,4.45,828.37,4.89,8.28,-0.64,4.11,"grid sell, level 5"
+2026-10-15 12:00,siren.grid_1_5pct,SELL,SIREN/INR,151.00000000,4.44,670.40,3.96,6.70,-1.45,2.90,"grid sell, level 6"
+2026-10-15 12:00,siren.grid_1_5pct_low,SELL,SIREN/INR,221.60000000,4.46,988.13,1.98,9.88,8.84,5.79,"grid sell, level 5"
+2026-10-15 12:00,siren.grid_1_5pct_low,SELL,SIREN/INR,225.00000000,4.39,988.24,1.98,9.88,-1.35,1.18,"grid sell, level 6"
