@@ -5,9 +5,9 @@
 The user has since specified a **one-day** deadline for the ₹10,000 profit. The running 15-day challenge does not test that deadline. A separate [255-day historical one-day screen](docs/one-day-feasibility.md) found no fixed rule or hindsight-picked single-coin spot hold that turned ₹5,000 into ₹15,000 after modeled costs. The one-day request does not change this paper run's original start and end dates.
 
 <!-- DASHBOARD:START -->
-### Live results: day 15 of 15
+### Final results after 15 days
 
-Last updated 15 Oct 2026, 20:42 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. Refreshed about every 30 minutes; each run catches up on everything it missed.
+Last updated 15 Oct 2026, 21:12 IST. Runs from 30 Sep 2026, 18:45 IST to 15 Oct 2026, 18:45 IST. The simulation has finished and the automation has switched itself off.
 
 Each original leaderboard bot started with ₹5,000 of simulated money. The goal is ₹15,000 (3x). BTC/INR since the start: -4.8% (₹85,22,786 to ₹81,12,888).
 
