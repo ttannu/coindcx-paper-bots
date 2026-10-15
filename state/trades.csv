@@ -47714,3 +47714,11 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 18:00,hbar.trend_2_8h,BUY,HBAR/INR,17.00000000,8.32,141.44,0.83,0.00,,0.00,uptrend entry
 2026-10-15 18:00,one.trend_2_8h,BUY,ONE/INR,1863.60000000,0.16,291.48,1.72,0.00,,0.00,uptrend entry
 2026-10-15 18:00,qnt.trend_2_8h,BUY,QNT/INR,0.01500000,20127.90,301.92,1.78,0.00,,0.00,uptrend entry
+2026-10-15 18:15,bnb.trend_2_8h,SELL,BNB/INR,0.00200000,71829.64,143.66,0.85,1.44,-3.90,0.00,closed below the slow average
+2026-10-15 18:15,btc.trend_2_8h,SELL,BTC/INR,0.00004000,8133743.68,325.35,1.92,3.25,-6.45,0.00,closed below the slow average
+2026-10-15 18:15,doge.trend_2_8h,SELL,DOGE/INR,53.00000000,8.03,425.34,2.51,4.25,-10.58,0.00,closed below the slow average
+2026-10-15 18:15,hbar.trend_2_8h,SELL,HBAR/INR,17.00000000,8.11,137.89,0.81,1.38,-5.20,0.00,closed below the slow average
+2026-10-15 18:15,pepe.trend_2_8h,SELL,PEPE/INR,554048.00000000,0.00,218.18,1.29,2.18,-5.76,0.00,closed below the slow average
+2026-10-15 18:15,qnt.trend_2_8h,SELL,QNT/INR,0.01500000,19683.28,295.25,1.74,2.95,-10.19,0.00,closed below the slow average
+2026-10-15 18:15,saga.trend_2_8h,SELL,SAGA/INR,87.00000000,1.95,169.46,1.00,1.69,-5.98,0.00,trailing stop
+2026-10-15 18:15,vvv.trend_2_8h,SELL,VVV/INR,0.12000000,2237.23,268.47,1.58,2.68,-8.04,0.00,closed below the slow average
