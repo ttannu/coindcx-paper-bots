@@ -47267,3 +47267,6 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 12:30,trx.trend_6_24h,BUY,TRX/INR,40.60000000,33.47,1358.81,8.02,0.00,,0.00,uptrend entry
 2026-10-15 12:30,vet.flip_3x,OPEN LONG,VET/INR,32185.31990988,0.67,21706.01,12.81,0.00,,0.00,"coin flip: long, 3x, liquidation at 0"
 2026-10-15 12:30,vvv.flip_3,SELL,VVV/INR,1.27000000,2239.96,2844.75,16.78,28.45,6.37,17.96,coin flip
+2026-10-15 12:45,inj.grid_3pct,BUY,INJ/INR,1.20000000,726.38,871.65,5.14,0.00,,0.00,"grid buy, level 5"
+2026-10-15 12:45,inj.grid_3pct_low,BUY,INJ/INR,1.27000000,722.33,917.36,1.84,0.00,,0.00,"grid buy, level 5"
+2026-10-15 12:45,pump.dip_30_3_low,BUY,PUMP/INR,9890.00000000,0.43,4241.43,8.51,0.00,,0.00,"RSI 28, limit buy"
