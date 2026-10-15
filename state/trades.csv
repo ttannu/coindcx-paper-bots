@@ -47195,3 +47195,7 @@ time_ist,bot,side,pair,qty,price,value,fee,tds,pnl,tax,reason
 2026-10-15 10:30,bnb.learner,OPEN SHORT,BNB/INR,0.06660814,72037.26,4798.27,2.83,0.00,,0.00,"following BNB hold short, 1x, liquidation at 143714"
 2026-10-15 10:30,eth.learner,CLOSE LONG,ETH/INR,0.02106409,239819.43,5051.58,2.98,0.00,-129.24,0.00,switching to ETH hold short
 2026-10-15 10:30,eth.learner,OPEN SHORT,ETH/INR,0.02103602,239819.43,5044.85,2.98,0.00,,0.00,"following ETH hold short, 1x, liquidation at 478440"
+2026-10-15 10:45,btc.trend_2_8h,SELL,BTC/INR,0.00005000,8153723.50,407.69,2.41,4.08,-8.93,0.00,closed below the slow average
+2026-10-15 10:45,mubarak.trend_2_8h,BUY,MUBARAK/INR,18.90000000,6.06,114.51,0.68,0.00,,0.00,uptrend entry
+2026-10-15 10:45,pha.trend_2_8h,BUY,PHA/INR,111.00000000,5.09,565.47,3.34,0.00,,0.00,uptrend entry
+2026-10-15 11:00,mubarak.trend_2_8h,SELL,MUBARAK/INR,18.90000000,5.83,110.19,0.65,1.10,-5.64,0.00,closed below the slow average
